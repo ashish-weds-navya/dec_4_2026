@@ -176,7 +176,7 @@
       justify-content: center; 
       align-items: center; 
       text-align: center; 
-      overflow: hidden;
+      overflow: hidden; 
       padding: 2.5rem 1rem 2rem;
     }
     .hero-bg {
@@ -239,12 +239,12 @@
       letter-spacing: 0.05em;
     }
     
-    /* CLEAN S/O & D/O: CINZEL FONT, NO BACKGROUND, THICKER WEIGHT */
+    /* S/O & D/O: CINZEL FONT, NO BACKGROUND, DOUBLED WEIGHT (800) */
     .person-block .parentage-subtitle {
       font-family: var(--font-royal) !important;
       font-size: clamp(0.85rem, 1.8vw, 1.05rem);
       color: var(--royal-maroon);
-      font-weight: 500 !important;
+      font-weight: 800 !important;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-top: 0.25rem;
@@ -462,7 +462,6 @@
   <!-- Showering Roses -->
   <div id="petal-container"></div>
 
-  <!-- FUSED NAVIGATION BAR (WITH TABS & EMBEDDED LANGUAGE BUTTONS) -->
   <nav>
     <div class="nav-left">
       <a class="nav-logo" onclick="switchPage('home')">A &amp; N</a>
@@ -482,9 +481,6 @@
     </div>
   </nav>
 
-  <!-- =============================================================== -->
-  <!-- PAGE 1: HOME (Hero + Celebrations + Venue + Contacts)          -->
-  <!-- =============================================================== -->
   <div id="page-home" class="page-view active-page">
     
     <!-- 1. Hero & Live Timer -->
@@ -570,7 +566,7 @@
           <!-- Person 1 Block -->
           <div class="person-block" id="block-person-1">
             <span class="couple-name" id="hero-first-name">Ashish</span>
-            <span class="parentage-subtitle" id="hero-first-parent" data-i18n="parent_ashish">S/O Rajul and Lalit Lalwani</span>
+            <span class="parentage-subtitle" id="hero-first-parent" data-i18n="parent_ashish">S/O Rajul &amp; Lalit Lalwani</span>
           </div>
 
           <!-- Bold Golden Weds Separator -->
@@ -579,7 +575,7 @@
           <!-- Person 2 Block -->
           <div class="person-block" id="block-person-2">
             <span class="couple-name" id="hero-second-name">Navya</span>
-            <span class="parentage-subtitle" id="hero-second-parent" data-i18n="parent_navya">D/O Laxmi and Narayan Raghu Pai</span>
+            <span class="parentage-subtitle" id="hero-second-parent" data-i18n="parent_navya">D/O Laxmi &amp; Narayan Raghu Pai</span>
           </div>
         </div>
 
@@ -670,9 +666,6 @@
 
   </div>
 
-  <!-- =============================================================== -->
-  <!-- PAGE 2: MEMORIES                                               -->
-  <!-- =============================================================== -->
   <div id="page-memories" class="page-view">
     <section>
       <h2 class="section-title" data-i18n="sec_memories">Share Your Memories</h2>
@@ -694,9 +687,6 @@
     </section>
   </div>
 
-  <!-- =============================================================== -->
-  <!-- PAGE 3: WISHES                                                 -->
-  <!-- =============================================================== -->
   <div id="page-wishes" class="page-view">
     <section>
       <h2 class="section-title" data-i18n="sec_wishes">Wishes &amp; Blessings</h2>
@@ -706,9 +696,6 @@
     </section>
   </div>
 
-  <!-- =============================================================== -->
-  <!-- PAGE 4: RSVP (WITH ARRIVAL & DEPARTURE SECTIONS)              -->
-  <!-- =============================================================== -->
   <div id="page-rsvp" class="page-view">
     <section>
       <h2 class="section-title" data-i18n="sec_rsvp">RSVP</h2>
@@ -814,7 +801,6 @@
     <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="footer_sub">#NavAshish &bull; December 4, 2026 &bull; Govind Bagh, Jodhpur</p>
   </footer>
 
-  <!-- MODALS -->
   <div class="modal-overlay" id="modal-haldi">
     <div class="modal-content">
       <div class="close-modal" onclick="closeModal('modal-haldi')">&times;</div>
@@ -825,7 +811,7 @@
       </div>
       <div class="modal-body">
         <h2 data-i18n="modal_haldi_title">Haldi</h2>
-        <p class="time" data-i18n="modal_haldi_time">DECEMBER 4 &bull; 9:30 AM</p>
+        <p class="time" data-i18n="modal_haldi_time">DECEMBER 4 &bull; 11:00 AM</p>
         <p style="font-family: var(--font-serif); font-size: 1.4rem;" data-i18n="modal_haldi_desc">Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.</p>
         <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.5rem;" data-i18n="modal_haldi_loc">Govind Bagh Gardens</p>
       </div>
@@ -850,6 +836,12 @@
   </div>
 
   <script>
+    // ===============================================================
+    // CONNECTED APPS SCRIPT WEB APP ENDPOINTS
+    // ===============================================================
+    const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxu5L2SY1Ixx2zHtZcuwqHJB0tp-zIBXS_pTqJujz4avXzw-1bdTLhlDS8zVDg3ltO7gQ/exec';
+    const UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHQaeOTNoHLylhoXbEBtKfrSBEenHhtr2onIXmZKTISsyOWLdJrkIv2pO7JCP-3JxO_w/exec';
+
     // =========================================
     // SECTION DISPLAY FLAGS (1 = Show, 0 = Hide)
     // =========================================
@@ -871,8 +863,8 @@
         hero_first_name: "Ashish",
         hero_weds: "weds",
         hero_second_name: "Navya",
-        parent_ashish: "S/O Rajul and Lalit Lalwani",
-        parent_navya: "D/O Laxmi and Narayan Raghu Pai",
+        parent_ashish: "S/O Rajul & Lalit Lalwani",
+        parent_navya: "D/O Laxmi & Narayan Raghu Pai",
         hero_date_venue: "December 4, 2026 • Govind Bagh, Jodhpur",
         timer_days: "Days",
         timer_hours: "Hours",
@@ -880,7 +872,7 @@
         timer_secs: "Secs",
         sec_celebrations: "Celebrations",
         haldi_title: "Haldi",
-        haldi_time: "Dec 4 • 9:30 AM",
+        haldi_time: "Dec 4 • 11:00 AM",
         btn_view_details: "View Details",
         pheras_title: "Varmala & Pheras",
         pheras_time: "Dec 4 • 5:30 PM",
@@ -937,7 +929,7 @@
         footer_couple: "Ashish & Navya",
         footer_sub: "#NavAshish • December 4, 2026 • Govind Bagh, Jodhpur",
         modal_haldi_title: "Haldi",
-        modal_haldi_time: "DECEMBER 4 • 9:30 AM",
+        modal_haldi_time: "DECEMBER 4 • 11:00 AM",
         modal_haldi_desc: "Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.",
         modal_haldi_loc: "Govind Bagh Gardens",
         modal_pheras_title: "Varmala & Pheras",
@@ -963,7 +955,7 @@
         timer_secs: "सेकंड",
         sec_celebrations: "मांगलिक कार्यक्रम",
         haldi_title: "हल्दी समारोह",
-        haldi_time: "४ दिसंबर • प्रातः ९:३० बजे",
+        haldi_time: "४ दिसंबर • प्रातः ११:०० बजे",
         btn_view_details: "विवरण देखें",
         pheras_title: "वरमाला एवं फेरे",
         pheras_time: "४ दिसंबर • सायं ५:३० बजे",
@@ -1020,7 +1012,7 @@
         footer_couple: "आशीष एवं नाव्या",
         footer_sub: "#NavAshish • ४ दिसंबर २०२६ • गोविंद बाग, जोधपुर",
         modal_haldi_title: "हल्दी समारोह",
-        modal_haldi_time: "४ दिसंबर • प्रातः ९:३० बजे",
+        modal_haldi_time: "४ दिसंबर • प्रातः ११:०० बजे",
         modal_haldi_desc: "आइए और इस सुनहरे सवेरे में आशीष और नाव्या को हल्दी के पावन रंगों से आशीर्वाद देकर नए जीवन की मंगलकामना करें।",
         modal_haldi_loc: "गोविंद बाग गार्डन",
         modal_pheras_title: "वरमाला एवं फेरे",
@@ -1046,7 +1038,7 @@
         timer_secs: "ಸೆಕೆಂಡುಗಳು",
         sec_celebrations: "ವಿವಾಹ ಸಮಾರಂಭಗಳು",
         haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)",
-        haldi_time: "ಡಿ ೪ • ಬೆಳಿಗ್ಗೆ ೯:೩೦",
+        haldi_time: "ಡಿ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦",
         btn_view_details: "ವಿವರ ನೋಡಿ",
         pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)",
         pheras_time: "ಡಿ ೪ • ಸಂಜೆ ೫:೩೦",
@@ -1103,7 +1095,7 @@
         footer_couple: "ನವ್ಯಾ ಮತ್ತು ಆಶೀಷ್",
         footer_sub: "#NavAshish • ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬ • ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
         modal_haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)",
-        modal_haldi_time: "ಡಿಸೆಂಬರ್ ೪ • ಬೆಳಿಗ್ಗೆ ೯:೩೦",
+        modal_haldi_time: "ಡಿಸೆಂಬರ್ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦",
         modal_haldi_desc: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ತಮ್ಮ ನವಜೀವನದ ಪಯಣವನ್ನು ಆರಂಭಿಸುವ ಮುನ್ನ ಅರಿಶಿನದ ಬಣ್ಣಗಳಿಂದ ಅವರನ್ನು ಹರಸಲು ಪ್ರೀತಿಯಿಂದ ಆಹ್ವಾನಿಸುತ್ತೇವೆ.",
         modal_haldi_loc: "ಗೋವಿಂದ್ ಬಾಗ್ ಗಾರ್ಡನ್",
         modal_pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)",
@@ -1250,7 +1242,6 @@
       }
     }
 
-    /* Particle Cursor */
     const canvas = document.getElementById('cursor-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -1311,7 +1302,7 @@
       petalContainer.appendChild(petal);
     }
 
-    /* Countdown Timer */
+    /* Countdown Timer to Dec 4, 2026 */
     const weddingDate = new Date("December 4, 2026 10:00:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
@@ -1328,11 +1319,10 @@
     function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
 
-    /* Load Dynamic Gallery & Wishes */
     function loadGalleryAndWishes() {
       applySectionVisibilityFlags();
 
-      if (SHOW_MEMORIES === 1) {
+      if (SHOW_MEMORIES === 1 && typeof UPLOAD_SCRIPT_URL !== 'undefined' && UPLOAD_SCRIPT_URL.includes('/exec')) {
         const gallery = document.getElementById('memory-wall');
         gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--gold-primary);">Loading memories...</p>';
         const cacheBusterUrl = UPLOAD_SCRIPT_URL + '?v=' + new Date().getTime();
@@ -1357,7 +1347,7 @@
           });
       }
 
-      if (SHOW_WISHES === 1) {
+      if (SHOW_WISHES === 1 && typeof RSVP_SCRIPT_URL !== 'undefined' && RSVP_SCRIPT_URL.includes('/exec')) {
         const wishesContainer = document.getElementById('wishes-container');
         const rsvpGetUrl = RSVP_SCRIPT_URL + '?action=wishes&v=' + new Date().getTime();
         
@@ -1401,7 +1391,7 @@
       const btn = e.target.querySelector('button');
       
       if (fileInput.files.length === 0) {
-        alert("Please select a file to upload first."); return;
+        return;
       }
       const file = fileInput.files[0];
       btn.innerText = "Uploading... Please wait";
@@ -1418,13 +1408,14 @@
         .then(response => response.json())
         .then(data => {
           if (data.status === 'success') {
-            alert("Memory uploaded successfully!"); e.target.reset(); document.getElementById('fileNameDisplay').innerText = ''; loadGalleryAndWishes();
-          } else { alert("Upload failed: " + data.message); }
+            e.target.reset(); 
+            document.getElementById('fileNameDisplay').innerText = ''; 
+            loadGalleryAndWishes();
+          }
           btn.innerText = translations[currentLang].btn_upload || "Upload to Gallery"; 
           btn.style.pointerEvents = "auto";
         })
         .catch(error => {
-          alert("Error connecting to Drive. Please try again.");
           btn.innerText = translations[currentLang].btn_upload || "Upload to Gallery"; 
           btn.style.pointerEvents = "auto";
         });
@@ -1432,7 +1423,6 @@
       reader.readAsDataURL(file);
     }
 
-    // CORS & Redirect Safe RSVP Handler
     function handleRSVP(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
@@ -1459,7 +1449,7 @@
         wishes: wishes
       };
 
-      // Uses mode: 'no-cors' and text/plain to bypass browser CORS preflight blocks completely
+      // Uses mode: 'no-cors' and text/plain to bypass browser CORS preflight blocks seamlessly
       fetch(RSVP_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -1467,9 +1457,11 @@
         body: JSON.stringify(formData)
       })
       .then(() => {
-        alert(currentLang === 'hi' ? "आरएसवीपी पुष्टि हो गई है! धन्यवाद।" : (currentLang === 'kn' ? "RSVP ದೃಢೀಕರಿಸಲಾಗಿದೆ! ಧನ್ಯವಾದಗಳು." : "RSVP Confirmed! Thank you for responding."));
-        btn.innerText = translations[currentLang].btn_confirm_rsvp || "Confirm RSVP"; 
-        btn.style.pointerEvents = "auto";
+        btn.innerText = (currentLang === 'hi' ? "आरएसवीपी पुष्टि हो गई है!" : (currentLang === 'kn' ? "RSVP ದೃಢೀಕರಿಸಲಾಗಿದೆ!" : "RSVP Confirmed!")); 
+        setTimeout(() => {
+          btn.innerText = translations[currentLang].btn_confirm_rsvp || "Confirm RSVP";
+          btn.style.pointerEvents = "auto";
+        }, 3000);
         
         if (wishes && SHOW_WISHES === 1) {
           const wishesContainer = document.getElementById('wishes-container');
@@ -1493,7 +1485,6 @@
       })
       .catch(error => {
         console.error("RSVP Error:", error);
-        alert("Error sending RSVP. Please check your connection and try again.");
         btn.innerText = translations[currentLang].btn_confirm_rsvp || "Confirm RSVP";
         btn.style.pointerEvents = "auto";
       });
