@@ -158,6 +158,25 @@
     .card-btn { margin-top: 1.5rem; padding: 0.6rem 1.8rem; border: 1px solid var(--gold-primary); background: transparent; color: var(--gold-primary); border-radius: 25px; transition: 0.3s; font-weight: bold; pointer-events: none; position: relative; z-index: 2;}
     .event-card:hover .card-btn { background: var(--gold-primary); color: #fff; }
 
+    /* CONTACT DIRECTORY */
+    .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .contact-card {
+      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 2rem; text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: 0.3s;
+    }
+    .contact-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); box-shadow: 0 10px 25px rgba(212,175,55,0.2); }
+    .contact-card h3 { font-family: var(--font-royal); font-size: 1.3rem; color: var(--royal-maroon); margin-bottom: 0.5rem; }
+    .contact-card p { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text-dark); }
+    .contact-card a { color: var(--gold-primary); text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* WHATSAPP QR SECTION */
+    .whatsapp-container {
+      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 3rem; text-align: center;
+      max-width: 500px; margin: 0 auto; box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .whatsapp-qr { width: 220px; height: 220px; object-fit: contain; margin: 1.5rem auto; border-radius: 10px; border: 2px solid var(--gold-primary); padding: 8px; background: #fff; }
+
     /* EVENT MODALS */
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); backdrop-filter: blur(20px);
@@ -244,6 +263,7 @@
     <a href="#" class="nav-logo">A &amp; N</a>
     <ul class="nav-links">
       <li><a href="#events">Ceremonies</a></li>
+      <li><a href="#contacts">Family Contacts</a></li>
       <li><a href="#upload">Memories</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
@@ -358,6 +378,45 @@
     </div>
   </section>
 
+  <!-- FAMILY CONTACTS & WHATSAPP GROUP SECTION -->
+  <section id="contacts" class="reveal">
+    <h2 class="section-title">Family Contacts</h2>
+    <div class="contacts-grid" style="margin-bottom: 4rem;">
+      <div class="contact-card">
+        <h3>Lalit Lalwani</h3>
+        <p><a href="tel:9314711399">+91 93147 11399</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Ramesh Lalwani</h3>
+        <p><a href="tel:9828412250">+91 98284 12250</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Praveen Lalwani</h3>
+        <p><a href="tel:9828230407">+91 98282 30407</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Ashish Lalwani</h3>
+        <p><a href="tel:9663858902">+91 96638 58902</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Shreyansh Lalwani</h3>
+        <p><a href="tel:9680241654">+91 96802 41654</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Sanjeev Lalwani</h3>
+        <p><a href="tel:7568736783">+91 75687 36783</a></p>
+      </div>
+    </div>
+
+    <!-- WhatsApp Group QR Code Section -->
+    <div class="whatsapp-container">
+      <h3 style="font-family: var(--font-royal); color: var(--royal-maroon); font-size: 1.6rem; margin-bottom: 0.5rem;">Join Wedding WhatsApp Group</h3>
+      <p style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1rem;">Scan the QR code below using your phone's camera to join our official guest group chat for live updates!</p>
+      <!-- QR Code Image linked via Google Drive Thumbnail -->
+      <img class="whatsapp-qr" src="https://drive.google.com/thumbnail?id=1PsDtvtpS8LlzvSiT09_5djpE-gW2IE_n&sz=w600" alt="WhatsApp Group QR Code">
+    </div>
+  </section>
+
   <!-- UPLOAD PICTURES & LIVE MEMORY WALL -->
   <section id="upload" class="reveal">
     <h2 class="section-title">Share Your Memories</h2>
@@ -462,7 +521,7 @@
     <div class="modal-content">
       <div class="close-modal" onclick="closeModal('modal-pheras')">&times;</div>
       <div class="modal-hero">
-        <img class="modal-bg-img" src="https://drive.google.com/thumbnail?id=1v5uJLfQUbfDXJMXKzUgdOiNhKah6VknQ&sz=w1000" alt="Pheras Fire Image">
+        <img class="modal-bg-img" src="https://images.unsplash.com/photo-1583089892943-e02e5ee6006f?auto=format&fit=crop&w=1000&q=80" alt="Pheras Fire Image">
         <div class="modal-hero-overlay"></div>
         <div class="modal-hero-icon">🔥</div>
       </div>
