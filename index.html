@@ -14,6 +14,7 @@
       --bg-cream: #faf7f2;
       --text-dark: #2a221f;
       --nav-bg: rgba(255, 255, 255, 0.85);
+
       --gold-primary: #d4af37;
       --gold-light: #f3e5ab;
       --royal-maroon: #5b0e16;
@@ -45,23 +46,23 @@
     }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* FLOATING LANTERNS */
-    .lantern {
-      position: absolute; width: 30px; height: 45px;
-      background: radial-gradient(circle, #e4c483 10%, #008080 80%);
-      border-radius: 50% 50% 20% 20%;
-      box-shadow: 0 0 30px #00e0e0, inset 0 0 15px #ffdf73;
-      animation: floatUp 15s linear infinite;
-      opacity: 0.6; z-index: 1; pointer-events: none;
+    /* SHOWERING FLOWERS (Falling Petals) */
+    .petal {
+      position: fixed; /* Rains continuously down the viewport */
+      top: -10%;
+      border-radius: 50% 0 50% 50%; /* Organic petal shape */
+      animation: fallDown linear infinite;
+      opacity: 0;
+      z-index: 1; /* Falls gracefully behind text and cards */
+      pointer-events: none;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
-    .lantern::after {
-      content: ''; position: absolute; bottom: -5px; left: 12px;
-      width: 6px; height: 10px; background: #333;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0.8) rotate(0deg); opacity: 0; }
-      20% { opacity: 0.8; }
-      100% { transform: translateY(-20vh) scale(1.2) rotate(20deg); opacity: 0; }
+    @keyframes fallDown {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.85; }
+      50% { transform: translate(35px, 60vh) rotate(180deg); }
+      90% { opacity: 0.5; }
+      100% { transform: translate(-35px, 120vh) rotate(360deg); opacity: 0; }
     }
 
     /* NAVIGATION */
@@ -90,7 +91,7 @@
     }
     .hero-content { position: relative; z-index: 2; }
 
-    /* DIVINE BLESSING */
+    /* DIVINE BLESSING (Ganesha & Jain Swastik) */
     .divine-blessing { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
     .divine-blessing svg { width: 65px; height: 65px; filter: drop-shadow(0 4px 10px rgba(212,175,55,0.4)); }
     .divine-blessing span { font-family: var(--font-royal); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.2em; color: var(--gold-primary); text-transform: uppercase; }
@@ -264,8 +265,8 @@
   <!-- Magic Particles Canvas -->
   <canvas id="cursor-canvas"></canvas>
 
-  <!-- Generate Lanterns via JS -->
-  <div id="lantern-container"></div>
+  <!-- Generate Showering Flowers via JS -->
+  <div id="petal-container"></div>
 
   <!-- NAVIGATION -->
   <nav>
@@ -558,17 +559,29 @@
       });
     });
 
-    // 3. LANTERNS
-    const lanternContainer = document.getElementById('lantern-container');
-    for(let i=0; i<18; i++){
-      let lantern = document.createElement('div');
-      lantern.className = 'lantern';
-      lantern.style.left = Math.random() * 100 + 'vw';
-      const floatDuration = (Math.random() * 10 + 14).toFixed(1);
-      const flickerDuration = (Math.random() * 1.5 + 1.8).toFixed(1);
-      lantern.style.animationDuration = floatDuration + 's, ' + flickerDuration + 's';
-      lantern.style.animationDelay = (Math.random() * 12) + 's, ' + (Math.random() * 2) + 's';
-      lanternContainer.appendChild(lantern);
+    // 3. SHOWERING FLOWERS (Petals)
+    const petalContainer = document.getElementById('petal-container');
+    const petalColors = ['#d4af37', '#e4c483', '#ff6b81', '#ff4757', '#ff7f50', '#eccc68', '#fffdf8'];
+    
+    for(let i=0; i<40; i++){
+      let petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = Math.random() * 100 + 'vw';
+      
+      const size = Math.random() * 12 + 10;
+      petal.style.width = size + 'px';
+      petal.style.height = size + 'px';
+      petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
+      
+      const fallDuration = (Math.random() * 8 + 8).toFixed(1); 
+      const delay = (Math.random() * 15).toFixed(1);
+      petal.style.animationDuration = fallDuration + 's';
+      petal.style.animationDelay = delay + 's';
+      
+      const blurAmount = Math.random() > 0.5 ? Math.random() * 2 : 0;
+      petal.style.filter = `blur(${blurAmount}px)`;
+      
+      petalContainer.appendChild(petal);
     }
 
     // 4. TIMER
@@ -588,12 +601,11 @@
     function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
 
-    // 6. LIVE GALLERY FUNCTION (With Mobile Cache Buster)
+    // 6. LIVE GALLERY FUNCTION
     function loadGallery() {
       const gallery = document.getElementById('memory-wall');
       gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--gold-primary);">Loading memories...</p>';
 
-      // Using ?v=timestamp forces mobile browsers to bypass cache and grab the newest images
       const cacheBusterUrl = UPLOAD_SCRIPT_URL + '?v=' + new Date().getTime();
 
       fetch(cacheBusterUrl)
