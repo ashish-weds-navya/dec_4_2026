@@ -17,7 +17,7 @@
 
       --gold-primary: #d4af37;
       --gold-light: #f3e5ab;
-      --royal-maroon: #5b0e16;
+      --royal-maroon: #63121b;
       --font-royal: 'Cinzel', serif;
       --font-serif: 'Cormorant Garamond', serif;
       --font-sans: 'Montserrat', sans-serif;
@@ -46,16 +46,16 @@
     }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* SHOWERING FLOWERS (Falling Petals) */
+    /* SHOWERING ROSES (Falling Petals) */
     .petal {
-      position: fixed; /* Rains continuously down the viewport */
+      position: fixed; 
       top: -10%;
-      border-radius: 50% 0 50% 50%; /* Organic petal shape */
+      border-radius: 150px 0px 150px 50px; 
       animation: fallDown linear infinite;
       opacity: 0;
-      z-index: 1; /* Falls gracefully behind text and cards */
+      z-index: 1; 
       pointer-events: none;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
     @keyframes fallDown {
       0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
@@ -85,13 +85,13 @@
     }
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 120%; 
-      background: url('https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80') center/cover;
-      opacity: 0.25; filter: sepia(30%) saturate(140%) contrast(110%); z-index: 0;
+      opacity: 0.3; filter: sepia(20%) saturate(130%) contrast(110%); z-index: 0;
       will-change: transform;
     }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
     .hero-content { position: relative; z-index: 2; }
 
-    /* DIVINE BLESSING (Ganesha & Jain Swastik) */
+    /* DIVINE BLESSING */
     .divine-blessing { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
     .divine-blessing svg { width: 65px; height: 65px; filter: drop-shadow(0 4px 10px rgba(212,175,55,0.4)); }
     .divine-blessing span { font-family: var(--font-royal); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.2em; color: var(--gold-primary); text-transform: uppercase; }
@@ -109,8 +109,23 @@
     @keyframes spinPop { 0% { transform: scale(1); } 50% { transform: scale(1.2) rotate(10deg); } 100% { transform: scale(1.1) rotate(0); } }
 
     /* TYPOGRAPHY */
-    .hero-title { font-family: var(--font-royal); font-size: clamp(3.5rem, 8vw, 6.5rem); color: var(--gold-primary); line-height: 1; text-shadow: 0 5px 25px rgba(212,175,55,0.3); margin-bottom: 1rem; }
-    .hero-title span { display: block; font-family: var(--font-serif); font-style: italic; font-size: 0.4em; color: var(--text-dark); margin: 0.5rem 0; letter-spacing: 0.2em; }
+    .hero-title { 
+      font-family: var(--font-royal); 
+      font-size: clamp(3.5rem, 8vw, 6.5rem); 
+      color: var(--royal-maroon); 
+      line-height: 1; 
+      text-shadow: 0 5px 25px rgba(99, 18, 27, 0.15); 
+      margin-bottom: 1rem; 
+    }
+    .hero-title span { 
+      display: block; 
+      font-family: var(--font-serif); 
+      font-style: italic; 
+      font-size: 0.4em; 
+      color: var(--gold-primary); 
+      margin: 0.5rem 0; 
+      letter-spacing: 0.2em; 
+    }
     .hero-date { font-family: var(--font-serif); font-size: 1.8rem; letter-spacing: 0.1em; color: var(--text-dark); margin-bottom: 2rem; font-weight: 600; }
 
     /* GLASSMORPHISM TIMER */
@@ -133,18 +148,10 @@
     /* EVENT CARDS */
     .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
     .event-card {
-      border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 15px; padding: 3rem 2rem;
-      text-align: center; cursor: pointer; 
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-      color: var(--text-dark);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
+      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 3rem 2rem;
+      text-align: center; cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      color: var(--text-dark); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); position: relative; overflow: hidden;
     }
-    
-    .event-card.haldi-card { background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1582650868846-9d33261a7a01?auto=format&fit=crop&w=800&q=80') center/cover; }
-    .event-card.pheras-card { background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1583089892943-e02e5ee6006f?auto=format&fit=crop&w=800&q=80') center/cover; }
-
     .event-card:hover { transform: translateY(-8px); border-color: var(--gold-primary); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25); }
     .event-card h3 { font-family: var(--font-royal); font-size: 2rem; color: var(--royal-maroon); margin-bottom: 1rem; position: relative; z-index: 2; }
     .event-card p { font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-dark); position: relative; z-index: 2; font-weight: 600;}
@@ -153,18 +160,14 @@
 
     /* EVENT MODALS */
     .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.9); backdrop-filter: blur(20px);
-      z-index: 1000; display: flex; justify-content: center; align-items: center;
-      opacity: 0; visibility: hidden; transition: 0.4s ease;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); backdrop-filter: blur(20px);
+      z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s ease;
     }
     .modal-overlay.active { opacity: 1; visibility: visible; }
     .modal-content {
-      background: #fff; width: 90%; max-width: 780px; max-height: 85vh; border-radius: 20px;
-      padding: 0; position: relative; overflow: hidden;
+      background: #fff; width: 90%; max-width: 780px; max-height: 85vh; border-radius: 20px; padding: 0; position: relative; overflow: hidden;
       transform: scale(0.95) translateY(30px); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 2px solid var(--gold-primary); text-align: center; color: var(--text-dark);
-      display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+      border: 2px solid var(--gold-primary); text-align: center; color: var(--text-dark); display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.35);
     }
     .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
     
@@ -175,11 +178,9 @@
     .close-modal { position: absolute; top: 16px; right: 16px; z-index: 4; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.85); font-size: 1.8rem; color: var(--text-dark); cursor: pointer; transition: 0.3s; line-height: 1; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
     .close-modal:hover { transform: rotate(90deg); color: var(--gold-primary); }
 
-    .modal-hero { position: relative; height: 260px; flex-shrink: 0; background-size: cover; background-position: center; display: flex; align-items: flex-end; justify-content: center; }
-    .modal-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #fff 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.1) 100%); }
-    .modal-hero.haldi { background-image: url('https://images.unsplash.com/photo-1582650868846-9d33261a7a01?auto=format&fit=crop&w=1000&q=80'); }
-    .modal-hero.pheras { background-image: url('https://images.unsplash.com/photo-1583089892943-e02e5ee6006f?auto=format&fit=crop&w=1000&q=80'); }
-    
+    .modal-hero { position: relative; height: 260px; flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; background: var(--gold-light);}
+    .modal-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .modal-hero-overlay { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #fff 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.1) 100%); z-index: 1; }
     .modal-hero-icon { position: relative; z-index: 2; margin-bottom: -30px; width: 65px; height: 65px; border-radius: 50%; background: #fff; border: 2px solid var(--gold-primary); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 6px 18px rgba(212,175,55,0.35); }
 
     .modal-body { padding: 3rem 2.5rem 2.5rem; overflow-y: auto; }
@@ -199,7 +200,6 @@
     .upload-zone:hover { border-color: var(--gold-primary); background: rgba(212,175,55,0.08); }
     .upload-zone input { display: none; }
     .upload-icon { font-size: 3.5rem; margin-bottom: 1rem; }
-
     .btn { display: inline-block; width: 100%; padding: 1.2rem; background: linear-gradient(45deg, var(--gold-primary), #ffdf73); color: #fff; font-family: var(--font-royal); font-weight: 900; letter-spacing: 0.2em; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; text-transform: uppercase; margin-top: 1rem; font-size: 1.1rem;}
     .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212,175,55,0.4); }
 
@@ -213,46 +213,17 @@
     footer { text-align: center; padding: 4rem 1.5rem; border-top: 1px solid rgba(212, 175, 55, 0.3); background: #f4ecdc; position: relative; z-index: 2; }
     .footer-title { font-family: var(--font-royal); font-size: 1.4rem; color: var(--royal-maroon); letter-spacing: 0.18em; margin-bottom: 0.4rem; font-weight: 700; }
 
-    /* ========================================== */
-    /* MOBILE RESPONSIVENESS (Phones & Tablets)   */
-    /* ========================================== */
+    /* MOBILE RESPONSIVENESS */
     @media (max-width: 768px) {
       nav { flex-direction: column; padding: 1rem; gap: 0.8rem; }
-      .nav-logo { font-size: 1.2rem; }
       .nav-links { width: 100%; justify-content: center; gap: 1rem; }
-      .nav-links a { font-size: 0.75rem; }
-      
-      .hero-content { margin-top: 2rem; }
       .hero-title { font-size: 3.2rem; }
-      .hero-date { font-size: 1.3rem; }
-      .divine-blessing { gap: 1rem; }
-      .divine-blessing svg { width: 45px; height: 45px; }
-      .divine-blessing span { font-size: 0.85rem; }
-      .sticker-couple { width: 100px; }
-      
-      .timer-container { gap: 0.8rem; }
-      .timer-box { min-width: 70px; padding: 1rem; }
-      .timer-number { font-size: 1.8rem; }
-      .timer-label { font-size: 0.6rem; }
-
       section { padding: 4rem 1.2rem; }
-      .section-title { font-size: 2.5rem; margin-bottom: 2.5rem; }
-      .events-grid { gap: 1.5rem; }
-      .event-card { padding: 2.5rem 1.5rem; }
-
-      .form-container, .upload-zone { padding: 1.5rem; }
       .form-grid { grid-template-columns: 1fr; gap: 0; }
-      .upload-icon { font-size: 2.5rem; }
-
       .masonry-grid { column-count: 2; }
-      
       .modal-content { width: 95%; max-height: 90vh; }
       .modal-hero { height: 160px; }
       .modal-hero-icon { width: 50px; height: 50px; font-size: 1.4rem; margin-bottom: -25px; }
-      .modal-body { padding: 2rem 1.5rem; }
-      .modal-content h2 { font-size: 2rem; }
-      .dress-code { font-size: 1rem; padding: 0.8rem; margin: 1rem 0; }
-      .close-modal { top: 12px; right: 12px; width: 32px; height: 32px; font-size: 1.5rem; }
     }
     @media (max-width: 480px) {
       .masonry-grid { column-count: 1; }
@@ -265,7 +236,7 @@
   <!-- Magic Particles Canvas -->
   <canvas id="cursor-canvas"></canvas>
 
-  <!-- Generate Showering Flowers via JS -->
+  <!-- Generate Showering Roses via JS -->
   <div id="petal-container"></div>
 
   <!-- NAVIGATION -->
@@ -280,7 +251,9 @@
 
   <!-- HERO SECTION -->
   <header id="home" class="hero">
-    <div class="hero-bg" id="parallax-bg"></div>
+    <div class="hero-bg">
+      <img src="https://drive.google.com/thumbnail?id=1KcBr6URxb3d_5zSnaLuh1pRyTVp-minZ&sz=w1920" alt="Govind Bagh Backdrop">
+    </div>
     <div class="hero-content reveal">
       
       <!-- DETAILED DIVINE BLESSING -->
@@ -332,7 +305,6 @@
           <path d="M 70,100 Q 80,60 90,100 Z" />
         </g>
         <g stroke="none">
-          <!-- Groom (Ashish) -->
           <path d="M 100,300 L 108,175 Q 130,155 152,185 L 160,300 Z" fill="#63121b"/>
           <path d="M 118,180 L 112,300 M 140,178 L 146,300" stroke="#d4af37" stroke-width="2" fill="none"/>
           <path d="M 112,190 Q 130,200 148,190" stroke="#d4af37" stroke-width="2" fill="none"/>
@@ -342,7 +314,6 @@
           <path d="M 151,101 Q 165,95 168,106 Q 159,113 149,108 Z" fill="#d4af37"/>
           <path d="M 130,76 Q 124,54 136,38" stroke="#d4af37" stroke-width="3" fill="none"/>
           <path d="M 122,148 Q 130,152 138,148" stroke="#3a1a10" stroke-width="3" fill="none"/>
-          <!-- Bride (Navya) -->
           <path d="M 38,300 Q 43,222 61,190 Q 80,174 99,190 Q 110,232 106,300 Z" fill="#a82333"/>
           <path d="M 43,268 Q 72,284 103,268 M 41,284 Q 72,300 105,284" stroke="#d4af37" stroke-width="2" fill="none"/>
           <path d="M 54,199 Q 72,214 91,199" stroke="#d4af37" stroke-width="2" fill="none"/>
@@ -374,12 +345,12 @@
   <section id="events" class="reveal">
     <h2 class="section-title">The Grand Celebrations</h2>
     <div class="events-grid" style="max-width: 800px; margin: 0 auto;">
-      <div class="event-card haldi-card" onclick="openModal('modal-haldi')">
+      <div class="event-card" onclick="openModal('modal-haldi')">
         <h3>Haldi Celebration</h3>
         <p>Dec 4 &bull; 10:00 AM</p>
         <div class="card-btn">View Details</div>
       </div>
-      <div class="event-card pheras-card" onclick="openModal('modal-pheras')">
+      <div class="event-card" onclick="openModal('modal-pheras')">
         <h3>The Auspicious Pheras</h3>
         <p>Dec 4 &bull; 6:30 PM</p>
         <div class="card-btn">View Details</div>
@@ -472,13 +443,17 @@
   <div class="modal-overlay" id="modal-haldi">
     <div class="modal-content">
       <div class="close-modal" onclick="closeModal('modal-haldi')">&times;</div>
-      <div class="modal-hero haldi"><div class="modal-hero-icon">🌻</div></div>
+      <div class="modal-hero">
+        <img class="modal-bg-img" src="https://drive.google.com/thumbnail?id=1A1Zd-M8ABnUfQe71uUwZleu5ksuxKZxM&sz=w1000" alt="Haldi Celebration Image">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-icon">🌻</div>
+      </div>
       <div class="modal-body">
         <h2>Haldi Celebration</h2>
         <p class="time">DECEMBER 4 &bull; 10:00 AM</p>
         <p style="font-family: var(--font-serif); font-size: 1.4rem;">Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.</p>
         <div class="dress-code"><strong>Dress Code:</strong> Shades of Yellow, Mustard, & Marigold</div>
-        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase;">The Royal Lawns, Indana Palace</p>
+        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase;">Govind Bagh Gardens</p>
       </div>
     </div>
   </div>
@@ -486,13 +461,17 @@
   <div class="modal-overlay" id="modal-pheras">
     <div class="modal-content">
       <div class="close-modal" onclick="closeModal('modal-pheras')">&times;</div>
-      <div class="modal-hero pheras"><div class="modal-hero-icon">🔥</div></div>
+      <div class="modal-hero">
+        <img class="modal-bg-img" src="https://drive.google.com/thumbnail?id=1v5uJLfQUbfDXJMXKzUgdOiNhKah6VknQ&sz=w1000" alt="Pheras Fire Image">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-icon">🔥</div>
+      </div>
       <div class="modal-body">
         <h2>The Auspicious Pheras</h2>
         <p class="time">DECEMBER 4 &bull; 6:30 PM</p>
-        <p style="font-family: var(--font-serif); font-size: 1.4rem;">Witness the sacred union of Ashish and Navya as they take their seven vows around the holy fire as the sun sets over the majestic fort.</p>
+        <p style="font-family: var(--font-serif); font-size: 1.4rem;">Witness the sacred union of Ashish and Navya as they take their seven vows around the holy fire as the sun sets.</p>
         <div class="dress-code"><strong>Dress Code:</strong> Royal Ethnic / Rich Reds, Pastels & Golds</div>
-        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase;">Mehrangarh Fort Mandap Terrace</p>
+        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase;">Govind Bagh Mandap</p>
       </div>
     </div>
   </div>
@@ -546,7 +525,7 @@
     animateCursor();
 
     // 2. SCROLL REVEAL & PARALLAX
-    const heroBg = document.getElementById('parallax-bg');
+    const heroBg = document.querySelector('.hero-bg');
     const reveals = document.querySelectorAll('.reveal');
 
     window.addEventListener('scroll', () => {
@@ -559,28 +538,24 @@
       });
     });
 
-    // 3. SHOWERING FLOWERS (Petals)
+    // 3. SHOWERING ROSES (Petals)
     const petalContainer = document.getElementById('petal-container');
-    const petalColors = ['#d4af37', '#e4c483', '#ff6b81', '#ff4757', '#ff7f50', '#eccc68', '#fffdf8'];
+    const petalColors = ['#8b0000', '#63121b', '#b22222', '#dc143c', '#a52a2a']; 
     
-    for(let i=0; i<40; i++){
+    for(let i=0; i<15; i++){
       let petal = document.createElement('div');
       petal.className = 'petal';
       petal.style.left = Math.random() * 100 + 'vw';
-      
       const size = Math.random() * 12 + 10;
       petal.style.width = size + 'px';
       petal.style.height = size + 'px';
       petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
-      
-      const fallDuration = (Math.random() * 8 + 8).toFixed(1); 
+      const fallDuration = (Math.random() * 12 + 15).toFixed(1); 
       const delay = (Math.random() * 15).toFixed(1);
       petal.style.animationDuration = fallDuration + 's';
       petal.style.animationDelay = delay + 's';
-      
       const blurAmount = Math.random() > 0.5 ? Math.random() * 2 : 0;
       petal.style.filter = `blur(${blurAmount}px)`;
-      
       petalContainer.appendChild(petal);
     }
 
@@ -605,7 +580,6 @@
     function loadGallery() {
       const gallery = document.getElementById('memory-wall');
       gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--gold-primary);">Loading memories...</p>';
-
       const cacheBusterUrl = UPLOAD_SCRIPT_URL + '?v=' + new Date().getTime();
 
       fetch(cacheBusterUrl)
@@ -628,7 +602,6 @@
           gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--royal-maroon);">Waiting for first uploads...</p>';
         });
     }
-
     window.addEventListener('DOMContentLoaded', loadGallery);
 
     // 7. UPLOAD FUNCTION
@@ -644,10 +617,8 @@
       const btn = e.target.querySelector('button');
       
       if (fileInput.files.length === 0) {
-        alert("Please select a file to upload first.");
-        return;
+        alert("Please select a file to upload first."); return;
       }
-
       const file = fileInput.files[0];
       btn.innerText = "Uploading... Please wait";
       btn.style.pointerEvents = "none";
@@ -655,35 +626,21 @@
       const reader = new FileReader();
       reader.onload = function() {
         const base64Data = reader.result.split(',')[1];
-        
-        const payload = {
-          fileName: file.name,
-          mimeType: file.type,
-          base64: base64Data
-        };
+        const payload = { fileName: file.name, mimeType: file.type, base64: base64Data };
 
         fetch(UPLOAD_SCRIPT_URL, {
-          method: 'POST',
-          body: JSON.stringify(payload),
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+          method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'text/plain;charset=utf-8' }
         })
         .then(response => response.json())
         .then(data => {
           if (data.status === 'success') {
-            alert("Memory uploaded successfully!");
-            e.target.reset();
-            document.getElementById('fileNameDisplay').innerText = '';
-            loadGallery();
-          } else {
-            alert("Upload failed: " + data.message);
-          }
-          btn.innerText = "Upload to Gallery";
-          btn.style.pointerEvents = "auto";
+            alert("Memory uploaded successfully!"); e.target.reset(); document.getElementById('fileNameDisplay').innerText = ''; loadGallery();
+          } else { alert("Upload failed: " + data.message); }
+          btn.innerText = "Upload to Gallery"; btn.style.pointerEvents = "auto";
         })
         .catch(error => {
           alert("Error connecting to Drive. Please try again.");
-          btn.innerText = "Upload to Gallery";
-          btn.style.pointerEvents = "auto";
+          btn.innerText = "Upload to Gallery"; btn.style.pointerEvents = "auto";
         });
       };
       reader.readAsDataURL(file);
@@ -706,14 +663,11 @@
       };
 
       fetch(RSVP_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+        method: 'POST', body: JSON.stringify(formData), headers: { 'Content-Type': 'text/plain;charset=utf-8' }
       })
       .then(response => {
         alert("RSVP Confirmed! Your details have been added to the Guest List.");
-        btn.innerText = "Confirm RSVP";
-        e.target.reset();
+        btn.innerText = "Confirm RSVP"; e.target.reset();
       })
       .catch(error => {
         alert("Error sending RSVP. Please check your internet connection and try again.");
