@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Royal Union | Ashish & Navya</title>
+  <title>Navya Weds Ashish</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,7 @@
       --nav-bg: rgba(255, 255, 255, 0.85);
 
       --gold-primary: #d4af37;
+      --gold-dark: #b8860b; 
       --gold-light: #f3e5ab;
       --royal-maroon: #63121b;
       --font-royal: 'Cinzel', serif;
@@ -94,7 +95,7 @@
     /* DIVINE BLESSING */
     .divine-blessing { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
     .divine-blessing svg { width: 65px; height: 65px; filter: drop-shadow(0 4px 10px rgba(212,175,55,0.4)); }
-    .divine-blessing span { font-family: var(--font-royal); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.2em; color: var(--gold-primary); text-transform: uppercase; }
+    .divine-blessing span { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; letter-spacing: 0.1em; color: var(--gold-primary); }
 
     /* CUTE STICKER */
     .sticker-couple {
@@ -122,9 +123,10 @@
       font-family: var(--font-serif); 
       font-style: italic; 
       font-size: 0.4em; 
-      color: var(--gold-primary); 
+      color: var(--gold-dark); 
       margin: 0.5rem 0; 
       letter-spacing: 0.2em; 
+      font-weight: 700;
     }
     .hero-date { font-family: var(--font-serif); font-size: 1.8rem; letter-spacing: 0.1em; color: var(--text-dark); margin-bottom: 2rem; font-weight: 600; }
 
@@ -146,36 +148,45 @@
     .section-title { font-family: var(--font-royal); font-size: 3.5rem; color: var(--gold-primary); text-align: center; margin-bottom: 4rem; text-shadow: 0 4px 15px rgba(212,175,55,0.1); }
 
     /* EVENT CARDS */
-    .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+    .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     .event-card {
-      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 3rem 2rem;
+      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 2.5rem 1.5rem;
       text-align: center; cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
       color: var(--text-dark); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); position: relative; overflow: hidden;
     }
     .event-card:hover { transform: translateY(-8px); border-color: var(--gold-primary); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25); }
-    .event-card h3 { font-family: var(--font-royal); font-size: 2rem; color: var(--royal-maroon); margin-bottom: 1rem; position: relative; z-index: 2; }
-    .event-card p { font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-dark); position: relative; z-index: 2; font-weight: 600;}
-    .card-btn { margin-top: 1.5rem; padding: 0.6rem 1.8rem; border: 1px solid var(--gold-primary); background: transparent; color: var(--gold-primary); border-radius: 25px; transition: 0.3s; font-weight: bold; pointer-events: none; position: relative; z-index: 2;}
+    .event-card h3 { font-family: var(--font-royal); font-size: 1.8rem; color: var(--royal-maroon); margin-bottom: 0.8rem; }
+    .event-card p { font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-dark); font-weight: 600;}
+    .card-btn { margin-top: 1.2rem; padding: 0.5rem 1.5rem; border: 1px solid var(--gold-primary); background: transparent; color: var(--gold-primary); border-radius: 25px; transition: 0.3s; font-weight: bold; pointer-events: none; display: inline-block;}
     .event-card:hover .card-btn { background: var(--gold-primary); color: #fff; }
 
-    /* CONTACT DIRECTORY */
-    .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    /* CONTACT DIRECTORY (Forced Desktop Grid Layout) */
+    .contacts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .contact-card {
-      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 2rem; text-align: center;
+      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: 0.3s;
     }
     .contact-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); box-shadow: 0 10px 25px rgba(212,175,55,0.2); }
-    .contact-card h3 { font-family: var(--font-royal); font-size: 1.3rem; color: var(--royal-maroon); margin-bottom: 0.5rem; }
-    .contact-card p { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text-dark); }
+    .contact-card h3 { font-family: var(--font-royal); font-size: 1.1rem; color: var(--royal-maroon); margin-bottom: 0.4rem; }
+    .contact-card p { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; color: var(--text-dark); }
     .contact-card a { color: var(--gold-primary); text-decoration: none; }
     .contact-card a:hover { text-decoration: underline; }
 
     /* WHATSAPP QR SECTION */
     .whatsapp-container {
-      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 3rem; text-align: center;
-      max-width: 500px; margin: 0 auto; box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 2.5rem; text-align: center;
+      max-width: 450px; margin: 0 auto; box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
-    .whatsapp-qr { width: 220px; height: 220px; object-fit: contain; margin: 1.5rem auto; border-radius: 10px; border: 2px solid var(--gold-primary); padding: 8px; background: #fff; }
+    .whatsapp-qr { width: 180px; height: 180px; object-fit: contain; margin: 1rem auto; border-radius: 10px; border: 2px solid var(--gold-primary); padding: 6px; background: #fff; }
+
+    /* WISHES WALL */
+    .wishes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .wish-card {
+      background: #fff; border-left: 4px solid var(--gold-primary); border-radius: 8px; padding: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04); font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-dark);
+      position: relative;
+    }
+    .wish-author { display: block; margin-top: 0.6rem; font-family: var(--font-royal); font-size: 0.8rem; color: var(--royal-maroon); font-weight: bold; letter-spacing: 0.1em; }
 
     /* EVENT MODALS */
     .modal-overlay {
@@ -205,48 +216,46 @@
     .modal-body { padding: 3rem 2.5rem 2.5rem; overflow-y: auto; }
     .modal-content h2 { font-family: var(--font-royal); font-size: 2.6rem; color: var(--gold-primary); margin-bottom: 0.5rem; }
     .modal-content .time { font-family: var(--font-sans); letter-spacing: 0.2em; font-size: 1rem; margin-bottom: 1.5rem; color: var(--text-dark); font-weight: 700; }
-    .dress-code { display: inline-block; padding: 1rem 2rem; border: 1px dashed var(--gold-primary); border-radius: 10px; margin: 1.5rem 0; font-family: var(--font-serif); font-size: 1.3rem; background: rgba(212,175,55,0.05); }
 
-    /* FORMS & GALLERY */
-    .form-container { background: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 3.5rem; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); margin-bottom: 3rem;}
-    .form-group { margin-bottom: 1.5rem; text-align: left; }
-    .form-group label { display: block; font-family: var(--font-royal); font-size: 0.85rem; letter-spacing: 0.1em; color: var(--gold-primary); margin-bottom: 0.6rem; font-weight: 700; }
-    .form-control { width: 100%; padding: 1.1rem; background: #fff; border: 1px solid rgba(212,175,55,0.4); color: var(--text-dark); border-radius: 5px; font-family: var(--font-sans); transition: 0.3s; font-size: 1rem; }
+    /* FORMS & GALLERY (Compact Photo Grid) */
+    .form-container { background: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 2.5rem; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+    .form-group { margin-bottom: 1.2rem; text-align: left; }
+    .form-group label { display: block; font-family: var(--font-royal); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--gold-primary); margin-bottom: 0.4rem; font-weight: 700; }
+    .form-control { width: 100%; padding: 0.9rem; background: #fff; border: 1px solid rgba(212,175,55,0.4); color: var(--text-dark); border-radius: 5px; font-family: var(--font-sans); transition: 0.3s; font-size: 0.95rem; }
     .form-control:focus { outline: none; border-color: var(--gold-primary); box-shadow: 0 0 15px rgba(212,175,55,0.2); }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     
-    .upload-zone { border: 2px dashed rgba(212,175,55,0.5); padding: 3.5rem; text-align: center; border-radius: 10px; cursor: pointer; transition: 0.3s; background: rgba(212,175,55,0.03); }
+    .upload-zone { border: 2px dashed rgba(212,175,55,0.5); padding: 2rem; text-align: center; border-radius: 10px; cursor: pointer; transition: 0.3s; background: rgba(212,175,55,0.03); }
     .upload-zone:hover { border-color: var(--gold-primary); background: rgba(212,175,55,0.08); }
     .upload-zone input { display: none; }
-    .upload-icon { font-size: 3.5rem; margin-bottom: 1rem; }
-    .btn { display: inline-block; width: 100%; padding: 1.2rem; background: linear-gradient(45deg, var(--gold-primary), #ffdf73); color: #fff; font-family: var(--font-royal); font-weight: 900; letter-spacing: 0.2em; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; text-transform: uppercase; margin-top: 1rem; font-size: 1.1rem;}
+    .upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .btn { display: inline-block; width: 100%; padding: 1rem; background: linear-gradient(45deg, var(--gold-primary), #ffdf73); color: #fff; font-family: var(--font-royal); font-weight: 900; letter-spacing: 0.2em; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; text-transform: uppercase; margin-top: 0.8rem; font-size: 1rem;}
     .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212,175,55,0.4); }
 
-    /* MASONRY LIVE GALLERY */
-    .masonry-grid { column-count: 3; column-gap: 1rem; width: 100%; max-width: 1000px; margin: 0 auto; }
-    .masonry-item { margin-bottom: 1rem; break-inside: avoid; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; }
-    .masonry-item img { width: 100%; display: block; transition: transform 0.4s ease; }
+    /* MASONRY LIVE GALLERY (Scaled Down into a 3-Column Grid) */
+    .masonry-grid { column-count: 3; column-gap: 1rem; width: 100%; max-width: 900px; margin: 0 auto; }
+    .masonry-item { margin-bottom: 1rem; break-inside: avoid; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 8px rgba(0,0,0,0.1); position: relative; }
+    .masonry-item img { width: 100%; height: 160px; object-fit: cover; display: block; transition: transform 0.4s ease; }
     .masonry-item:hover img { transform: scale(1.05); }
 
     /* FOOTER */
-    footer { text-align: center; padding: 4rem 1.5rem; border-top: 1px solid rgba(212, 175, 55, 0.3); background: #f4ecdc; position: relative; z-index: 2; }
-    .footer-title { font-family: var(--font-royal); font-size: 1.4rem; color: var(--royal-maroon); letter-spacing: 0.18em; margin-bottom: 0.4rem; font-weight: 700; }
+    footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid rgba(212, 175, 55, 0.3); background: #f4ecdc; position: relative; z-index: 2; }
+    .footer-title { font-family: var(--font-royal); font-size: 1.3rem; color: var(--royal-maroon); letter-spacing: 0.18em; margin-bottom: 0.3rem; font-weight: 700; }
 
-    /* MOBILE RESPONSIVENESS */
+    /* RESPONSIVE LAYOUT OVERRIDE: Keep Desktop Grid Structure on Mobiles */
     @media (max-width: 768px) {
-      nav { flex-direction: column; padding: 1rem; gap: 0.8rem; }
-      .nav-links { width: 100%; justify-content: center; gap: 1rem; }
-      .hero-title { font-size: 3.2rem; }
-      section { padding: 4rem 1.2rem; }
-      .form-grid { grid-template-columns: 1fr; gap: 0; }
-      .masonry-grid { column-count: 2; }
-      .modal-content { width: 95%; max-height: 90vh; }
-      .modal-hero { height: 160px; }
-      .modal-hero-icon { width: 50px; height: 50px; font-size: 1.4rem; margin-bottom: -25px; }
-    }
-    @media (max-width: 480px) {
-      .masonry-grid { column-count: 1; }
-      .timer-box { min-width: 65px; padding: 0.8rem; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .hero-title { font-size: 3.5rem; }
+      .events-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .contacts-grid { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+      .contact-card { padding: 1rem 0.5rem; }
+      .contact-card h3 { font-size: 0.9rem; }
+      .contact-card p { font-size: 0.8rem; }
+      .wishes-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .masonry-grid { column-count: 3; }
+      .masonry-item img { height: 110px; }
+      .form-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
     }
   </style>
 </head>
@@ -263,8 +272,9 @@
     <a href="#" class="nav-logo">A &amp; N</a>
     <ul class="nav-links">
       <li><a href="#events">Ceremonies</a></li>
-      <li><a href="#contacts">Family Contacts</a></li>
+      <li><a href="#contacts">Contacts</a></li>
       <li><a href="#upload">Memories</a></li>
+      <li><a href="#wishes-wall">Wishes</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
   </nav>
@@ -276,7 +286,7 @@
     </div>
     <div class="hero-content reveal">
       
-      <!-- DETAILED DIVINE BLESSING -->
+      <!-- DIVINE BLESSING (Sanskrit) -->
       <div class="divine-blessing">
         <!-- Ganesha SVG -->
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -300,7 +310,7 @@
           </g>
         </svg>
 
-        <span>Shree Ganeshay Namah</span>
+        <span>श्री गणेशाय नमः</span>
 
         <!-- Authentic Jain Swastik SVG -->
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -350,7 +360,7 @@
       </svg>
 
       <h1 class="hero-title">Ashish <span>weds</span> Navya</h1>
-      <p class="hero-date">December 4, 2026 &bull; Jodhpur</p>
+      <p class="hero-date">December 4, 2026 &bull; Govind Bagh, Jodhpur</p>
 
       <div class="timer-container">
         <div class="timer-box"><div class="timer-number" id="days">00</div><div class="timer-label">Days</div></div>
@@ -378,10 +388,10 @@
     </div>
   </section>
 
-  <!-- FAMILY CONTACTS & WHATSAPP GROUP SECTION -->
+  <!-- CONTACTS & WHATSAPP GROUP SECTION -->
   <section id="contacts" class="reveal">
-    <h2 class="section-title">Family Contacts</h2>
-    <div class="contacts-grid" style="margin-bottom: 4rem;">
+    <h2 class="section-title">Contacts</h2>
+    <div class="contacts-grid" style="margin-bottom: 3rem;">
       <div class="contact-card">
         <h3>Lalit Lalwani</h3>
         <p><a href="tel:9314711399">+91 93147 11399</a></p>
@@ -410,9 +420,8 @@
 
     <!-- WhatsApp Group QR Code Section -->
     <div class="whatsapp-container">
-      <h3 style="font-family: var(--font-royal); color: var(--royal-maroon); font-size: 1.6rem; margin-bottom: 0.5rem;">Join Wedding WhatsApp Group</h3>
-      <p style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1rem;">Scan the QR code below using your phone's camera to join our official guest group chat for live updates!</p>
-      <!-- QR Code Image linked via Google Drive Thumbnail -->
+      <h3 style="font-family: var(--font-royal); color: var(--royal-maroon); font-size: 1.4rem; margin-bottom: 0.4rem;">Join WhatsApp Group</h3>
+      <p style="font-family: var(--font-serif); font-size: 1rem; color: var(--text-dark); margin-bottom: 0.8rem;">Scan the QR code to join our official guest chat for live updates!</p>
       <img class="whatsapp-qr" src="https://drive.google.com/thumbnail?id=1PsDtvtpS8LlzvSiT09_5djpE-gW2IE_n&sz=w600" alt="WhatsApp Group QR Code">
     </div>
   </section>
@@ -439,6 +448,21 @@
     <div class="masonry-grid" id="memory-wall"></div>
   </section>
 
+  <!-- WISHES WALL SECTION -->
+  <section id="wishes-wall" class="reveal">
+    <h2 class="section-title">Wishes &amp; Blessings</h2>
+    <div class="wishes-grid" id="wishes-container">
+      <div class="wish-card">
+        "Wishing you both a lifetime of love and unending happiness as you begin your journey together!"
+        <span class="wish-author">— Lalit Lalwani</span>
+      </div>
+      <div class="wish-card">
+        "May your future together be filled with joy, prosperity, and countless precious moments."
+        <span class="wish-author">— Ramesh Lalwani</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ADVANCED RSVP -->
   <section id="rsvp" class="reveal">
     <h2 class="section-title">RSVP</h2>
@@ -451,38 +475,47 @@
         
         <div class="form-group">
           <label>Attending Status</label>
-          <select id="status" class="form-control" required>
+          <select id="status" class="form-control" onchange="toggleJoyfulFields(this)" required>
             <option value="">Select Option</option>
             <option value="attending">Joyfully Accept</option>
             <option value="declining">Regretfully Decline</option>
           </select>
         </div>
 
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Mode of Travel</label>
-            <select id="travel" class="form-control" required>
-              <option value="">Select Travel</option>
-              <option value="flight">Flight (Jodhpur Airport)</option>
-              <option value="train">Train (Jodhpur Junction)</option>
-              <option value="car">Driving / Road</option>
-              <option value="na">Not Applicable</option>
-            </select>
+        <!-- Conditional Section (Only shows if Joyfully Accept) -->
+        <div id="joyfulSection" style="display: none;">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="phone" class="form-control" placeholder="+91 XXXXX XXXXX">
+            </div>
+            <div class="form-group">
+              <label>Number of Guests (including yourself)</label>
+              <input type="number" id="guests" class="form-control" min="1" max="10" placeholder="1">
+            </div>
           </div>
-          <div class="form-group">
-            <label>Arrival Date & Time</label>
-            <input type="datetime-local" id="arrival" class="form-control" required>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Mode of Travel</label>
+              <select id="travel" class="form-control">
+                <option value="">Select Travel</option>
+                <option value="flight">Flight (Jodhpur Airport)</option>
+                <option value="train">Train (Jodhpur Junction)</option>
+                <option value="car">Driving / Road</option>
+                <option value="na">Not Applicable</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Arrival Date & Time</label>
+              <input type="datetime-local" id="arrival" class="form-control">
+            </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Number of Guests (including yourself)</label>
-          <input type="number" id="guests" class="form-control" min="1" max="10" required placeholder="1">
-        </div>
-
-        <div class="form-group">
-          <label>Dietary Restrictions / Wishes</label>
-          <textarea id="wishes" class="form-control" rows="3" placeholder="Jain food, allergies, or a message for the couple..."></textarea>
+          <label>Wishes &amp; Messages for the Couple</label>
+          <textarea id="wishes" class="form-control" rows="3" placeholder="Leave a sweet message or blessing for Ashish & Navya..."></textarea>
         </div>
 
         <button type="submit" class="btn">Confirm RSVP</button>
@@ -493,7 +526,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-title">Ashish &amp; Navya</div>
-    <p style="color: var(--text-muted); font-size: 0.9rem;">#AshishWedsNavya &bull; December 4, 2026 &bull; Jodhpur, Rajasthan</p>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">#AshishWedsNavya &bull; December 4, 2026 &bull; Govind Bagh, Jodhpur</p>
   </footer>
 
   <!-- ========================================== -->
@@ -511,8 +544,7 @@
         <h2>Haldi Celebration</h2>
         <p class="time">DECEMBER 4 &bull; 10:00 AM</p>
         <p style="font-family: var(--font-serif); font-size: 1.4rem;">Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.</p>
-        <div class="dress-code"><strong>Dress Code:</strong> Shades of Yellow, Mustard, & Marigold</div>
-        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase;">Govind Bagh Gardens</p>
+        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.5rem;">Govind Bagh Gardens</p>
       </div>
     </div>
   </div>
@@ -529,8 +561,7 @@
         <h2>The Auspicious Pheras</h2>
         <p class="time">DECEMBER 4 &bull; 6:30 PM</p>
         <p style="font-family: var(--font-serif); font-size: 1.4rem;">Witness the sacred union of Ashish and Navya as they take their seven vows around the holy fire as the sun sets.</p>
-        <div class="dress-code"><strong>Dress Code:</strong> Royal Ethnic / Rich Reds, Pastels & Golds</div>
-        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase;">Govind Bagh Mandap</p>
+        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.5rem;">Govind Bagh Mandap</p>
       </div>
     </div>
   </div>
@@ -543,7 +574,30 @@
     const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxu5L2SY1Ixx2zHtZcuwqHJB0tp-zIBXS_pTqJujz4avXzw-1bdTLhlDS8zVDg3ltO7gQ/exec';
     const SHARED_SECRET = "REPLACE_WITH_YOUR_OWN_RANDOM_STRING";
 
-    // 1. PARTICLE CURSOR
+    // 1. CONDITIONAL JOYFUL ACCEPT SECTION TOGGLE
+    function toggleJoyfulFields(select) {
+      const joyfulSection = document.getElementById('joyfulSection');
+      const phoneInput = document.getElementById('phone');
+      const guestsInput = document.getElementById('guests');
+      const travelInput = document.getElementById('travel');
+      const arrivalInput = document.getElementById('arrival');
+      
+      if (select.value === 'attending') {
+        joyfulSection.style.display = 'block';
+        phoneInput.setAttribute('required', 'true');
+        guestsInput.setAttribute('required', 'true');
+        travelInput.setAttribute('required', 'true');
+        arrivalInput.setAttribute('required', 'true');
+      } else {
+        joyfulSection.style.display = 'none';
+        phoneInput.removeAttribute('required');
+        guestsInput.removeAttribute('required');
+        travelInput.removeAttribute('required');
+        arrivalInput.removeAttribute('required');
+      }
+    }
+
+    // 2. PARTICLE CURSOR
     const canvas = document.getElementById('cursor-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -583,7 +637,7 @@
     }
     animateCursor();
 
-    // 2. SCROLL REVEAL & PARALLAX
+    // 3. SCROLL REVEAL & PARALLAX
     const heroBg = document.querySelector('.hero-bg');
     const reveals = document.querySelectorAll('.reveal');
 
@@ -597,7 +651,7 @@
       });
     });
 
-    // 3. SHOWERING ROSES (Petals)
+    // 4. SHOWERING ROSES (Petals)
     const petalContainer = document.getElementById('petal-container');
     const petalColors = ['#8b0000', '#63121b', '#b22222', '#dc143c', '#a52a2a']; 
     
@@ -618,7 +672,7 @@
       petalContainer.appendChild(petal);
     }
 
-    // 4. TIMER
+    // 5. TIMER
     const weddingDate = new Date("December 4, 2026 10:00:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
@@ -631,11 +685,11 @@
       }
     }, 1000);
 
-    // 5. MODALS
+    // 6. MODALS
     function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
 
-    // 6. LIVE GALLERY FUNCTION
+    // 7. LIVE GALLERY FUNCTION
     function loadGallery() {
       const gallery = document.getElementById('memory-wall');
       gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--gold-primary);">Loading memories...</p>';
@@ -663,7 +717,7 @@
     }
     window.addEventListener('DOMContentLoaded', loadGallery);
 
-    // 7. UPLOAD FUNCTION
+    // 8. UPLOAD FUNCTION
     function updateFileName(input) {
       const display = document.getElementById('fileNameDisplay');
       if (input.files.length > 0) display.innerText = `${input.files.length} file(s) selected for upload.`;
@@ -705,28 +759,46 @@
       reader.readAsDataURL(file);
     }
 
-    // 8. RSVP FUNCTION
+    // 9. RSVP FUNCTION & WISHES WALL UPDATER
     function handleRSVP(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
       btn.innerText = "Sending...";
 
+      const name = document.getElementById('name').value.trim().slice(0, 100);
+      const status = document.getElementById('status').value;
+      const phone = document.getElementById('phone').value.trim();
+      const guests = document.getElementById('guests').value;
+      const wishes = document.getElementById('wishes').value.trim().slice(0, 500);
+
       const formData = {
         secret: SHARED_SECRET,
-        name: document.getElementById('name').value.trim().slice(0, 100),
-        status: document.getElementById('status').value,
+        name: name,
+        status: status,
+        phone: phone,
         travel: document.getElementById('travel').value,
         arrival: document.getElementById('arrival').value,
-        guests: document.getElementById('guests').value,
-        wishes: document.getElementById('wishes').value.trim().slice(0, 500)
+        guests: guests,
+        wishes: wishes
       };
 
       fetch(RSVP_SCRIPT_URL, {
         method: 'POST', body: JSON.stringify(formData), headers: { 'Content-Type': 'text/plain;charset=utf-8' }
       })
       .then(response => {
-        alert("RSVP Confirmed! Your details have been added to the Guest List.");
-        btn.innerText = "Confirm RSVP"; e.target.reset();
+        alert("RSVP Confirmed! Thank you for responding.");
+        btn.innerText = "Confirm RSVP"; 
+        
+        if (wishes) {
+          const wishesContainer = document.getElementById('wishes-container');
+          const newWishCard = document.createElement('div');
+          newWishCard.className = 'wish-card';
+          newWishCard.innerHTML = `"${wishes}"<span class="wish-author">— ${name}</span>`;
+          wishesContainer.prepend(newWishCard);
+        }
+
+        e.target.reset();
+        document.getElementById('joyfulSection').style.display = 'none';
       })
       .catch(error => {
         alert("Error sending RSVP. Please check your internet connection and try again.");
