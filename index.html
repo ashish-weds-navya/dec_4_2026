@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-  <title>Navya Weds Ashish</title>
+  <title>Navya & Ashish | Wedding | 4th Dec 26</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +69,7 @@
     }
     .nav-logo { font-family: var(--font-royal); font-size: 1.4rem; font-weight: 900; color: var(--gold-primary); text-decoration: none; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); cursor: pointer; }
     .nav-links { display: flex; gap: 0.8rem; list-style: none; flex-wrap: wrap; }
+    .nav-links li { list-style: none; }
     .nav-links a { 
       text-decoration: none; color: var(--royal-maroon); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; 
       padding: 0.45rem 1rem; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 20px; background: rgba(255,255,255,0.85);
@@ -313,8 +314,8 @@
     <a class="nav-logo" onclick="switchPage('home')">A &amp; N</a>
     <ul class="nav-links">
       <li><a onclick="switchPage('home')" id="tab-home" class="active-tab">Home</a></li>
-      <li><a onclick="switchPage('memories')" id="tab-memories">Memories</a></li>
-      <li><a onclick="switchPage('wishes')" id="tab-wishes">Wishes</a></li>
+      <li id="nav-item-memories"><a onclick="switchPage('memories')" id="tab-memories">Memories</a></li>
+      <li id="nav-item-wishes"><a onclick="switchPage('wishes')" id="tab-wishes">Wishes</a></li>
       <li><a onclick="switchPage('rsvp')" id="tab-rsvp">RSVP</a></li>
     </ul>
   </nav>
@@ -443,8 +444,8 @@
         </div>
 
         <div class="cab-notice">
-          <strong>🚗 Note:</strong><br>
-          If you have not RSVP'd, please reach out directly to any of our contact persons below to coordinate your travel arrangements.
+          <strong>🚗 Transportation Note:</strong><br>
+          If you have not RSVP'd for wedding cabs from Jodhpur to Govind Bagh, please reach out directly to any of our family contact persons below to coordinate your travel arrangements.
         </div>
       </div>
     </section>
@@ -604,7 +605,7 @@
       </div>
       <div class="modal-body">
         <h2>Haldi</h2>
-        <p class="time">DECEMBER 4 &bull; 11:00 AM</p>
+        <p class="time">DECEMBER 4 &bull; 9:30 AM</p>
         <p style="font-family: var(--font-serif); font-size: 1.4rem;">Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.</p>
         <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.5rem;">Govind Bagh Gardens</p>
       </div>
@@ -629,11 +630,44 @@
   </div>
 
   <script>
+    // =========================================
+    // SECTION DISPLAY FLAGS (1 = Show, 0 = Hide)
+    // =========================================
+    const SHOW_MEMORIES = 0;
+    const SHOW_WISHES = 0;
+
+    // =========================================
+    // APPS SCRIPT URL CONFIGURATION
+    // =========================================
     const UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHQaeOTNoHLylhoXbEBtKfrSBEenHhtr2onIXmZKTISsyOWLdJrkIv2pO7JCP-3JxO_w/exec';
     const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxu5L2SY1Ixx2zHtZcuwqHJB0tp-zIBXS_pTqJujz4avXzw-1bdTLhlDS8zVDg3ltO7gQ/exec';
     const SHARED_SECRET = "REPLACE_WITH_YOUR_OWN_RANDOM_STRING";
 
+    // Initialize visibility of flagged tabs and pages
+    function applySectionVisibilityFlags() {
+      const memoriesNav = document.getElementById('nav-item-memories');
+      const memoriesPage = document.getElementById('page-memories');
+      if (SHOW_MEMORIES !== 1) {
+        if (memoriesNav) memoriesNav.style.display = 'none';
+        if (memoriesPage) memoriesPage.style.display = 'none';
+      } else {
+        if (memoriesNav) memoriesNav.style.display = '';
+      }
+
+      const wishesNav = document.getElementById('nav-item-wishes');
+      const wishesPage = document.getElementById('page-wishes');
+      if (SHOW_WISHES !== 1) {
+        if (wishesNav) wishesNav.style.display = 'none';
+        if (wishesPage) wishesPage.style.display = 'none';
+      } else {
+        if (wishesNav) wishesNav.style.display = '';
+      }
+    }
+
     function switchPage(pageId) {
+      if (pageId === 'memories' && SHOW_MEMORIES !== 1) return;
+      if (pageId === 'wishes' && SHOW_WISHES !== 1) return;
+
       document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-tab'));
       
@@ -748,52 +782,58 @@
 
     /* Load Dynamic Gallery & Wishes */
     function loadGalleryAndWishes() {
-      const gallery = document.getElementById('memory-wall');
-      gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--gold-primary);">Loading memories...</p>';
-      const cacheBusterUrl = UPLOAD_SCRIPT_URL + '?v=' + new Date().getTime();
+      applySectionVisibilityFlags();
 
-      fetch(cacheBusterUrl)
-        .then(response => response.json())
-        .then(urls => {
-          gallery.innerHTML = ''; 
-          if(!urls || urls.length === 0) {
-             gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--text-dark);">No memories uploaded yet. Be the first!</p>';
-             return;
-          }
-          urls.forEach(url => {
-            let div = document.createElement('div');
-            div.className = 'masonry-item';
-            div.innerHTML = `<img src="${url}" alt="Wedding Memory">`;
-            gallery.appendChild(div);
-          });
-        })
-        .catch(error => {
-          gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--royal-maroon);">Waiting for first uploads...</p>';
-        });
+      if (SHOW_MEMORIES === 1) {
+        const gallery = document.getElementById('memory-wall');
+        gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--gold-primary);">Loading memories...</p>';
+        const cacheBusterUrl = UPLOAD_SCRIPT_URL + '?v=' + new Date().getTime();
 
-      const wishesContainer = document.getElementById('wishes-container');
-      const rsvpGetUrl = RSVP_SCRIPT_URL + '?action=wishes&v=' + new Date().getTime();
-      
-      fetch(rsvpGetUrl)
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.wishes && data.wishes.length > 0) {
-            wishesContainer.innerHTML = '';
-            data.wishes.forEach(item => {
-              if (item.message) {
-                const wishCard = document.createElement('div');
-                wishCard.className = 'wish-card';
-                wishCard.innerHTML = `"${item.message}"<span class="wish-author">— ${item.name}</span>`;
-                wishesContainer.appendChild(wishCard);
-              }
+        fetch(cacheBusterUrl)
+          .then(response => response.json())
+          .then(urls => {
+            gallery.innerHTML = ''; 
+            if(!urls || urls.length === 0) {
+               gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--text-dark);">No memories uploaded yet. Be the first!</p>';
+               return;
+            }
+            urls.forEach(url => {
+              let div = document.createElement('div');
+              div.className = 'masonry-item';
+              div.innerHTML = `<img src="${url}" alt="Wedding Memory">`;
+              gallery.appendChild(div);
             });
-          } else {
-            wishesContainer.innerHTML = '<p style="text-align:center; grid-column: 1 / -1; color: var(--text-dark); font-family: var(--font-serif);">No wishes posted yet. Be the first to leave a blessing!</p>';
-          }
-        })
-        .catch(err => {
-          wishesContainer.innerHTML = '<p style="text-align:center; grid-column: 1 / -1; color: var(--text-dark); font-family: var(--font-serif);">Be the first to leave a wish using the RSVP form!</p>';
-        });
+          })
+          .catch(error => {
+            gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--royal-maroon);">Waiting for first uploads...</p>';
+          });
+      }
+
+      if (SHOW_WISHES === 1) {
+        const wishesContainer = document.getElementById('wishes-container');
+        const rsvpGetUrl = RSVP_SCRIPT_URL + '?action=wishes&v=' + new Date().getTime();
+        
+        fetch(rsvpGetUrl)
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.wishes && data.wishes.length > 0) {
+              wishesContainer.innerHTML = '';
+              data.wishes.forEach(item => {
+                if (item.message) {
+                  const wishCard = document.createElement('div');
+                  wishCard.className = 'wish-card';
+                  wishCard.innerHTML = `"${item.message}"<span class="wish-author">— ${item.name}</span>`;
+                  wishesContainer.appendChild(wishCard);
+                }
+              });
+            } else {
+              wishesContainer.innerHTML = '<p style="text-align:center; grid-column: 1 / -1; color: var(--text-dark); font-family: var(--font-serif);">No wishes posted yet. Be the first to leave a blessing!</p>';
+            }
+          })
+          .catch(err => {
+            wishesContainer.innerHTML = '<p style="text-align:center; grid-column: 1 / -1; color: var(--text-dark); font-family: var(--font-serif);">Be the first to leave a wish using the RSVP form!</p>';
+          });
+      }
     }
     window.addEventListener('DOMContentLoaded', loadGalleryAndWishes);
 
@@ -867,7 +907,7 @@
         alert("RSVP Confirmed! Thank you for responding.");
         btn.innerText = "Confirm RSVP"; 
         
-        if (wishes) {
+        if (wishes && SHOW_WISHES === 1) {
           const wishesContainer = document.getElementById('wishes-container');
           if (wishesContainer.querySelector('p')) {
             wishesContainer.innerHTML = '';
@@ -880,7 +920,12 @@
 
         e.target.reset();
         document.getElementById('joyfulSection').style.display = 'none';
-        switchPage('wishes');
+        
+        if (SHOW_WISHES === 1) {
+          switchPage('wishes');
+        } else {
+          switchPage('home');
+        }
       })
       .catch(error => {
         alert("Error sending RSVP. Please check your internet connection and try again.");
