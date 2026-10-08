@@ -198,22 +198,28 @@
       font-family: var(--font-serif); 
       font-size: 1.55rem; 
       font-weight: 700; 
-      letter-spacing: 0.12em; 
+      letter-spacing: normal !important; 
       color: var(--gold-dark);
       text-shadow: 0 1px 3px rgba(184, 134, 11, 0.4), 0 0 10px rgba(212, 175, 55, 0.3);
     }
 
-    /* CUTE STICKER */
+    /* TRUE TRANSPARENT LOGO EMBLEM (NO BACKGROUND, NO CIRCLE) */
     .sticker-couple {
-      width: 115px; 
-      height: auto; margin: 0 auto 1.2rem;
-      filter: drop-shadow(0px 10px 20px rgba(212, 175, 55, 0.4));
+      width: 195px; 
+      height: auto; 
+      max-height: 250px;
+      margin: 0 auto 0.8rem;
+      background: transparent;
+      border: none;
+      padding: 0;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(99, 18, 27, 0.15));
       animation: cuteBounce 3s ease-in-out infinite alternate;
       cursor: pointer;
     }
     .sticker-couple:hover { animation: spinPop 0.5s forwards; }
-    @keyframes cuteBounce { 0% { transform: translateY(0) rotate(-2deg); } 100% { transform: translateY(-12px) rotate(2deg); } }
-    @keyframes spinPop { 0% { transform: scale(1); } 50% { transform: scale(1.2) rotate(10deg); } 100% { transform: scale(1.1) rotate(0); } }
+    @keyframes cuteBounce { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
+    @keyframes spinPop { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
     /* COUPLE PRESENTATION WRAPPER */
     .couple-hero-container {
@@ -239,7 +245,7 @@
       letter-spacing: 0.05em;
     }
     
-    /* S/O & D/O: CINZEL FONT, NO BACKGROUND, DOUBLED WEIGHT (800) */
+    /* PARENTAGE SUBTITLE WITH DOUBLED THICKNESS (WEIGHT 800) */
     .person-block .parentage-subtitle {
       font-family: var(--font-royal) !important;
       font-size: clamp(0.85rem, 1.8vw, 1.05rem);
@@ -339,12 +345,22 @@
     .contact-card a { color: var(--gold-primary); text-decoration: none; }
     .contact-card a:hover { text-decoration: underline; }
 
-    /* WHATSAPP QR SECTION */
+    /* WHATSAPP QR & 1-TOUCH BUTTON SECTION */
     .whatsapp-container {
       background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 2rem; text-align: center;
       max-width: 420px; margin: 0 auto; box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
-    .whatsapp-qr { width: 160px; height: 160px; object-fit: contain; margin: 0.8rem auto; border-radius: 10px; border: 2px solid var(--gold-primary); padding: 5px; background: #fff; display: block; }
+    .whatsapp-qr { width: 160px; height: 160px; object-fit: contain; margin: 0.8rem auto; border-radius: 10px; border: 2px solid var(--gold-primary); padding: 5px; background: #fff; display: block; cursor: pointer; transition: transform 0.3s; }
+    .whatsapp-qr:hover { transform: scale(1.03); }
+    .whatsapp-join-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; margin-top: 1rem; padding: 0.85rem 1.2rem;
+      background: linear-gradient(135deg, #25d366, #128c7e); color: #fff;
+      font-family: var(--font-sans); font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; border-radius: 25px;
+      text-decoration: none; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); transition: 0.3s;
+    }
+    .whatsapp-join-btn:hover { background: linear-gradient(135deg, #1ebe5d, #0f766a); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
 
     /* WISHES WALL */
     .wishes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
@@ -427,7 +443,7 @@
 
     /* FOOTER */
     footer { text-align: center; padding: 2.5rem 1.5rem; border-top: 1px solid rgba(212, 175, 55, 0.3); background: #f4ecdc; position: relative; z-index: 2; }
-    .footer-title { font-family: var(--font-royal); font-size: 1.2rem; color: var(--royal-maroon); margin-bottom: 0.3rem; font-weight: 700; }
+    .footer-title { font-family: var(--font-royal); font-size: 1.2rem; color: var(--royal-maroon); letter-spacing: 0.18em; margin-bottom: 0.3rem; font-weight: 700; }
 
     /* RESPONSIVE LAYOUT OVERRIDE */
     @media (max-width: 768px) {
@@ -462,6 +478,7 @@
   <!-- Showering Roses -->
   <div id="petal-container"></div>
 
+  <!-- FUSED NAVIGATION BAR (WITH TABS & EMBEDDED LANGUAGE BUTTONS) -->
   <nav>
     <div class="nav-left">
       <a class="nav-logo" onclick="switchPage('home')">A &amp; N</a>
@@ -481,6 +498,9 @@
     </div>
   </nav>
 
+  <!-- =============================================================== -->
+  <!-- PAGE 1: HOME (Hero + Celebrations + Venue + Contacts)          -->
+  <!-- =============================================================== -->
   <div id="page-home" class="page-view active-page">
     
     <!-- 1. Hero & Live Timer -->
@@ -531,37 +551,10 @@
           </svg>
         </div>
 
-        <svg class="sticker-couple" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#ffffff" stroke-width="12" stroke-linejoin="round" fill="none">
-            <path d="M 50,300 L 70,160 Q 90,140 100,100 Q 110,60 130,100 Q 140,140 150,160 L 160,300 Z" />
-            <path d="M 70,100 Q 80,60 90,100 Z" />
-          </g>
-          <g stroke="none">
-            <path d="M 100,300 L 108,175 Q 130,155 152,185 L 160,300 Z" fill="#63121b"/>
-            <path d="M 118,180 L 112,300 M 140,178 L 146,300" stroke="#d4af37" stroke-width="2" fill="none"/>
-            <path d="M 112,190 Q 130,200 148,190" stroke="#d4af37" stroke-width="2" fill="none"/>
-            <path d="M 118,140 Q 130,150 142,140 L 140,155 Q 130,162 120,155 Z" fill="#d6a678"/>
-            <path d="M 108,115 Q 99,94 118,80 Q 130,68 145,80 Q 164,94 152,115 Q 130,128 108,115 Z" fill="#a82333"/>
-            <path d="M 111,101 Q 130,89 150,101 M 111,109 Q 130,97 150,109" stroke="#d4af37" stroke-width="1.5" fill="none"/>
-            <path d="M 151,101 Q 165,95 168,106 Q 159,113 149,108 Z" fill="#d4af37"/>
-            <path d="M 130,76 Q 124,54 136,38" stroke="#d4af37" stroke-width="3" fill="none"/>
-            <path d="M 122,148 Q 130,152 138,148" stroke="#3a1a10" stroke-width="3" fill="none"/>
-            <path d="M 38,300 Q 43,222 61,190 Q 80,174 99,190 Q 110,232 106,300 Z" fill="#a82333"/>
-            <path d="M 43,268 Q 72,284 103,268 M 41,284 Q 72,300 105,284" stroke="#d4af37" stroke-width="2" fill="none"/>
-            <path d="M 54,199 Q 72,214 91,199" stroke="#d4af37" stroke-width="2" fill="none"/>
-            <path d="M 61,178 Q 80,167 91,180 L 89,196 Q 75,203 64,196 Z" fill="#63121b"/>
-            <path d="M 68,138 Q 80,145 92,138 L 90,155 Q 80,162 70,155 Z" fill="#d6a678"/>
-            <path d="M 57,110 Q 80,94 103,110 Q 109,141 92,161 Q 80,151 68,161 Q 51,141 57,110 Z" fill="#63121b" opacity="0.95"/>
-            <path d="M 61,116 Q 80,105 99,116" stroke="#d4af37" stroke-width="2" fill="none"/>
-            <path d="M 80,113 L 80,123" stroke="#d4af37" stroke-width="2"/>
-            <circle cx="80" cy="125" r="2.5" fill="#d4af37"/>
-            <circle cx="80" cy="143" r="2" fill="#a82333"/>
-            <circle cx="65" cy="151" r="3" fill="#d4af37"/>
-            <path d="M 86,175 Q 109,207 131,178" stroke="#ffffff" stroke-width="5" stroke-dasharray="3 3" fill="none"/>
-          </g>
-        </svg>
+        <!-- TRUE TRANSPARENT LOGO (NO CIRCLE, FULL TRANSPARENCY) -->
+        <img class="sticker-couple" src="https://drive.google.com/thumbnail?id=1rRtefG6a7BQ02axwxlnqxio9-aIaUwmL&sz=w800" alt="Ashish & Navya Logo">
 
-        <!-- COUPLE HERO CONTAINER WITH DIRECT UNDERNEATH PARENTAGE (NO BOX/BG) -->
+        <!-- COUPLE HERO CONTAINER -->
         <div class="couple-hero-container" id="couple-hero-container">
           <!-- Person 1 Block -->
           <div class="person-block" id="block-person-1">
@@ -659,13 +652,21 @@
 
       <div class="whatsapp-container">
         <h3 style="font-family: var(--font-royal); color: var(--royal-maroon); font-size: 1.2rem; margin-bottom: 0.3rem;" data-i18n="wa_title">Join WhatsApp Group</h3>
-        <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.6rem;" data-i18n="wa_subtitle">Scan the QR code to join our official guest chat for live updates!</p>
-        <img class="whatsapp-qr" src="https://drive.google.com/thumbnail?id=1PsDtvtpS8LlzvSiT09_5djpE-gW2IE_n&sz=w600" alt="WhatsApp Group QR Code">
+        <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.6rem;" data-i18n="wa_subtitle">Scan QR code or click below for 1-touch entry to our guest chat!</p>
+        <a href="https://chat.whatsapp.com/CPmSQMKzq4W3UImCQ4UlwT?mode=gi_t" target="_blank" rel="noopener noreferrer">
+          <img class="whatsapp-qr" src="https://drive.google.com/thumbnail?id=1PsDtvtpS8LlzvSiT09_5djpE-gW2IE_n&sz=w600" alt="WhatsApp Group QR Code">
+        </a>
+        <a href="https://chat.whatsapp.com/CPmSQMKzq4W3UImCQ4UlwT?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-join-btn">
+          💬 Tap Here to Join WhatsApp Group
+        </a>
       </div>
     </section>
 
   </div>
 
+  <!-- =============================================================== -->
+  <!-- PAGE 2: MEMORIES                                               -->
+  <!-- =============================================================== -->
   <div id="page-memories" class="page-view">
     <section>
       <h2 class="section-title" data-i18n="sec_memories">Share Your Memories</h2>
@@ -687,6 +688,9 @@
     </section>
   </div>
 
+  <!-- =============================================================== -->
+  <!-- PAGE 3: WISHES                                                 -->
+  <!-- =============================================================== -->
   <div id="page-wishes" class="page-view">
     <section>
       <h2 class="section-title" data-i18n="sec_wishes">Wishes &amp; Blessings</h2>
@@ -696,6 +700,9 @@
     </section>
   </div>
 
+  <!-- =============================================================== -->
+  <!-- PAGE 4: RSVP (WITH ARRIVAL & DEPARTURE SECTIONS)               -->
+  <!-- =============================================================== -->
   <div id="page-rsvp" class="page-view">
     <section>
       <h2 class="section-title" data-i18n="sec_rsvp">RSVP</h2>
@@ -798,9 +805,10 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-title" id="footer-couple-name" data-i18n="footer_couple">Ashish &amp; Navya</div>
-    <p style="color: var(--text-muted);" data-i18n="footer_sub">#NavAshish &bull; December 4, 2026 &bull; Govind Bagh, Jodhpur</p>
+    <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="footer_sub">#NavAshish &bull; December 4, 2026 &bull; Govind Bagh, Jodhpur</p>
   </footer>
 
+  <!-- MODALS -->
   <div class="modal-overlay" id="modal-haldi">
     <div class="modal-content">
       <div class="close-modal" onclick="closeModal('modal-haldi')">&times;</div>
@@ -837,7 +845,7 @@
 
   <script>
     // ===============================================================
-    // CONNECTED APPS SCRIPT WEB APP ENDPOINTS
+    // SCRIPT ENDPOINTS - APPS SCRIPT WEB APP URLs BOUND
     // ===============================================================
     const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxu5L2SY1Ixx2zHtZcuwqHJB0tp-zIBXS_pTqJujz4avXzw-1bdTLhlDS8zVDg3ltO7gQ/exec';
     const UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHQaeOTNoHLylhoXbEBtKfrSBEenHhtr2onIXmZKTISsyOWLdJrkIv2pO7JCP-3JxO_w/exec';
@@ -849,7 +857,7 @@
     const SHOW_WISHES = 0;
 
     // =========================================
-    // MULTILINGUAL DICTIONARY
+    // MULTILINGUAL DICTIONARY (CORRECTED HINDI SPELLING)
     // =========================================
     let currentLang = 'en';
 
@@ -890,7 +898,7 @@
         c_shreyansh: "Shreyansh Lalwani",
         c_sanjeev: "Sanjeev Lalwani",
         wa_title: "Join WhatsApp Group",
-        wa_subtitle: "Scan the QR code to join our official guest chat for live updates!",
+        wa_subtitle: "Scan QR code or click below for 1-touch entry to our guest chat!",
         sec_memories: "Share Your Memories",
         mem_intro: "Help us capture the magic! Upload the photos you take directly to our live gallery.",
         mem_click_upload: "Click to Select Files",
@@ -947,7 +955,7 @@
         hero_weds: "संग",
         hero_second_name: "नव्या",
         parent_ashish: "सुपुत्र: श्रीमती राजुल एवं श्री ललित ललवानी",
-        parent_navya: "सुपुत्री: श्रीमती लक्ष्मी एवं श्री नारायण रघु पाई",
+        parent_navya: "सुपुत्री: श्रीमती लक्ष्मी एवं श्री नारायण रघु पै",
         hero_date_venue: "४ दिसंबर २०२६ • गोविंद बाग, जोधपुर",
         timer_days: "दिन",
         timer_hours: "घंटे",
@@ -1097,7 +1105,7 @@
         modal_haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)",
         modal_haldi_time: "ಡಿಸೆಂಬರ್ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦",
         modal_haldi_desc: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ತಮ್ಮ ನವಜೀವನದ ಪಯಣವನ್ನು ಆರಂಭಿಸುವ ಮುನ್ನ ಅರಿಶಿನದ ಬಣ್ಣಗಳಿಂದ ಅವರನ್ನು ಹರಸಲು ಪ್ರೀತಿಯಿಂದ ಆಹ್ವಾನಿಸುತ್ತೇವೆ.",
-        modal_haldi_loc: "ಗೋವಿಂದ್ ಬಾಗ್ ಗಾರ್ಡನ್",
+        modal_haldi_loc: "ಗೋವಿಂದ್ ಬಾಗ್ ಮಂಟಪ",
         modal_pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)",
         modal_pheras_time: "ಡಿಸೆಂಬರ್ ೪ • ಸಂಜೆ ೫:೩೦",
         modal_pheras_desc: "ಸೂರ್ಯಾಸ್ತದ ಸುಂದರ ಹೊತ್ತಿನಲ್ಲಿ ಪವಿತ್ರ ಅಗ್ನಿಯ ಸಾಕ್ಷಿಯಾಗಿ ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ಅವರ ಸಪ್ತಪದಿಯ ಪಾವಿತ್ರ್ಯತೆಗೆ ಸಾಕ್ಷಿಯಾಗಿರಿ.",
@@ -1242,6 +1250,7 @@
       }
     }
 
+    /* Particle Cursor */
     const canvas = document.getElementById('cursor-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -1302,7 +1311,7 @@
       petalContainer.appendChild(petal);
     }
 
-    /* Countdown Timer to Dec 4, 2026 */
+    /* Countdown Timer */
     const weddingDate = new Date("December 4, 2026 10:00:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
@@ -1319,6 +1328,7 @@
     function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
 
+    /* Load Dynamic Gallery & Wishes */
     function loadGalleryAndWishes() {
       applySectionVisibilityFlags();
 
@@ -1391,7 +1401,7 @@
       const btn = e.target.querySelector('button');
       
       if (fileInput.files.length === 0) {
-        return;
+        alert("Please select a file to upload first."); return;
       }
       const file = fileInput.files[0];
       btn.innerText = "Uploading... Please wait";
@@ -1408,14 +1418,13 @@
         .then(response => response.json())
         .then(data => {
           if (data.status === 'success') {
-            e.target.reset(); 
-            document.getElementById('fileNameDisplay').innerText = ''; 
-            loadGalleryAndWishes();
-          }
+            alert("Memory uploaded successfully!"); e.target.reset(); document.getElementById('fileNameDisplay').innerText = ''; loadGalleryAndWishes();
+          } else { alert("Upload failed: " + data.message); }
           btn.innerText = translations[currentLang].btn_upload || "Upload to Gallery"; 
           btn.style.pointerEvents = "auto";
         })
         .catch(error => {
+          alert("Error connecting to Drive. Please try again.");
           btn.innerText = translations[currentLang].btn_upload || "Upload to Gallery"; 
           btn.style.pointerEvents = "auto";
         });
@@ -1423,6 +1432,7 @@
       reader.readAsDataURL(file);
     }
 
+    // CORS & Redirect Safe RSVP Handler
     function handleRSVP(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
@@ -1449,7 +1459,7 @@
         wishes: wishes
       };
 
-      // Uses mode: 'no-cors' and text/plain to bypass browser CORS preflight blocks seamlessly
+      // Uses mode: 'no-cors' and text/plain to bypass browser CORS preflight blocks completely
       fetch(RSVP_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -1457,11 +1467,9 @@
         body: JSON.stringify(formData)
       })
       .then(() => {
-        btn.innerText = (currentLang === 'hi' ? "आरएसवीपी पुष्टि हो गई है!" : (currentLang === 'kn' ? "RSVP ದೃಢೀಕರಿಸಲಾಗಿದೆ!" : "RSVP Confirmed!")); 
-        setTimeout(() => {
-          btn.innerText = translations[currentLang].btn_confirm_rsvp || "Confirm RSVP";
-          btn.style.pointerEvents = "auto";
-        }, 3000);
+        alert(currentLang === 'hi' ? "आरएसवीपी पुष्टि हो गई है! धन्यवाद।" : (currentLang === 'kn' ? "RSVP ದೃಢೀಕರಿಸಲಾಗಿದೆ! ಧನ್ಯವಾದಗಳು." : "RSVP Confirmed! Thank you for responding."));
+        btn.innerText = translations[currentLang].btn_confirm_rsvp || "Confirm RSVP"; 
+        btn.style.pointerEvents = "auto";
         
         if (wishes && SHOW_WISHES === 1) {
           const wishesContainer = document.getElementById('wishes-container');
@@ -1485,6 +1493,7 @@
       })
       .catch(error => {
         console.error("RSVP Error:", error);
+        alert("Error sending RSVP. Please check your connection and try again.");
         btn.innerText = translations[currentLang].btn_confirm_rsvp || "Confirm RSVP";
         btn.style.pointerEvents = "auto";
       });
