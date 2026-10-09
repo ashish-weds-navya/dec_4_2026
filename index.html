@@ -3,773 +3,549 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https: data: blob:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#63121b">
+  <meta name="description" content="You are cordially invited to the wedding of Ashish & Navya — December 4, 2026, Govind Bagh, Jodhpur.">
+  <meta property="og:title" content="Ashish & Navya | Wedding | 4th Dec 2026">
+  <meta property="og:description" content="We cordially invite you to the wedding of Ashish & Navya — Govind Bagh, Jodhpur.">
+  <meta property="og:image" content="https://drive.google.com/thumbnail?id=1rRtefG6a7BQ02axwxlnqxio9-aIaUwmL&sz=w800">
   <title>Ashish & Navya | Wedding | 4th Dec 26</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&family=Montserrat:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-cream: #faf7f2;
-      --text-dark: #2a221f;
-      --nav-bg: rgba(255, 255, 255, 0.95);
+      --bg-ivory: #fbf7ef;
+      --bg-parchment: #f4ead6;
+      --text-dark: #2a1f1b;
+      --text-soft: #5a4a43;
+      --nav-bg: rgba(255, 252, 245, 0.88);
 
-      --gold-primary: #d4af37;
-      --gold-dark: #b8860b; 
-      --gold-amber: #8a5a00;
+      --gold: #c9a227;
+      --gold-bright: #e8c766;
+      --gold-deep: #9a6f12;
       --gold-light: #f3e5ab;
-      --royal-maroon: #63121b;
-      --font-royal: 'Cinzel', serif;
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Montserrat', sans-serif;
+      --maroon: #63121b;
+      --maroon-deep: #3f0a11;
+      --maroon-soft: #8a2a35;
+
+      --gold-foil: linear-gradient(120deg, #8a5a00 0%, #c9a227 22%, #f6e08a 48%, #c9a227 72%, #8a5a00 100%);
+      --maroon-foil: linear-gradient(120deg, #3f0a11 0%, #7a1a26 45%, #3f0a11 100%);
+
+      --font-royal: 'Cinzel', 'Noto Sans Devanagari', 'Noto Sans Kannada', serif;
+      --font-serif: 'Cormorant Garamond', 'Noto Sans Devanagari', 'Noto Sans Kannada', serif;
+      --font-sans: 'Montserrat', 'Noto Sans Devanagari', 'Noto Sans Kannada', sans-serif;
+      --font-script: 'Great Vibes', 'Cormorant Garamond', cursive;
+
+      --shadow-soft: 0 10px 35px rgba(63, 10, 17, 0.08);
+      --shadow-gold: 0 18px 45px rgba(201, 162, 39, 0.28);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
-      background-color: var(--bg-cream);
-      background-image: linear-gradient(rgba(250, 247, 242, 0.82), rgba(250, 247, 242, 0.82)),
-                        url('https://drive.google.com/thumbnail?id=1HZtAvCUXRws8vjP1196XutlPZYsUq0KA&sz=w1920');
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-attachment: scroll;
-      background-size: 100% auto;
-      color: var(--text-dark); 
+      background-color: var(--bg-ivory);
+      color: var(--text-dark);
       font-family: var(--font-sans);
       overflow-x: hidden;
-      scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* MAGIC CURSOR */
-    #cursor-canvas {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none; z-index: 9999;
-    }
+    ::selection { background: var(--gold-light); color: var(--maroon); }
 
-    /* SHOWERING ROSES (Falling Petals) */
+    /* ---------- ambient layers ---------- */
+    #cursor-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; }
+    #petal-container { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
     .petal {
-      position: fixed; 
-      top: -10%;
-      border-radius: 150px 0px 150px 50px; 
-      animation: fallDown linear infinite;
-      opacity: 0;
-      z-index: 1; 
-      pointer-events: none;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      position: absolute; top: -8%; opacity: 0; will-change: transform, opacity;
+      animation: petalFall linear infinite;
+      border-radius: 80% 0 80% 0;
+      box-shadow: inset -2px -3px 6px rgba(0,0,0,.12), 0 2px 5px rgba(63,10,17,.12);
     }
-    @keyframes fallDown {
-      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.85; }
-      50% { transform: translate(35px, 60vh) rotate(180deg); }
-      90% { opacity: 0.5; }
-      100% { transform: translate(-35px, 120vh) rotate(360deg); opacity: 0; }
+    @keyframes petalFall {
+      0%   { transform: translate3d(0,-8vh,0) rotateZ(0deg) rotateX(0deg); opacity: 0; }
+      8%   { opacity: .9; }
+      25%  { transform: translate3d(34px,24vh,0) rotateZ(70deg) rotateX(120deg); }
+      50%  { transform: translate3d(-26px,52vh,0) rotateZ(150deg) rotateX(260deg); }
+      75%  { transform: translate3d(30px,80vh,0) rotateZ(240deg) rotateX(400deg); opacity: .85; }
+      100% { transform: translate3d(-10px,112vh,0) rotateZ(330deg) rotateX(540deg); opacity: 0; }
     }
 
-    /* FUSED NAVIGATION WITH TABS & INTEGRATED LANGUAGE SWITCHER */
+    /* ---------- ornaments ---------- */
+    .ornament-divider {
+      display: flex; align-items: center; justify-content: center; gap: 0.9rem;
+      margin: 0 auto 1.1rem; max-width: 300px; color: var(--gold);
+    }
+    .ornament-divider::before, .ornament-divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .ornament-divider svg { width: 26px; height: 26px; flex-shrink: 0; }
+
+    .gold-text {
+      background: var(--gold-foil); background-size: 220% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      animation: foil 7s ease-in-out infinite alternate;
+    }
+    @keyframes foil { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+    /* Hindi / Kannada: no tracking (breaks conjuncts), no gradient-clip (clips matras) */
+    html[lang="hi"] *, html[lang="kn"] * { letter-spacing: 0 !important; text-transform: none !important; }
+    html[lang="hi"] .couple-name, html[lang="kn"] .couple-name {
+      background: none; -webkit-text-fill-color: var(--maroon); color: var(--maroon); filter: none; line-height: 1.3; padding: .06em .1em .14em;
+    }
+    html[lang="hi"] .weds-separator, html[lang="kn"] .weds-separator {
+      font-family: var(--font-serif); font-weight: 700; background: none; animation: none; filter: none;
+      -webkit-text-fill-color: var(--gold-deep); color: var(--gold-deep); line-height: 1.25; padding: .05em .2em .1em;
+    }
+
+    /* ---------- navigation ---------- */
     nav {
-      position: fixed; 
-      top: 0; 
-      width: 100%;
-      background: var(--nav-bg); 
-      backdrop-filter: blur(15px);
-      padding: 0.75rem 2rem; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.25); 
+      position: fixed; top: 0; left: 0; right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px) saturate(1.3); -webkit-backdrop-filter: blur(16px) saturate(1.3);
+      padding: 0.7rem clamp(0.8rem, 3vw, 2rem);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem;
       z-index: 100;
-      flex-wrap: wrap;
-      gap: 0.8rem;
+      border-bottom: 1px solid rgba(201,162,39,0.3);
+      box-shadow: 0 4px 24px rgba(63,10,17,0.06);
     }
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
+    nav::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: .7;
     }
-    .nav-logo { 
-      font-family: var(--font-royal); 
-      font-size: 1.35rem; 
-      font-weight: 900; 
-      color: var(--gold-primary); 
-      text-decoration: none; 
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); 
-      cursor: pointer; 
+    .nav-left { display: flex; align-items: center; gap: 1.4rem; }
+    .nav-logo {
+      font-family: var(--font-script); font-size: 2.1rem; line-height: 1; cursor: pointer;
+      text-decoration: none; color: var(--maroon); padding: 0 .2rem; font-weight: 400;
     }
-    .nav-links { 
-      display: flex; 
-      gap: 0.6rem; 
-      list-style: none; 
-      flex-wrap: wrap; 
-      align-items: center;
+    .nav-links { display: flex; gap: 0.45rem; list-style: none; flex-wrap: wrap; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--maroon); cursor: pointer; display: inline-block;
+      font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700;
+      padding: 0.42rem 1rem; border-radius: 30px;
+      border: 1px solid rgba(201,162,39,0.4); background: rgba(255,255,255,0.7);
+      transition: all .3s ease;
     }
-    .nav-links li { list-style: none; }
-    .nav-links a { 
-      text-decoration: none; 
-      color: var(--royal-maroon); 
-      font-size: 0.75rem; 
-      letter-spacing: 0.12em; 
-      text-transform: uppercase; 
-      padding: 0.42rem 0.95rem; 
-      border: 1px solid rgba(212, 175, 55, 0.4); 
-      border-radius: 20px; 
-      background: rgba(255,255,255,0.85);
-      transition: 0.3s; 
-      font-weight: 700; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03); 
-      cursor: pointer; 
-      display: inline-block;
-    }
-    .nav-links a:hover, .nav-links a.active-tab { 
-      background: var(--gold-primary); 
-      color: #fff; 
-      border-color: var(--gold-primary); 
-      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); 
+    .nav-links a:hover, .nav-links a.active-tab {
+      background: var(--gold-foil); color: #fff; border-color: transparent;
+      box-shadow: 0 5px 14px rgba(201,162,39,0.35); transform: translateY(-1px);
     }
 
-    /* FUSED LANGUAGE TABS */
     .lang-tabs-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(212, 175, 55, 0.08);
-      padding: 0.25rem 0.35rem;
-      border-radius: 24px;
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      display: flex; gap: .2rem; padding: .22rem; border-radius: 30px;
+      background: rgba(201,162,39,0.1); border: 1px solid rgba(201,162,39,0.35);
     }
     .lang-tab-btn {
-      background: transparent;
-      border: none;
-      color: var(--royal-maroon);
-      padding: 0.32rem 0.8rem;
-      border-radius: 18px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      font-weight: 700;
-      transition: all 0.25s ease;
-      font-family: inherit;
+      background: transparent; border: none; color: var(--maroon); cursor: pointer;
+      padding: .32rem .8rem; border-radius: 24px; font-size: .74rem; font-weight: 700; font-family: inherit;
+      transition: all .25s ease;
     }
-    .lang-tab-btn:hover {
-      background: rgba(212, 175, 55, 0.25);
-    }
-    .lang-tab-btn.active-lang {
-      background: var(--gold-primary);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
-    }
+    .lang-tab-btn:hover { background: rgba(201,162,39,0.22); }
+    .lang-tab-btn.active-lang { background: var(--maroon); color: var(--gold-light); box-shadow: 0 3px 10px rgba(99,18,27,.3); }
 
-    /* PAGE VIEWS MANAGEMENT */
-    .page-view {
-      display: none;
-      min-height: 100vh;
-      padding-top: 5.8rem;
-    }
-    .page-view.active-page {
-      display: block;
-      animation: fadeIn 0.4s ease forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* ---------- page views ---------- */
+    .page-view { --nav-h: 5.6rem; display: none; min-height: 100vh; padding-top: var(--nav-h); position: relative; z-index: 2; }
+    .page-view.active-page { display: block; animation: pageIn .5s ease both; }
+    @keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-    /* HERO SECTION */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* poster background: covers hero -> contacts, stops before the venue */
+    .poster-bg, .page-view.poster-page {
+      background-color: var(--bg-ivory);
+      background-image: linear-gradient(rgba(250,247,242,.82), rgba(250,247,242,.82)),
+                        url('https://drive.google.com/thumbnail?id=1HZtAvCUXRws8vjP1196XutlPZYsUq0KA&sz=w1920');
+      background-repeat: no-repeat; background-position: center top; background-size: cover;
+    }
+    .poster-bg { margin-top: calc(var(--nav-h) * -1); padding-top: var(--nav-h); position: relative; }
+
+    /* ---------- hero ---------- */
     .hero {
-      position: relative; 
-      min-height: calc(100vh - 85px); 
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      align-items: center; 
-      text-align: center; 
-      overflow: hidden; 
-      padding: clamp(2rem, 5vw, 3.5rem) 1.2rem clamp(2.5rem, 6vw, 4rem);
+      position: relative; min-height: auto;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+      padding: clamp(.8rem, 2vw, 1.4rem) 1rem clamp(1.2rem, 3vw, 2rem); overflow: visible;
     }
-    .hero-content { position: relative; z-index: 2; width: 100%; max-width: 950px; margin: 0 auto; }
+    /* twinkling gold sparkles around the jharokha */
+    .sparkles { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: visible; }
+    .spk { position: absolute; opacity: 0; background: #d4af37; animation: twinkle var(--d, 5s) ease-in-out var(--dl, 0s) infinite; }
+    .spk.star { clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+    .spk.dot { border-radius: 50%; background: radial-gradient(circle, #f1d77a 0%, #d4af37 55%, rgba(212,175,55,0) 100%); }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(.3) rotate(0deg) translateY(0); }
+      45%, 55% { opacity: var(--o, .6); transform: scale(1) rotate(45deg) translateY(var(--dy, -6px)); }
+    }
+    .hero-content { position: relative; z-index: 2; width: 100%; max-width: 900px; margin: 0 auto; }
 
-    /* DIVINE BLESSING & GOLDEN ICONS */
-    .divine-blessing { 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: clamp(1rem, 3vw, 2rem); 
-      margin-bottom: 1.5rem; 
-    }
-    .divine-blessing svg { 
-      width: clamp(48px, 6vw, 68px); 
-      height: clamp(48px, 6vw, 68px); 
-      filter: drop-shadow(0 4px 12px rgba(218, 165, 32, 0.75)) drop-shadow(0 1px 4px rgba(184, 134, 11, 0.9)); 
-      flex-shrink: 0; 
-    }
-    .divine-blessing span { 
-      font-family: var(--font-serif); 
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem); 
-      font-weight: 700; 
-      letter-spacing: normal !important; 
-      color: var(--gold-dark);
-      text-shadow: 0 1px 3px rgba(184, 134, 11, 0.4), 0 0 10px rgba(212, 175, 55, 0.3);
+    .divine-blessing { display: flex; align-items: center; justify-content: center; gap: clamp(.9rem, 3vw, 2rem); margin-bottom: .8rem; }
+    .divine-blessing svg { width: clamp(46px, 6vw, 64px); height: clamp(46px, 6vw, 64px); flex-shrink: 0; filter: drop-shadow(0 4px 10px rgba(218,165,32,.6)); animation: glowPulse 4s ease-in-out infinite alternate; }
+    @keyframes glowPulse { from { filter: drop-shadow(0 3px 6px rgba(218,165,32,.4)); } to { filter: drop-shadow(0 5px 16px rgba(218,165,32,.85)); } }
+    .divine-blessing span {
+      font-family: var(--font-serif); font-size: clamp(1.15rem, 2.5vw, 1.55rem); font-weight: 700;
+      color: var(--gold-deep); text-shadow: 0 1px 3px rgba(184,134,11,.3);
     }
 
-    /* TRUE TRANSPARENT LOGO EMBLEM */
+    /* soft invitation card */
+    @media (max-width: 520px) { .hero { padding-left: .4rem; padding-right: .4rem; } }
+    .page-view, .poster-bg, .hero { overflow-x: clip; }
+    html, body { overflow-x: hidden; }
+    .jh-wrap { position: relative; max-width: 680px; margin: 8px auto 10px; }
+    .jh-line { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; z-index: 3; }
+    .arch-frame {
+      position: relative; margin: 0 auto;
+      padding: var(--jh-pt, 150px) var(--jh-p, 30px) var(--jh-pb, 40px);
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    /* grandparents / parents lines: identical type, thin hairline between them */
+    .parentage-subtitle .pl { font: inherit; letter-spacing: inherit; }
+    .parentage-subtitle .pl + .pl { margin-top: .4em; }
+
     .sticker-couple {
-      width: clamp(130px, 20vw, 195px); 
-      height: auto; 
-      max-height: 250px;
-      margin: 0 auto 1.2rem;
-      background: transparent;
-      border: none;
-      padding: 0;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 18px rgba(99, 18, 27, 0.15));
-      animation: cuteBounce 3s ease-in-out infinite alternate;
-      cursor: pointer;
+      display: block; width: clamp(100px, 14vw, 140px); height: auto; max-height: 180px; object-fit: contain;
+      margin: 0 auto .5rem; filter: drop-shadow(0 8px 16px rgba(99,18,27,.18));
+      animation: cuteBounce 3.4s ease-in-out infinite alternate;
     }
-    .sticker-couple:hover { animation: spinPop 0.5s forwards; }
-    @keyframes cuteBounce { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
-    @keyframes spinPop { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    @keyframes cuteBounce { to { transform: translateY(-8px); } }
 
-    /* HOST INVITATION BLESSING SUBTITLE */
     .host-blessing-text {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(0.95rem, 2vw, 1.25rem);
-      color: var(--gold-dark);
-      max-width: 720px;
-      margin: 0 auto 1.6rem auto;
-      line-height: 1.55;
-      font-weight: 600;
-      text-shadow: 0 1px 2px rgba(184, 134, 11, 0.25);
+      font-family: var(--font-serif); font-style: italic; font-weight: 600;
+      font-size: clamp(1rem, 2vw, 1.3rem); color: var(--gold-deep);
+      max-width: 560px; margin: 0 auto 1.1rem; line-height: 1.5;
     }
 
-    /* COUPLE PRESENTATION WRAPPER */
-    .couple-hero-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.6rem;
-      gap: 0.2rem;
-    }
-    .person-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      max-width: 90%;
-    }
+    .couple-hero-container { display: flex; flex-direction: column; align-items: center; gap: 0; margin-bottom: .5rem; }
+    .person-block { display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .parentage-subtitle .pl { display: block; width: max-content; margin: 0 auto; white-space: nowrap; }
     .person-block .couple-name {
-      font-family: var(--font-royal) !important;
-      font-size: clamp(2rem, 5.5vw, 4.2rem);
-      color: var(--royal-maroon);
-      line-height: 1.15;
-      text-shadow: 0 4px 22px rgba(99, 18, 27, 0.18);
-      font-weight: 800;
-      letter-spacing: 0.05em;
+      font-family: var(--font-royal); font-weight: 800; letter-spacing: .01em; line-height: 1.25; padding: .05em .1em .12em;
+      font-size: clamp(2.1rem, 6.4vw, 3.7rem);
+      background: var(--maroon-foil); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 3px 10px rgba(99,18,27,.14));
     }
-    
-    /* PARENTAGE SUBTITLE */
     .person-block .parentage-subtitle {
-      font-family: var(--font-royal) !important;
-      font-size: clamp(0.72rem, 1.4vw, 0.98rem);
-      color: var(--royal-maroon);
-      font-weight: 700 !important;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-top: 0.35rem;
-      background: none !important;
-      border: none !important;
-      padding: 0 !important;
-      opacity: 0.95;
-      text-align: center;
-      line-height: 1.55;
+      font-family: var(--font-serif); font-weight: 700; text-transform: none;
+      font-size: 1rem; letter-spacing: .01em; line-height: 1.5;
+      color: var(--text-soft); margin-top: .45rem; width: 100%;
     }
-    
     .weds-separator {
-      margin: 0.6rem 0;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.1rem, 2.3vw, 1.7rem);
-      font-weight: 900 !important;
-      color: var(--gold-dark);
-      background: linear-gradient(45deg, #7a4a00, #b8860b, #d4af37, #7a4a00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 4px rgba(184, 134, 11, 0.45));
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      margin: 0 0 -.05rem; font-family: var(--font-script); text-transform: none;
+      font-size: clamp(1.9rem, 4.6vw, 2.8rem); line-height: 1.1; letter-spacing: 0; padding: 0 .15em .06em;
+      background: var(--gold-foil); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      animation: foil 7s ease-in-out infinite alternate;
+      filter: drop-shadow(0 2px 3px rgba(154,111,18,.3));
     }
 
-    .hero-date { 
-      font-family: var(--font-serif); 
-      font-size: clamp(1.1rem, 2vw, 1.55rem); 
-      letter-spacing: 0.08em; 
-      color: var(--text-dark); 
-      margin-bottom: 2rem; 
-      font-weight: 600; 
+    .hero-date {
+      font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+      letter-spacing: .02em; color: var(--maroon); margin: .3rem 0 .7rem;
     }
 
-    /* GLASSMORPHISM TIMER */
-    .timer-container { 
-      display: flex; 
-      justify-content: center; 
-      flex-wrap: wrap; 
-      gap: clamp(0.6rem, 1.8vw, 1.3rem); 
-      margin-bottom: 1.5rem; 
-    }
+    .timer-container { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(.5rem, 1.6vw, 1rem); }
     .timer-box {
-      background: rgba(255, 255, 255, 0.6); 
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(212, 175, 55, 0.4); 
-      padding: clamp(0.75rem, 1.6vw, 1.15rem); 
-      border-radius: 12px;
-      min-width: clamp(68px, 11vw, 92px); 
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      position: relative; 
-      overflow: hidden;
+      min-width: clamp(64px, 11vw, 88px); padding: clamp(.65rem, 1.5vw, 1rem) .4rem;
+      border-radius: 14px; background: rgba(255,255,255,.9);
+      border: 1px solid rgba(201,162,39,.4); box-shadow: 0 6px 18px rgba(63,10,17,.07);
     }
-    .timer-number { 
-      font-family: var(--font-royal); 
-      font-size: clamp(1.5rem, 3.2vw, 2.1rem); 
-      font-weight: 700; 
-      color: var(--text-dark); 
-      position: relative; 
-      line-height: 1.1;
-    }
-    .timer-label { 
-      font-size: clamp(0.55rem, 0.9vw, 0.65rem); 
-      letter-spacing: 0.18em; 
-      text-transform: uppercase; 
-      color: var(--text-dark); 
-      position: relative; 
-      font-weight: 700; 
-      margin-top: 0.2rem;
+    .timer-number { font-family: var(--font-royal); font-weight: 700; font-size: clamp(1.5rem, 3.2vw, 2.1rem); color: var(--maroon); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .timer-label { font-size: clamp(.5rem, .85vw, .62rem); letter-spacing: .1em; text-transform: uppercase; color: var(--text-soft); font-weight: 700; margin-top: .25rem; }
+
+    .scroll-hint { display: none; margin-top: 1.6rem; color: var(--gold-deep); font-size: 1.4rem; animation: bob 1.8s ease-in-out infinite; opacity: .8; }
+    @keyframes bob { 50% { transform: translateY(7px); } }
+
+    /* ---------- sections ---------- */
+    section { padding: clamp(1.6rem, 3.5vw, 2.6rem) 1.25rem; max-width: 950px; margin: 0 auto; position: relative; z-index: 2; }
+    .section-title {
+      font-family: var(--font-royal); font-weight: 800; text-align: center; letter-spacing: .01em;
+      font-size: clamp(1.8rem, 3.8vw, 2.6rem); margin-bottom: .3rem;
+      color: var(--maroon);
     }
 
-    /* SECTIONS */
-    section { 
-      padding: clamp(3rem, 6vw, 4.5rem) 1.5rem; 
-      max-width: 950px; 
-      margin: 0 auto; 
-      position: relative; 
-      z-index: 2; 
-      opacity: 1; 
-    }
-    .section-title { 
-      font-family: var(--font-royal); 
-      font-size: clamp(1.9rem, 3.8vw, 2.6rem); 
-      color: var(--gold-primary); 
-      text-align: center; 
-      margin-bottom: clamp(1.6rem, 3vw, 2.4rem); 
-      text-shadow: 0 4px 15px rgba(212,175,55,0.1); 
-    }
-
-    /* EVENT CARDS */
-    .events-grid { 
-      display: grid; 
-      grid-template-columns: repeat(2, 1fr); 
-      gap: clamp(0.9rem, 2.5vw, 1.8rem); 
-      max-width: 820px; 
-      margin: 0 auto; 
-    }
+    /* event cards */
+    .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(.8rem, 2.5vw, 1.8rem); max-width: 820px; margin: 0 auto; }
     .event-card {
-      background: #fff; 
-      border: 1px solid rgba(212, 175, 55, 0.35); 
-      border-radius: 15px; 
-      padding: clamp(1.4rem, 3vw, 2.4rem) clamp(0.8rem, 2vw, 1.8rem);
-      text-align: center; 
-      cursor: pointer; 
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-      color: var(--text-dark); 
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); 
-      position: relative; 
-      overflow: hidden;
+      position: relative; overflow: hidden; cursor: pointer; text-align: center;
+      background: linear-gradient(180deg, #fff, #fffaf0);
+      border: 1px solid rgba(201,162,39,.4); border-radius: 18px;
+      padding: clamp(1.5rem, 3vw, 2.4rem) clamp(.8rem, 2vw, 1.6rem);
+      box-shadow: var(--shadow-soft);
+      transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease, border-color .45s ease;
     }
-    .event-card:hover { transform: translateY(-6px); border-color: var(--gold-primary); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25); }
-    .event-card h3 { 
-      font-family: var(--font-royal); 
-      font-size: clamp(1.15rem, 2.2vw, 1.6rem); 
-      color: var(--royal-maroon); 
-      margin-bottom: 0.4rem; 
+    .event-card::before, .event-card::after {
+      content: ''; position: absolute; width: 26px; height: 26px; border: 2px solid var(--gold); opacity: .7; transition: .4s;
     }
-    .event-card p { 
-      font-family: var(--font-serif); 
-      font-size: clamp(0.9rem, 1.4vw, 1.15rem); 
-      color: var(--text-dark); 
-      font-weight: 600;
+    .event-card::before { top: 9px; left: 9px; border-width: 2px 0 0 2px; border-radius: 8px 0 0 0; }
+    .event-card::after { bottom: 9px; right: 9px; border-width: 0 2px 2px 0; border-radius: 0 0 8px 0; }
+    .event-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: var(--shadow-gold); }
+    .event-card:hover::before, .event-card:hover::after { width: 40px; height: 40px; opacity: 1; }
+    .event-icon { margin-bottom: .5rem; } .event-icon svg { width: clamp(44px, 7vw, 60px); height: clamp(44px, 7vw, 60px); }
+    .modal-hero-icon svg { width: 34px; height: 34px; }
+    .event-card h3 { font-family: var(--font-royal); font-size: clamp(1.05rem, 2.2vw, 1.5rem); color: var(--maroon); margin-bottom: .35rem; }
+    .event-card p { font-family: var(--font-serif); font-weight: 700; font-size: clamp(.95rem, 1.5vw, 1.2rem); color: var(--text-soft); }
+    .card-btn {
+      display: inline-block; margin-top: .9rem; padding: .4rem 1.2rem; border-radius: 30px; pointer-events: none;
+      border: 1px solid var(--gold); color: var(--gold-deep); font-weight: 700; font-size: clamp(.66rem, 1vw, .8rem); letter-spacing: .04em; text-transform: uppercase; transition: .3s;
     }
-    .card-btn { 
-      margin-top: 0.9rem; 
-      padding: 0.4rem 1.1rem; 
-      border: 1px solid var(--gold-primary); 
-      background: transparent; 
-      color: var(--gold-primary); 
-      border-radius: 25px; 
-      transition: 0.3s; 
-      font-weight: bold; 
-      font-size: clamp(0.68rem, 1vw, 0.85rem); 
-      pointer-events: none; 
-      display: inline-block;
-    }
-    .event-card:hover .card-btn { background: var(--gold-primary); color: #fff; }
+    .event-card:hover .card-btn { background: var(--gold-foil); color: #fff; border-color: transparent; }
 
-    /* UNIFIED CONTACTS GRID (CENTERED 2ND ROW ON LAPTOPS) */
-    .contacts-wrapper {
-      max-width: 820px;
-      margin: 0 auto;
+    .cal-row { text-align: center; margin-top: 1.1rem; }
+    .cal-btn {
+      display: inline-flex; align-items: center; gap: .55rem; cursor: pointer;
+      padding: .7rem 1.5rem; border-radius: 30px; border: 1.5px solid var(--maroon); background: transparent; color: var(--maroon);
+      font-family: var(--font-sans); font-weight: 700; font-size: .78rem; letter-spacing: .05em; text-transform: uppercase; transition: .3s;
     }
-    .contacts-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
+    .cal-btn:hover { background: var(--maroon); color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99,18,27,.25); }
+
+    /* contacts */
+    .contacts-wrapper { max-width: 820px; margin: 0 auto; }
+    .contacts-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
     .contact-card {
-      background: #fff; 
-      border: 1px solid rgba(212, 175, 55, 0.35); 
-      border-radius: 12px; 
-      padding: 1rem 0.6rem; 
-      text-align: center; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
-      transition: 0.3s; 
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      align-items: center;
-      flex: 0 1 calc(33.333% - 1rem);
-      min-width: 210px;
+      flex: 0 1 calc(33.333% - 1rem); min-width: 210px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 1.1rem .7rem; background: #fff; border: 1px solid rgba(201,162,39,.35); border-radius: 14px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.04); transition: .35s;
     }
-    .contact-card:hover { transform: translateY(-4px); border-color: var(--gold-primary); box-shadow: 0 8px 20px rgba(212,175,55,0.2); }
-    .contact-card h3 { 
-      font-family: var(--font-royal); 
-      font-size: clamp(0.78rem, 1.1vw, 0.95rem); 
-      color: var(--royal-maroon); 
-      margin-bottom: 0.3rem; 
-      line-height: 1.25;
+    .contact-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 12px 26px rgba(201,162,39,.22); }
+    .contact-card h3 { font-family: var(--font-royal); font-size: clamp(.8rem, 1.1vw, .95rem); color: var(--maroon); margin-bottom: .35rem; line-height: 1.25; }
+    .contact-card a {
+      display: inline-flex; align-items: center; gap: .4rem; color: var(--gold-deep); text-decoration: none;
+      font-weight: 700; font-size: clamp(.74rem, 1vw, .86rem);
     }
-    .contact-card p { 
-      font-family: var(--font-sans); 
-      font-size: clamp(0.72rem, 0.95vw, 0.85rem); 
-      font-weight: 600; 
-      color: var(--text-dark); 
-    }
-    .contact-card a { color: var(--gold-primary); text-decoration: none; word-break: break-all; }
+    .contact-card a::before { content: '📞'; font-size: .85em; }
     .contact-card a:hover { text-decoration: underline; }
 
-    /* WHATSAPP QR & 1-TOUCH BUTTON SECTION */
     .whatsapp-container {
-      background: #fff; 
-      border: 1px solid rgba(212, 175, 55, 0.3); 
-      border-radius: 15px; 
-      padding: clamp(1.4rem, 3vw, 2.2rem) clamp(1rem, 2.5vw, 2rem); 
-      text-align: center;
-      max-width: 430px; 
-      margin: clamp(1.8rem, 3.5vw, 2.6rem) auto 0; 
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      max-width: 440px; margin: clamp(1.1rem, 2.5vw, 1.6rem) auto 0; text-align: center;
+      padding: clamp(1.4rem, 3vw, 2.1rem) clamp(1rem, 2.5vw, 2rem);
+      background: linear-gradient(180deg, #fff, #fffaf0); border: 1px solid rgba(201,162,39,.4); border-radius: 18px; box-shadow: var(--shadow-soft);
     }
-    .whatsapp-qr { 
-      width: clamp(120px, 20vw, 160px); 
-      height: clamp(120px, 20vw, 160px); 
-      object-fit: contain; 
-      margin: 0.8rem auto; 
-      border-radius: 10px; 
-      border: 2px solid var(--gold-primary); 
-      padding: 5px; 
-      background: #fff; 
-      display: block; 
-      cursor: pointer; 
-      transition: transform 0.3s; 
+    .whatsapp-qr {
+      display: block; width: clamp(120px, 20vw, 156px); height: clamp(120px, 20vw, 156px); object-fit: contain;
+      margin: .9rem auto; padding: 6px; background: #fff; border-radius: 12px; border: 2px solid var(--gold); transition: transform .3s;
     }
-    .whatsapp-qr:hover { transform: scale(1.03); }
-    
+    .whatsapp-qr:hover { transform: scale(1.04) rotate(-1deg); }
     .whatsapp-join-btn {
-      display: inline-flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 0.65rem;
-      width: 100%; 
-      margin-top: 1rem; 
-      padding: 0.85rem 1.3rem;
-      background: linear-gradient(135deg, #25d366, #128c7e); 
-      color: #fff;
-      font-family: var(--font-sans); 
-      font-size: clamp(0.78rem, 1.1vw, 0.9rem); 
-      font-weight: 700;
-      text-transform: uppercase; 
-      border-radius: 25px;
-      text-decoration: none; 
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); 
-      transition: 0.3s;
-      letter-spacing: 0.04em;
+      display: inline-flex; align-items: center; justify-content: center; gap: .65rem; width: 100%; margin-top: .6rem;
+      padding: .85rem 1.2rem; border-radius: 30px; text-decoration: none; color: #fff;
+      background: linear-gradient(135deg, #25d366, #128c7e); box-shadow: 0 5px 16px rgba(37,211,102,.35);
+      font-weight: 700; font-size: clamp(.75rem, 1.1vw, .88rem); text-transform: uppercase; letter-spacing: .04em; transition: .3s;
     }
-    .whatsapp-join-btn svg {
-      width: 22px;
-      height: 22px;
-      fill: #ffffff;
-      flex-shrink: 0;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
-    }
-    .whatsapp-join-btn:hover { 
-      background: linear-gradient(135deg, #1ebe5d, #0f766a); 
-      transform: translateY(-2px); 
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); 
-    }
+    .whatsapp-join-btn svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+    .whatsapp-join-btn:hover { transform: translateY(-2px); box-shadow: 0 9px 22px rgba(37,211,102,.5); }
 
-    /* VENUE SECTION (BALANCED 2-PANEL / ADAPTIVE CARD) */
+    /* venue */
     .venue-card {
-      background: rgba(250, 247, 242, 0.95);
-      border: 2px solid rgba(212, 175, 55, 0.5); 
-      border-radius: 15px; 
+      position: relative; overflow: hidden; text-align: center; max-width: 820px; margin: 0 auto;
       padding: clamp(1.8rem, 3.5vw, 2.8rem) clamp(1rem, 2.5vw, 2.4rem);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.12); 
-      font-family: var(--font-serif); 
-      color: var(--text-dark);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      background: rgba(255,251,242,.96); border-radius: 20px;
+      border: 2px solid rgba(201,162,39,.55); box-shadow: 0 16px 45px rgba(63,10,17,.1);
+      font-family: var(--font-serif); color: var(--text-dark);
     }
     .venue-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: url('https://drive.google.com/thumbnail?id=1KcBr6URxb3d_5zSnaLuh1pRyTVp-minZ&sz=w1920') no-repeat center center;
-      background-size: cover;
-      opacity: 0.08;
-      z-index: 0;
+      content: ''; position: absolute; inset: 0; z-index: 0; opacity: .12;
+      background: url('https://drive.google.com/thumbnail?id=1KcBr6URxb3d_5zSnaLuh1pRyTVp-minZ&sz=w1920') center/cover no-repeat;
     }
     .venue-card > * { position: relative; z-index: 1; }
-    .venue-card h3 { 
-      font-family: var(--font-royal); 
-      color: var(--royal-maroon); 
-      font-size: clamp(1.35rem, 2.6vw, 2rem); 
-      margin-bottom: 0.8rem; 
-    }
-    .venue-desc-text {
-      font-size: clamp(0.92rem, 1.25vw, 1.15rem); 
-      line-height: 1.7; 
-      margin-bottom: 1.4rem;
-    }
-    .venue-interactive-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1.4rem;
-      flex-wrap: wrap;
-    }
-    .venue-qr {
-      width: clamp(130px, 18vw, 175px); 
-      height: clamp(130px, 18vw, 175px); 
-      object-fit: contain; 
-      border-radius: 12px;
-      border: 2px solid var(--gold-primary); 
-      padding: 6px; 
-      background: #fff;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.07); 
-    }
-    .venue-action-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    .venue-card h3 { font-family: var(--font-royal); color: var(--maroon); font-size: clamp(1.3rem, 2.6vw, 1.95rem); margin-bottom: .8rem; }
+    .venue-desc-text { font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.75; margin: 0 auto 1.4rem; max-width: 640px; }
+    .venue-interactive-row { display: flex; align-items: center; justify-content: center; gap: 1.6rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
+    .venue-qr { width: clamp(120px, 18vw, 170px); height: clamp(120px, 18vw, 170px); object-fit: contain; padding: 6px; background: #fff; border-radius: 12px; border: 2px solid var(--gold); box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+    .venue-action-col { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+    .venue-scan { font-family: var(--font-sans); font-size: clamp(.7rem, 1vw, .82rem); font-weight: 700; text-transform: uppercase; color: var(--gold-deep); letter-spacing: .06em; }
     .venue-map-btn {
-      display: inline-block; 
-      padding: 0.6rem 1.6rem; 
-      background: var(--gold-primary); 
-      color: #fff;
-      font-family: var(--font-sans); 
-      font-size: clamp(0.72rem, 1vw, 0.85rem); 
-      font-weight: 700; 
-      letter-spacing: 0.08em;
-      text-transform: uppercase; 
-      border-radius: 25px; 
-      text-decoration: none; 
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); 
+      display: inline-block; padding: .7rem 1.6rem; border-radius: 30px; text-decoration: none; color: #fff;
+      background: var(--maroon-foil); border: 1px solid var(--gold);
+      font-family: var(--font-sans); font-weight: 700; font-size: clamp(.72rem, 1vw, .84rem); letter-spacing: .08em; text-transform: uppercase;
+      box-shadow: 0 6px 16px rgba(99,18,27,.3); transition: .3s;
     }
-    .venue-map-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .venue-map-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(99,18,27,.4); }
     .cab-notice {
-      background: rgba(212, 175, 55, 0.12); 
-      border-left: 4px solid var(--gold-primary);
-      padding: 0.9rem 1.2rem; 
-      border-radius: 8px; 
-      font-family: var(--font-sans); 
-      font-size: clamp(0.8rem, 1.1vw, 0.94rem);
-      line-height: 1.6; 
-      text-align: left; 
-      max-width: 650px; 
-      margin: 0 auto; 
-      color: var(--royal-maroon);
+      max-width: 650px; margin: 0 auto; text-align: left; padding: .95rem 1.2rem; border-radius: 10px;
+      background: rgba(201,162,39,.12); border-left: 4px solid var(--gold); color: var(--maroon);
+      font-family: var(--font-sans); font-size: clamp(.8rem, 1.1vw, .93rem); line-height: 1.65;
     }
 
-    /* WISHES WALL */
-    .wishes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    /* wishes */
+    .wishes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem; align-items: start; padding: 10px 4px; }
     .wish-card {
-      background: #fff; border-left: 4px solid var(--gold-primary); border-radius: 8px; padding: 1.2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04); font-family: var(--font-serif); font-size: 1.05rem; color: var(--text-dark);
-      position: relative; word-break: break-word;
+      position: relative; padding: 1.4rem 1.3rem 1.2rem; background: #fff; border-radius: 12px; border-left: 4px solid var(--gold);
+      box-shadow: var(--shadow-soft); font-family: var(--font-serif); font-size: 1.15rem; font-style: italic; word-break: break-word;
     }
-    .wish-author { display: block; margin-top: 0.5rem; font-family: var(--font-royal); font-size: 0.75rem; color: var(--royal-maroon); font-weight: bold; letter-spacing: 0.1em; }
+    .wish-card::before { content: '“'; position: absolute; top: -.1rem; right: .8rem; font-size: 3.4rem; color: rgba(201,162,39,.3); font-family: var(--font-serif); }
+    .wish-author { display: block; margin-top: .6rem; font-family: var(--font-royal); font-style: normal; font-size: .74rem; letter-spacing: .1em; color: var(--maroon); font-weight: 700; }
 
-    /* EVENT MODALS */
+    /* modal */
     .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); backdrop-filter: blur(20px);
-      z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s ease;
+      position: fixed; inset: 0; z-index: 1000; display: flex; justify-content: center; align-items: center; padding: 1rem;
+      background: rgba(30,6,10,.86); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      opacity: 0; visibility: hidden; transition: .4s ease;
     }
     .modal-overlay.active { opacity: 1; visibility: visible; }
     .modal-content {
-      background: #fff; width: 90%; max-width: 780px; max-height: 85vh; border-radius: 20px; padding: 0; position: relative; overflow: hidden;
-      transform: scale(0.95) translateY(30px); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 2px solid var(--gold-primary); text-align: center; color: var(--text-dark); display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+      position: relative; width: 100%; max-width: 760px; max-height: 88vh; display: flex; flex-direction: column; overflow: hidden;
+      background: #fffdf7; border: 2px solid var(--gold); border-radius: 22px; text-align: center;
+      box-shadow: 0 30px 70px rgba(0,0,0,.45);
+      transform: scale(.94) translateY(30px); transition: .5s cubic-bezier(.2,.7,.2,1);
     }
-    .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
-    
-    .modal-content::before, .modal-content::after { content: ''; position: absolute; width: 34px; height: 34px; z-index: 3; pointer-events: none; border-color: var(--gold-primary); border-style: solid; }
-    .modal-content::before { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
-    .modal-content::after { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+    .modal-overlay.active .modal-content { transform: none; }
+    .modal-content::before, .modal-content::after { content: ''; position: absolute; width: 36px; height: 36px; z-index: 3; pointer-events: none; border: 0 solid var(--gold); }
+    .modal-content::before { top: 10px; left: 10px; border-width: 2px 0 0 2px; border-radius: 10px 0 0 0; }
+    .modal-content::after { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; border-radius: 0 0 10px 0; }
+    .close-modal {
+      position: absolute; top: 14px; right: 14px; z-index: 4; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: rgba(255,255,255,.9); color: var(--maroon); font-size: 1.8rem; line-height: 1; cursor: pointer; border: 0;
+      box-shadow: 0 3px 12px rgba(0,0,0,.2); transition: .3s;
+    }
+    .close-modal:hover { transform: rotate(90deg); color: var(--gold-deep); }
+    .modal-hero { position: relative; height: clamp(170px, 30vh, 250px); flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center; background: var(--gold-light); }
+    .modal-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 20px 20px 0 0; }
+    .modal-hero-overlay { position: absolute; inset: 0; border-radius: 20px 20px 0 0; background: linear-gradient(to top, #fffdf7 0%, rgba(255,253,247,.65) 28%, rgba(255,253,247,0) 100%); }
+    .modal-hero-icon { position: relative; z-index: 2; margin-bottom: -26px; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #fff; border: 2px solid var(--gold); font-size: 1.6rem; box-shadow: 0 6px 18px rgba(201,162,39,.4); }
+    .modal-body { padding: 3rem 1.6rem 2rem; overflow-y: auto; }
+    .modal-body h2 { font-family: var(--font-royal); font-size: clamp(1.7rem, 4vw, 2.3rem); margin-bottom: .4rem; color: var(--maroon); }
+    .modal-body .time { font-family: var(--font-sans); font-weight: 700; letter-spacing: .08em; font-size: .9rem; color: var(--maroon); margin-bottom: .8rem; }
+    .modal-desc { font-family: var(--font-serif); font-size: clamp(1.15rem, 2.4vw, 1.45rem); line-height: 1.6; color: var(--text-dark); }
+    .modal-loc { color: var(--gold-deep); letter-spacing: .05em; text-transform: uppercase; font-weight: 700; font-size: .85rem; margin-top: 1.4rem; }
 
-    .close-modal { position: absolute; top: 16px; right: 16px; z-index: 4; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.85); font-size: 1.8rem; color: var(--text-dark); cursor: pointer; transition: 0.3s; line-height: 1; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
-    .close-modal:hover { transform: rotate(90deg); color: var(--gold-primary); }
-
-    .modal-hero { position: relative; height: 240px; flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; background: var(--gold-light);}
-    .modal-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .modal-hero-overlay { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #fff 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.1) 100%); z-index: 1; }
-    .modal-hero-icon { position: relative; z-index: 2; margin-bottom: -25px; width: 55px; height: 55px; border-radius: 50%; background: #fff; border: 2px solid var(--gold-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 6px 18px rgba(212,175,55,0.35); }
-
-    .modal-body { padding: 2.5rem 2rem 2rem; overflow-y: auto; }
-    .modal-content h2 { font-family: var(--font-royal); font-size: 2.3rem; color: var(--gold-primary); margin-bottom: 0.4rem; }
-    .modal-content .time { font-family: var(--font-sans); letter-spacing: 0.2em; font-size: 0.95rem; margin-bottom: 1.2rem; color: var(--text-dark); font-weight: 700; }
-
-    /* FORMS & GALLERY */
-    .form-container { background: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 2.2rem; border-radius: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); margin-bottom: 1.5rem;}
+    /* forms */
+    .form-container {
+      max-width: 720px; margin: 0 auto 1.5rem; padding: clamp(1.4rem, 3vw, 2.2rem);
+      background: linear-gradient(180deg, #fff, #fffaf0); border: 1px solid rgba(201,162,39,.35); border-radius: 18px; box-shadow: var(--shadow-soft);
+    }
     .form-group { margin-bottom: 1.1rem; text-align: left; }
-    .form-group label { display: block; font-family: var(--font-royal); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--gold-primary); margin-bottom: 0.4rem; font-weight: 700; }
-    .form-control { width: 100%; padding: 0.8rem; background: #fff; border: 1px solid rgba(212,175,55,0.4); color: var(--text-dark); border-radius: 5px; font-family: var(--font-sans); transition: 0.3s; font-size: 0.9rem; }
-    .form-control:focus { outline: none; border-color: var(--gold-primary); box-shadow: 0 0 15px rgba(212,175,55,0.2); }
+    .form-group label { display: block; margin-bottom: .4rem; font-family: var(--font-royal); font-weight: 700; font-size: .76rem; letter-spacing: .04em; color: var(--maroon); }
+    .form-control {
+      width: 100%; padding: .8rem .9rem; font-family: var(--font-sans); font-size: .92rem; color: var(--text-dark);
+      background: #fff; border: 1px solid rgba(201,162,39,.45); border-radius: 8px; transition: .3s;
+    }
+    .form-control:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(201,162,39,.18); }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    /* TRAVEL SUB-SECTIONS (ARRIVAL & DEPARTURE) */
-    .travel-sub-card {
-      background: rgba(212, 175, 55, 0.05);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      border-radius: 10px;
-      padding: 1.2rem;
-      margin-bottom: 1.2rem;
-    }
-    .travel-sub-card-title {
-      font-family: var(--font-royal);
-      color: var(--royal-maroon);
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
-      padding-bottom: 0.4rem;
-    }
-    
-    .upload-zone { border: 2px dashed rgba(212,175,55,0.5); padding: 1.8rem; text-align: center; border-radius: 10px; cursor: pointer; transition: 0.3s; background: rgba(212,175,55,0.03); }
-    .upload-zone:hover { border-color: var(--gold-primary); background: rgba(212,175,55,0.08); }
+    .travel-sub-card { padding: 1.2rem; margin-bottom: 1.2rem; background: rgba(201,162,39,.06); border: 1px solid rgba(201,162,39,.28); border-radius: 12px; }
+    .travel-sub-card-title { margin-bottom: .9rem; padding-bottom: .45rem; border-bottom: 1px dashed rgba(201,162,39,.45); font-family: var(--font-royal); font-weight: 700; font-size: .9rem; color: var(--maroon); text-transform: uppercase; }
+    .upload-zone { padding: 1.8rem; text-align: center; cursor: pointer; border: 2px dashed rgba(201,162,39,.55); border-radius: 12px; background: rgba(201,162,39,.04); transition: .3s; }
+    .upload-zone:hover { border-color: var(--gold); background: rgba(201,162,39,.1); }
     .upload-zone input { display: none; }
-    .upload-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
-    .btn { display: inline-block; width: 100%; padding: 0.9rem; background: linear-gradient(45deg, var(--gold-primary), #ffdf73); color: #fff; font-family: var(--font-royal); font-weight: 900; letter-spacing: 0.2em; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; text-transform: uppercase; margin-top: 0.6rem; font-size: 0.95rem;}
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212,175,55,0.4); }
-
-    /* MASONRY LIVE GALLERY */
-    .masonry-grid { column-count: 3; column-gap: 1rem; width: 100%; max-width: 900px; margin: 0 auto; }
-    .masonry-item { margin-bottom: 1rem; break-inside: avoid; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 8px rgba(0,0,0,0.1); position: relative; }
-    .masonry-item img { width: 100%; height: 150px; object-fit: cover; display: block; transition: transform 0.4s ease; }
-    .masonry-item:hover img { transform: scale(1.05); }
-
-    /* FOOTER */
-    footer { 
-      text-align: center; 
-      padding: clamp(2.5rem, 5vw, 3.8rem) 1.5rem; 
-      border-top: 1px solid rgba(212, 175, 55, 0.3); 
-      background: rgba(244, 236, 220, 0.35); 
-      backdrop-filter: blur(6px); 
-      position: relative; 
-      z-index: 2; 
+    .upload-icon { font-size: 2.2rem; margin-bottom: .4rem; }
+    .btn {
+      display: block; width: 100%; margin-top: .8rem; padding: .95rem; cursor: pointer; border: 0; border-radius: 10px;
+      background: var(--maroon-foil); color: var(--gold-light); border: 1px solid var(--gold);
+      font-family: var(--font-royal); font-weight: 800; font-size: .92rem; letter-spacing: .08em; text-transform: uppercase;
+      box-shadow: 0 8px 20px rgba(99,18,27,.3); transition: .3s;
     }
-    .footer-title { 
-      font-family: var(--font-royal); 
-      font-size: clamp(1.1rem, 2vw, 1.35rem); 
-      color: var(--royal-maroon); 
-      margin-bottom: 0.35rem; 
-      font-weight: 700; 
-    }
-    .footer-sub-text { 
-      color: var(--text-dark); 
-      font-size: clamp(0.78rem, 1.1vw, 0.92rem); 
-      line-height: 1.5; 
-    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(99,18,27,.4); }
+    .masonry-grid { column-count: 3; column-gap: 1.1rem; max-width: 900px; margin: 0 auto; padding: 14px 4px; }
+    .masonry-item { margin-bottom: 1.2rem; break-inside: avoid; border-radius: 4px; background: #fff; padding: 7px 7px 16px; box-shadow: 0 6px 16px rgba(60,40,20,.16); }
+    .masonry-item img { display: block; width: 100%; height: auto; min-height: 70px; background: #f3ece0; border-radius: 2px; }
 
-    /* RESPONSIVE LAYOUT & MOBILE SCALING ADJUSTMENTS */
+    /* footer */
+    footer {
+      position: relative; z-index: 2; text-align: center; margin-top: 2rem;
+      padding: clamp(2.4rem, 5vw, 3.4rem) 1.5rem calc(2.2rem + env(safe-area-inset-bottom));
+      background: rgba(244,236,220,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      border-top: 1px solid rgba(201,162,39,.4);
+    }
+    .footer-orn { color: var(--gold-deep); font-size: 1.1rem; letter-spacing: .6em; margin-bottom: .5rem; }
+    .footer-title { font-family: var(--font-script); font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.1; color: var(--maroon); }
+    .footer-sub-text { margin-top: .5rem; color: var(--text-soft); font-size: clamp(.78rem, 1.1vw, .92rem); line-height: 1.6; letter-spacing: .01em; }
+
+    /* ---------- responsive ---------- */
     @media (max-width: 768px) {
-      body {
-        background-size: 100% auto;
-      }
-      section { padding: 2.2rem 1rem; }
-      nav { padding: 0.55rem 0.8rem; justify-content: space-between; }
-      .nav-left { gap: 0.5rem; width: 100%; justify-content: space-between; }
-      .nav-logo { font-size: 1.15rem; }
-      .nav-links { gap: 0.25rem; }
-      .nav-links a { font-size: 0.6rem; padding: 0.3rem 0.5rem; }
-      .lang-tabs-wrap { padding: 0.15rem 0.25rem; }
-      .lang-tab-btn { font-size: 0.62rem; padding: 0.22rem 0.5rem; }
-      .page-view { padding-top: 4.8rem; }
-      
-      /* Keep events 2 columns on mobile */
-      .events-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-
-      /* Strictly 2 columns for contacts on mobile — avoids 1-per-row stacking */
-      .contacts-grid { 
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 0.65rem; 
-      }
-      .contact-card { 
-        flex: none !important;
-        min-width: 0 !important; 
-        padding: 0.8rem 0.4rem; 
-      }
-      /* Center 5th item gracefully */
-      .contact-card:nth-child(5) {
-        grid-column: span 2;
-        max-width: 200px;
-        margin: 0 auto;
-        width: 100%;
-      }
-
-      /* Venue Card horizontal balance */
-      .venue-card { padding: 1.5rem 0.9rem; }
-      .venue-interactive-row {
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 0.8rem;
-      }
-      .venue-qr {
-        width: 120px;
-        height: 120px;
-      }
-
-      .wishes-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+      section { padding: 1.4rem 1rem; }
+      nav { padding: .55rem .8rem; }
+      .nav-left { width: 100%; justify-content: space-between; gap: .5rem; }
+      .nav-logo { font-size: 1.7rem; }
+      .nav-links { gap: .25rem; }
+      .nav-links a { font-size: .6rem; padding: .32rem .6rem; letter-spacing: .08em; }
+      .lang-tabs-wrap { width: 100%; justify-content: center; }
+      .lang-tab-btn { flex: 1; font-size: .68rem; padding: .28rem .4rem; }
+      .page-view { --nav-h: 7.6rem; }
+      .events-grid { gap: .7rem; }
+      .contacts-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: .65rem; }
+      .contact-card { flex: none !important; min-width: 0 !important; padding: .85rem .4rem; }
+      .contact-card:nth-child(5) { grid-column: span 2; max-width: 210px; margin: 0 auto; width: 100%; }
+      .venue-card { padding: 1.5rem .9rem; }
+      .venue-interactive-row { gap: 1rem; }
+      .wishes-grid { grid-template-columns: 1fr; }
       .masonry-grid { column-count: 2; }
-      .masonry-item img { height: 120px; }
-      .form-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+      .form-grid { grid-template-columns: 1fr; gap: .8rem; }
+    }
+    @media (max-width: 380px) { .nav-links a { padding: .3rem .45rem; letter-spacing: .04em; } }
+
+    /* focus, toast, lightbox, small helpers */
+    a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .form-control:focus-visible {
+      outline: 2px solid var(--maroon); outline-offset: 2px;
+    }
+    .hp-field { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .char-count { text-align: right; font-size: .7rem; color: var(--text-soft); margin-top: .25rem; }
+    #toast {
+      position: fixed; left: 50%; bottom: calc(1.4rem + env(safe-area-inset-bottom)); z-index: 2000;
+      transform: translate(-50%, 24px); opacity: 0; pointer-events: none; transition: .35s ease;
+      max-width: min(92vw, 460px); padding: .8rem 1.2rem; border-radius: 12px; text-align: center;
+      background: var(--maroon-deep); color: #fff7e0; font-size: .86rem; line-height: 1.45; font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0,0,0,.28); border: 1px solid rgba(201,162,39,.5);
+    }
+    #toast.show { opacity: 1; transform: translate(-50%, 0); }
+    #toast.err { background: #7a1620; }
+    .wall-head { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 2rem 0 1.2rem; }
+    .wall-head .section-title { margin: 0 !important; }
+    .mini-btn {
+      cursor: pointer; padding: .4rem 1rem; border-radius: 30px; border: 1px solid rgba(201,162,39,.6); background: rgba(255,255,255,.8);
+      color: var(--maroon); font-family: var(--font-sans); font-weight: 700; font-size: .7rem; letter-spacing: .05em; text-transform: uppercase; transition: .3s;
+    }
+    .mini-btn:hover { background: var(--maroon); color: var(--gold-light); }
+    .masonry-item { cursor: zoom-in; }
+    #lightbox {
+      position: fixed; inset: 0; z-index: 1500; display: none; align-items: center; justify-content: center; padding: 1rem;
+      background: rgba(25,6,9,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 100%; max-height: 90vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    #lightbox button { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 50%; border: 0; cursor: pointer; font-size: 1.8rem; line-height: 1; background: rgba(255,255,255,.92); color: var(--maroon); }
+    /* live walls: gentle random floating, new items pop in, one item glows at a time */
+    @keyframes floatY {
+      from { transform: translateY(calc(var(--amp, 8px) * -1)) rotate(var(--rot, 0deg)); }
+      to   { transform: translateY(var(--amp, 8px)) rotate(calc(var(--rot, 0deg) * -1)); }
+    }
+    @keyframes popIn { from { opacity: 0; scale: .88; } to { opacity: 1; scale: 1; } }
+    .masonry-item, .wish-card {
+      animation: floatY var(--dur, 6s) ease-in-out var(--delay, 0s) infinite alternate, popIn .6s ease both;
+      transition: scale .5s ease, box-shadow .5s ease; will-change: transform;
+    }
+    .masonry-item.spot, .wish-card.spot { scale: 1.06; z-index: 3; box-shadow: 0 0 0 2px rgba(184,134,11,.4), 0 16px 34px rgba(184,134,11,.28); }
+    .icon-btn {
+      width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+      border: 1px solid rgba(201,162,39,.6); background: rgba(255,255,255,.85); color: var(--maroon); transition: .3s;
+    }
+    .icon-btn:hover { background: var(--maroon); color: var(--gold-light); }
+    .icon-btn svg { width: 18px; height: 18px; }
+    .icon-btn.spin svg { animation: spinOnce .8s ease; }
+    @keyframes spinOnce { to { transform: rotate(360deg); } }
+    .btn[disabled] { opacity: .65; cursor: progress; transform: none; }
+    .footer-share { margin-top: 1.2rem; }
+    .footer-share .cal-btn { border-color: var(--maroon); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Magic Particles Canvas -->
-  <canvas id="cursor-canvas"></canvas>
+  <canvas id="cursor-canvas" aria-hidden="true"></canvas>
+  <div id="petal-container" aria-hidden="true"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="lightbox" role="dialog" aria-modal="true" onclick="if(event.target===this)closeLightbox()"><button type="button" onclick="closeLightbox()" aria-label="Close">&times;</button><img alt="Wedding memory"></div>
 
-  <!-- Showering Roses -->
-  <div id="petal-container"></div>
-
-  <!-- FUSED NAVIGATION BAR (WITH TABS & INTEGRATED LANGUAGE SWITCHER) -->
   <nav>
     <div class="nav-left">
       <a class="nav-logo" onclick="switchPage('home')">A &amp; N</a>
@@ -780,26 +556,23 @@
         <li><a onclick="switchPage('rsvp')" id="tab-rsvp" data-i18n="nav_rsvp">RSVP</a></li>
       </ul>
     </div>
-
-    <!-- Fused Language Tabs -->
-    <div class="lang-tabs-wrap">
+    <div class="lang-tabs-wrap" role="group" aria-label="Language">
       <button type="button" class="lang-tab-btn active-lang" onclick="setLanguage('en')" id="lang-btn-en">English</button>
       <button type="button" class="lang-tab-btn" onclick="setLanguage('hi')" id="lang-btn-hi">हिन्दी</button>
       <button type="button" class="lang-tab-btn" onclick="setLanguage('kn')" id="lang-btn-kn">ಕನ್ನಡ</button>
     </div>
   </nav>
 
-  <!-- =============================================================== -->
-  <!-- PAGE 1: HOME (Hero + Celebrations + Contacts + Venue)           -->
-  <!-- =============================================================== -->
+  <!-- =============== PAGE: HOME =============== -->
   <div id="page-home" class="page-view active-page">
-    
-    <!-- 1. Hero & Live Timer -->
+
+    <div class="poster-bg">
     <header class="hero">
+      <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+
       <div class="hero-content">
-        
         <div class="divine-blessing">
-          <!-- Radiant Gold Ganesha SVG -->
+          <!-- Ganesha -->
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="45" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="2 4"/>
             <circle cx="50" cy="50" r="38" fill="rgba(212,175,55,0.08)" stroke="#ffd700" stroke-width="1"/>
@@ -821,9 +594,9 @@
             </g>
           </svg>
 
-          <span data-i18n="hero_blessing">ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ</span>
+          <span data-i18n="hero_blessing">श्री गणेशाय नमः</span>
 
-          <!-- Radiant Gold Authentic Jain Swastik SVG -->
+          <!-- Jain Swastik -->
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <path d="M 30,22 Q 50,32 70,22" fill="none" stroke="#ffd700" stroke-width="3.5" stroke-linecap="round"/>
             <circle cx="50" cy="12" r="3.5" fill="#ffd700" stroke="#b8860b" stroke-width="1"/>
@@ -839,179 +612,169 @@
           </svg>
         </div>
 
-        <!-- TRANSPARENT LOGO EMBLEM -->
-        <img class="sticker-couple" src="https://drive.google.com/thumbnail?id=1rRtefG6a7BQ02axwxlnqxio9-aIaUwmL&sz=w800" alt="Ashish & Navya Logo">
+        <div class="jh-wrap" id="jh-wrap">
+        <svg class="jh-line" id="jh-line" aria-hidden="true"></svg>
+        <div class="arch-frame" id="arch-frame">
+          <img class="sticker-couple" src="https://drive.google.com/thumbnail?id=1rRtefG6a7BQ02axwxlnqxio9-aIaUwmL&sz=w800" alt="Ashish & Navya Logo">
 
-        <!-- HOST BLESSING SUBTITLE -->
-        <p class="host-blessing-text" data-i18n="host_blessing">
-          We cordially invite you for the wedding of
-        </p>
+          <p class="host-blessing-text" data-i18n="host_blessing">We cordially invite you to the wedding of</p>
 
-        <!-- COUPLE HERO CONTAINER -->
-        <div class="couple-hero-container" id="couple-hero-container">
-          <!-- Person 1 Block -->
-          <div class="person-block" id="block-person-1">
-            <span class="couple-name" id="hero-first-name">Ashish</span>
-            <span class="parentage-subtitle" id="hero-first-parent" data-i18n="parent_ashish">Grandson of Smt. Sohini Devi &amp; Late Shri Nemichandji Lalwani, Siwana<br>S/O Smt. Rajul &amp; Shri Lalit Lalwani</span>
+          <div class="couple-hero-container" id="couple-hero-container">
+            <div class="person-block" id="block-person-1">
+              <span class="couple-name" id="hero-first-name">Ashish</span>
+              <span class="parentage-subtitle" id="hero-first-parent"></span>
+            </div>
+
+            <div class="weds-separator" id="weds-word" data-i18n="hero_weds">weds</div>
+
+            <div class="person-block" id="block-person-2">
+              <span class="couple-name" id="hero-second-name">Navya</span>
+              <span class="parentage-subtitle" id="hero-second-parent"></span>
+            </div>
           </div>
 
-          <!-- Bold Golden Weds Separator -->
-          <div class="weds-separator" id="weds-word" data-i18n="hero_weds">weds</div>
+          <p class="hero-date" data-i18n="hero_date_venue">December 4, 2026 • Govind Bagh, Jodhpur</p>
 
-          <!-- Person 2 Block -->
-          <div class="person-block" id="block-person-2">
-            <span class="couple-name" id="hero-second-name">Navya</span>
-            <span class="parentage-subtitle" id="hero-second-parent" data-i18n="parent_navya">Granddaughter of Late Smt. Radhabai &amp; Late Shri Raghu Pai, Kagal<br>D/O Smt. Laxmi &amp; Shri Narayan Raghu Pai</span>
+          <div class="timer-container" role="timer" aria-live="off">
+            <div class="timer-box"><div class="timer-number" id="days">00</div><div class="timer-label" data-i18n="timer_days">Days</div></div>
+            <div class="timer-box"><div class="timer-number" id="hours">00</div><div class="timer-label" data-i18n="timer_hours">Hours</div></div>
+            <div class="timer-box"><div class="timer-number" id="minutes">00</div><div class="timer-label" data-i18n="timer_mins">Mins</div></div>
+            <div class="timer-box"><div class="timer-number" id="seconds">00</div><div class="timer-label" data-i18n="timer_secs">Secs</div></div>
           </div>
         </div>
+        </div><!-- /jh-wrap -->
 
-        <p class="hero-date" data-i18n="hero_date_venue">December 4, 2026 &bull; Govind Bagh, Jodhpur</p>
-
-        <div class="timer-container">
-          <div class="timer-box"><div class="timer-number" id="days">00</div><div class="timer-label" data-i18n="timer_days">Days</div></div>
-          <div class="timer-box"><div class="timer-number" id="hours">00</div><div class="timer-label" data-i18n="timer_hours">Hours</div></div>
-          <div class="timer-box"><div class="timer-number" id="minutes">00</div><div class="timer-label" data-i18n="timer_mins">Mins</div></div>
-          <div class="timer-box"><div class="timer-number" id="seconds">00</div><div class="timer-label" data-i18n="timer_secs">Secs</div></div>
-        </div>
+        <div class="scroll-hint" aria-hidden="true">⌄</div>
       </div>
     </header>
 
-    <!-- 2. Celebrations Section -->
-    <section id="celebrations-section">
+    <!-- Celebrations -->
+    <section id="celebrations-section" class="reveal">
       <h2 class="section-title" data-i18n="sec_celebrations">Celebrations</h2>
+      <div class="ornament-divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></div>
       <div class="events-grid">
-        <div class="event-card" onclick="openModal('modal-haldi')">
+        <div class="event-card" onclick="openModal('modal-haldi')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openModal('modal-haldi')">
+          <div class="event-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="30" rx="21" ry="6" fill="#f2b600"/><path d="M9 30 Q9 57 32 57 Q55 57 55 30 Q44 36 32 36 Q20 36 9 30Z" fill="#8a2a35"/><path d="M9 30 Q20 36 32 36 Q44 36 55 30" fill="none" stroke="#c9a227" stroke-width="2"/><g transform="translate(44 15)"><g fill="#f59e0b"><circle cx="0" cy="-7" r="5"/><circle cx="5" cy="-5" r="5"/><circle cx="7" cy="0" r="5"/><circle cx="5" cy="5" r="5"/><circle cx="0" cy="7" r="5"/><circle cx="-5" cy="5" r="5"/><circle cx="-7" cy="0" r="5"/><circle cx="-5" cy="-5" r="5"/></g><circle r="4" fill="#d97706"/></g><g transform="translate(18 16) scale(.7)"><g fill="#fbbf24"><circle cx="0" cy="-7" r="5"/><circle cx="5" cy="-5" r="5"/><circle cx="7" cy="0" r="5"/><circle cx="5" cy="5" r="5"/><circle cx="0" cy="7" r="5"/><circle cx="-5" cy="5" r="5"/><circle cx="-7" cy="0" r="5"/><circle cx="-5" cy="-5" r="5"/></g><circle r="4" fill="#d97706"/></g></svg></div>
           <h3 data-i18n="haldi_title">Haldi</h3>
-          <p data-i18n="haldi_time">Dec 4 &bull; 11:00 AM</p>
+          <p data-i18n="haldi_time">Dec 4 • 11:00 AM</p>
           <div class="card-btn" data-i18n="btn_view_details">View Details</div>
         </div>
-        <div class="event-card" onclick="openModal('modal-pheras')">
-          <h3 data-i18n="pheras_title">Varmala & Pheras</h3>
-          <p data-i18n="pheras_time">Dec 4 &bull; 5:30 PM</p>
+        <div class="event-card" onclick="openModal('modal-pheras')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openModal('modal-pheras')">
+          <div class="event-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 6 C38 17 47 22 45 34 C44 42 38 47 32 47 C26 47 20 42 19 34 C18 25 26 21 28 13 C30 15 31 11 32 6Z" fill="#ef6c1a"/><path d="M32 21 C36 28 40 31 39 36 C38 41 35 43 32 43 C29 43 26 41 25 36 C25 31 29 28 32 21Z" fill="#fbbf24"/><path d="M12 47 H52 L47 58 H17 Z" fill="#8a2a35"/><path d="M12 47 H52" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="30" r="2.5" fill="#c9a227"/><circle cx="52" cy="30" r="2.5" fill="#c9a227"/><circle cx="8" cy="38" r="2" fill="#c9a227"/><circle cx="56" cy="38" r="2" fill="#c9a227"/></svg></div>
+          <h3 data-i18n="pheras_title">Varmala &amp; Pheras</h3>
+          <p data-i18n="pheras_time">Dec 4 • 5:30 PM</p>
           <div class="card-btn" data-i18n="btn_view_details">View Details</div>
         </div>
       </div>
+      <div class="cal-row">
+        <button type="button" class="cal-btn" onclick="downloadCalendar()"><span>📅</span><span data-i18n="btn_calendar">Add to Calendar</span></button>
+      </div>
     </section>
 
-    <!-- 3. Contacts Section -->
-    <section id="contacts-section">
+    <!-- Contacts -->
+    <section id="contacts-section" class="reveal">
       <h2 class="section-title" data-i18n="sec_contacts">Contacts</h2>
-      
+      <div class="ornament-divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></div>
       <div class="contacts-wrapper">
         <div class="contacts-grid">
-          <div class="contact-card">
-            <h3 data-i18n="c_lalit">Lalit Lalwani</h3>
-            <p><a href="tel:9314711399">+91 93147 11399</a></p>
-          </div>
-          <div class="contact-card">
-            <h3 data-i18n="c_ramesh">Ramesh Lalwani</h3>
-            <p><a href="tel:9828412250">+91 98284 12250</a></p>
-          </div>
-          <div class="contact-card">
-            <h3 data-i18n="c_praveen">Praveen Lalwani</h3>
-            <p><a href="tel:9828230407">+91 98282 30407</a></p>
-          </div>
-          <div class="contact-card">
-            <h3 data-i18n="c_shravasth">Shravasth YS</h3>
-            <p><a href="tel:9482429570">+91 94824 29570</a></p>
-          </div>
-          <div class="contact-card">
-            <h3 data-i18n="c_shashank">Shashank C</h3>
-            <p><a href="tel:9448574269">+91 94485 74269</a></p>
-          </div>
+          <div class="contact-card"><h3 data-i18n="c_lalit">Lalit Lalwani</h3><a href="tel:+919314711399">+91 93147 11399</a></div>
+          <div class="contact-card"><h3 data-i18n="c_ramesh">Ramesh Lalwani</h3><a href="tel:+919828412250">+91 98284 12250</a></div>
+          <div class="contact-card"><h3 data-i18n="c_praveen">Praveen Lalwani</h3><a href="tel:+919828230407">+91 98282 30407</a></div>
+          <div class="contact-card"><h3 data-i18n="c_shravasth">Shravasth YS</h3><a href="tel:+919482429570">+91 94824 29570</a></div>
+          <div class="contact-card"><h3 data-i18n="c_shashank">Shashank C</h3><a href="tel:+916360921208">+91 63609 21208</a></div>
         </div>
       </div>
 
       <div class="whatsapp-container">
-        <h3 style="font-family: var(--font-royal); color: var(--royal-maroon); font-size: 1.2rem; margin-bottom: 0.3rem;" data-i18n="wa_title">Join WhatsApp Group</h3>
-        <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.6rem;" data-i18n="wa_subtitle">Scan QR code or click below for 1-touch entry to our guest chat!</p>
+        <h3 style="font-family: var(--font-royal); color: var(--maroon); font-size: 1.2rem; margin-bottom: .3rem;" data-i18n="wa_title">Join our wedding WhatsApp group for updates</h3>
+        <p style="font-family: var(--font-serif); font-weight: 600; font-size: 1.05rem; color: var(--text-soft);" data-i18n="wa_subtitle">Scan QR code or click below for 1-touch entry to our guest chat!</p>
         <a href="https://chat.whatsapp.com/CPmSQMKzq4W3UImCQ4UlwT?mode=gi_t" target="_blank" rel="noopener noreferrer">
           <img class="whatsapp-qr" src="https://drive.google.com/thumbnail?id=1PsDtvtpS8LlzvSiT09_5djpE-gW2IE_n&sz=w600" alt="WhatsApp Group QR Code">
         </a>
         <a href="https://chat.whatsapp.com/CPmSQMKzq4W3UImCQ4UlwT?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-join-btn">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.031 2C6.516 2 2.029 6.486 2.029 12c0 1.83.498 3.546 1.365 5.023L2 22l5.127-1.344c1.428.784 3.064 1.233 4.904 1.233 5.515 0 10.002-4.486 10.002-10s-4.487-10-10.002-10zm5.836 14.195c-.244.686-1.22 1.258-1.996 1.424-.53.113-1.223.204-3.551-.76-2.977-1.232-4.896-4.267-5.044-4.465-.144-.198-1.205-1.604-1.205-3.058 0-1.455.764-2.17 1.036-2.464.272-.294.593-.368.79-.368.198 0 .396.002.569.01.183.01.428-.07.67.51.248.594.842 2.058.916 2.207.074.148.123.321.025.517-.099.197-.148.32-.296.494-.148.173-.312.387-.446.52-.148.148-.303.309-.13.606.173.297.77 1.272 1.65 2.056 1.134 1.01 2.09 1.323 2.387 1.472.297.148.47.123.643-.075.173-.198.742-.866.94-1.163.197-.297.395-.247.667-.148.272.099 1.73.816 2.027.964.297.148.495.223.569.347.074.124.074.717-.17 1.403z"/>
-          </svg>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.031 2C6.516 2 2.029 6.486 2.029 12c0 1.83.498 3.546 1.365 5.023L2 22l5.127-1.344c1.428.784 3.064 1.233 4.904 1.233 5.515 0 10.002-4.486 10.002-10s-4.487-10-10.002-10zm5.836 14.195c-.244.686-1.22 1.258-1.996 1.424-.53.113-1.223.204-3.551-.76-2.977-1.232-4.896-4.267-5.044-4.465-.144-.198-1.205-1.604-1.205-3.058 0-1.455.764-2.17 1.036-2.464.272-.294.593-.368.79-.368.198 0 .396.002.569.01.183.01.428-.07.67.51.248.594.842 2.058.916 2.207.074.148.123.321.025.517-.099.197-.148.32-.296.494-.148.173-.312.387-.446.52-.148.148-.303.309-.13.606.173.297.77 1.272 1.65 2.056 1.134 1.01 2.09 1.323 2.387 1.472.297.148.47.123.643-.075.173-.198.742-.866.94-1.163.197-.297.395-.247.667-.148.272.099 1.73.816 2.027.964.297.148.495.223.569.347.074.124.074.717-.17 1.403z"/></svg>
           <span data-i18n="wa_btn_text">Tap Here to Join WhatsApp Group</span>
         </a>
       </div>
     </section>
 
-    <!-- 4. The Venue Section -->
-    <section id="venue-section">
+    </div><!-- /poster-bg -->
+
+    <!-- Venue -->
+    <section id="venue-section" class="reveal">
       <h2 class="section-title" data-i18n="sec_venue">The Venue</h2>
-      <div class="venue-card" style="max-width: 820px; margin: 0 auto;">
+      <div class="ornament-divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></div>
+      <div class="venue-card">
         <h3 data-i18n="venue_name">Govind Bagh, Jodhpur</h3>
         <p class="venue-desc-text" data-i18n="venue_desc">Govind Bagh is an exquisite royal estate nestled in the historic blue city of Jodhpur, offering sprawling lush lawns, traditional Rajasthani architecture, and majestic sunset views.</p>
-        
         <div class="venue-interactive-row">
           <img class="venue-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fmaps.app.goo.gl%2Fqbi57Eg6CKyMqsgh9" alt="Govind Bagh Location QR Code">
           <div class="venue-action-col">
-            <p style="font-family: var(--font-sans); font-size: clamp(0.75rem, 1vw, 0.85rem); font-weight: 700; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.3rem;" data-i18n="venue_scan_qr">Scan to Open Location in Maps</p>
+            <p class="venue-scan" data-i18n="venue_scan_qr">Scan to Open Location in Maps</p>
             <a class="venue-map-btn" href="https://maps.app.goo.gl/qbi57Eg6CKyMqsgh9" target="_blank" rel="noopener noreferrer" data-i18n="venue_map_btn">📍 Open in Google Maps</a>
           </div>
         </div>
-
         <div class="cab-notice" data-i18n="venue_cab_notice">
           <strong>🚗 Note:</strong><br>
           Dedicated cab services are being arranged for all guests traveling to the venue. Please complete your RSVP with your arrival details so we can seamlessly coordinate your pickup and travel to Govind Bagh.
         </div>
       </div>
     </section>
-
   </div>
 
-  <!-- =============================================================== -->
-  <!-- PAGE 2: MEMORIES                                                -->
-  <!-- =============================================================== -->
-  <div id="page-memories" class="page-view">
+  <!-- =============== PAGE: MEMORIES =============== -->
+  <div id="page-memories" class="page-view poster-page">
     <section>
       <h2 class="section-title" data-i18n="sec_memories">Share Your Memories</h2>
-      <div class="form-container" style="max-width: 800px; margin: 0 auto;">
-        <p style="text-align: center; margin-bottom: 1.5rem; font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-dark);" data-i18n="mem_intro">Help us capture the magic! Upload the photos you take directly to our live gallery.</p>
+      <div class="ornament-divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></div>
+      <div class="form-container" style="max-width: 800px;">
+        <p style="text-align: center; margin-bottom: 1.5rem; font-family: var(--font-serif); font-weight: 600; font-size: 1.15rem;" data-i18n="mem_intro">Help us capture the magic! Upload the photos you take directly to our live gallery.</p>
         <form id="uploadForm" onsubmit="handleUpload(event)">
           <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
             <div class="upload-icon">📸</div>
-            <h3 style="color: var(--gold-primary); margin-bottom: 0.4rem; font-family: var(--font-royal);" data-i18n="mem_click_upload">Click to Select Files</h3>
-            <p style="font-size: 0.75rem; color: #aaa;" data-i18n="mem_accepted">Images accepted</p>
-            <input type="file" id="fileInput" accept="image/*" onchange="updateFileName(this)">
+            <h3 style="color: var(--maroon); margin-bottom: .4rem; font-family: var(--font-royal);" data-i18n="mem_click_upload">Click to Select Files</h3>
+            <p style="font-size: .75rem; color: #8a7a70;" data-i18n="mem_accepted">Images accepted</p>
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple onchange="updateFileName(this)">
           </div>
-          <p id="fileNameDisplay" style="text-align: center; margin-top: 0.8rem; color: var(--gold-primary);"></p>
+          <p id="fileNameDisplay" style="text-align: center; margin-top: .8rem; color: var(--gold-deep); font-weight: 600;"></p>
           <button type="submit" class="btn" data-i18n="btn_upload">Upload to Gallery</button>
         </form>
       </div>
-      <h3 style="font-family: var(--font-royal); color: var(--gold-primary); text-align: center; margin: 2rem 0 1.2rem; font-size: 1.8rem;" data-i18n="mem_wall_title">Live Memory Wall</h3>
+      <div class="wall-head"><h3 class="section-title" style="font-size: 1.6rem;" data-i18n="mem_wall_title">Live Memory Wall</h3><button type="button" class="icon-btn" onclick="spinBtn(this); loadGallery(true)" data-i18n-aria="btn_refresh" aria-label="Refresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></button></div>
       <div class="masonry-grid" id="memory-wall"></div>
     </section>
   </div>
 
-  <!-- =============================================================== -->
-  <!-- PAGE 3: WISHES                                                  -->
-  <!-- =============================================================== -->
-  <div id="page-wishes" class="page-view">
+  <!-- =============== PAGE: WISHES =============== -->
+  <div id="page-wishes" class="page-view poster-page">
     <section>
       <h2 class="section-title" data-i18n="sec_wishes">Wishes &amp; Blessings</h2>
-      <div class="wishes-grid" id="wishes-container">
-        <p style="text-align: center; grid-column: 1 / -1; color: var(--gold-primary); font-family: var(--font-serif);" data-i18n="wishes_loading">Loading wishes from guests...</p>
+      <div class="ornament-divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></div>
+      <div class="cal-row" style="margin: -.4rem 0 1.6rem;">
+        <button type="button" class="cal-btn" onclick="openWishModal()"><span>✍️</span><span data-i18n="wishes_cta">Leave your wish</span></button>
+        <button type="button" class="icon-btn" style="margin-left:.6rem; vertical-align: middle;" onclick="spinBtn(this); loadWishes(true)" data-i18n-aria="btn_refresh" aria-label="Refresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></button>
+      </div>
+      <div class="wishes-grid" id="wishes-container" aria-live="polite">
+        <p class="wall-msg" style="text-align: center; grid-column: 1 / -1; color: var(--gold-deep); font-family: var(--font-serif); font-size: 1.1rem;" data-i18n="wishes_loading">Loading wishes from guests...</p>
       </div>
     </section>
   </div>
 
-  <!-- =============================================================== -->
-  <!-- PAGE 4: RSVP (WITH ARRIVAL & DEPARTURE SECTIONS)                -->
-  <!-- =============================================================== -->
-  <div id="page-rsvp" class="page-view">
+  <!-- =============== PAGE: RSVP =============== -->
+  <div id="page-rsvp" class="page-view poster-page">
     <section>
       <h2 class="section-title" data-i18n="sec_rsvp">RSVP</h2>
-      <div class="form-container" style="max-width: 720px; margin: 0 auto;">
-        <form id="rsvpForm" onsubmit="handleRSVP(event)">
+      <div class="ornament-divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></div>
+      <div class="form-container">
+        <form id="rsvpForm" onsubmit="handleRSVP(event)" novalidate>
+          <input type="text" name="website" id="hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-group">
-            <label data-i18n="lbl_name">Guest / Family Name(s)</label>
-            <input type="text" id="name" class="form-control" required placeholder="e.g. Mr. & Mrs. Sharma">
+            <label for="name" data-i18n="lbl_name">Guest / Family Name(s)</label>
+            <input type="text" id="name" class="form-control" required maxlength="100" autocomplete="name" placeholder="e.g. Mr. & Mrs. Sharma">
           </div>
-          
+
           <div class="form-group">
-            <label data-i18n="lbl_status">Attending Status</label>
+            <label for="status" data-i18n="lbl_status">Attending Status</label>
             <select id="status" class="form-control" onchange="toggleJoyfulFields(this)" required>
               <option value="" data-i18n="opt_select">Select Option</option>
               <option value="attending" data-i18n="opt_accept">Joyfully Accept</option>
@@ -1022,21 +785,20 @@
           <div id="joyfulSection" style="display: none;">
             <div class="form-grid">
               <div class="form-group">
-                <label data-i18n="lbl_phone">Phone Number</label>
-                <input type="tel" id="phone" class="form-control" placeholder="+91 XXXXX XXXXX">
+                <label for="phone" data-i18n="lbl_phone">Phone Number</label>
+                <input type="tel" id="phone" class="form-control" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+91 XXXXX XXXXX">
               </div>
               <div class="form-group">
-                <label data-i18n="lbl_guests">Number of Guests (including yourself)</label>
+                <label for="guests" data-i18n="lbl_guests">Number of Guests (including yourself)</label>
                 <input type="number" id="guests" class="form-control" min="1" max="10" placeholder="1">
               </div>
             </div>
 
-            <!-- 1. ARRIVAL SECTION -->
             <div class="travel-sub-card">
               <div class="travel-sub-card-title" data-i18n="travel_arrival_title">✈️ Arrival Details</div>
               <div class="form-grid">
                 <div class="form-group">
-                  <label data-i18n="lbl_travel_arr">Mode of Arrival</label>
+                  <label for="travel-arrival" data-i18n="lbl_travel_arr">Mode of Arrival</label>
                   <select id="travel-arrival" class="form-control" onchange="handleTransitNumberDisplay('arrival')">
                     <option value="" data-i18n="opt_sel_travel">Select Mode</option>
                     <option value="flight" data-i18n="opt_flight">Flight (Jodhpur Airport)</option>
@@ -1045,26 +807,22 @@
                     <option value="na" data-i18n="opt_na">Not Applicable</option>
                   </select>
                 </div>
-                
-                <!-- Dynamic Arrival Flight / Train Number -->
                 <div class="form-group" id="group-arrival-transit" style="display: none;">
-                  <label id="lbl-arrival-transit" data-i18n="lbl_transit_number">Flight / Train Number</label>
+                  <label for="arrival-transit-number" id="lbl-arrival-transit" data-i18n="lbl_transit_number">Flight / Train Number</label>
                   <input type="text" id="arrival-transit-number" class="form-control" placeholder="e.g. 6E-204 / 12461">
                 </div>
-
                 <div class="form-group">
-                  <label data-i18n="lbl_arrival">Arrival Date &amp; Time</label>
+                  <label for="arrival" data-i18n="lbl_arrival">Arrival Date &amp; Time</label>
                   <input type="datetime-local" id="arrival" class="form-control">
                 </div>
               </div>
             </div>
 
-            <!-- 2. DEPARTURE SECTION -->
             <div class="travel-sub-card">
               <div class="travel-sub-card-title" data-i18n="travel_departure_title">🚗 Departure Details</div>
               <div class="form-grid">
                 <div class="form-group">
-                  <label data-i18n="lbl_travel_dep">Mode of Departure</label>
+                  <label for="travel-departure" data-i18n="lbl_travel_dep">Mode of Departure</label>
                   <select id="travel-departure" class="form-control" onchange="handleTransitNumberDisplay('departure')">
                     <option value="" data-i18n="opt_sel_travel">Select Mode</option>
                     <option value="flight" data-i18n="opt_flight">Flight (Jodhpur Airport)</option>
@@ -1073,15 +831,12 @@
                     <option value="na" data-i18n="opt_na">Not Applicable</option>
                   </select>
                 </div>
-                
-                <!-- Dynamic Departure Flight / Train Number -->
                 <div class="form-group" id="group-departure-transit" style="display: none;">
-                  <label id="lbl-departure-transit" data-i18n="lbl_transit_number">Flight / Train Number</label>
+                  <label for="departure-transit-number" id="lbl-departure-transit" data-i18n="lbl_transit_number">Flight / Train Number</label>
                   <input type="text" id="departure-transit-number" class="form-control" placeholder="e.g. AI-482 / 12462">
                 </div>
-
                 <div class="form-group">
-                  <label data-i18n="lbl_departure">Departure Date &amp; Time</label>
+                  <label for="departure" data-i18n="lbl_departure">Departure Date &amp; Time</label>
                   <input type="datetime-local" id="departure" class="form-control">
                 </div>
               </div>
@@ -1089,8 +844,9 @@
           </div>
 
           <div class="form-group">
-            <label data-i18n="lbl_wishes">Wishes &amp; Messages for the Couple</label>
-            <textarea id="wishes" class="form-control" rows="3" placeholder="Leave a sweet message or blessing for Ashish & Navya..."></textarea>
+            <label for="wishes" data-i18n="lbl_wishes">Wishes &amp; Messages for the Couple</label>
+            <textarea id="wishes" class="form-control" rows="3" maxlength="500" placeholder="Leave a sweet message or blessing for Ashish & Navya..." oninput="updateCount()"></textarea>
+            <div class="char-count" id="wishCount">0 / 500</div>
           </div>
 
           <button type="submit" class="btn" data-i18n="btn_confirm_rsvp">Confirm RSVP</button>
@@ -1099,59 +855,86 @@
     </section>
   </div>
 
-  <!-- FOOTER -->
   <footer>
+    <div class="footer-orn" aria-hidden="true">✦ ✦ ✦</div>
     <div class="footer-title" id="footer-couple-name" data-i18n="footer_couple">Ashish &amp; Navya</div>
     <p class="footer-sub-text" id="footer-sub-note" data-i18n="footer_sub">#NavAshish • December 4, 2026 • Govind Bagh, Jodhpur</p>
+    <div class="footer-share"><button type="button" class="cal-btn" onclick="shareInvite()"><span>🔗</span><span data-i18n="share_btn">Share this invitation</span></button></div>
   </footer>
 
-  <!-- MODALS -->
-  <div class="modal-overlay" id="modal-haldi">
-    <div class="modal-content">
-      <div class="close-modal" onclick="closeModal('modal-haldi')">&times;</div>
-      <div class="modal-hero">
-        <img class="modal-bg-img" src="https://drive.google.com/thumbnail?id=1A1Zd-M8ABnUfQe71uUwZleu5ksuxKZxM&sz=w1000" alt="Haldi Celebration Image">
-        <div class="modal-hero-overlay"></div>
-        <div class="modal-hero-icon">🌻</div>
-      </div>
-      <div class="modal-body">
-        <h2 data-i18n="modal_haldi_title">Haldi</h2>
-        <p class="time" data-i18n="modal_haldi_time">DECEMBER 4 • 11:00 AM</p>
-        <p style="font-family: var(--font-serif); font-size: 1.4rem;" data-i18n="modal_haldi_desc">Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.</p>
-        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.5rem;" data-i18n="modal_haldi_loc">Govind Bagh Gardens</p>
+  <!-- Modals -->
+  <div class="modal-overlay" id="modal-wish" onclick="if(event.target===this)closeModal('modal-wish')">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="wish-modal-title" style="max-width: 520px;">
+      <button class="close-modal" onclick="closeModal('modal-wish')" aria-label="Close">&times;</button>
+      <div class="modal-body" style="text-align: left; padding-top: 2.6rem;">
+        <h2 id="wish-modal-title" data-i18n="wish_modal_title" style="text-align: center; margin-bottom: 1.2rem;">Add your wish</h2>
+        <form id="wishForm" onsubmit="handleWish(event)" novalidate>
+          <input type="text" id="wf-hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="form-group">
+            <label for="wf-name" data-i18n="lbl_wish_name">Your name (optional)</label>
+            <input type="text" id="wf-name" class="form-control" maxlength="60" autocomplete="name" data-i18n-ph="ph_wish_name" placeholder="e.g. The Sharma Family">
+          </div>
+          <div class="form-group">
+            <label for="wf-msg" data-i18n="lbl_wish_msg">Your wish or blessing</label>
+            <textarea id="wf-msg" class="form-control" rows="4" maxlength="500" data-i18n-ph="ph_wish_msg" placeholder="Leave a sweet message for Ashish &amp; Navya..." oninput="document.getElementById('wfCount').textContent = this.value.length + ' / 500'"></textarea>
+            <div class="char-count" id="wfCount">0 / 500</div>
+          </div>
+          <button type="submit" class="btn" data-i18n="btn_send_wish">Send wish</button>
+        </form>
       </div>
     </div>
   </div>
 
-  <div class="modal-overlay" id="modal-pheras">
-    <div class="modal-content">
-      <div class="close-modal" onclick="closeModal('modal-pheras')">&times;</div>
+  <div class="modal-overlay" id="modal-haldi" onclick="if(event.target===this)closeModal('modal-haldi')">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <button class="close-modal" onclick="closeModal('modal-haldi')" aria-label="Close">&times;</button>
+      <div class="modal-hero">
+        <img class="modal-bg-img" src="https://drive.google.com/thumbnail?id=1A1Zd-M8ABnUfQe71uUwZleu5ksuxKZxM&sz=w1000" alt="Haldi Celebration Image">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="30" rx="21" ry="6" fill="#f2b600"/><path d="M9 30 Q9 57 32 57 Q55 57 55 30 Q44 36 32 36 Q20 36 9 30Z" fill="#8a2a35"/><path d="M9 30 Q20 36 32 36 Q44 36 55 30" fill="none" stroke="#c9a227" stroke-width="2"/><g transform="translate(44 15)"><g fill="#f59e0b"><circle cx="0" cy="-7" r="5"/><circle cx="5" cy="-5" r="5"/><circle cx="7" cy="0" r="5"/><circle cx="5" cy="5" r="5"/><circle cx="0" cy="7" r="5"/><circle cx="-5" cy="5" r="5"/><circle cx="-7" cy="0" r="5"/><circle cx="-5" cy="-5" r="5"/></g><circle r="4" fill="#d97706"/></g><g transform="translate(18 16) scale(.7)"><g fill="#fbbf24"><circle cx="0" cy="-7" r="5"/><circle cx="5" cy="-5" r="5"/><circle cx="7" cy="0" r="5"/><circle cx="5" cy="5" r="5"/><circle cx="0" cy="7" r="5"/><circle cx="-5" cy="5" r="5"/><circle cx="-7" cy="0" r="5"/><circle cx="-5" cy="-5" r="5"/></g><circle r="4" fill="#d97706"/></g></svg></div>
+      </div>
+      <div class="modal-body">
+        <h2 data-i18n="modal_haldi_title">Haldi</h2>
+        <p class="time" data-i18n="modal_haldi_time">DECEMBER 4 • 11:00 AM</p>
+        <p class="modal-desc" data-i18n="modal_haldi_desc">Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.</p>
+        <p class="modal-loc" data-i18n="modal_haldi_loc">Govind Bagh Gardens</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-pheras" onclick="if(event.target===this)closeModal('modal-pheras')">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <button class="close-modal" onclick="closeModal('modal-pheras')" aria-label="Close">&times;</button>
       <div class="modal-hero">
         <img class="modal-bg-img" src="https://drive.google.com/thumbnail?id=1v5uJLfQUbfDXJMXKzUgdOiNhKah6VknQ&sz=w1000" alt="Pheras Fire Image">
         <div class="modal-hero-overlay"></div>
-        <div class="modal-hero-icon">🔥</div>
+        <div class="modal-hero-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 6 C38 17 47 22 45 34 C44 42 38 47 32 47 C26 47 20 42 19 34 C18 25 26 21 28 13 C30 15 31 11 32 6Z" fill="#ef6c1a"/><path d="M32 21 C36 28 40 31 39 36 C38 41 35 43 32 43 C29 43 26 41 25 36 C25 31 29 28 32 21Z" fill="#fbbf24"/><path d="M12 47 H52 L47 58 H17 Z" fill="#8a2a35"/><path d="M12 47 H52" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="30" r="2.5" fill="#c9a227"/><circle cx="52" cy="30" r="2.5" fill="#c9a227"/><circle cx="8" cy="38" r="2" fill="#c9a227"/><circle cx="56" cy="38" r="2" fill="#c9a227"/></svg></div>
       </div>
       <div class="modal-body">
-        <h2 data-i18n="modal_pheras_title">Varmala & Pheras</h2>
+        <h2 data-i18n="modal_pheras_title">Varmala &amp; Pheras</h2>
         <p class="time" data-i18n="modal_pheras_time">DECEMBER 4 • 5:30 PM</p>
-        <p style="font-family: var(--font-serif); font-size: 1.4rem;" data-i18n="modal_pheras_desc">Witness the sacred union of Ashish and Navya as they take their seven vows around the holy fire as the sun sets.</p>
-        <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.5rem;" data-i18n="modal_pheras_loc">Govind Bagh Mandap</p>
+        <p class="modal-desc" data-i18n="modal_pheras_desc">Witness the sacred union of Ashish and Navya as they take their seven vows around the holy fire as the sun sets.</p>
+        <p class="modal-loc" data-i18n="modal_pheras_loc">Govind Bagh Mandap</p>
       </div>
     </div>
   </div>
 
   <script>
     // ===============================================================
-    // SCRIPT ENDPOINTS - APPS SCRIPT WEB APP URLs BOUND
+    // SCRIPT ENDPOINTS
     // ===============================================================
     const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxu5L2SY1Ixx2zHtZcuwqHJB0tp-zIBXS_pTqJujz4avXzw-1bdTLhlDS8zVDg3ltO7gQ/exec';
     const UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHQaeOTNoHLylhoXbEBtKfrSBEenHhtr2onIXmZKTISsyOWLdJrkIv2pO7JCP-3JxO_w/exec';
 
-    // =========================================
     // SECTION DISPLAY FLAGS (1 = Show, 0 = Hide)
-    // =========================================
-    const SHOW_MEMORIES = 0;
-    const SHOW_WISHES = 0;
+    const SHOW_MEMORIES = 1;
+    const SHOW_WISHES = 1;
+
+    const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
 
     // =========================================
     // MULTILINGUAL DICTIONARY
@@ -1160,254 +943,182 @@
 
     const translations = {
       en: {
-        nav_home: "Home",
-        nav_memories: "Memories",
-        nav_wishes: "Wishes",
-        nav_rsvp: "RSVP",
+        nav_home: "Home", nav_memories: "Memories", nav_wishes: "Wishes", nav_rsvp: "RSVP",
         hero_blessing: "श्री गणेशाय नमः",
-        host_blessing: "We cordially invite you for the wedding of",
-        hero_first_name: "Ashish",
-        hero_weds: "weds",
-        hero_second_name: "Navya",
-        parent_ashish: "Grandson of Smt. Sohini Devi &amp; Late Shri Nemichandji Lalwani, Siwana<br>S/O Smt. Rajul &amp; Shri Lalit Lalwani",
-        parent_navya: "Granddaughter of Late Smt. Radhabai &amp; Late Shri Raghu Pai, Kagal<br>D/O Smt. Laxmi &amp; Shri Narayan Raghu Pai",
+        host_blessing: "We cordially invite you to the wedding of",
+        hero_first_name: "Ashish", hero_weds: "weds", hero_second_name: "Navya",
+        parent_ashish: "Grandson of Smt. Sohini Devi &amp; Late Shri Nemichandji Lalwani (Siwana)<br>Son of Smt. Rajul &amp; Shri Lalit Lalwani",
+        parent_navya: "Granddaughter of Late Smt. Radhabai &amp; Late Shri Raghu Pai (Kagal)<br>Daughter of Smt. Laxmi &amp; Shri Narayan Raghu Pai",
         hero_date_venue: "December 4, 2026 • Govind Bagh, Jodhpur",
-        timer_days: "Days",
-        timer_hours: "Hours",
-        timer_mins: "Mins",
-        timer_secs: "Secs",
+        timer_days: "Days", timer_hours: "Hours", timer_mins: "Mins", timer_secs: "Secs",
         sec_celebrations: "Celebrations",
-        haldi_title: "Haldi",
-        haldi_time: "Dec 4 • 11:00 AM",
-        btn_view_details: "View Details",
-        pheras_title: "Varmala & Pheras",
-        pheras_time: "Dec 4 • 5:30 PM",
-        sec_venue: "The Venue",
-        venue_name: "Govind Bagh, Jodhpur",
+        haldi_title: "Haldi", haldi_time: "Dec 4 • 11:00 AM", btn_view_details: "View Details",
+        pheras_title: "Varmala & Pheras", pheras_time: "Dec 4 • 5:30 PM",
+        btn_calendar: "Add to Calendar",
+        sec_venue: "The Venue", venue_name: "Govind Bagh, Jodhpur",
         venue_desc: "Govind Bagh is an exquisite royal estate nestled in the historic blue city of Jodhpur, offering sprawling lush lawns, traditional Rajasthani architecture, and majestic sunset views.",
         venue_scan_qr: "Scan to Open Location in Maps",
         venue_map_btn: "📍 Open in Google Maps",
         venue_cab_notice: "<strong>🚗 Note:</strong><br>Dedicated cab services are being arranged for all guests traveling to the venue. Please complete your RSVP with your arrival details so we can seamlessly coordinate your pickup and travel to Govind Bagh.",
         sec_contacts: "Contacts",
-        c_lalit: "Lalit Lalwani",
-        c_ramesh: "Ramesh Lalwani",
-        c_praveen: "Praveen Lalwani",
-        c_shashank: "Shashank C",
-        c_shravasth: "Shravasth YS",
-        wa_title: "Join WhatsApp Group",
+        c_lalit: "Lalit Lalwani", c_ramesh: "Ramesh Lalwani", c_praveen: "Praveen Lalwani", c_shashank: "Shashank C", c_shravasth: "Shravasth YS",
+        wa_title: "Join our wedding WhatsApp group for updates",
         wa_subtitle: "Scan QR code or click below for 1-touch entry to our guest chat!",
         wa_btn_text: "Tap Here to Join WhatsApp Group",
+        msg_upload_ok: "Thank you! Your photos were uploaded.", msg_upload_fail: "Upload failed. Please try again.", msg_pick_file: "Please select at least one photo first.",
+        msg_file_type: "Only photos (JPG, PNG, WebP, HEIC) are accepted.", msg_file_big: "That photo is too large (max 15 MB).", msg_too_many: "Please select up to 5 photos at a time.",
+        msg_uploading: "Uploading", msg_loading_mem: "Loading memories...", msg_no_mem: "No memories uploaded yet. Be the first!", msg_mem_wait: "Waiting for the first uploads...",
+        msg_no_wishes: "No wishes posted yet. Be the first — add yours in the RSVP form!", msg_wishes_fail: "Be the first to leave a wish using the RSVP form!",
+        msg_rsvp_fail: "Could not send your RSVP. Please check your connection and try again.", msg_wait: "You have just responded. Please wait a few seconds before sending again.",
+        msg_dates: "Departure must be after your arrival.", msg_phone: "Please enter a valid phone number.", msg_name: "Please enter your name.", msg_status: "Please choose your attending status.",
+        wishes_cta: "Add a wish", wish_modal_title: "Add your wish", lbl_wish_name: "Your name (optional)", lbl_wish_msg: "Your wish or blessing", btn_send_wish: "Send wish", ph_wish_name: "e.g. The Sharma Family", ph_wish_msg: "Leave a sweet message for Ashish & Navya...", msg_wish_ok: "Thank you! Your wish has been added.", msg_wish_empty: "Please write your wish first.", msg_wish_fail: "Could not send your wish. Please try again.", btn_refresh: "Refresh", share_btn: "Share this invitation", msg_copied: "Invitation link copied!",
+        share_text: "You are invited to the wedding of Ashish & Navya — 4 December 2026, Govind Bagh, Jodhpur.",
         sec_memories: "Share Your Memories",
         mem_intro: "Help us capture the magic! Upload the photos you take directly to our live gallery.",
-        mem_click_upload: "Click to Select Files",
-        mem_accepted: "Images accepted",
-        btn_upload: "Upload to Gallery",
-        mem_wall_title: "Live Memory Wall",
-        sec_wishes: "Wishes & Blessings",
-        wishes_loading: "Loading wishes from guests...",
+        mem_click_upload: "Click to Select Files", mem_accepted: "Images accepted",
+        btn_upload: "Upload to Gallery", mem_wall_title: "Live Memory Wall",
+        sec_wishes: "Wishes & Blessings", wishes_loading: "Loading wishes from guests...",
         sec_rsvp: "RSVP",
-        lbl_name: "Guest / Family Name(s)",
-        placeholder_name: "e.g. Mr. & Mrs. Sharma",
-        lbl_status: "Attending Status",
-        opt_select: "Select Option",
-        opt_accept: "Joyfully Accept",
-        opt_decline: "Regretfully Decline",
-        lbl_phone: "Phone Number",
-        placeholder_phone: "+91 XXXXX XXXXX",
+        lbl_name: "Guest / Family Name(s)", placeholder_name: "e.g. Mr. & Mrs. Sharma",
+        lbl_status: "Attending Status", opt_select: "Select Option",
+        opt_accept: "Joyfully Accept", opt_decline: "Regretfully Decline",
+        lbl_phone: "Phone Number", placeholder_phone: "+91 XXXXX XXXXX",
         lbl_guests: "Number of Guests (including yourself)",
-        travel_arrival_title: "✈️ Arrival Details",
-        lbl_travel_arr: "Mode of Arrival",
-        lbl_arrival: "Arrival Date & Time",
-        travel_departure_title: "🚗 Departure Details",
-        lbl_travel_dep: "Mode of Departure",
-        lbl_departure: "Departure Date & Time",
-        lbl_transit_number: "Flight / Train Number",
-        lbl_flight_no: "Flight Number",
-        lbl_train_no: "Train Number",
-        opt_sel_travel: "Select Mode",
-        opt_flight: "Flight (Jodhpur Airport)",
-        opt_train: "Train (Jodhpur Junction)",
-        opt_car: "Driving / Road",
-        opt_na: "Not Applicable",
+        travel_arrival_title: "✈️ Arrival Details", lbl_travel_arr: "Mode of Arrival", lbl_arrival: "Arrival Date & Time",
+        travel_departure_title: "🚗 Departure Details", lbl_travel_dep: "Mode of Departure", lbl_departure: "Departure Date & Time",
+        lbl_transit_number: "Flight / Train Number", lbl_flight_no: "Flight Number", lbl_train_no: "Train Number",
+        opt_sel_travel: "Select Mode", opt_flight: "Flight (Jodhpur Airport)", opt_train: "Train (Jodhpur Junction)",
+        opt_car: "Driving / Road", opt_na: "Not Applicable",
         lbl_wishes: "Wishes & Messages for the Couple",
         placeholder_wishes: "Leave a sweet message or blessing for Ashish & Navya...",
         btn_confirm_rsvp: "Confirm RSVP",
+        msg_sending: "Sending...", msg_rsvp_ok: "RSVP Confirmed! Thank you for responding.",
         footer_couple: "Ashish & Navya",
         footer_sub: "#NavAshish • December 4, 2026 • Govind Bagh, Jodhpur",
-        modal_haldi_title: "Haldi",
-        modal_haldi_time: "DECEMBER 4 • 11:00 AM",
+        modal_haldi_title: "Haldi", modal_haldi_time: "DECEMBER 4 • 11:00 AM",
         modal_haldi_desc: "Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.",
         modal_haldi_loc: "Govind Bagh Gardens",
-        modal_pheras_title: "Varmala & Pheras",
-        modal_pheras_time: "DECEMBER 4 • 5:30 PM",
+        modal_pheras_title: "Varmala & Pheras", modal_pheras_time: "DECEMBER 4 • 5:30 PM",
         modal_pheras_desc: "Witness the sacred union of Ashish and Navya as they take their seven vows around the holy fire as the sun sets.",
         modal_pheras_loc: "Govind Bagh Mandap"
       },
       hi: {
-        nav_home: "होम",
-        nav_memories: "यादें",
-        nav_wishes: "शुभकामनाएं",
-        nav_rsvp: "आरएसवीपी (RSVP)",
+        nav_home: "होम", nav_memories: "यादें", nav_wishes: "शुभकामनाएं", nav_rsvp: "आरएसवीपी (RSVP)",
         hero_blessing: "श्री गणेशाय नमः",
         host_blessing: "हम आपको सपरिवार विवाह समारोह में सप्रेम आमंत्रित करते हैं",
-        hero_first_name: "आशीष",
-        hero_weds: "संग",
-        hero_second_name: "नव्या",
-        parent_ashish: "श्रीमती सोहिनी देवी एवं स्वर्गीय श्री नेमीचंद जी ललवानी (सिवाना) के पौत्र<br>सुपुत्र: श्रीमती राजुल एवं श्री ललित ललवानी",
-        parent_navya: "स्वर्गीय श्रीमती राधाबाई एवं स्वर्गीय श्री रघु पाई (कागल) की पौत्री<br>सुपुत्री: श्रीमती लक्ष्मी एवं श्री नारायण रघु पाई",
+        hero_first_name: "आशीष", hero_weds: "संग", hero_second_name: "नव्या",
+        parent_ashish: "श्रीमती सोहिनी देवी एवं स्वर्गीय श्री नेमीचंद जी ललवानी (सिवाना) के पौत्र<br>श्रीमती राजुल एवं श्री ललित ललवानी के सुपुत्र",
+        parent_navya: "स्वर्गीय श्रीमती राधाबाई एवं स्वर्गीय श्री रघु पाई (कागल) की पौत्री<br>श्रीमती लक्ष्मी एवं श्री नारायण रघु पाई की सुपुत्री",
         hero_date_venue: "४ दिसंबर २०२६ • गोविंद बाग, जोधपुर",
-        timer_days: "दिन",
-        timer_hours: "घंटे",
-        timer_mins: "मिनट",
-        timer_secs: "सेकंड",
+        timer_days: "दिन", timer_hours: "घंटे", timer_mins: "मिनट", timer_secs: "सेकंड",
         sec_celebrations: "मांगलिक कार्यक्रम",
-        haldi_title: "हल्दी समारोह",
-        haldi_time: "४ दिसंबर • प्रातः ११:०० बजे",
-        btn_view_details: "विवरण देखें",
-        pheras_title: "वरमाला एवं फेरे",
-        pheras_time: "४ दिसंबर • सायं ५:३० बजे",
-        sec_venue: "विवाह स्थल",
-        venue_name: "गोविंद बाग, जोधपुर",
+        haldi_title: "हल्दी समारोह", haldi_time: "४ दिसंबर • प्रातः ११:०० बजे", btn_view_details: "विवरण देखें",
+        pheras_title: "वरमाला एवं फेरे", pheras_time: "४ दिसंबर • सायं ५:३० बजे",
+        btn_calendar: "कैलेंडर में जोड़ें",
+        sec_venue: "विवाह स्थल", venue_name: "गोविंद बाग, जोधपुर",
         venue_desc: "गोविंद बाग जोधपुर की ऐतिहासिक पावन नगरी में स्थित एक भव्य एवं शाही स्थल है, जो अपने सुरम्य उपवन, पारंपरिक राजस्थानी स्थापत्य और मनोरम दृश्यों के लिए प्रसिद्ध है।",
         venue_scan_qr: "मैप्स में लोकेशन खोलने के लिए स्कैन करें",
         venue_map_btn: "📍 गूगल मैप्स पर देखें",
         venue_cab_notice: "<strong>🚗 नोट:</strong><br>विवाह स्थल तक पहुँचने के लिए सभी आदरणीय अतिथियों हेतु कैब की सुविधा उपलब्ध कराई जा रही है। कृपया अपनी आगमन सूचना के साथ RSVP अवश्य भरें ताकि हम आपकी यात्रा की सुगम व्यवस्था कर सकें।",
         sec_contacts: "संपर्क सूत्र",
-        c_lalit: "ललित ललवानी",
-        c_ramesh: "रमेश ललवानी",
-        c_praveen: "प्रवीण ललवानी",
-        c_shashank: "शशांक सी.",
-        c_shravasth: "श्रवस्थ वाई.एस.",
-        wa_title: "व्हाट्सएप ग्रुप से जुड़ें",
+        c_lalit: "ललित ललवानी", c_ramesh: "रमेश ललवानी", c_praveen: "प्रवीण ललवानी", c_shashank: "शशांक सी.", c_shravasth: "श्रवस्थ वाई.एस.",
+        wa_title: "अपडेट के लिए हमारे विवाह व्हाट्सएप ग्रुप से जुड़ें",
         wa_subtitle: "ताज़ा जानकारी और अपडेट के लिए क्यूआर कोड स्कैन करके हमारे ग्रुप से जुड़ें!",
         wa_btn_text: "व्हाट्सएप ग्रुप से जुड़ने के लिए यहां टैप करें",
+        msg_upload_ok: "धन्यवाद! आपकी तस्वीरें अपलोड हो गईं।", msg_upload_fail: "अपलोड विफल रहा। कृपया पुनः प्रयास करें।", msg_pick_file: "कृपया पहले कम से कम एक तस्वीर चुनें।",
+        msg_file_type: "केवल तस्वीरें (JPG, PNG, WebP, HEIC) स्वीकार की जाती हैं।", msg_file_big: "यह तस्वीर बहुत बड़ी है (अधिकतम 15 MB)।", msg_too_many: "कृपया एक बार में अधिकतम 5 तस्वीरें चुनें।",
+        msg_uploading: "अपलोड हो रहा है", msg_loading_mem: "यादें लोड हो रही हैं...", msg_no_mem: "अभी तक कोई तस्वीर अपलोड नहीं हुई। पहले आप बनें!", msg_mem_wait: "पहली तस्वीरों की प्रतीक्षा है...",
+        msg_no_wishes: "अभी तक कोई शुभकामना नहीं आई। RSVP फ़ॉर्म में अपना संदेश लिखकर पहले बनें!", msg_wishes_fail: "RSVP फ़ॉर्म के माध्यम से सबसे पहले शुभकामना दें!",
+        msg_rsvp_fail: "आपका RSVP नहीं भेजा जा सका। कृपया इंटरनेट जाँचकर पुनः प्रयास करें।", msg_wait: "आप अभी उत्तर दे चुके हैं। कृपया दोबारा भेजने से पहले कुछ सेकंड प्रतीक्षा करें।",
+        msg_dates: "प्रस्थान का समय आगमन के बाद का होना चाहिए।", msg_phone: "कृपया सही फ़ोन नंबर दर्ज करें।", msg_name: "कृपया अपना नाम लिखें।", msg_status: "कृपया उपस्थिति की स्थिति चुनें।",
+        wishes_cta: "शुभकामना लिखें", wish_modal_title: "अपनी शुभकामना लिखें", lbl_wish_name: "आपका नाम (वैकल्पिक)", lbl_wish_msg: "आपकी शुभकामना या आशीर्वाद", btn_send_wish: "शुभकामना भेजें", ph_wish_name: "उदा. शर्मा परिवार", ph_wish_msg: "आशीष और नव्या के लिए प्यार भरा संदेश...", msg_wish_ok: "धन्यवाद! आपकी शुभकामना जुड़ गई है।", msg_wish_empty: "कृपया पहले अपनी शुभकामना लिखें।", msg_wish_fail: "शुभकामना नहीं भेजी जा सकी। कृपया पुनः प्रयास करें।", btn_refresh: "ताज़ा करें", share_btn: "यह निमंत्रण साझा करें", msg_copied: "निमंत्रण का लिंक कॉपी हो गया!",
+        share_text: "आपको आशीष और नव्या के विवाह में सादर आमंत्रित किया जाता है — ४ दिसंबर २०२६, गोविंद बाग, जोधपुर।",
         sec_memories: "यादों के पल",
         mem_intro: "इस पावन उत्सव की खूबसूरत यादें हमारे साथ साझा करें। अपने खींचे हुए चित्र सीधे गैलरी में अपलोड करें।",
-        mem_click_upload: "फोटो चुनने के लिए क्लिक करें",
-        mem_accepted: "सभी फोटो प्रारूप मान्य हैं",
-        btn_upload: "गैलरी में अपलोड करें",
-        mem_wall_title: "लाइव मेमोरी वॉल",
-        sec_wishes: "शुभकामनाएं एवं आशीर्वाद",
-        wishes_loading: "अतिथियों के शुभकामना संदेश लोड हो रहे हैं...",
+        mem_click_upload: "फोटो चुनने के लिए क्लिक करें", mem_accepted: "सभी फोटो प्रारूप मान्य हैं",
+        btn_upload: "गैलरी में अपलोड करें", mem_wall_title: "लाइव मेमोरी वॉल",
+        sec_wishes: "शुभकामनाएं एवं आशीर्वाद", wishes_loading: "अतिथियों के शुभकामना संदेश लोड हो रहे हैं...",
         sec_rsvp: "आरएसवीपी (उपस्थिति की पुष्टि)",
-        lbl_name: "अतिथि / परिवार का नाम",
-        placeholder_name: "उदा. श्री एवं श्रीमती शर्मा",
-        lbl_status: "उपस्थिति स्थिति",
-        opt_select: "विकल्प चुनें",
-        opt_accept: "सप्रेम स्वीकार (आगमन निश्चित)",
-        opt_decline: "असमर्थता (आने में असमर्थ)",
-        lbl_phone: "फ़ोन नंबर",
-        placeholder_phone: "+91 XXXXX XXXXX",
+        lbl_name: "अतिथि / परिवार का नाम", placeholder_name: "उदा. श्री एवं श्रीमती शर्मा",
+        lbl_status: "उपस्थिति स्थिति", opt_select: "विकल्प चुनें",
+        opt_accept: "सप्रेम स्वीकार (आगमन निश्चित)", opt_decline: "असमर्थता (आने में असमर्थ)",
+        lbl_phone: "फ़ोन नंबर", placeholder_phone: "+91 XXXXX XXXXX",
         lbl_guests: "अतिथियों की कुल संख्या (स्वयं सहित)",
-        travel_arrival_title: "✈️ आगमन का विवरण",
-        lbl_travel_arr: "आगमन का साधन",
-        lbl_arrival: "आगमन की तिथि एवं समय",
-        travel_departure_title: "🚗 प्रस्थान का विवरण",
-        lbl_travel_dep: "प्रस्थान का साधन",
-        lbl_departure: "प्रस्थान की तिथि एवं समय",
-        lbl_transit_number: "फ़्लाइट / ट्रेन नंबर",
-        lbl_flight_no: "फ़्लाइट नंबर",
-        lbl_train_no: "ट्रेन नंबर",
-        opt_sel_travel: "साधन चुनें",
-        opt_flight: "विमान (जोधपुर हवाई अड्डा)",
-        opt_train: "ट्रेन (जोधपुर जंक्शन)",
-        opt_car: "कार / सड़क मार्ग",
-        opt_na: "लागू नहीं",
+        travel_arrival_title: "✈️ आगमन का विवरण", lbl_travel_arr: "आगमन का साधन", lbl_arrival: "आगमन की तिथि एवं समय",
+        travel_departure_title: "🚗 प्रस्थान का विवरण", lbl_travel_dep: "प्रस्थान का साधन", lbl_departure: "प्रस्थान की तिथि एवं समय",
+        lbl_transit_number: "फ़्लाइट / ट्रेन नंबर", lbl_flight_no: "फ़्लाइट नंबर", lbl_train_no: "ट्रेन नंबर",
+        opt_sel_travel: "साधन चुनें", opt_flight: "विमान (जोधपुर हवाई अड्डा)", opt_train: "ट्रेन (जोधपुर जंक्शन)",
+        opt_car: "कार / सड़क मार्ग", opt_na: "लागू नहीं",
         lbl_wishes: "वर-वधू के लिए शुभकामना संदेश",
         placeholder_wishes: "आशीष एवं नव्या के लिए अपना आशीर्वाद और प्यार भरा संदेश लिखें...",
         btn_confirm_rsvp: "RSVP पुष्टि करें",
+        msg_sending: "भेजा जा रहा है...", msg_rsvp_ok: "आरएसवीपी पुष्टि हो गई है! धन्यवाद।",
         footer_couple: "आशीष एवं नव्या",
         footer_sub: "#NavAshish • ४ दिसंबर २०२६ • गोविंद बाग, जोधपुर",
-        modal_haldi_title: "हल्दी समारोह",
-        modal_haldi_time: "४ दिसंबर • प्रातः ११:०० बजे",
+        modal_haldi_title: "हल्दी समारोह", modal_haldi_time: "४ दिसंबर • प्रातः ११:०० बजे",
         modal_haldi_desc: "आइए और इस सुनहरे सवेरे में आशीष और नव्या को हल्दी के पावन रंगों से आशीर्वाद देकर नए जीवन की मंगलकामना करें।",
         modal_haldi_loc: "गोविंद बाग गार्डन",
-        modal_pheras_title: "वरमाला एवं फेरे",
-        modal_pheras_time: "४ दिसंबर • सायं ५:३० बजे",
+        modal_pheras_title: "वरमाला एवं फेरे", modal_pheras_time: "४ दिसंबर • सायं ५:३० बजे",
         modal_pheras_desc: "ढलते सूरज की सुनहरी आभा और पवित्र अग्नि के साक्षी में आशीष और नव्या के सात फेरों और अटूट बंधन के साक्षी बनें।",
         modal_pheras_loc: "गोविंद बाग मंडप"
       },
       kn: {
-        nav_home: "ಮುಖಪುಟ",
-        nav_memories: "ನೆನಪುಗಳು",
-        nav_wishes: "ಶುಭಾಶಯಗಳು",
-        nav_rsvp: "ಆರ್‌ಎಸ್‌ವಿಪಿ (RSVP)",
+        nav_home: "ಮುಖಪುಟ", nav_memories: "ನೆನಪುಗಳು", nav_wishes: "ಶುಭಾಶಯಗಳು", nav_rsvp: "ಆರ್‌ಎಸ್‌ವಿಪಿ (RSVP)",
         hero_blessing: "ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ",
-        host_blessing: "ವಿವಾಹ ಮಹೋತ್ಸವಕ್ಕೆ ತಮಗೆ ಹಾರ್ದಿಕ ಸ್ವಾಗತ",
-        hero_first_name: "ನವ್ಯಾ",
-        hero_weds: "ಮತ್ತು",
-        hero_second_name: "ಆಶೀಷ್",
+        host_blessing: "ಮದುವೆ ಸಂಭ್ರಮದ ಶುಭ ಆರಂಭಕ್ಕೆ ಪ್ರೀತಿಯ ಆಮಂತ್ರಣ",
+        hero_first_name: "ನವ್ಯಾ", hero_weds: "ಮತ್ತು", hero_second_name: "ಆಶೀಷ್",
         parent_ashish: "ಶ್ರೀಮತಿ ಸೋಹಿನಿ ದೇವಿ ಹಾಗೂ ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀ ನೇಮಿಚಂದ್ ಜಿ ಲಾಲ್ವಾನಿ (ಸಿವಾನಾ) ಅವರ ಮೊಮ್ಮಗ<br>ಶ್ರೀಮತಿ ರಾಜುಲ್ ಮತ್ತು ಶ್ರೀ ಲಲಿತ್ ಲಾಲ್ವಾನಿ ಅವರ ಸುಪುತ್ರ",
         parent_navya: "ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀಮತಿ ರಾಧಾಬಾಯಿ ಹಾಗೂ ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀ ರಘು ಪೈ (ಕಾಗಲ್) ಅವರ ಮೊಮ್ಮಗಳು<br>ಶ್ರೀಮತಿ ಲಕ್ಷ್ಮೀ ಮತ್ತು ಶ್ರೀ ನಾರಾಯಣ ರಘು ಪೈ ಅವರ ಸುಪುತ್ರಿ",
         hero_date_venue: "ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬ • ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
-        timer_days: "ದಿನಗಳು",
-        timer_hours: "ಗಂಟೆಗಳು",
-        timer_mins: "ನಿಮಿಷಗಳು",
-        timer_secs: "ಸೆಕೆಂಡುಗಳು",
+        timer_days: "ದಿನಗಳು", timer_hours: "ಗಂಟೆಗಳು", timer_mins: "ನಿಮಿಷಗಳು", timer_secs: "ಸೆಕೆಂಡುಗಳು",
         sec_celebrations: "ವಿವಾಹ ಸಮಾರಂಭಗಳು",
-        haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)",
-        haldi_time: "ಡಿ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦",
-        btn_view_details: "ವಿವರ ನೋಡಿ",
-        pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)",
-        pheras_time: "ಡಿ ೪ • ಸಂಜೆ ೫:೩೦",
-        sec_venue: "ಕಲ್ಯಾಣ ಮಂಟಪ",
-        venue_name: "ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
+        haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)", haldi_time: "ಡಿ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦", btn_view_details: "ವಿವರ ನೋಡಿ",
+        pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)", pheras_time: "ಡಿ ೪ • ಸಂಜೆ ೫:೩೦",
+        btn_calendar: "ಕ್ಯಾಲೆಂಡರ್‌ಗೆ ಸೇರಿಸಿ",
+        sec_venue: "ಕಲ್ಯಾಣ ಮಂಟಪ", venue_name: "ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
         venue_desc: "ಗೋವಿಂದ್ ಬಾಗ್ ಜೋಧಪುರದ ಪಾರಂಪರಿಕ ನೀಲಿ ನಗರಿಯ ಸುಂದರ ಹಾಗೂ ರಾಜಭವನದಂತಹ ಆವರಣವಾಗಿದ್ದು, ಹಸಿರಿನ ಉದ್ಯಾನವನ ಹಾಗೂ ರಾಜಸ್ಥಾನಿ ವಾಸ್ತುಶಿಲ್ಪಕ್ಕೆ ಹೆಸರುವಾಸಿಯಾಗಿದೆ.",
         venue_scan_qr: "ಗೂಗಲ್ ಮ್ಯಾಪ್ಸ್‌ಗಾಗಿ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ",
-        venue_map_btn: "📍 ಗೂಗಲ್ ಮ್ಯಾಪ್ಸ್‌ನಲ್ಲಿ ವೀಕ್ಷಿಸಿ",
-        venue_cab_notice: "<strong>🚗 ಗಮನಿಸಿ:</strong><br>ಕಲ್ಯಾಣ ಮಂಟಪಕ್ಕೆ ಆಗಮಿಸಲು ಎಲ್ಲ ಅತಿಥಿಗಳಿಗೆ ವಾಹನ (ಕ್ಯಾಬ್) ವ್ಯವಸ್ಥೆ ಮಾಡಲಾಗುತ್ತಿದೆ. ನಿಮ್ಮ ಪ್ರಯಾಣವನ್ನು ಸುಗಮವಾಗಿ ಸಂಯೋಜಿಸಲು ದಯವಿಟ್ಟು ನಿಮ್ಮ ಆಗಮನದ ಮಾಹಿತಿಯೊಂದಿಗೆ RSVP ಭರ್ತಿ ಮಾಡಿ.",
+        venue_map_btn: "📍 ಮದುವೆ ಮಂಟಪದ ವಿಳಾಸಕ್ಕೆ ಇಲ್ಲಿ ಒತ್ತಿ",
+        venue_cab_notice: "<strong>🚗 ಗಮನಿಸಿ:</strong><br>ಕಲ್ಯಾಣ ಮಂಟಪಕ್ಕೆ ಆಗಮಿಸಲು ಎಲ್ಲ ಅತಿಥಿಗಳಿಗೆ ವಾಹನ (ಕ್ಯಾಬ್) ವ್ಯವಸ್ಥೆ ಮಾಡಲಾಗುತ್ತಿದೆ. <br>ನಿಮ್ಮ ಆತಿಥ್ಯದ ಸಿದ್ಧತೆಗಾಗಿ:<br>ಗೋವಿಂದ್ ಬಾಗ್‌ಗೆ ತಲುಪಲು ಸೂಕ್ತ ಸಿದ್ಧತೆ ಮಾಡಲು, ದಯವಿಟ್ಟು ನಿಮ್ಮ ಆಗಮನದ ವಿವರಗಳನ್ನು RSVP ಯಲ್ಲಿ ಭರ್ತಿ ಮಾಡಿ.",
         sec_contacts: "ಸಂಪರ್ಕಗಳು",
-        c_lalit: "ಲಲಿತ್ ಲಾಲ್ವಾನಿ",
-        c_ramesh: "ರಮೇಶ್ ಲಾಲ್ವಾನಿ",
-        c_praveen: "ಪ್ರವೀಣ್ ಲಾಲ್ವಾನಿ",
-        c_shashank: "ಶಶಾಂಕ್ ಸಿ.",
-        c_shravasth: "ಶ್ರವಸ್ತ್ ವೈ.ಎಸ್.",
-        wa_title: "ವಾಟ್ಸಾಪ್ ಗ್ರೂಪ್‌ಗೆ ಸೇರಿ",
+        c_lalit: "ಲಲಿತ್ ಲಾಲ್ವಾನಿ", c_ramesh: "ರಮೇಶ್ ಲಾಲ್ವಾನಿ", c_praveen: "ಪ್ರವೀಣ್ ಲಾಲ್ವಾನಿ", c_shashank: "ಶಶಾಂಕ್ ಚೂಂತಾರ್", c_shravasth: "ಶ್ರವಸ್ತ್ ವೈ.ಎಸ್.",
+        wa_title: "ಮದುವೆಯ ವಿವರಗಳಿಗೆ ನಮ್ಮ ವಾಟ್ಸಾಪ್ ಗ್ರೂಪ್ ಸೇರಿ",
         wa_subtitle: "ವಿವಾಹದ ನೇರ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಪಡೆಯಲು ಕ್ಯೂಆರ್ ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ನಮ್ಮ ಗ್ರೂಪ್‌ಗೆ ಸೇರಿ!",
         wa_btn_text: "ವಾಟ್ಸಾಪ್ ಗ್ರೂಪ್ ಸೇರಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ",
+        msg_upload_ok: "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಫೋಟೋಗಳು ಅಪ್‌ಲೋಡ್ ಆಗಿವೆ.", msg_upload_fail: "ಅಪ್‌ಲೋಡ್ ವಿಫಲವಾಯಿತು. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", msg_pick_file: "ದಯವಿಟ್ಟು ಮೊದಲು ಕನಿಷ್ಠ ಒಂದು ಫೋಟೋ ಆಯ್ಕೆ ಮಾಡಿ.",
+        msg_file_type: "ಫೋಟೋಗಳನ್ನು ಮಾತ್ರ (JPG, PNG, WebP, HEIC) ಸ್ವೀಕರಿಸಲಾಗುತ್ತದೆ.", msg_file_big: "ಈ ಫೋಟೋ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ (ಗರಿಷ್ಠ 15 MB).", msg_too_many: "ಒಂದು ಬಾರಿಗೆ ಗರಿಷ್ಠ 5 ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.",
+        msg_uploading: "ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ", msg_loading_mem: "ನೆನಪುಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...", msg_no_mem: "ಇನ್ನೂ ಯಾವುದೇ ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಆಗಿಲ್ಲ. ಮೊದಲಿಗರಾಗಿ!", msg_mem_wait: "ಮೊದಲ ಫೋಟೋಗಳಿಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...",
+        msg_no_wishes: "ಇನ್ನೂ ಯಾವುದೇ ಶುಭಾಶಯ ಬಂದಿಲ್ಲ. RSVP ಫಾರ್ಮ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸಂದೇಶ ಬರೆದು ಮೊದಲಿಗರಾಗಿ!", msg_wishes_fail: "RSVP ಫಾರ್ಮ್ ಮೂಲಕ ಮೊದಲ ಶುಭಾಶಯ ನೀಡಿ!",
+        msg_rsvp_fail: "ನಿಮ್ಮ RSVP ಕಳುಹಿಸಲಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಇಂಟರ್ನೆಟ್ ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", msg_wait: "ನೀವು ಈಗಷ್ಟೇ ಉತ್ತರಿಸಿದ್ದೀರಿ. ಮತ್ತೆ ಕಳುಹಿಸುವ ಮೊದಲು ಕೆಲವು ಸೆಕೆಂಡುಗಳು ಕಾಯಿರಿ.",
+        msg_dates: "ನಿರ್ಗಮನವು ಆಗಮನದ ನಂತರ ಇರಬೇಕು.", msg_phone: "ದಯವಿಟ್ಟು ಸರಿಯಾದ ದೂರವಾಣಿ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ.", msg_name: "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಹೆಸರು ಬರೆಯಿರಿ.", msg_status: "ದಯವಿಟ್ಟು ಆಗಮನದ ಸ್ಥಿತಿ ಆಯ್ಕೆ ಮಾಡಿ.",
+        wishes_cta: "ಶುಭಾಶಯ ಬರೆಯಿರಿ", wish_modal_title: "ನಿಮ್ಮ ಶುಭಾಶಯ ಬರೆಯಿರಿ", lbl_wish_name: "ನಿಮ್ಮ ಹೆಸರು (ಐಚ್ಛಿಕ)", lbl_wish_msg: "ನಿಮ್ಮ ಶುಭಾಶಯ ಅಥವಾ ಆಶೀರ್ವಾದ", btn_send_wish: "ಶುಭಾಶಯ ಕಳುಹಿಸಿ", ph_wish_name: "ಉದಾ: ಶರ್ಮಾ ಕುಟುಂಬ", ph_wish_msg: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ಅವರಿಗೆ ಪ್ರೀತಿಯ ಸಂದೇಶ...", msg_wish_ok: "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಶುಭಾಶಯ ಸೇರಿಸಲಾಗಿದೆ.", msg_wish_empty: "ದಯವಿಟ್ಟು ಮೊದಲು ನಿಮ್ಮ ಶುಭಾಶಯ ಬರೆಯಿರಿ.", msg_wish_fail: "ಶುಭಾಶಯ ಕಳುಹಿಸಲಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", btn_refresh: "ರಿಫ್ರೆಶ್", share_btn: "ಈ ಆಮಂತ್ರಣ ಹಂಚಿಕೊಳ್ಳಿ", msg_copied: "ಆಮಂತ್ರಣದ ಲಿಂಕ್ ನಕಲಾಗಿದೆ!",
+        share_text: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ಅವರ ವಿವಾಹಕ್ಕೆ ನಿಮಗೆ ಆತ್ಮೀಯ ಆಮಂತ್ರಣ — ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬, ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ.",
         sec_memories: "ಸುಂದರ ನೆನಪುಗಳು",
         mem_intro: "ಈ ಸಂಭ್ರಮದ ಮಧುರ ಕ್ಷಣಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ! ನೀವು ತೆಗೆದ ಸುಂದರ ಚಿತ್ರಗಳನ್ನು ನೇರವಾಗಿ ಗ್ಯಾಲರಿಗೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.",
-        mem_click_upload: "ಫೋಟೋ ಆಯ್ಕೆ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ",
-        mem_accepted: "ಚಿತ್ರಗಳನ್ನು ಸ್ವೀಕರಿಸಲಾಗುತ್ತದೆ",
-        btn_upload: "ಗ್ಯಾಲರಿಗೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
-        mem_wall_title: "ಮೆಮೊರಿ ವಾಲ್",
-        sec_wishes: "ಹಾರೈಕೆಗಳು ಮತ್ತು ಆಶೀರ್ವಾದ",
-        wishes_loading: "ಅತಿಥಿಗಳ ಶುಭ ಸಂದೇಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...",
+        mem_click_upload: "ಫೋಟೋ ಆಯ್ಕೆ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ", mem_accepted: "ಚಿತ್ರಗಳನ್ನು ಸ್ವೀಕರಿಸಲಾಗುತ್ತದೆ",
+        btn_upload: "ಗ್ಯಾಲರಿಗೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ", mem_wall_title: "ಮೆಮೊರಿ ವಾಲ್",
+        sec_wishes: "ಹಾರೈಕೆಗಳು ಮತ್ತು ಆಶೀರ್ವಾದ", wishes_loading: "ಅತಿಥಿಗಳ ಶುಭ ಸಂದೇಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...",
         sec_rsvp: "ಆರ್‌ಎಸ್‌ವಿಪಿ (RSVP)",
-        lbl_name: "ಅತಿಥಿಯ / ಕುಟುಂಬದ ಹೆಸರು",
-        placeholder_name: "ಉದಾ: ಶ್ರೀ ಮತ್ತು ಶ್ರೀಮತಿ ಶರ್ಮಾ",
-        lbl_status: "ಆಗಮನದ ಸ್ಥಿತಿ",
-        opt_select: "ಆಯ್ಕೆ ಮಾಡಿ",
-        opt_accept: "ಖುಷಿಯಿಂದ ಸ್ವೀಕರಿಸುತ್ತೇವೆ (ಆಗಮಿಸುತ್ತೇವೆ)",
-        opt_decline: "ಬರಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ",
-        lbl_phone: "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
-        placeholder_phone: "+91 XXXXX XXXXX",
+        lbl_name: "ಅತಿಥಿಯ / ಕುಟುಂಬದ ಹೆಸರು", placeholder_name: "ಉದಾ: ಶ್ರೀ ಮತ್ತು ಶ್ರೀಮತಿ ಶರ್ಮಾ",
+        lbl_status: "ಆಗಮನದ ಸ್ಥಿತಿ", opt_select: "ಆಯ್ಕೆ ಮಾಡಿ",
+        opt_accept: "ಖುಷಿಯಿಂದ ಸ್ವೀಕರಿಸುತ್ತೇವೆ (ಆಗಮಿಸುತ್ತೇವೆ)", opt_decline: "ಬರಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ",
+        lbl_phone: "ದೂರವಾಣಿ ಸಂಖ್ಯೆ", placeholder_phone: "+91 XXXXX XXXXX",
         lbl_guests: "ಒಟ್ಟು ಅತಿಥಿಗಳ ಸಂಖ್ಯೆ (ನಿಮ್ಮನ್ನೂ ಸೇರಿಸಿ)",
-        travel_arrival_title: "✈️ ಆಗಮನದ ವಿವರ",
-        lbl_travel_arr: "ಆಗಮಿಸುವ ಮಾಧ್ಯಮ",
-        lbl_arrival: "ಆಗಮಿಸುವ ದಿನಾಂಕ ಮತ್ತು ಸಮಯ",
-        travel_departure_title: "🚗 ನಿರ್ಗಮನದ ವಿವರ",
-        lbl_travel_dep: "ನಿರ್ಗಮಿಸುವ ಮಾಧ್ಯಮ",
-        lbl_departure: "ನಿರ್ಗಮನದ ದಿನಾಂಕ ಮತ್ತು ಸಮಯ",
-        lbl_transit_number: "ವಿಮಾನ / ರೈಲು ಸಂಖ್ಯೆ",
-        lbl_flight_no: "ವಿಮಾನ ಸಂಖ್ಯೆ (Flight No)",
-        lbl_train_no: "ರೈಲು ಸಂಖ್ಯೆ (Train No)",
-        opt_sel_travel: "ಮಾಧ್ಯಮ ಆಯ್ಕೆಮಾಡಿ",
-        opt_flight: "ವಿಮಾನ (ಜೋಧಪುರ ವಿಮಾನ ನಿಲ್ದಾಣ)",
-        opt_train: "ರೈಲು (ಜೋಧಪುರ ಜಂಕ್ಷನ್)",
-        opt_car: "ಕಾರು / ರಸ್ತೆ ಮಾರ್ಗ",
-        opt_na: "ಅನ್ವಯಿಸುವುದಿಲ್ಲ",
+        travel_arrival_title: "✈️ ಆಗಮನದ ವಿವರ", lbl_travel_arr: "ಆಗಮಿಸುವ ಮಾಧ್ಯಮ", lbl_arrival: "ಆಗಮಿಸುವ ದಿನಾಂಕ ಮತ್ತು ಸಮಯ",
+        travel_departure_title: "🚗 ನಿರ್ಗಮನದ ವಿವರ", lbl_travel_dep: "ನಿರ್ಗಮಿಸುವ ಮಾಧ್ಯಮ", lbl_departure: "ನಿರ್ಗಮನದ ದಿನಾಂಕ ಮತ್ತು ಸಮಯ",
+        lbl_transit_number: "ವಿಮಾನ / ರೈಲು ಸಂಖ್ಯೆ", lbl_flight_no: "ವಿಮಾನ ಸಂಖ್ಯೆ (Flight No)", lbl_train_no: "ರೈಲು ಸಂಖ್ಯೆ (Train No)",
+        opt_sel_travel: "ಮಾಧ್ಯಮ ಆಯ್ಕೆಮಾಡಿ", opt_flight: "ವಿಮಾನ (ಜೋಧಪುರ ವಿಮಾನ ನಿಲ್ದಾಣ)", opt_train: "ರೈಲು (ಜೋಧಪುರ ಜಂಕ್ಷನ್)",
+        opt_car: "ಕಾರು / ರಸ್ತೆ ಮಾರ್ಗ", opt_na: "ಅನ್ವಯಿಸುವುದಿಲ್ಲ",
         lbl_wishes: "ನವಜೋಡಿಗೆ ನಿಮ್ಮ ಶುಭಹಾರೈಕೆ",
         placeholder_wishes: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ಅವರಿಗೆ ನಿಮ್ಮ ಪ್ರೀತಿಯ ಹಾರೈಕೆ ಹಾಗೂ ಆಶೀರ್ವಾದ ಬರೆಯಿರಿ...",
         btn_confirm_rsvp: "RSVP ದೃಢೀಕರಿಸಿ",
+        msg_sending: "ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ...", msg_rsvp_ok: "RSVP ದೃಢೀಕರಿಸಲಾಗಿದೆ! ಧನ್ಯವಾದಗಳು.",
         footer_couple: "ನವ್ಯಾ ಮತ್ತು ಆಶೀಷ್",
         footer_sub: "#NavAshish • ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬ • ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
-        modal_haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)",
-        modal_haldi_time: "ಡಿಸೆಂಬರ್ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦",
+        modal_haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)", modal_haldi_time: "ಡಿಸೆಂಬರ್ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦",
         modal_haldi_desc: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ತಮ್ಮ ನವಜೀವನದ ಪಯಣವನ್ನು ಆರಂಭಿಸುವ ಮುನ್ನ ಅರಿಶಿನದ ಬಣ್ಣಗಳಿಂದ ಅವರನ್ನು ಹರಸಲು ಪ್ರೀತಿಯಿಂದ ಆಹ್ವಾನಿಸುತ್ತೇವೆ.",
-        modal_haldi_loc: "ಗೋವಿಂದ್ ಬಾಗ್ ಮಂಟಪ",
-        modal_pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)",
-        modal_pheras_time: "ಡಿಸೆಂಬರ್ ೪ • ಸಂಜೆ ೫:೩೦",
+        modal_haldi_loc: "ಗೋವಿಂದ್ ಬಾಗ್ ಗಾರ್ಡನ್",
+        modal_pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)", modal_pheras_time: "ಡಿಸೆಂಬರ್ ೪ • ಸಂಜೆ ೫:೩೦",
         modal_pheras_desc: "ಸೂರ್ಯಾಸ್ತದ ಸುಂದರ ಹೊತ್ತಿನಲ್ಲಿ ಪವಿತ್ರ ಅಗ್ನಿಯ ಸಾಕ್ಷಿಯಾಗಿ ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ಅವರ ಸಪ್ತಪದಿಯ ಪಾವಿತ್ರ್ಯತೆಗೆ ಸಾಕ್ಷಿಯಾಗಿರಿ.",
         modal_pheras_loc: "ಗೋವಿಂದ್ ಬಾಗ್ ಮಂಟಪ"
       }
@@ -1415,52 +1126,191 @@
 
     function setLanguage(lang) {
       if (!translations[lang]) return;
-      currentLang = lang;
+      currentLang = lang; store.set('lang', lang);
+      document.documentElement.lang = lang;
 
       ['en', 'hi', 'kn'].forEach(l => {
         const btn = document.getElementById('lang-btn-' + l);
-        if (btn) {
-          if (l === lang) btn.classList.add('active-lang');
-          else btn.classList.remove('active-lang');
-        }
+        if (btn) btn.classList.toggle('active-lang', l === lang);
       });
 
       const dict = translations[lang];
-
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (dict[key]) {
-          el.innerHTML = dict[key];
-        }
+        if (dict[key]) el.innerHTML = dict[key];
       });
 
+      // Kannada tradition lists the bride first
       const firstEl = document.getElementById('hero-first-name');
       const secondEl = document.getElementById('hero-second-name');
       const firstParentEl = document.getElementById('hero-first-parent');
       const secondParentEl = document.getElementById('hero-second-parent');
-
+      firstEl.textContent = dict.hero_first_name;
+      secondEl.textContent = dict.hero_second_name;
       if (lang === 'kn') {
-        if (firstEl) firstEl.textContent = dict.hero_first_name;
-        if (firstParentEl) firstParentEl.innerHTML = dict.parent_navya;
-        if (secondEl) secondEl.textContent = dict.hero_second_name;
-        if (secondParentEl) secondParentEl.innerHTML = dict.parent_ashish;
+        firstParentEl.innerHTML = dict.parent_navya;
+        secondParentEl.innerHTML = dict.parent_ashish;
       } else {
-        if (firstEl) firstEl.textContent = dict.hero_first_name;
-        if (firstParentEl) firstParentEl.innerHTML = dict.parent_ashish;
-        if (secondEl) secondEl.textContent = dict.hero_second_name;
-        if (secondParentEl) secondParentEl.innerHTML = dict.parent_navya;
+        firstParentEl.innerHTML = dict.parent_ashish;
+        secondParentEl.innerHTML = dict.parent_navya;
       }
 
       const nameInput = document.getElementById('name');
       const phoneInput = document.getElementById('phone');
       const wishesInput = document.getElementById('wishes');
-      if (nameInput && dict.placeholder_name) nameInput.placeholder = dict.placeholder_name;
-      if (phoneInput && dict.placeholder_phone) phoneInput.placeholder = dict.placeholder_phone;
-      if (wishesInput && dict.placeholder_wishes) wishesInput.placeholder = dict.placeholder_wishes;
+      if (dict.placeholder_name) nameInput.placeholder = dict.placeholder_name;
+      if (dict.placeholder_phone) phoneInput.placeholder = dict.placeholder_phone;
+      if (dict.placeholder_wishes) wishesInput.placeholder = dict.placeholder_wishes;
 
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => { const v = dict[el.getAttribute('data-i18n-ph')]; if (v) el.placeholder = v; });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => { const v = dict[el.getAttribute('data-i18n-aria')]; if (v) { el.setAttribute('aria-label', v); el.title = v; } });
       handleTransitNumberDisplay('arrival');
       handleTransitNumberDisplay('departure');
+      fitParentage();
+      drawJharokha();
     }
+
+    /* ---------- Rajasthani jharokha frame: ogee cusped arch, floral field, tiled flanks, framed panels ---------- */
+    function drawJharokha() {
+      const wrap = document.getElementById('jh-wrap'), frame = document.getElementById('arch-frame'), svg = document.getElementById('jh-line');
+      if (!wrap || !frame || !svg) return;
+      const w = Math.round(wrap.clientWidth), H = Math.round(frame.offsetHeight);
+      if (!w || !H) return;
+      const f1 = v => (Math.round(v * 10) / 10).toString(), pt = a => f1(a[0]) + ',' + f1(a[1]);
+      const mob = w < 520;
+      const b = mob ? 7 : 12, m = b + 3;                                        // border strip, inner margin
+      const sideW = Math.round(Math.max(24, Math.min(60, w * .085)));           // flank width beside the opening
+      const t = mob ? 22 : 34;                                                  // band between the two arches (at apex)
+      const ah = Math.round(Math.min(120, Math.max(80, w * .17)));               // height of the opening's arch
+      const y1 = m + 8, y2 = y1 + t, ys = y2 + ah;                              // outer apex, inner apex, springing line
+      const bz = b + (mob ? 14 : 20), yB = H - bz;                              // sill
+      wrap.style.setProperty('--jh-p', (sideW + (mob ? 8 : 18)) + 'px');
+      wrap.style.setProperty('--jh-pt', Math.round(y2 + ah * .30 + 2) + 'px');
+      wrap.style.setProperty('--jh-pb', (bz + (mob ? 22 : 30)) + 'px');
+      const G = '#b8860b';                                                     // same gold-brown as the rotating chakra
+
+      // ogee arch: returns {start, cmds, segs}; mirrored about the centre line
+      const ogee = (x0, x1, y, a) => {
+        const xm = (x0 + x1) / 2, hw = xm - x0, mir = q => [2 * xm - q[0], q[1]];
+        const P0 = [x0, y], P1 = [x0, y - a * .48], Q = [x0 + hw * .62, y - a * .80], P2 = [Q[0] - hw * .20, Q[1] + a * .10];
+        const C1 = [Q[0] + hw * .20, Q[1] - a * .10], C2 = [xm - hw * .02, y - a + a * .17], Ap = [xm, y - a];
+        const segs = [[P0, P1, P2, Q], [Q, C1, C2, Ap], [Ap, mir(C2), mir(C1), mir(Q)], [mir(Q), mir(P2), mir(P1), mir(P0)]];
+        const cmds = segs.map(s => `C${pt(s[1])} ${pt(s[2])} ${pt(s[3])}`).join(' ');
+        return { start: P0, end: mir(P0), cmds, segs };
+      };
+      const bz3 = (s, u) => { const v = 1 - u; return [0, 1].map(k => v*v*v*s[0][k] + 3*v*v*u*s[1][k] + 3*v*u*u*s[2][k] + u*u*u*s[3][k]); };
+      const equalPoints = (segs, N) => {                                          // N+1 points, equal arc length
+        const poly = []; segs.forEach((s, si) => { for (let i = (si ? 1 : 0); i <= 60; i++) poly.push(bz3(s, i / 60)); });
+        const cum = [0]; for (let i = 1; i < poly.length; i++) cum.push(cum[i - 1] + Math.hypot(poly[i][0] - poly[i-1][0], poly[i][1] - poly[i-1][1]));
+        const out = [poly[0]]; let k = 1;
+        for (let n = 1; n < N; n++) { const L = cum[cum.length - 1] * n / N; while (cum[k] < L) k++; const r = (L - cum[k-1]) / (cum[k] - cum[k-1] || 1); out.push([poly[k-1][0] + (poly[k][0] - poly[k-1][0]) * r, poly[k-1][1] + (poly[k][1] - poly[k-1][1]) * r]); }
+        out.push(poly[poly.length - 1]); return out; };
+
+      const xL = sideW, xR = w - sideW;
+      const A2 = ogee(xL, xR, ys, ah), A1 = ogee(m + 1, w - m - 1, ys, ys - y1);
+      const lobesN = mob ? 6 : 8, lp = equalPoints(A2.segs, lobesN);
+      let lobes = `L${pt(lp[0])}`;
+      for (let i = 1; i < lp.length; i++) { const c = Math.hypot(lp[i][0] - lp[i-1][0], lp[i][1] - lp[i-1][1]); lobes += ` A${f1(c * .62)},${f1(c * .62)} 0 0 1 ${pt(lp[i])}`; }
+      const opening = `M${xL},${yB} L${xL},${ys} ${lobes} L${xR},${yB} Z`;
+      frame.style.clipPath = `path('${opening}')`;
+
+      const a1Line = `M${m + 1},${yB} V${ys} ${A1.cmds} V${yB}`;
+      const A1in = ogee(m + 6, w - m - 6, ys, ys - y1 - 5);
+      const a1Echo = `M${m + 6},${yB} V${ys} ${A1in.cmds} V${yB}`;
+      const rectIn = `M${m},${m} H${w - m} V${H - m} H${m} Z`;
+
+      // flank panels (only where there is room)
+      let panels = '';
+      if (sideW - m - 8 >= 30) {
+        const pw = sideW - m - 9, ph = Math.round(Math.max(64, Math.min(116, w * .115))), py = yB - ph - 6;
+        for (const side of [0, 1]) {
+          const px = side ? w - m - 4 - pw : m + 4;
+          const ac = (ax, ay, aw, ah2) => { const O = ogee(ax, ax + aw, ay + ah2, ah2 * .55); return `M${f1(ax)},${f1(ay + ah2)} V${f1(ay + ah2)} ${O.cmds} V${f1(ay + ah2)}`; };
+          panels += `<rect x="${f1(px)}" y="${f1(py)}" width="${f1(pw)}" height="${ph}" fill="none" stroke="${G}" stroke-width="1" opacity=".95"/>
+            <rect x="${f1(px + 3)}" y="${f1(py + 3)}" width="${f1(pw - 6)}" height="${ph - 6}" fill="none" stroke="${G}" stroke-width=".7" opacity=".7"/>
+            <rect x="${f1(px + 7)}" y="${f1(py + 7)}" width="${f1(pw - 14)}" height="${ph - 14}" fill="url(#jhTile)" stroke="${G}" stroke-width=".6" opacity=".8"/>
+            <path d="${ac(px + 11, py + 12, pw - 22, ph - 24)}" fill="none" stroke="${G}" stroke-width=".8"/>`;
+        }
+      }
+      const flower = (cx, cy, r) => { let o = ''; for (let k = 0; k < 6; k++) o += `<ellipse cx="0" cy="${-r * .62}" rx="${r * .26}" ry="${r * .5}" transform="rotate(${k * 60})"/>`;
+        return `<g transform="translate(${f1(cx)} ${f1(cy)})" fill="none" stroke="${G}" stroke-width=".8">${o}<circle r="${r * .2}" fill="${G}" stroke="none"/></g>`; };
+      const xm = w / 2;
+
+      svg.setAttribute('width', w); svg.setAttribute('height', H); svg.setAttribute('viewBox', `0 0 ${w} ${H}`);
+      svg.style.left = '0'; svg.style.opacity = '.2';
+      svg.innerHTML = `
+        <defs>
+          <pattern id="jhFloral" width="30" height="30" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="${G}" stroke-width=".6">
+              <path d="M-2,15 Q7.5,5 15,15 T32,15" opacity=".55"/>
+              <g transform="translate(7.5 7.5)"><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" /><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" transform="rotate(72)"/><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" transform="rotate(144)"/><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" transform="rotate(216)"/><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" transform="rotate(288)"/></g>
+              <g transform="translate(22.5 22.5) scale(.8)"><ellipse cx="0" cy="-3.3" rx="1.5" ry="3"/><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" transform="rotate(72)"/><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" transform="rotate(144)"/><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" transform="rotate(216)"/><ellipse cx="0" cy="-3.3" rx="1.5" ry="3" transform="rotate(288)"/></g>
+              <path d="M13,12 q4,-5 8,-2 q-4,5 -8,2z M2,25 q4,-5 8,-2 q-4,5 -8,2z" opacity=".7"/>
+            </g>
+            <circle cx="7.5" cy="7.5" r="1" fill="${G}"/><circle cx="22.5" cy="22.5" r=".9" fill="${G}"/>
+          </pattern>
+          <pattern id="jhTile" width="9" height="9" patternUnits="userSpaceOnUse">
+            <rect x=".3" y=".3" width="8.4" height="8.4" fill="none" stroke="${G}" stroke-width=".45" opacity=".7"/><circle cx="4.5" cy="4.5" r=".8" fill="${G}" opacity=".7"/>
+          </pattern>
+        </defs>
+        <path d="${rectIn} M${m + 1},${yB} V${ys} ${A1.cmds} V${yB} Z" fill="url(#jhFloral)" fill-rule="evenodd" opacity=".4"/>
+        <path d="M${m + 1},${yB} V${ys} ${A1.cmds} V${yB} Z ${opening}" fill="url(#jhFloral)" fill-rule="evenodd" opacity=".75"/>
+        <rect x="${m + 1}" y="${f1(ys + ah * .55)}" width="${xL - m - 1}" height="${f1(yB - ys - ah * .55)}" fill="url(#jhTile)" opacity=".6"/>
+        <rect x="${xR}" y="${f1(ys + ah * .55)}" width="${xL - m - 1}" height="${f1(yB - ys - ah * .55)}" fill="url(#jhTile)" opacity=".6"/>
+        <g fill="none" stroke="${G}" stroke-linejoin="round" stroke-linecap="round">
+          <rect x=".6" y=".6" width="${w - 1.2}" height="${H - 1.2}" rx="3" stroke-width="1.3" opacity=".85"/>
+          <rect x="${b}" y="${b}" width="${w - 2 * b}" height="${H - 2 * b}" rx="1.5" stroke-width=".8" opacity=".75"/>
+          <rect x="${f1(b / 2)}" y="${f1(b / 2)}" width="${f1(w - b)}" height="${f1(H - b)}" rx="2" stroke-width="2.6" stroke-dasharray="0.1 7" opacity=".6"/>
+          <path d="${rectIn}" stroke-width=".8" opacity=".7"/>
+          <path d="${a1Line}" stroke-width="1.5" opacity=".85"/>
+          <path d="${a1Echo}" stroke-width=".8" opacity=".6"/>
+          <path d="${opening}" stroke-width="1.5" opacity=".9"/>
+          <path d="M${xL - 5},${yB} V${ys} " stroke-width=".7" opacity=".55"/><path d="M${xR + 5},${yB} V${ys}" stroke-width=".7" opacity=".55"/>
+        </g>
+        ${flower(xm, (y1 + y2) / 2 + 2, mob ? 7 : 10)}
+        ${panels}`;
+      placeSparkles();
+    }
+    /* sparkles: scattered around (never on top of) the jharokha */
+    function placeSparkles() {
+      const box = document.getElementById('sparkles'), hero = document.querySelector('.hero'), wrap = document.getElementById('jh-wrap');
+      if (!box || !hero || !wrap || REDUCED_MOTION) return;
+      const hr = hero.getBoundingClientRect(), fr = wrap.getBoundingClientRect(); if (!hr.width) return;
+      const pad = 10, n = hr.width > 900 ? 34 : 16; box.innerHTML = '';
+      let tries = 0;
+      while (box.children.length < n && tries++ < 600) {
+        const x = Math.random() * hr.width, y = Math.random() * hr.height, ax = hr.left + x, ay = hr.top + y;
+        if (ax > fr.left - pad && ax < fr.right + pad && ay > fr.top - pad && ay < fr.bottom + pad) continue;   // keep clear of the frame
+        const el = document.createElement('i'), star = Math.random() < .55, size = star ? 8 + Math.random() * 12 : 4 + Math.random() * 6;
+        el.className = 'spk ' + (star ? 'star' : 'dot'); el.style.cssText = `left:${x.toFixed(0)}px;top:${y.toFixed(0)}px;width:${size.toFixed(0)}px;height:${size.toFixed(0)}px;` +
+          `--d:${(3.5 + Math.random() * 5).toFixed(1)}s;--dl:${(-Math.random() * 8).toFixed(1)}s;--o:${(.35 + Math.random() * .35).toFixed(2)};--dy:${(-4 - Math.random() * 10).toFixed(0)}px`;
+        box.appendChild(el);
+      }
+    }
+    let spkTimer = null;
+    window.addEventListener('resize', () => { drawJharokha(); clearTimeout(spkTimer); spkTimer = setTimeout(placeSparkles, 250); });
+    window.addEventListener('load', placeSparkles);
+    if (window.ResizeObserver) new ResizeObserver(drawJharokha).observe(document.getElementById('arch-frame'));
+
+    /* keep each parentage line (Grandson of... / S/O ...) on a single row by shrinking the font to fit */
+    function fitParentage() {
+      document.querySelectorAll('.parentage-subtitle').forEach(el => {
+        if (!el.querySelector('.pl')) {
+          el.innerHTML = el.innerHTML.split(/<br\s*\/?>/i).map(t => '<span class="pl">' + t + '</span>').join('');
+        }
+        const avail = el.clientWidth;
+        if (!avail) return;
+        let size = Math.min(17, Math.max(13, window.innerWidth * 0.018));
+        el.style.fontSize = size + 'px';
+        let widest = Math.max(...Array.from(el.querySelectorAll('.pl')).map(l => l.getBoundingClientRect().width));
+        if (widest > avail) {
+          size = Math.max(6.5, size * avail / widest * 0.99);
+          el.style.fontSize = size + 'px';
+        }
+      });
+    }
+    window.addEventListener('resize', fitParentage);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitParentage);
 
     function handleTransitNumberDisplay(direction) {
       const modeSelect = document.getElementById('travel-' + direction);
@@ -1468,7 +1318,6 @@
       const labelEl = document.getElementById('lbl-' + direction + '-transit');
       const inputEl = document.getElementById(direction + '-transit-number');
       const dict = translations[currentLang];
-      
       if (!modeSelect || !groupEl || !labelEl) return;
 
       const mode = modeSelect.value;
@@ -1478,7 +1327,7 @@
         inputEl.placeholder = 'e.g. 6E-204 / AI-482';
       } else if (mode === 'train') {
         groupEl.style.display = 'block';
-        labelEl.textContent = dict.lbl_train_no || 'Train Number / Name';
+        labelEl.textContent = dict.lbl_train_no || 'Train Number';
         inputEl.placeholder = 'e.g. 12461 Mandore Express';
       } else {
         groupEl.style.display = 'none';
@@ -1487,23 +1336,12 @@
     }
 
     function applySectionVisibilityFlags() {
-      const memoriesNav = document.getElementById('nav-item-memories');
-      const memoriesPage = document.getElementById('page-memories');
-      if (SHOW_MEMORIES !== 1) {
-        if (memoriesNav) memoriesNav.style.display = 'none';
-        if (memoriesPage) memoriesPage.style.display = 'none';
-      } else {
-        if (memoriesNav) memoriesNav.style.display = '';
-      }
-
-      const wishesNav = document.getElementById('nav-item-wishes');
-      const wishesPage = document.getElementById('page-wishes');
-      if (SHOW_WISHES !== 1) {
-        if (wishesNav) wishesNav.style.display = 'none';
-        if (wishesPage) wishesPage.style.display = 'none';
-      } else {
-        if (wishesNav) wishesNav.style.display = '';
-      }
+      const hide = (navId, pageId, flag) => {
+        const nav = document.getElementById(navId), page = document.getElementById(pageId);
+        if (flag !== 1) { if (nav) nav.style.display = 'none'; if (page) page.style.display = 'none'; }
+      };
+      hide('nav-item-memories', 'page-memories', SHOW_MEMORIES);
+      hide('nav-item-wishes', 'page-wishes', SHOW_WISHES);
     }
 
     function switchPage(pageId) {
@@ -1512,292 +1350,411 @@
 
       document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-tab'));
-      
+
       const targetPage = document.getElementById('page-' + pageId);
       if (targetPage) targetPage.classList.add('active-page');
-      
       const tab = document.getElementById('tab-' + pageId);
       if (tab) tab.classList.add('active-tab');
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      window.scrollTo({ top: 0, behavior: REDUCED_MOTION ? 'auto' : 'smooth' });
+      observeReveals();
     }
 
     function toggleJoyfulFields(select) {
-      const joyfulSection = document.getElementById('joyfulSection');
-      const phoneInput = document.getElementById('phone');
-      const guestsInput = document.getElementById('guests');
-      const travelArrInput = document.getElementById('travel-arrival');
-      const arrivalInput = document.getElementById('arrival');
-      const travelDepInput = document.getElementById('travel-departure');
-      const departureInput = document.getElementById('departure');
-      
-      if (select.value === 'attending') {
-        joyfulSection.style.display = 'block';
-        phoneInput.setAttribute('required', 'true');
-        guestsInput.setAttribute('required', 'true');
-        travelArrInput.setAttribute('required', 'true');
-        arrivalInput.setAttribute('required', 'true');
-        travelDepInput.setAttribute('required', 'true');
-        departureInput.setAttribute('required', 'true');
-      } else {
-        joyfulSection.style.display = 'none';
-        phoneInput.removeAttribute('required');
-        guestsInput.removeAttribute('required');
-        travelArrInput.removeAttribute('required');
-        arrivalInput.removeAttribute('required');
-        travelDepInput.removeAttribute('required');
-        departureInput.removeAttribute('required');
-      }
+      const attending = select.value === 'attending';
+      document.getElementById('joyfulSection').style.display = attending ? 'block' : 'none';
+      ['phone', 'guests', 'travel-arrival', 'arrival', 'travel-departure', 'departure'].forEach(id => {
+        const el = document.getElementById(id);
+        if (attending) el.setAttribute('required', 'true'); else el.removeAttribute('required');
+      });
     }
 
-    /* Particle Cursor */
+    /* ---------- scroll reveal ---------- */
+    let revealObserver = null;
+    function observeReveals() {
+      const els = document.querySelectorAll('.page-view.active-page .reveal:not(.in)');
+      if (!('IntersectionObserver' in window) || REDUCED_MOTION) { els.forEach(e => e.classList.add('in')); return; }
+      if (!revealObserver) {
+        revealObserver = new IntersectionObserver(entries => {
+          entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); revealObserver.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+      }
+      els.forEach(e => revealObserver.observe(e));
+    }
+
+    /* ---------- particle cursor (fine pointers only) ---------- */
     const canvas = document.getElementById('cursor-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
     const particleColors = ['#d4af37', '#ffdf73', '#ffffff', '#5b0e16'];
-
     function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     window.addEventListener('resize', resize); resize();
 
     class Particle {
       constructor(x, y) {
-        this.x = x; this.y = y;
-        this.size = Math.random() * 4 + 1;
+        this.x = x; this.y = y; this.size = Math.random() * 3.5 + 1;
         this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 2;
-        this.vx = Math.cos(angle) * speed; this.vy = Math.sin(angle) * speed - 1;
-        this.life = 1; this.decay = Math.random() * 0.02 + 0.01;
+        const a = Math.random() * Math.PI * 2, s = Math.random() * 2;
+        this.vx = Math.cos(a) * s; this.vy = Math.sin(a) * s - 1;
+        this.life = 1; this.decay = Math.random() * 0.02 + 0.012;
       }
       update() { this.x += this.vx; this.y += this.vy; this.life -= this.decay; }
-      draw() {
-        ctx.globalAlpha = this.life; ctx.fillStyle = this.color;
-        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+      draw() { ctx.globalAlpha = this.life; ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+    }
+
+    if (window.matchMedia('(pointer: fine)').matches && !REDUCED_MOTION) {
+      window.addEventListener('mousemove', e => { if (Math.random() > 0.5) particles.push(new Particle(e.clientX, e.clientY)); });
+      (function animateCursor() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = particles.length - 1; i >= 0; i--) {
+          particles[i].update(); particles[i].draw();
+          if (particles[i].life <= 0) particles.splice(i, 1);
+        }
+        requestAnimationFrame(animateCursor);
+      })();
+    }
+
+    /* ---------- falling petals ---------- */
+    if (!REDUCED_MOTION) {
+      const petalContainer = document.getElementById('petal-container');
+      const palettes = [
+        ['#f7c6d0', '#e58a9f', '#c4506b'],
+        ['#f4b3bf', '#d9657d', '#a8233f'],
+        ['#ffe08a', '#f9b233', '#e08a00']
+      ];
+      const count = window.innerWidth < 600 ? 12 : 22;
+      for (let i = 0; i < count; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.style.left = Math.random() * 100 + 'vw';
+        const w = Math.random() * 8 + 12;
+        petal.style.width = w + 'px'; petal.style.height = (w * 0.8) + 'px';
+        const c = palettes[Math.floor(Math.random() * palettes.length)];
+        petal.style.background = `radial-gradient(circle at 25% 25%, ${c[0]}, ${c[1]} 55%, ${c[2]})`;
+        petal.style.animationDuration = (Math.random() * 9 + 14).toFixed(1) + 's';
+        petal.style.animationDelay = (Math.random() * 14).toFixed(1) + 's';
+        petalContainer.appendChild(petal);
       }
     }
 
-    window.addEventListener('mousemove', (e) => {
-      if(Math.random() > 0.5) particles.push(new Particle(e.clientX, e.clientY));
+    /* ---------- countdown (IST) ---------- */
+    const weddingDate = new Date('2026-12-04T11:00:00+05:30').getTime();
+    function tick() {
+      const diff = Math.max(0, weddingDate - Date.now());
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('days').innerText = pad(Math.floor(diff / 86400000));
+      document.getElementById('hours').innerText = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById('minutes').innerText = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('seconds').innerText = pad(Math.floor((diff % 60000) / 1000));
+    }
+    tick(); setInterval(tick, 1000);
+
+    /* ---------- modals ---------- */
+    function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
     });
 
-    function animateCursor() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = particles.length - 1; i >= 0; i--) {
-        particles[i].update(); particles[i].draw();
-        if (particles[i].life <= 0) particles.splice(i, 1);
-      }
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    /* Falling Petals */
-    const petalContainer = document.getElementById('petal-container');
-    const petalColors = ['#8b0000', '#63121b', '#b22222', '#dc143c', '#a52a2a']; 
-    
-    for(let i=0; i<15; i++){
-      let petal = document.createElement('div');
-      petal.className = 'petal';
-      petal.style.left = Math.random() * 100 + 'vw';
-      const size = Math.random() * 6 + 10;
-      petal.style.width = size + 'px';
-      petal.style.height = size + 'px';
-      petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
-      const fallDuration = (Math.random() * 8 + 15).toFixed(1); 
-      const delay = (Math.random() * 12).toFixed(1);
-      petal.style.animationDuration = fallDuration + 's';
-      petal.style.animationDelay = delay + 's';
-      const blurAmount = Math.random() > 0.5 ? Math.random() * 2 : 0;
-      petal.style.filter = `blur(${blurAmount}px)`;
-      petalContainer.appendChild(petal);
+    /* ---------- add to calendar (.ics) ---------- */
+    function downloadCalendar() {
+      const ev = (uid, title, start, end) => [
+        'BEGIN:VEVENT', 'UID:' + uid + '@ashish-navya-wedding',
+        'DTSTAMP:20261001T000000Z',
+        'DTSTART;TZID=Asia/Kolkata:' + start, 'DTEND;TZID=Asia/Kolkata:' + end,
+        'SUMMARY:' + title, 'LOCATION:Govind Bagh\\, Jodhpur',
+        'DESCRIPTION:Wedding of Ashish & Navya', 'END:VEVENT'
+      ].join('\r\n');
+      const ics = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Ashish & Navya Wedding//EN', 'CALSCALE:GREGORIAN',
+        ev('haldi', 'Haldi — Ashish & Navya', '20261204T110000', '20261204T140000'),
+        ev('pheras', 'Varmala & Pheras — Ashish & Navya', '20261204T173000', '20261204T223000'),
+        'END:VCALENDAR'
+      ].join('\r\n');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+      a.download = 'Ashish-Navya-Wedding.ics';
+      document.body.appendChild(a); a.click(); a.remove();
     }
 
-    /* Countdown Timer */
-    const weddingDate = new Date("December 4, 2026 10:00:00").getTime();
+    /* ---------- helpers: toast, safe URLs, spreadsheet-safe text ---------- */
+    const T = k => (translations[currentLang] && translations[currentLang][k]) || translations.en[k] || '';
+    let toastTimer = null;
+    function toast(msg, isErr) {
+      const el = document.getElementById('toast'); if (!el) return;
+      el.textContent = msg; el.className = (isErr ? 'err ' : '') + 'show';
+      clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.className = ''; }, 4200);
+    }
+    const SAFE_IMG_HOSTS = ['drive.google.com', 'lh3.googleusercontent.com', 'drive.usercontent.google.com', 'googleusercontent.com'];
+    function safeImgUrl(u) {
+      try { const x = new URL(String(u)); return (x.protocol === 'https:' && SAFE_IMG_HOSTS.some(h => x.hostname === h || x.hostname.endsWith('.' + h))) ? x.href : null; } catch (e) { return null; }
+    }
+    // stop Google-Sheets formula injection ( =, +, -, @ at the start of a cell ) and strip control characters
+    function sheetSafe(v) {
+      v = String(v == null ? '' : v).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').trim();
+      return /^[=+\-@\t\r]/.test(v) ? "'" + v : v;
+    }
+    const store = {
+      get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+      set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+    };
+
+    /* ---------- live walls: photos + wishes (no names shown), keyed so refreshes never reshuffle what is on screen ---------- */
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    function floaty(el, rot) {
+      el.style.setProperty('--amp', rnd(5, 13).toFixed(1) + 'px'); el.style.setProperty('--dur', rnd(4.2, 8.5).toFixed(1) + 's');
+      el.style.setProperty('--delay', (-rnd(0, 7)).toFixed(1) + 's'); el.style.setProperty('--rot', ((Math.random() * 2 - 1) * rot).toFixed(2) + 'deg');
+    }
+    function spinBtn(b) { b.classList.remove('spin'); void b.offsetWidth; b.classList.add('spin'); }
+    function placeholderMsg(container, text, wide) { container.innerHTML = '<p class="wall-msg" style="text-align:center; ' + (wide ? 'grid-column: 1 / -1; ' : 'column-span: all; ') + 'color: var(--gold-deep); font-family: var(--font-serif); font-size: 1.1rem;">' + esc(text) + '</p>'; }
+    function syncWall(container, keys, build) {                 // add new items on top, drop removed ones, keep the rest untouched
+      const have = new Map(Array.from(container.querySelectorAll('[data-key]')).map(n => [n.dataset.key, n]));
+      container.querySelectorAll('.wall-msg').forEach(n => n.remove());
+      have.forEach((n, k) => { if (!keys.includes(k)) n.remove(); });
+      const fresh = keys.filter(k => !have.has(k));
+      if (have.size === 0) fresh.sort(() => Math.random() - .5);                       // first paint: random arrangement
+      (have.size === 0 ? fresh : fresh.slice().reverse()).forEach(k => { const n = build(k); if (have.size === 0) container.appendChild(n); else container.prepend(n); });
+    }
+
+    function loadGallery(manual) {
+      if (SHOW_MEMORIES !== 1 || !UPLOAD_SCRIPT_URL.includes('/exec')) return;
+      const gallery = document.getElementById('memory-wall');
+      if (!gallery.children.length) placeholderMsg(gallery, T('msg_loading_mem'));
+      fetch(UPLOAD_SCRIPT_URL + '?v=' + Date.now())
+        .then(r => r.json())
+        .then(urls => {
+          const list = Array.from(new Set((Array.isArray(urls) ? urls : []).map(safeImgUrl).filter(Boolean)));
+          if (!list.length) { placeholderMsg(gallery, T('msg_no_mem')); return; }
+          syncWall(gallery, list, url => {
+            const div = document.createElement('div'); div.className = 'masonry-item'; div.dataset.key = url; floaty(div, 1.8);
+            const img = document.createElement('img');
+            img.src = url; img.alt = 'Wedding memory'; img.loading = 'lazy'; img.decoding = 'async'; img.referrerPolicy = 'no-referrer';
+            img.addEventListener('error', () => driveFallback(img));
+            div.setAttribute('role', 'button'); div.tabIndex = 0;
+            const open = () => openLightbox(img.currentSrc || img.src);
+            div.addEventListener('click', open);
+            div.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+            div.appendChild(img); return div;
+          });
+        })
+        .catch(() => { if (!gallery.querySelector('img')) placeholderMsg(gallery, T('msg_mem_wait')); });
+    }
+
+    function makeWishCard(text, key) {
+      const card = document.createElement('div'); card.className = 'wish-card'; card.dataset.key = key; floaty(card, 1.1);
+      card.textContent = String(text).slice(0, 500); return card;                                   // names are collected but never displayed
+    }
+    function loadWishes(manual) {
+      if (SHOW_WISHES !== 1 || !RSVP_SCRIPT_URL.includes('/exec')) return;
+      const wc = document.getElementById('wishes-container');
+      fetch(RSVP_SCRIPT_URL + '?action=wishes&v=' + Date.now())
+        .then(r => r.json())
+        .then(data => {
+          const msgs = (data && Array.isArray(data.wishes) ? data.wishes : []).map(i => i && i.message ? String(i.message).trim().slice(0, 500) : '').filter(Boolean).slice(0, 200);
+          if (!msgs.length) { if (!wc.querySelector('.wish-card')) placeholderMsg(wc, T('msg_no_wishes'), true); return; }
+          const seen = {}, keys = msgs.map(m => { seen[m] = (seen[m] || 0) + 1; return seen[m] + '|' + m; });
+          syncWall(wc, keys, k => makeWishCard(k.slice(k.indexOf('|') + 1), k));
+        })
+        .catch(() => { if (!wc.querySelector('.wish-card')) placeholderMsg(wc, T('msg_wishes_fail'), true); });
+    }
+
+    function loadGalleryAndWishes() { applySectionVisibilityFlags(); loadGallery(); loadWishes(); }
+    setInterval(() => {                                           // keep both walls live while open
+      if (document.hidden) return;
+      if (document.getElementById('page-memories').classList.contains('active-page')) loadGallery();
+      if (document.getElementById('page-wishes').classList.contains('active-page')) loadWishes();
+    }, 90000);
+    function shuffleStep(container) {                              // a random item hops to a new place; neighbours glide out of the way
+      const items = Array.from(container.querySelectorAll('.masonry-item, .wish-card'));
+      if (items.length < 3) return;
+      const before = new Map(items.map(n => [n, n.getBoundingClientRect()]));
+      const mover = items[Math.floor(Math.random() * items.length)], ref = items[Math.floor(Math.random() * items.length)];
+      if (mover === ref) return;
+      container.insertBefore(mover, Math.random() < .5 ? ref : ref.nextSibling);
+      items.forEach(n => {
+        const a = before.get(n), b = n.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
+        if (Math.abs(dx) + Math.abs(dy) < 2 || !n.animate) return;
+        n.animate([{ translate: dx + 'px ' + dy + 'px' }, { translate: '0px 0px' }], { duration: 2400, easing: 'cubic-bezier(.45,.05,.25,1)' });
+      });
+    }
     setInterval(() => {
-      const now = new Date().getTime();
-      const diff = weddingDate - now;
-      if (diff > 0) {
-        document.getElementById("days").innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-        document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-        document.getElementById("minutes").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-        document.getElementById("seconds").innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      if (document.hidden || REDUCED_MOTION) return;
+      const active = document.querySelector('.page-view.active-page'); if (!active) return;
+      const wall = active.querySelector('#memory-wall, #wishes-container'); if (wall) shuffleStep(wall);
+    }, 14000);
+    setInterval(() => {                                           // spotlight: one random photo / wish glows for a moment
+      if (document.hidden || REDUCED_MOTION) return;
+      const active = document.querySelector('.page-view.active-page'); if (!active) return;
+      const items = active.querySelectorAll('.masonry-item, .wish-card'); if (!items.length) return;
+      const el = items[Math.floor(Math.random() * items.length)]; el.classList.add('spot'); setTimeout(() => el.classList.remove('spot'), 2200);
+    }, 9000);
+
+    /* ---------- add a wish (name optional, saved but never shown) ---------- */
+    function openWishModal() { openModal('modal-wish'); setTimeout(() => { const t = document.getElementById('wf-msg'); if (t) t.focus(); }, 350); }
+    function handleWish(e) {
+      e.preventDefault();
+      const form = e.target, btn = form.querySelector('button[type="submit"]');
+      if (document.getElementById('wf-hp').value) return;                      // honeypot
+      const msg = sheetSafe(document.getElementById('wf-msg').value).slice(0, 500), name = sheetSafe(document.getElementById('wf-name').value).slice(0, 60);
+      if (!msg) { toast(T('msg_wish_empty'), true); document.getElementById('wf-msg').focus(); return; }
+      if (Date.now() - Number(store.get('wishLast') || 0) < 8000) { toast(T('msg_wait'), true); return; }
+      btn.disabled = true; const label = T('btn_send_wish'); btn.textContent = T('msg_sending');
+      const payload = { action: 'wish', status: 'wish', name, wishes: msg, phone: '', guests: '', travelArrival: '', arrivalTransitNumber: '', arrival: '', travelDeparture: '', departureTransitNumber: '', departure: '' };
+      fetch(RSVP_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+        .then(() => {
+          store.set('wishLast', String(Date.now())); toast(T('msg_wish_ok'));
+          const wc = document.getElementById('wishes-container'); wc.querySelectorAll('.wall-msg').forEach(n => n.remove());
+          wc.prepend(makeWishCard(msg, 'local|' + Date.now()));
+          form.reset(); document.getElementById('wfCount').textContent = '0 / 500'; closeModal('modal-wish');
+        })
+        .catch(() => toast(T('msg_wish_fail'), true))
+        .finally(() => { btn.disabled = false; btn.textContent = label; });
+    }
+
+    function updateCount() { const t = document.getElementById('wishes'), c = document.getElementById('wishCount'); if (t && c) c.textContent = t.value.length + ' / 500'; }
+
+    /* ---------- lightbox ---------- */
+    function openLightbox(src) { const lb = document.getElementById('lightbox'); lb.querySelector('img').src = src; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { const lb = document.getElementById('lightbox'); lb.classList.remove('open'); lb.querySelector('img').removeAttribute('src'); document.body.style.overflow = ''; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    /* ---------- share ---------- */
+    function shareInvite() {
+      const url = location.href.split('#')[0], text = T('share_text');
+      if (navigator.share) { navigator.share({ title: document.title, text, url }).catch(() => {}); return; }
+      const copy = () => toast(T('msg_copied'));
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text + ' ' + url).then(copy).catch(() => window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener'));
+      else window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+    }
+
+    /* ---------- photo upload: validate, resize (also strips GPS/EXIF), send one by one ---------- */
+    const MAX_FILES = 5, MAX_BYTES = 15 * 1024 * 1024, OK_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
+    function updateFileName(input) {
+      const n = input.files ? input.files.length : 0;
+      document.getElementById('fileNameDisplay').textContent = n ? n + ' ✓' + (n === 1 ? ' — ' + input.files[0].name.slice(0, 40) : '') : '';
+    }
+    function compressImage(file) {
+      return new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file), img = new Image();
+        img.onload = () => {
+          const max = 1600, sc = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+          const cw = Math.max(1, Math.round(img.naturalWidth * sc)), ch = Math.max(1, Math.round(img.naturalHeight * sc));
+          const c = document.createElement('canvas'); c.width = cw; c.height = ch;
+          c.getContext('2d').drawImage(img, 0, 0, cw, ch); URL.revokeObjectURL(url);
+          c.toBlob(b => b ? resolve(b) : reject(new Error('encode')), 'image/jpeg', 0.82);
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('decode')); };
+        img.src = url;
+      });
+    }
+    const blobToBase64 = blob => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(blob); });
+
+    async function handleUpload(e) {
+      e.preventDefault();
+      const input = document.getElementById('fileInput'), btn = e.target.querySelector('button[type="submit"]'), files = Array.from(input.files || []);
+      if (!files.length) { toast(T('msg_pick_file'), true); return; }
+      if (files.length > MAX_FILES) { toast(T('msg_too_many'), true); return; }
+      for (const f of files) {
+        if (!OK_TYPES.includes((f.type || '').toLowerCase()) && !/\.(jpe?g|png|webp|heic|heif)$/i.test(f.name)) { toast(T('msg_file_type'), true); return; }
+        if (f.size > MAX_BYTES) { toast(T('msg_file_big'), true); return; }
       }
-    }, 1000);
-
-    /* Modal Controls */
-    function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
-    function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
-
-    /* Load Dynamic Gallery & Wishes */
-    function loadGalleryAndWishes() {
-      applySectionVisibilityFlags();
-
-      if (SHOW_MEMORIES === 1 && typeof UPLOAD_SCRIPT_URL !== 'undefined' && UPLOAD_SCRIPT_URL.includes('/exec')) {
-        const gallery = document.getElementById('memory-wall');
-        gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--gold-primary);">Loading memories...</p>';
-        const cacheBusterUrl = UPLOAD_SCRIPT_URL + '?v=' + new Date().getTime();
-
-        fetch(cacheBusterUrl)
-          .then(response => response.json())
-          .then(urls => {
-            gallery.innerHTML = ''; 
-            if(!urls || urls.length === 0) {
-               gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--text-dark);">No memories uploaded yet. Be the first!</p>';
-               return;
-            }
-            urls.forEach(url => {
-              let div = document.createElement('div');
-              div.className = 'masonry-item';
-              div.innerHTML = `<img src="${url}" alt="Wedding Memory">`;
-              gallery.appendChild(div);
-            });
-          })
-          .catch(error => {
-            gallery.innerHTML = '<p style="text-align:center; width:100%; color: var(--royal-maroon);">Waiting for first uploads...</p>';
-          });
+      if (store.get('lastUpload') && Date.now() - Number(store.get('lastUpload')) < 4000) return;
+      btn.disabled = true; const label = T('btn_upload');
+      let ok = 0;
+      try {
+        for (let i = 0; i < files.length; i++) {
+          btn.textContent = T('msg_uploading') + ' ' + (i + 1) + '/' + files.length + '…';
+          const blob = await compressImage(files[i]);
+          const payload = { fileName: 'memory-' + Date.now() + '-' + (i + 1) + '.jpg', mimeType: 'image/jpeg', base64: await blobToBase64(blob) };
+          const r = await fetch(UPLOAD_SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'text/plain;charset=utf-8' } });
+          const data = await r.json();
+          if (data && data.status === 'success') ok++; else throw new Error('server');
+        }
+        toast(T('msg_upload_ok')); store.set('lastUpload', String(Date.now()));
+        e.target.reset(); document.getElementById('fileNameDisplay').textContent = '';
+        loadGallery(true);
+      } catch (err) {
+        toast(ok ? T('msg_upload_ok') : T('msg_upload_fail'), !ok);
+        if (ok) loadGallery(true);
       }
+      btn.disabled = false; btn.textContent = label;
+    }
 
-      if (SHOW_WISHES === 1 && typeof RSVP_SCRIPT_URL !== 'undefined' && RSVP_SCRIPT_URL.includes('/exec')) {
-        const wishesContainer = document.getElementById('wishes-container');
-        const rsvpGetUrl = RSVP_SCRIPT_URL + '?action=wishes&v=' + new Date().getTime();
-        
-        fetch(rsvpGetUrl)
-          .then(res => res.json())
-          .then(data => {
-            if (data && data.wishes && data.wishes.length > 0) {
-              wishesContainer.innerHTML = '';
-              data.wishes.forEach(item => {
-                if (item.message) {
-                  const wishCard = document.createElement('div');
-                  wishCard.className = 'wish-card';
-                  wishCard.innerHTML = `"${item.message}"<span class="wish-author">— ${item.name}</span>`;
-                  wishesContainer.appendChild(wishCard);
-                }
-              });
-            } else {
-              wishesContainer.innerHTML = '<p style="text-align:center; grid-column: 1 / -1; color: var(--text-dark); font-family: var(--font-serif);">' + (translations[currentLang].wishes_loading || 'No wishes posted yet.') + '</p>';
-            }
-          })
-          .catch(err => {
-            wishesContainer.innerHTML = '<p style="text-align:center; grid-column: 1 / -1; color: var(--text-dark); font-family: var(--font-serif);">Be the first to leave a wish using the RSVP form!</p>';
-          });
-      }
+    /* ---------- RSVP ---------- */
+    function handleRSVP(e) {
+      e.preventDefault();
+      const form = e.target, btn = form.querySelector('button[type="submit"]'), val = id => document.getElementById(id).value;
+      if (val('hp')) return;                                                   // honeypot: bots fill hidden fields
+      const name = sheetSafe(val('name')).slice(0, 100), wishes = sheetSafe(val('wishes')).slice(0, 500), status = val('status');
+      if (!name) { toast(T('msg_name'), true); document.getElementById('name').focus(); return; }
+      if (!['attending', 'declining'].includes(status)) { toast(T('msg_status'), true); document.getElementById('status').focus(); return; }
+      const attending = status === 'attending', phoneRaw = val('phone').trim().slice(0, 20), phone = sheetSafe(phoneRaw);
+      if (attending && !/^\+?\d[\d\s\-()]{6,18}$/.test(phoneRaw)) { toast(T('msg_phone'), true); document.getElementById('phone').focus(); return; }
+      if (attending && val('arrival') && val('departure') && new Date(val('departure')) <= new Date(val('arrival'))) { toast(T('msg_dates'), true); document.getElementById('departure').focus(); return; }
+      const last = Number(store.get('rsvpLast') || 0);
+      if (Date.now() - last < 20000) { toast(T('msg_wait'), true); return; }
+
+      btn.disabled = true; const label = T('btn_confirm_rsvp'); btn.textContent = T('msg_sending');
+      const guests = attending ? String(Math.min(10, Math.max(1, parseInt(val('guests'), 10) || 1))) : '';
+      const modes = ['', 'flight', 'train', 'car', 'na'], mode = id => (modes.includes(val(id)) ? val(id) : '');
+      const formData = {
+        name, status, phone: attending ? phone : '',
+        travelArrival: mode('travel-arrival'), arrivalTransitNumber: sheetSafe(val('arrival-transit-number')).slice(0, 30), arrival: val('arrival'),
+        travelDeparture: mode('travel-departure'), departureTransitNumber: sheetSafe(val('departure-transit-number')).slice(0, 30), departure: val('departure'),
+        guests, wishes
+      };
+      // no-cors + text/plain avoids a CORS preflight with Apps Script
+      fetch(RSVP_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(formData) })
+        .then(() => {
+          store.set('rsvpLast', String(Date.now()));
+          toast(T('msg_rsvp_ok'));
+          if (wishes && SHOW_WISHES === 1) {
+            const wc = document.getElementById('wishes-container'); wc.querySelectorAll('.wall-msg').forEach(n => n.remove());
+            wc.prepend(makeWishCard(wishes, 'local|' + Date.now()));
+          }
+          form.reset(); updateCount();
+          document.getElementById('joyfulSection').style.display = 'none';
+          handleTransitNumberDisplay('arrival'); handleTransitNumberDisplay('departure');
+          switchPage(SHOW_WISHES === 1 ? 'wishes' : 'home');
+        })
+        .catch(() => toast(T('msg_rsvp_fail'), true))
+        .finally(() => { btn.disabled = false; btn.textContent = label; });
+    }
+
+    /* ---------- Drive image fallbacks ---------- */
+    function driveId(src) { const m = /[?&]id=([\w-]+)/.exec(src || ''); return m ? m[1] : null; }
+    function driveFallback(img) {
+      const id = driveId(img.getAttribute('data-orig') || img.src);
+      if (!id) return;
+      img.setAttribute('data-orig', 'https://drive.google.com/thumbnail?id=' + id);
+      const step = parseInt(img.getAttribute('data-fb') || '0', 10);
+      const w = img.classList.contains('modal-bg-img') ? 1000 : 800;
+      const options = [
+        'https://lh3.googleusercontent.com/d/' + id + '=w' + w,
+        'https://drive.google.com/uc?export=view&id=' + id
+      ];
+      if (step < options.length) { img.setAttribute('data-fb', step + 1); img.referrerPolicy = 'no-referrer'; img.src = options[step]; }
+    }
+    function setupDriveImages() {
+      document.querySelectorAll('img[src*="drive.google.com/thumbnail"], img[data-orig]').forEach(img => {
+        img.addEventListener('error', () => driveFallback(img));
+        if (img.complete && img.naturalWidth === 0) driveFallback(img);
+      });
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      loadGalleryAndWishes();
-      setLanguage('en');
-    });
-
-    function updateFileName(input) {
-      const display = document.getElementById('fileNameDisplay');
-      if (input.files.length > 0) display.innerText = `${input.files.length} file(s) selected for upload.`;
-      else display.innerText = '';
-    }
-
-    function handleUpload(e) {
-      e.preventDefault();
-      const fileInput = document.getElementById('fileInput');
-      const btn = e.target.querySelector('button');
-      
-      if (fileInput.files.length === 0) {
-        alert("Please select a file to upload first."); return;
-      }
-      const file = fileInput.files[0];
-      btn.innerText = "Uploading... Please wait";
-      btn.style.pointerEvents = "none";
-
-      const reader = new FileReader();
-      reader.onload = function() {
-        const base64Data = reader.result.split(',')[1];
-        const payload = { fileName: file.name, mimeType: file.type, base64: base64Data };
-
-        fetch(UPLOAD_SCRIPT_URL, {
-          method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 'success') {
-            alert("Memory uploaded successfully!"); e.target.reset(); document.getElementById('fileNameDisplay').innerText = ''; loadGalleryAndWishes();
-          } else { alert("Upload failed: " + data.message); }
-          btn.innerText = translations[currentLang].btn_upload || "Upload to Gallery"; 
-          btn.style.pointerEvents = "auto";
-        })
-        .catch(error => {
-          alert("Error connecting to Drive. Please try again.");
-          btn.innerText = translations[currentLang].btn_upload || "Upload to Gallery"; 
-          btn.style.pointerEvents = "auto";
-        });
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // CORS & Redirect Safe RSVP Handler
-    function handleRSVP(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.innerText = "Sending...";
-      btn.style.pointerEvents = "none";
-
-      const name = document.getElementById('name').value.trim().slice(0, 100);
-      const status = document.getElementById('status').value;
-      const phone = document.getElementById('phone').value.trim();
-      const guests = document.getElementById('guests').value;
-      const wishes = document.getElementById('wishes').value.trim().slice(0, 500);
-
-      const formData = {
-        name: name,
-        status: status,
-        phone: phone,
-        travelArrival: document.getElementById('travel-arrival').value,
-        arrivalTransitNumber: document.getElementById('arrival-transit-number').value.trim(),
-        arrival: document.getElementById('arrival').value,
-        travelDeparture: document.getElementById('travel-departure').value,
-        departureTransitNumber: document.getElementById('departure-transit-number').value.trim(),
-        departure: document.getElementById('departure').value,
-        guests: guests,
-        wishes: wishes
-      };
-
-      // Uses mode: 'no-cors' and text/plain to bypass browser CORS preflight blocks completely
-      fetch(RSVP_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(formData)
-      })
-      .then(() => {
-        alert(currentLang === 'hi' ? "आरएसवीपी पुष्टि हो गई है! धन्यवाद।" : (currentLang === 'kn' ? "RSVP ದೃಢೀಕರಿಸಲಾಗಿದೆ! ಧನ್ಯವಾದಗಳು." : "RSVP Confirmed! Thank you for responding."));
-        btn.innerText = translations[currentLang].btn_confirm_rsvp || "Confirm RSVP"; 
-        btn.style.pointerEvents = "auto";
-        
-        if (wishes && SHOW_WISHES === 1) {
-          const wishesContainer = document.getElementById('wishes-container');
-          if (wishesContainer.querySelector('p')) {
-            wishesContainer.innerHTML = '';
-          }
-          const newWishCard = document.createElement('div');
-          newWishCard.className = 'wish-card';
-          newWishCard.innerHTML = `"${wishes}"<span class="wish-author">— ${name}</span>`;
-          wishesContainer.prepend(newWishCard);
-        }
-
-        e.target.reset();
-        document.getElementById('joyfulSection').style.display = 'none';
-        
-        if (SHOW_WISHES === 1) {
-          switchPage('wishes');
-        } else {
-          switchPage('home');
-        }
-      })
-      .catch(error => {
-        console.error("RSVP Error:", error);
-        alert("Error sending RSVP. Please check your connection and try again.");
-        btn.innerText = translations[currentLang].btn_confirm_rsvp || "Confirm RSVP";
-        btn.style.pointerEvents = "auto";
+      setupDriveImages();
+      document.querySelectorAll('.nav-links a, .nav-logo').forEach(a => {
+        a.setAttribute('role', 'button'); a.tabIndex = 0;
+        a.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); a.click(); } });
       });
-    }
+      let lang = store.get('lang');
+      if (!translations[lang]) { const nl = (navigator.language || 'en').slice(0, 2).toLowerCase(); lang = translations[nl] ? nl : 'en'; }
+      setLanguage(lang);
+      loadGalleryAndWishes();
+      observeReveals();
+      updateCount();
+    });
   </script>
 </body>
 </html>
