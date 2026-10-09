@@ -28,7 +28,14 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: var(--bg-cream); 
+      min-height: 100vh;
+      background-color: var(--bg-cream);
+      background-image: linear-gradient(rgba(250, 247, 242, 0.82), rgba(250, 247, 242, 0.82)),
+                        url('https://drive.google.com/thumbnail?id=1HZtAvCUXRws8vjP1196XutlPZYsUq0KA&sz=w1920');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-attachment: scroll;
+      background-size: 100% auto;
       color: var(--text-dark); 
       font-family: var(--font-sans);
       overflow-x: hidden;
@@ -101,7 +108,8 @@
     .nav-links a { 
       text-decoration: none; 
       color: var(--royal-maroon); 
-      font-size: 0.75rem;  
+      font-size: 0.75rem; 
+      letter-spacing: 0.12em; 
       text-transform: uppercase; 
       padding: 0.42rem 0.95rem; 
       border: 1px solid rgba(212, 175, 55, 0.4); 
@@ -176,14 +184,8 @@
       align-items: center; 
       text-align: center; 
       overflow: hidden; 
-      padding: 2.5rem 1rem 2rem;
+      padding: 2rem 1rem 1.2rem;
     }
-    .hero-bg {
-      position: absolute; top: 0; left: 0; width: 100%; height: 120%; 
-      opacity: 0.3; filter: sepia(20%) saturate(130%) contrast(110%); z-index: 0;
-      will-change: transform;
-    }
-    .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
     .hero-content { position: relative; z-index: 2; width: 100%; max-width: 950px; margin: 0 auto; }
 
     /* DIVINE BLESSING & GOLDEN ICONS */
@@ -202,7 +204,7 @@
       text-shadow: 0 1px 3px rgba(184, 134, 11, 0.4), 0 0 10px rgba(212, 175, 55, 0.3);
     }
 
-    /* TRUE TRANSPARENT LOGO EMBLEM (NO BACKGROUND, NO CIRCLE) */
+    /* TRUE TRANSPARENT LOGO EMBLEM */
     .sticker-couple {
       width: 195px; 
       height: auto; 
@@ -219,6 +221,19 @@
     .sticker-couple:hover { animation: spinPop 0.5s forwards; }
     @keyframes cuteBounce { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
     @keyframes spinPop { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+    /* HOST INVITATION BLESSING SUBTITLE */
+    .host-blessing-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1rem, 2.1vw, 1.25rem);
+      color: var(--gold-dark);
+      max-width: 720px;
+      margin: 0 auto 1.2rem auto;
+      line-height: 1.55;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(184, 134, 11, 0.25);
+    }
 
     /* COUPLE PRESENTATION WRAPPER */
     .couple-hero-container {
@@ -241,20 +256,24 @@
       line-height: 1.1;
       text-shadow: 0 4px 22px rgba(99, 18, 27, 0.18);
       font-weight: 800;
+      letter-spacing: 0.05em;
     }
     
-    /* PARENTAGE SUBTITLE WITH DOUBLED THICKNESS (WEIGHT 800) */
+    /* PARENTAGE SUBTITLE */
     .person-block .parentage-subtitle {
       font-family: var(--font-royal) !important;
       font-size: clamp(0.85rem, 1.8vw, 1.05rem);
       color: var(--royal-maroon);
       font-weight: 800 !important;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-top: 0.25rem;
       background: none !important;
       border: none !important;
       padding: 0 !important;
       opacity: 0.95;
+      text-align: center;
+      line-height: 1.5;
     }
     
     .weds-separator {
@@ -275,7 +294,7 @@
     .hero-date { font-family: var(--font-serif); font-size: 1.55rem; letter-spacing: 0.1em; color: var(--text-dark); margin-bottom: 1.8rem; font-weight: 600; }
 
     /* GLASSMORPHISM TIMER */
-    .timer-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 2rem; }
+    .timer-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 1rem; }
     .timer-box {
       background: rgba(255, 255, 255, 0.55); backdrop-filter: blur(10px);
       border: 1px solid rgba(212, 175, 55, 0.4); padding: 1.1rem; border-radius: 12px;
@@ -286,78 +305,114 @@
     .timer-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); position: relative; font-weight: 700; }
 
     /* SECTIONS */
-    section { padding: 3.5rem 1.5rem; max-width: 950px; margin: 0 auto; position: relative; z-index: 2; opacity: 1; }
-    .section-title { font-family: var(--font-royal); font-size: 2.6rem; color: var(--gold-primary); text-align: center; margin-bottom: 2.2rem; text-shadow: 0 4px 15px rgba(212,175,55,0.1); }
+    section { padding: 1.8rem 1.5rem; max-width: 950px; margin: 0 auto; position: relative; z-index: 2; opacity: 1; }
+    .section-title { font-family: var(--font-royal); font-size: 2.3rem; color: var(--gold-primary); text-align: center; margin-bottom: 1.2rem; text-shadow: 0 4px 15px rgba(212,175,55,0.1); }
 
     /* EVENT CARDS */
-    .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.8rem; max-width: 820px; margin: 0 auto; }
+    .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 820px; margin: 0 auto; }
     .event-card {
-      background: #fff; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 15px; padding: 2.2rem 1.5rem;
+      background: #fff; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 15px; padding: 2rem 1.5rem;
       text-align: center; cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
       color: var(--text-dark); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); position: relative; overflow: hidden;
     }
     .event-card:hover { transform: translateY(-6px); border-color: var(--gold-primary); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25); }
     .event-card h3 { font-family: var(--font-royal); font-size: 1.6rem; color: var(--royal-maroon); margin-bottom: 0.6rem; }
     .event-card p { font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-dark); font-weight: 600;}
-    .card-btn { margin-top: 1.2rem; padding: 0.5rem 1.4rem; border: 1px solid var(--gold-primary); background: transparent; color: var(--gold-primary); border-radius: 25px; transition: 0.3s; font-weight: bold; pointer-events: none; display: inline-block;}
+    .card-btn { margin-top: 1rem; padding: 0.5rem 1.4rem; border: 1px solid var(--gold-primary); background: transparent; color: var(--gold-primary); border-radius: 25px; transition: 0.3s; font-weight: bold; pointer-events: none; display: inline-block;}
     .event-card:hover .card-btn { background: var(--gold-primary); color: #fff; }
 
-    /* VENUE SECTION */
-    .venue-card {
-      background: #fff; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 15px; padding: 2.5rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.06); font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.8; color: var(--text-dark);
-      text-align: center;
+    /* UNIFIED CONTACTS GRID */
+    .contacts-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
     }
-    .venue-card h3 { font-family: var(--font-royal); color: var(--royal-maroon); font-size: 2rem; margin-bottom: 1rem; }
-    .venue-details-wrap {
-      display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 1.5rem;
+    .contacts-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.1rem;
     }
-    .venue-qr {
-      width: 190px; height: 190px; object-fit: contain; border-radius: 12px;
-      border: 2px solid var(--gold-primary); padding: 8px; background: #fff;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.07); margin-bottom: 1rem;
-    }
-    .venue-map-btn {
-      display: inline-block; padding: 0.6rem 1.8rem; background: var(--gold-primary); color: #fff;
-      font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; border-radius: 25px; text-decoration: none; transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); margin-bottom: 1.5rem;
-    }
-    .venue-map-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
-    .cab-notice {
-      background: rgba(212, 175, 55, 0.08); border-left: 4px solid var(--gold-primary);
-      padding: 1rem 1.5rem; border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem;
-      line-height: 1.6; text-align: left; max-width: 650px; margin: 0 auto; color: var(--royal-maroon);
-    }
-
-    /* CONTACT DIRECTORY */
-    .contacts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
     .contact-card {
-      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 1.4rem 1rem; text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: 0.3s;
+      background: #fff; 
+      border: 1px solid rgba(212, 175, 55, 0.35); 
+      border-radius: 12px; 
+      padding: 1.1rem 1rem; 
+      text-align: center; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+      transition: 0.3s; 
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: 250px;
+      min-width: 180px;
     }
     .contact-card:hover { transform: translateY(-4px); border-color: var(--gold-primary); box-shadow: 0 8px 20px rgba(212,175,55,0.2); }
-    .contact-card h3 { font-family: var(--font-royal); font-size: 1rem; color: var(--royal-maroon); margin-bottom: 0.3rem; }
-    .contact-card p { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
+    .contact-card h3 { font-family: var(--font-royal); font-size: 0.95rem; color: var(--royal-maroon); margin-bottom: 0.3rem; }
+    .contact-card p { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
     .contact-card a { color: var(--gold-primary); text-decoration: none; }
     .contact-card a:hover { text-decoration: underline; }
 
     /* WHATSAPP QR & 1-TOUCH BUTTON SECTION */
     .whatsapp-container {
-      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 2rem; text-align: center;
-      max-width: 420px; margin: 0 auto; box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      background: #fff; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 15px; padding: 1.6rem 2rem; text-align: center;
+      max-width: 420px; margin: 1.4rem auto 0; box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
-    .whatsapp-qr { width: 160px; height: 160px; object-fit: contain; margin: 0.8rem auto; border-radius: 10px; border: 2px solid var(--gold-primary); padding: 5px; background: #fff; display: block; cursor: pointer; transition: transform 0.3s; }
+    .whatsapp-qr { width: 150px; height: 150px; object-fit: contain; margin: 0.6rem auto; border-radius: 10px; border: 2px solid var(--gold-primary); padding: 5px; background: #fff; display: block; cursor: pointer; transition: transform 0.3s; }
     .whatsapp-qr:hover { transform: scale(1.03); }
     .whatsapp-join-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      width: 100%; margin-top: 1rem; padding: 0.85rem 1.2rem;
+      width: 100%; margin-top: 0.8rem; padding: 0.8rem 1.2rem;
       background: linear-gradient(135deg, #25d366, #128c7e); color: #fff;
       font-family: var(--font-sans); font-size: 0.9rem; font-weight: 700;
       text-transform: uppercase; border-radius: 25px;
       text-decoration: none; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); transition: 0.3s;
     }
     .whatsapp-join-btn:hover { background: linear-gradient(135deg, #1ebe5d, #0f766a); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
+
+    /* VENUE SECTION */
+    .venue-card {
+      background: rgba(250, 247, 242, 0.95);
+      border: 2px solid rgba(212, 175, 55, 0.5); 
+      border-radius: 15px; 
+      padding: 2.2rem 2rem;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12); 
+      font-family: var(--font-serif); 
+      font-size: 1.15rem; 
+      line-height: 1.8; 
+      color: var(--text-dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .venue-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://drive.google.com/thumbnail?id=1KcBr6URxb3d_5zSnaLuh1pRyTVp-minZ&sz=w1920') no-repeat center center;
+      background-size: cover;
+      opacity: 0.08;
+      z-index: 0;
+    }
+    .venue-card > * { position: relative; z-index: 1; }
+    .venue-card h3 { font-family: var(--font-royal); color: var(--royal-maroon); font-size: 1.9rem; margin-bottom: 0.8rem; }
+    .venue-details-wrap {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 1.2rem;
+    }
+    .venue-qr {
+      width: 175px; height: 175px; object-fit: contain; border-radius: 12px;
+      border: 2px solid var(--gold-primary); padding: 8px; background: #fff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07); margin-bottom: 0.9rem;
+    }
+    .venue-map-btn {
+      display: inline-block; padding: 0.55rem 1.8rem; background: var(--gold-primary); color: #fff;
+      font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; border-radius: 25px; text-decoration: none; transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); margin-bottom: 1.2rem;
+    }
+    .venue-map-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .cab-notice {
+      background: rgba(212, 175, 55, 0.12); border-left: 4px solid var(--gold-primary);
+      padding: 0.9rem 1.4rem; border-radius: 8px; font-family: var(--font-sans); font-size: 0.92rem;
+      line-height: 1.6; text-align: left; max-width: 650px; margin: 0 auto; color: var(--royal-maroon);
+    }
 
     /* WISHES WALL */
     .wishes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
@@ -438,11 +493,24 @@
     .masonry-item:hover img { transform: scale(1.05); }
 
     /* FOOTER */
-    footer { text-align: center; padding: 2.5rem 1.5rem; border-top: 1px solid rgba(212, 175, 55, 0.3); background: #f4ecdc; position: relative; z-index: 2; }
-    .footer-title { font-family: var(--font-royal); font-size: 1.2rem; color: var(--royal-maroon); margin-bottom: 0.3rem; font-weight: 700; }
+    footer { 
+      text-align: center; 
+      padding: 2.5rem 1.5rem; 
+      border-top: 1px solid rgba(212, 175, 55, 0.3); 
+      background: rgba(244, 236, 220, 0.35); 
+      backdrop-filter: blur(6px);
+      position: relative; 
+      z-index: 2; 
+    }
+    .footer-title { font-family: var(--font-royal); font-size: 1.25rem; color: var(--royal-maroon); margin-bottom: 0.3rem; font-weight: 700; }
 
     /* RESPONSIVE LAYOUT OVERRIDE */
     @media (max-width: 768px) {
+      body {
+        background-size: 100% auto;
+      }
+      section { padding: 1.4rem 1rem; }
+      .section-title { font-size: 1.9rem; margin-bottom: 1rem; }
       nav { padding: 0.65rem 0.8rem; justify-content: space-between; }
       .nav-left { gap: 0.6rem; width: 100%; justify-content: space-between; }
       .nav-links { gap: 0.3rem; }
@@ -453,8 +521,8 @@
       .person-block .couple-name { font-size: 2.2rem; }
       .person-block .parentage-subtitle { font-size: 0.78rem; }
       .events-grid { grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
-      .contacts-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
-      .contact-card { padding: 0.9rem 0.4rem; }
+      .contacts-grid { justify-content: center; gap: 0.6rem; }
+      .contact-card { flex: 1 1 calc(50% - 0.5rem); max-width: none; padding: 0.9rem 0.4rem; }
       .contact-card h3 { font-size: 0.82rem; }
       .contact-card p { font-size: 0.72rem; }
       .venue-card { padding: 1.6rem 1rem; font-size: 0.98rem; }
@@ -474,7 +542,7 @@
   <!-- Showering Roses -->
   <div id="petal-container"></div>
 
-  <!-- FUSED NAVIGATION BAR (WITH TABS & EMBEDDED LANGUAGE BUTTONS) -->
+  <!-- FUSED NAVIGATION BAR (WITH TABS & INTEGRATED LANGUAGE SWITCHER) -->
   <nav>
     <div class="nav-left">
       <a class="nav-logo" onclick="switchPage('home')">A &amp; N</a>
@@ -495,15 +563,12 @@
   </nav>
 
   <!-- =============================================================== -->
-  <!-- PAGE 1: HOME (Hero + Celebrations + Venue + Contacts)          -->
+  <!-- PAGE 1: HOME (Hero + Celebrations + Contacts + Venue)          -->
   <!-- =============================================================== -->
   <div id="page-home" class="page-view active-page">
     
     <!-- 1. Hero & Live Timer -->
     <header class="hero">
-      <div class="hero-bg">
-        <img src="https://drive.google.com/thumbnail?id=1KcBr6URxb3d_5zSnaLuh1pRyTVp-minZ&sz=w1920" alt="Govind Bagh Backdrop">
-      </div>
       <div class="hero-content">
         
         <div class="divine-blessing">
@@ -547,15 +612,20 @@
           </svg>
         </div>
 
-        <!-- TRUE TRANSPARENT LOGO (NO CIRCLE, FULL TRANSPARENCY) -->
+        <!-- TRANSPARENT LOGO EMBLEM -->
         <img class="sticker-couple" src="https://drive.google.com/thumbnail?id=1rRtefG6a7BQ02axwxlnqxio9-aIaUwmL&sz=w800" alt="Ashish & Navya Logo">
+
+        <!-- HOST BLESSING SUBTITLE -->
+        <p class="host-blessing-text" data-i18n="host_blessing">
+          We cordially invite you for the wedding of
+        </p>
 
         <!-- COUPLE HERO CONTAINER -->
         <div class="couple-hero-container" id="couple-hero-container">
           <!-- Person 1 Block -->
           <div class="person-block" id="block-person-1">
             <span class="couple-name" id="hero-first-name">Ashish</span>
-            <span class="parentage-subtitle" id="hero-first-parent" data-i18n="parent_ashish">S/O Rajul &amp; Lalit Lalwani</span>
+            <span class="parentage-subtitle" id="hero-first-parent" data-i18n="parent_ashish">Grandson of Smt. Sohini Devi &amp; Late Shri Nemichandji Lalwani, Siwana<br>S/O Smt. Rajul &amp; Shri Lalit Lalwani</span>
           </div>
 
           <!-- Bold Golden Weds Separator -->
@@ -564,7 +634,7 @@
           <!-- Person 2 Block -->
           <div class="person-block" id="block-person-2">
             <span class="couple-name" id="hero-second-name">Navya</span>
-            <span class="parentage-subtitle" id="hero-second-parent" data-i18n="parent_navya">D/O Laxmi &amp; Narayan Raghu Pai</span>
+            <span class="parentage-subtitle" id="hero-second-parent" data-i18n="parent_navya">GD/O Late Smt. Radhabai &amp; Late Shri Raghu Pai, Kagal<br>D/O Smt. Laxmi &amp; Shri Narayan Raghu Pai</span>
           </div>
         </div>
 
@@ -596,7 +666,48 @@
       </div>
     </section>
 
-    <!-- 3. The Venue Section (QR + Cab Note) -->
+    <!-- 3. Contacts Section (Swapped to be before The Venue) -->
+    <section id="contacts-section">
+      <h2 class="section-title" data-i18n="sec_contacts">Contacts</h2>
+      
+      <div class="contacts-wrapper">
+        <div class="contacts-grid">
+          <div class="contact-card">
+            <h3 data-i18n="c_lalit">Lalit Lalwani</h3>
+            <p><a href="tel:9314711399">+91 93147 11399</a></p>
+          </div>
+          <div class="contact-card">
+            <h3 data-i18n="c_ramesh">Ramesh Lalwani</h3>
+            <p><a href="tel:9828412250">+91 98284 12250</a></p>
+          </div>
+          <div class="contact-card">
+            <h3 data-i18n="c_praveen">Praveen Lalwani</h3>
+            <p><a href="tel:9828230407">+91 98282 30407</a></p>
+          </div>
+          <div class="contact-card">
+            <h3 data-i18n="c_shravasth">Shravasth YS</h3>
+            <p><a href="tel:9482429570">+91 94824 29570</a></p>
+          </div>
+          <div class="contact-card">
+            <h3 data-i18n="c_shashank">Shashank Choonthar</h3>
+            <p><a href="tel:9448574268">+91 94485 74268</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="whatsapp-container">
+        <h3 style="font-family: var(--font-royal); color: var(--royal-maroon); font-size: 1.2rem; margin-bottom: 0.3rem;" data-i18n="wa_title">Join WhatsApp Group</h3>
+        <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.6rem;" data-i18n="wa_subtitle">Scan QR code or click below for 1-touch entry to our guest chat!</p>
+        <a href="https://chat.whatsapp.com/CPmSQMKzq4W3UImCQ4UlwT?mode=gi_t" target="_blank" rel="noopener noreferrer">
+          <img class="whatsapp-qr" src="https://drive.google.com/thumbnail?id=1PsDtvtpS8LlzvSiT09_5djpE-gW2IE_n&sz=w600" alt="WhatsApp Group QR Code">
+        </a>
+        <a href="https://chat.whatsapp.com/CPmSQMKzq4W3UImCQ4UlwT?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-join-btn">
+          💬 Tap Here to Join WhatsApp Group
+        </a>
+      </div>
+    </section>
+
+    <!-- 4. The Venue Section (Swapped to be after Contacts) -->
     <section id="venue-section">
       <h2 class="section-title" data-i18n="sec_venue">The Venue</h2>
       <div class="venue-card" style="max-width: 820px; margin: 0 auto;">
@@ -616,52 +727,10 @@
       </div>
     </section>
 
-    <!-- 4. Contacts Section -->
-    <section id="contacts-section">
-      <h2 class="section-title" data-i18n="sec_contacts">Contacts</h2>
-      <div class="contacts-grid" style="margin-bottom: 2rem;">
-        <div class="contact-card">
-          <h3 data-i18n="c_lalit">Lalit Lalwani</h3>
-          <p><a href="tel:9314711399">+91 93147 11399</a></p>
-        </div>
-        <div class="contact-card">
-          <h3 data-i18n="c_ramesh">Ramesh Lalwani</h3>
-          <p><a href="tel:9828412250">+91 98284 12250</a></p>
-        </div>
-        <div class="contact-card">
-          <h3 data-i18n="c_praveen">Praveen Lalwani</h3>
-          <p><a href="tel:9828230407">+91 98282 30407</a></p>
-        </div>
-        <div class="contact-card">
-          <h3 data-i18n="c_ashish">Ashish Lalwani</h3>
-          <p><a href="tel:9663858902">+91 96638 58902</a></p>
-        </div>
-        <div class="contact-card">
-          <h3 data-i18n="c_shreyansh">Shreyansh Lalwani</h3>
-          <p><a href="tel:9680241654">+91 96802 41654</a></p>
-        </div>
-        <div class="contact-card">
-          <h3 data-i18n="c_sanjeev">Sanjeev Lalwani</h3>
-          <p><a href="tel:7568736783">+91 75687 36783</a></p>
-        </div>
-      </div>
-
-      <div class="whatsapp-container">
-        <h3 style="font-family: var(--font-royal); color: var(--royal-maroon); font-size: 1.2rem; margin-bottom: 0.3rem;" data-i18n="wa_title">Join WhatsApp Group</h3>
-        <p style="font-family: var(--font-serif); font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.6rem;" data-i18n="wa_subtitle">Scan QR code or click below for 1-touch entry to our guest chat!</p>
-        <a href="https://chat.whatsapp.com/CPmSQMKzq4W3UImCQ4UlwT?mode=gi_t" target="_blank" rel="noopener noreferrer">
-          <img class="whatsapp-qr" src="https://drive.google.com/thumbnail?id=1PsDtvtpS8LlzvSiT09_5djpE-gW2IE_n&sz=w600" alt="WhatsApp Group QR Code">
-        </a>
-        <a href="https://chat.whatsapp.com/CPmSQMKzq4W3UImCQ4UlwT?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-join-btn">
-          💬 Tap Here to Join WhatsApp Group
-        </a>
-      </div>
-    </section>
-
   </div>
 
   <!-- =============================================================== -->
-  <!-- PAGE 2: MEMORIES                                               -->
+  <!-- PAGE 2: MEMORIES                                                -->
   <!-- =============================================================== -->
   <div id="page-memories" class="page-view">
     <section>
@@ -679,13 +748,13 @@
           <button type="submit" class="btn" data-i18n="btn_upload">Upload to Gallery</button>
         </form>
       </div>
-      <h3 style="font-family: var(--font-royal); color: var(--gold-primary); text-align: center; margin: 2.5rem 0 1.2rem; font-size: 1.8rem;" data-i18n="mem_wall_title">Live Memory Wall</h3>
+      <h3 style="font-family: var(--font-royal); color: var(--gold-primary); text-align: center; margin: 2rem 0 1.2rem; font-size: 1.8rem;" data-i18n="mem_wall_title">Live Memory Wall</h3>
       <div class="masonry-grid" id="memory-wall"></div>
     </section>
   </div>
 
   <!-- =============================================================== -->
-  <!-- PAGE 3: WISHES                                                 -->
+  <!-- PAGE 3: WISHES                                                  -->
   <!-- =============================================================== -->
   <div id="page-wishes" class="page-view">
     <section>
@@ -697,7 +766,7 @@
   </div>
 
   <!-- =============================================================== -->
-  <!-- PAGE 4: RSVP (WITH ARRIVAL & DEPARTURE SECTIONS)               -->
+  <!-- PAGE 4: RSVP (WITH ARRIVAL & DEPARTURE SECTIONS)                -->
   <!-- =============================================================== -->
   <div id="page-rsvp" class="page-view">
     <section>
@@ -772,7 +841,7 @@
                     <option value="na" data-i18n="opt_na">Not Applicable</option>
                   </select>
                 </div>
-
+                
                 <!-- Dynamic Departure Flight / Train Number -->
                 <div class="form-group" id="group-departure-transit" style="display: none;">
                   <label id="lbl-departure-transit" data-i18n="lbl_transit_number">Flight / Train Number</label>
@@ -800,8 +869,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-title" id="footer-couple-name" data-i18n="footer_couple">Navya &amp; Ashish</div>
-    <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="footer_sub">#NavAshish &bull; December 4, 2026 &bull; Govind Bagh, Jodhpur</p>
+    <div class="footer-title" id="footer-couple-name" data-i18n="footer_couple">Ashish &amp; Navya</div>
+    <p style="color: var(--text-dark); font-size: 0.9rem;" data-i18n="footer_sub">#NavAshish • December 4, 2026 • Govind Bagh, Jodhpur</p>
   </footer>
 
   <!-- MODALS -->
@@ -815,7 +884,7 @@
       </div>
       <div class="modal-body">
         <h2 data-i18n="modal_haldi_title">Haldi</h2>
-        <p class="time" data-i18n="modal_haldi_time">DECEMBER 4 &bull; 11:00 AM</p>
+        <p class="time" data-i18n="modal_haldi_time">DECEMBER 4 • 11:00 AM</p>
         <p style="font-family: var(--font-serif); font-size: 1.4rem;" data-i18n="modal_haldi_desc">Join us for a vibrant, joyous morning as we bless Ashish and Navya with golden hues before they embark on their forever journey together.</p>
         <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.5rem;" data-i18n="modal_haldi_loc">Govind Bagh Gardens</p>
       </div>
@@ -832,7 +901,7 @@
       </div>
       <div class="modal-body">
         <h2 data-i18n="modal_pheras_title">Varmala & Pheras</h2>
-        <p class="time" data-i18n="modal_pheras_time">DECEMBER 4 &bull; 5:30 PM</p>
+        <p class="time" data-i18n="modal_pheras_time">DECEMBER 4 • 5:30 PM</p>
         <p style="font-family: var(--font-serif); font-size: 1.4rem;" data-i18n="modal_pheras_desc">Witness the sacred union of Ashish and Navya as they take their seven vows around the holy fire as the sun sets.</p>
         <p style="color: var(--gold-primary); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1.5rem;" data-i18n="modal_pheras_loc">Govind Bagh Mandap</p>
       </div>
@@ -853,7 +922,7 @@
     const SHOW_WISHES = 0;
 
     // =========================================
-    // MULTILINGUAL DICTIONARY (CORRECTED HINDI SPELLING)
+    // MULTILINGUAL DICTIONARY
     // =========================================
     let currentLang = 'en';
 
@@ -864,11 +933,12 @@
         nav_wishes: "Wishes",
         nav_rsvp: "RSVP",
         hero_blessing: "श्री गणेशाय नमः",
+        host_blessing: "We cordially invite you for the wedding of",
         hero_first_name: "Ashish",
         hero_weds: "weds",
         hero_second_name: "Navya",
-        parent_ashish: "S/O Rajul & Lalit Lalwani",
-        parent_navya: "D/O Laxmi & Narayan Raghu Pai",
+        parent_ashish: "Grandson of Smt. Sohini Devi &amp; Late Shri Nemichandji Lalwani, Siwana<br>S/O Smt. Rajul &amp; Shri Lalit Lalwani",
+        parent_navya: "GD/O Late Smt. Radhabai &amp; Late Shri Raghu Pai, Kagal<br>D/O Smt. Laxmi &amp; Shri Narayan Raghu Pai",
         hero_date_venue: "December 4, 2026 • Govind Bagh, Jodhpur",
         timer_days: "Days",
         timer_hours: "Hours",
@@ -890,9 +960,8 @@
         c_lalit: "Lalit Lalwani",
         c_ramesh: "Ramesh Lalwani",
         c_praveen: "Praveen Lalwani",
-        c_ashish: "Ashish Lalwani",
-        c_shreyansh: "Shreyansh Lalwani",
-        c_sanjeev: "Sanjeev Lalwani",
+        c_shashank: "Shashank Choonthar",
+        c_shravasth: "Shravasth YS",
         wa_title: "Join WhatsApp Group",
         wa_subtitle: "Scan QR code or click below for 1-touch entry to our guest chat!",
         sec_memories: "Share Your Memories",
@@ -930,7 +999,7 @@
         lbl_wishes: "Wishes & Messages for the Couple",
         placeholder_wishes: "Leave a sweet message or blessing for Ashish & Navya...",
         btn_confirm_rsvp: "Confirm RSVP",
-        footer_couple: "Navya & Ashish",
+        footer_couple: "Ashish & Navya",
         footer_sub: "#NavAshish • December 4, 2026 • Govind Bagh, Jodhpur",
         modal_haldi_title: "Haldi",
         modal_haldi_time: "DECEMBER 4 • 11:00 AM",
@@ -947,11 +1016,12 @@
         nav_wishes: "शुभकामनाएं",
         nav_rsvp: "आरएसवीपी (RSVP)",
         hero_blessing: "श्री गणेशाय नमः",
+        host_blessing: "हम आपको सपरिवार विवाह समारोह में सप्रेम आमंत्रित करते हैं",
         hero_first_name: "आशीष",
         hero_weds: "संग",
         hero_second_name: "नव्या",
-        parent_ashish: "सुपुत्र: श्रीमती राजुल एवं श्री ललित ललवानी",
-        parent_navya: "सुपुत्री: श्रीमती लक्ष्मी एवं श्री नारायण रघु पाई",
+        parent_ashish: "श्रीमती सोहिनी देवी एवं स्वर्गीय श्री नेमीचंद जी ललवानी (सिवाना) के पौत्र<br>सुपुत्र: श्रीमती राजुल एवं श्री ललित ललवानी",
+        parent_navya: "स्वर्गीय श्रीमती राधाबाई एवं स्वर्गीय श्री रघु पै (कागल) की पौत्री<br>सुपुत्री: श्रीमती लक्ष्मी एवं श्री नारायण रघु पै",
         hero_date_venue: "४ दिसंबर २०२६ • गोविंद बाग, जोधपुर",
         timer_days: "दिन",
         timer_hours: "घंटे",
@@ -973,9 +1043,8 @@
         c_lalit: "ललित ललवानी",
         c_ramesh: "रमेश ललवानी",
         c_praveen: "प्रवीण ललवानी",
-        c_ashish: "आशीष ललवानी",
-        c_shreyansh: "श्रेयांश ललवानी",
-        c_sanjeev: "संजीव ललवानी",
+        c_shashank: "शशांक चूंथार",
+        c_shravasth: "श्रवस्थ वाई.एस.",
         wa_title: "व्हाट्सएप ग्रुप से जुड़ें",
         wa_subtitle: "ताज़ा जानकारी और अपडेट के लिए क्यूआर कोड स्कैन करके हमारे ग्रुप से जुड़ें!",
         sec_memories: "यादों के पल",
@@ -1030,11 +1099,12 @@
         nav_wishes: "ಶುಭಾಶಯಗಳು",
         nav_rsvp: "ಆರ್‌ಎಸ್‌ವಿಪಿ (RSVP)",
         hero_blessing: "ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ",
+        host_blessing: "ವಿವಾಹ ಮಹೋತ್ಸವಕ್ಕೆ ತಮಗೆ ಹಾರ್ದಿಕ ಸ್ವಾಗತ",
         hero_first_name: "ನವ್ಯಾ",
         hero_weds: "ಮತ್ತು",
         hero_second_name: "ಆಶೀಷ್",
-        parent_ashish: "ಶ್ರೀಮತಿ ರಾಜುಲ್ ಮತ್ತು ಶ್ರೀ ಲಲಿತ್ ಲಾಲ್ವಾನಿ ಅವರ ಸುಪುತ್ರ",
-        parent_navya: "ಶ್ರೀಮತಿ ಲಕ್ಷ್ಮೀ ಮತ್ತು ಶ್ರೀ ನಾರಾಯಣ ರಘು ಪೈ ಅವರ ಸುಪುತ್ರಿ",
+        parent_ashish: "ಶ್ರೀಮತಿ ಸೋಹಿನಿ ದೇವಿ ಹಾಗೂ ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀ ನೇಮಿಚಂದ್ ಜಿ ಲಾಲ್ವಾನಿ (ಸಿವಾನಾ) ಅವರ ಮೊಮ್ಮಗ<br>ಶ್ರೀಮತಿ ರಾಜುಲ್ ಮತ್ತು ಶ್ರೀ ಲಲಿತ್ ಲಾಲ್ವಾನಿ ಅವರ ಸುಪುತ್ರ",
+        parent_navya: "ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀಮತಿ ರಾಧಾಬಾಯಿ ಹಾಗೂ ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀ ರಘು ಪೈ (ಕಾಗಲ್) ಅವರ ಮೊಮ್ಮಗಳು<br>ಶ್ರೀಮತಿ ಲಕ್ಷ್ಮೀ ಮತ್ತು ಶ್ರೀ ನಾರಾಯಣ ರಘು ಪೈ ಅವರ ಸುಪುತ್ರಿ",
         hero_date_venue: "ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬ • ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
         timer_days: "ದಿನಗಳು",
         timer_hours: "ಗಂಟೆಗಳು",
@@ -1056,9 +1126,8 @@
         c_lalit: "ಲಲಿತ್ ಲಾಲ್ವಾನಿ",
         c_ramesh: "ರಮೇಶ್ ಲಾಲ್ವಾನಿ",
         c_praveen: "ಪ್ರವೀಣ್ ಲಾಲ್ವಾನಿ",
-        c_ashish: "ಆಶೀಷ್ ಲಾಲ್ವಾನಿ",
-        c_shreyansh: "ಶ್ರೇಯಾಂಶ್ ಲಾಲ್ವಾನಿ",
-        c_sanjeev: "ಸಂಜೀವ್ ಲಾಲ್ವಾನಿ",
+        c_shashank: "ಶಶಾಂಕ್ ಚೂಂಥಾರ್",
+        c_shravasth: "ಶ್ರವಸ್ತ್ ವೈ.ಎಸ್.",
         wa_title: "ವಾಟ್ಸಾಪ್ ಗ್ರೂಪ್‌ಗೆ ಸೇರಿ",
         wa_subtitle: "ವಿವಾಹದ ನೇರ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಪಡೆಯಲು ಕ್ಯೂಆರ್ ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ನಮ್ಮ ಗ್ರೂಪ್‌ಗೆ ಸೇರಿ!",
         sec_memories: "ಸುಂದರ ನೆನಪುಗಳು",
@@ -1096,7 +1165,7 @@
         lbl_wishes: "ನವಜೋಡಿಗೆ ನಿಮ್ಮ ಶುಭಹಾರೈಕೆ",
         placeholder_wishes: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ಅವರಿಗೆ ನಿಮ್ಮ ಪ್ರೀತಿಯ ಹಾರೈಕೆ ಹಾಗೂ ಆಶೀರ್ವಾದ ಬರೆಯಿರಿ...",
         btn_confirm_rsvp: "RSVP ದೃಢೀಕರಿಸಿ",
-        footer_couple: "ನವ್ಯಾ ಮತ್ತು ಆಶೀಷ್",
+        footer_couple: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ",
         footer_sub: "#NavAshish • ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬ • ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
         modal_haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)",
         modal_haldi_time: "ಡಿಸೆಂಬರ್ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦",
@@ -1137,14 +1206,14 @@
 
       if (lang === 'kn') {
         if (firstEl) firstEl.textContent = dict.hero_first_name;
-        if (firstParentEl) firstParentEl.textContent = dict.parent_navya;
+        if (firstParentEl) firstParentEl.innerHTML = dict.parent_navya;
         if (secondEl) secondEl.textContent = dict.hero_second_name;
-        if (secondParentEl) secondParentEl.textContent = dict.parent_ashish;
+        if (secondParentEl) secondParentEl.innerHTML = dict.parent_ashish;
       } else {
         if (firstEl) firstEl.textContent = dict.hero_first_name;
-        if (firstParentEl) firstParentEl.textContent = dict.parent_ashish;
+        if (firstParentEl) firstParentEl.innerHTML = dict.parent_ashish;
         if (secondEl) secondEl.textContent = dict.hero_second_name;
-        if (secondParentEl) secondParentEl.textContent = dict.parent_navya;
+        if (secondParentEl) secondParentEl.innerHTML = dict.parent_navya;
       }
 
       const nameInput = document.getElementById('name');
