@@ -147,13 +147,21 @@
       box-shadow: 0 5px 14px rgba(201,162,39,0.35); transform: translateY(-1px);
     }
 
+    /* one consistent layout on every device: logo + language on top, page tabs underneath */
+    nav { padding: .5rem clamp(.6rem, 3vw, 2rem) .6rem; row-gap: .45rem; column-gap: .6rem; }
+    .nav-left { display: contents; }
+    .nav-logo { order: 1; font-size: clamp(1.7rem, 7vw, 2rem); }
+    .lang-tabs-wrap { order: 2; }
+    .nav-links { order: 3; flex: 0 0 100%; justify-content: center; flex-wrap: nowrap; gap: clamp(.25rem, 1.4vw, .5rem); }
+    .nav-links a { font-size: clamp(.56rem, 2.3vw, .72rem); padding: .4rem clamp(.45rem, 2.4vw, 1.1rem); letter-spacing: .05em; white-space: nowrap; }
+    html[lang="hi"] .nav-links a, html[lang="kn"] .nav-links a { font-size: clamp(.6rem, 2.5vw, .8rem); }
     .lang-tabs-wrap {
       display: flex; gap: .2rem; padding: .22rem; border-radius: 30px;
       background: rgba(201,162,39,0.1); border: 1px solid rgba(201,162,39,0.35);
     }
     .lang-tab-btn {
       background: transparent; border: none; color: var(--maroon); cursor: pointer;
-      padding: .32rem .8rem; border-radius: 24px; font-size: .74rem; font-weight: 700; font-family: inherit;
+      padding: .32rem clamp(.4rem, 2.2vw, .8rem); border-radius: 24px; font-size: clamp(.64rem, 2.6vw, .74rem); font-weight: 700; font-family: inherit;
       transition: all .25s ease;
     }
     .lang-tab-btn:hover { background: rgba(201,162,39,0.22); }
@@ -314,7 +322,6 @@
     html[lang="hi"] #countdown-section .timer-label, html[lang="kn"] #countdown-section .timer-label { font-size: clamp(.7rem, 1.3vw, .85rem); }
     html[lang="hi"] .card-btn, html[lang="kn"] .card-btn { font-size: clamp(.8rem, 1.2vw, .95rem); }
     html[lang="hi"] .cal-btn, html[lang="kn"] .cal-btn, html[lang="hi"] .whatsapp-join-btn, html[lang="kn"] .whatsapp-join-btn { font-size: .95rem; }
-    html[lang="hi"] .nav-links a, html[lang="kn"] .nav-links a { font-size: .8rem; }
     html[lang="hi"] .venue-scan, html[lang="kn"] .venue-scan { font-size: clamp(.82rem, 1.2vw, .95rem); }
     html[lang="hi"] .contact-card h3, html[lang="kn"] .contact-card h3 { font-size: clamp(.95rem, 1.3vw, 1.05rem); }
     html[lang="hi"] .lang-tab-btn, html[lang="kn"] .lang-tab-btn { font-size: .85rem; }
@@ -487,13 +494,6 @@
     /* ---------- responsive ---------- */
     @media (max-width: 768px) {
       section { padding: 1.4rem 1rem; }
-      nav { padding: .55rem .8rem; }
-      .nav-left { width: 100%; justify-content: space-between; gap: .5rem; }
-      .nav-logo { font-size: 1.7rem; }
-      .nav-links { gap: .25rem; }
-      .nav-links a { font-size: .6rem; padding: .32rem .6rem; letter-spacing: .08em; }
-      .lang-tabs-wrap { width: 100%; justify-content: center; }
-      .lang-tab-btn { flex: 1; font-size: .68rem; padding: .28rem .4rem; }
       .page-view { --nav-h: 6.2rem; }
       .events-grid { gap: .7rem; }
       .contacts-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: .65rem; }
@@ -560,12 +560,11 @@
     .footer-share { margin-top: 1.2rem; }
     .footer-share { display: flex; justify-content: center; align-items: center; gap: .6rem; flex-wrap: wrap; }
     .footer-share .cal-btn { border-color: var(--maroon); }
-    .pdf-icon-btn {
-      width: 44px; height: 44px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-      border: 1.5px solid var(--maroon); background: transparent; color: var(--maroon); cursor: pointer; transition: all .3s ease;
-    }
-    .pdf-icon-btn:hover { background: var(--maroon); color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99,18,27,.25); }
-    .pdf-icon-btn:disabled { opacity: .5; cursor: wait; }
+    /* the "&" / "एवं" / "ಮತ್ತು" in the footer couple name doubles as the PDF download button */
+    .amp-btn { background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; letter-spacing: inherit; -webkit-text-stroke: inherit; cursor: pointer; }
+    .amp-btn:hover { color: var(--gold-deep); }
+    .amp-btn:focus-visible { outline: 1px dashed var(--gold); outline-offset: 4px; border-radius: 4px; }
+    .amp-btn:disabled { opacity: .5; cursor: wait; }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
@@ -904,7 +903,6 @@
     <div class="footer-orn" aria-hidden="true">✦ ✦ ✦</div>
     <div class="footer-title" id="footer-couple-name" data-i18n="footer_couple">Ashish &amp; Navya</div>
     <p class="footer-sub-text" id="footer-sub-note" data-i18n="footer_sub">#NavAshish • December 4, 2026 • Govind Bagh, Jodhpur</p>
-    <div class="footer-share"><button type="button" class="pdf-icon-btn" onclick="downloadInvitePDF()" data-i18n-aria="btn_pdf" aria-label="Download Invitation (PDF)" title="Download Invitation (PDF)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg></button></div>
   </footer>
 
   <!-- Modals -->
@@ -1212,6 +1210,7 @@
       handleTransitNumberDisplay('arrival');
       handleTransitNumberDisplay('departure');
       fitParentage();
+      decorateFooterName();
       drawJharokha();
     }
 
@@ -1338,6 +1337,31 @@
     if (window.ResizeObserver) new ResizeObserver(drawJharokha).observe(document.getElementById('arch-frame'));
 
     /* keep each parentage line (Grandson of... / S/O ...) on a single row by shrinking the font to fit */
+    function decorateFooterName() {
+      const el = document.getElementById('footer-couple-name'); if (!el) return;
+      const d = translations[currentLang] || translations.en, txt = d.footer_couple || '';
+      const m = txt.match(/^(.*?)\s(&|\u090F\u0935\u0902|\u0CAE\u0CA4\u0CCD\u0CA4\u0CC1)\s(.*)$/);
+      if (!m) { el.textContent = txt; return; }
+      el.textContent = '';
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'amp-btn'; b.textContent = m[2];
+      b.setAttribute('aria-label', d.btn_pdf || 'Download Invitation (PDF)');
+      b.addEventListener('click', downloadInvitePDF);
+      el.append(m[1] + ' ', b, ' ' + m[3]);
+    }
+    /* keep the content clear of the fixed top bar whatever its height (it wraps differently per language / phone) */
+    function syncNavHeight() {
+      const n = document.querySelector('nav'); if (!n) return;
+      const h = Math.ceil(n.getBoundingClientRect().height) + 10;
+      document.querySelectorAll('.page-view').forEach(e => e.style.setProperty('--nav-h', h + 'px'));
+    }
+    window.addEventListener('resize', syncNavHeight);
+    window.addEventListener('load', syncNavHeight);
+    if (window.ResizeObserver) { const _n = document.querySelector('nav'); if (_n) new ResizeObserver(syncNavHeight).observe(_n); }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncNavHeight);
+    syncNavHeight();
+    decorateFooterName();
+
     function fitParentage() {
       const els = Array.from(document.querySelectorAll('.parentage-subtitle'));
       els.forEach(el => {
@@ -1673,7 +1697,7 @@
     /* "Download Invitation (PDF)": renders the invitation (no countdown) in a hidden 820px-wide frame,
        measures it and prints it as ONE continuous tall page, so the PDF is a single long sheet. */
     function downloadInvitePDF() {
-      const W = 820, btn = document.querySelector('[onclick="downloadInvitePDF()"]');
+      const W = 820, btn = document.querySelector('.amp-btn');
       if (btn) btn.disabled = true;
       const fr = document.createElement('iframe');
       fr.setAttribute('aria-hidden', 'true');
