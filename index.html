@@ -147,27 +147,35 @@
       box-shadow: 0 5px 14px rgba(201,162,39,0.35); transform: translateY(-1px);
     }
 
-    /* one consistent layout on every device: logo + language on top, page tabs underneath */
-    nav { padding: .5rem clamp(.6rem, 3vw, 2rem) .6rem; row-gap: .45rem; column-gap: .6rem; }
+    /* one consistent layout on every device: logo | page tabs | language, all in a single row */
+    nav { flex-wrap: nowrap; align-items: center; justify-content: space-between; padding: .5rem clamp(.5rem, 2.5vw, 2rem); column-gap: clamp(.3rem, 1.6vw, 1rem); row-gap: 0; }
     .nav-left { display: contents; }
-    .nav-logo { order: 1; font-size: clamp(1.7rem, 7vw, 2rem); }
-    .lang-tabs-wrap { order: 2; }
-    .nav-links { order: 3; flex: 0 0 100%; justify-content: center; flex-wrap: nowrap; gap: clamp(.25rem, 1.4vw, .5rem); }
-    .nav-links a { font-size: clamp(.56rem, 2.3vw, .72rem); padding: .4rem clamp(.45rem, 2.4vw, 1.1rem); letter-spacing: .05em; white-space: nowrap; }
-    html[lang="hi"] .nav-links a, html[lang="kn"] .nav-links a { font-size: clamp(.6rem, 2.5vw, .8rem); }
-
-    /* scroll behaviour: scrolling down leaves only the A & N logo + language pill; scrolling up brings the full ribbon back */
-    nav { transition: background .3s ease, box-shadow .3s ease, border-color .3s ease, backdrop-filter .3s ease; }
-    nav::after { transition: opacity .3s ease; }
-    .nav-logo, .lang-tabs-wrap { transition: background .3s ease, box-shadow .3s ease, border-color .3s ease; }
-    .nav-links { transition: opacity .28s ease, transform .3s ease, visibility .3s; }
-    nav.nav-min { background: transparent; border-bottom-color: transparent; box-shadow: none;
-      backdrop-filter: none; -webkit-backdrop-filter: none; pointer-events: none; }
-    nav.nav-min::after { opacity: 0; }
-    nav.nav-min .nav-logo, nav.nav-min .lang-tabs-wrap { pointer-events: auto; }
-    nav.nav-min .nav-logo { background: var(--nav-bg); border-radius: 30px; padding: .22rem .75rem; box-shadow: 0 3px 14px rgba(63,10,17,.14); border: 1px solid rgba(201,162,39,.35); }
-    nav.nav-min .lang-tabs-wrap { background: var(--nav-bg); box-shadow: 0 3px 14px rgba(63,10,17,.14); }
-    nav.nav-min .nav-links { opacity: 0; transform: translateY(-12px); visibility: hidden; pointer-events: none; }
+    .nav-logo { order: 1; font-size: clamp(1.5rem, 6vw, 2rem); padding: 0 .1rem; }
+    .nav-links { order: 2; flex: 1 1 auto; min-width: 0; justify-content: center; flex-wrap: nowrap; gap: clamp(.15rem, 1vw, .5rem); }
+    .nav-links a { font-size: clamp(.5rem, 2.1vw, .72rem); padding: .38rem clamp(.3rem, 1.6vw, 1.1rem); letter-spacing: .03em; white-space: nowrap; }
+    html[lang="hi"] .nav-links a, html[lang="kn"] .nav-links a { font-size: clamp(.55rem, 2.3vw, .8rem); }
+    .lang-tabs-wrap { order: 3; flex-shrink: 0; }
+    .lang-tab-btn .ls { display: none; }
+    @media (max-width: 380px) {
+      nav { padding-left: .4rem; padding-right: .4rem; column-gap: .25rem; }
+      .nav-logo { font-size: 1.3rem; }
+      .nav-links { gap: .12rem; }
+      .nav-links a { font-size: .5rem; padding: .34rem .3rem; letter-spacing: .01em; }
+      html[lang="hi"] .nav-links a, html[lang="kn"] .nav-links a { font-size: .56rem; }
+      .lang-tab-btn { padding: .28rem .38rem !important; }
+    }
+    @media (max-width: 340px) {
+      .nav-logo { font-size: 1.1rem; }
+      .nav-links a { font-size: .44rem; padding: .32rem .22rem; }
+      html[lang="hi"] .nav-links a, html[lang="kn"] .nav-links a { font-size: .5rem; }
+      .lang-tab-btn { padding: .26rem .3rem !important; font-size: .64rem !important; }
+    }
+    @media (max-width: 600px) {
+      .lang-tab-btn .lf { display: none; } .lang-tab-btn .ls { display: inline; }
+      .lang-tabs-wrap { gap: .1rem; padding: .16rem; }
+      .lang-tab-btn { padding: .3rem .5rem; font-size: .7rem; }
+      html[lang="hi"] .lang-tab-btn, html[lang="kn"] .lang-tab-btn { font-size: .78rem; }
+    }
     .lang-tabs-wrap {
       display: flex; gap: .2rem; padding: .22rem; border-radius: 30px;
       background: rgba(201,162,39,0.1); border: 1px solid rgba(201,162,39,0.35);
@@ -605,9 +613,9 @@
       </ul>
     </div>
     <div class="lang-tabs-wrap" role="group" aria-label="Language">
-      <button type="button" class="lang-tab-btn active-lang" onclick="setLanguage('en')" id="lang-btn-en">English</button>
-      <button type="button" class="lang-tab-btn" onclick="setLanguage('hi')" id="lang-btn-hi">हिन्दी</button>
-      <button type="button" class="lang-tab-btn" onclick="setLanguage('kn')" id="lang-btn-kn">ಕನ್ನಡ</button>
+      <button type="button" class="lang-tab-btn active-lang" onclick="setLanguage('en')" id="lang-btn-en" aria-label="English"><span class="lf">English</span><span class="ls">EN</span></button>
+      <button type="button" class="lang-tab-btn" onclick="setLanguage('hi')" id="lang-btn-hi" aria-label="हिन्दी"><span class="lf">हिन्दी</span><span class="ls">हि</span></button>
+      <button type="button" class="lang-tab-btn" onclick="setLanguage('kn')" id="lang-btn-kn" aria-label="ಕನ್ನಡ"><span class="lf">ಕನ್ನಡ</span><span class="ls">ಕ</span></button>
     </div>
   </nav>
 
@@ -1375,16 +1383,20 @@
     syncNavHeight();
 
     (function () {
-      const nav = document.querySelector('nav'); let last = window.scrollY || 0, tick = false;
+      const nav = document.querySelector('nav'); let last = window.scrollY || 0, acc = 0, tick = false;
       function upd() {
-        tick = false; const y = Math.max(0, window.scrollY || 0), d = y - last;
-        if (y < 40) nav.classList.remove('nav-min');
-        else if (d > 6) nav.classList.add('nav-min');
-        else if (d < -6) nav.classList.remove('nav-min');
-        if (Math.abs(d) > 6 || y < 40) last = y;
+        tick = false;
+        const de = document.documentElement, y = window.scrollY || 0, d = y - last; last = y;
+        const atEnd = y + window.innerHeight >= de.scrollHeight - 6;   // bottom edge / rubber-band: leave as is
+        if (y < 40) { nav.classList.remove('nav-min'); acc = 0; return; }
+        if (y < 0 || atEnd) { acc = 0; return; }
+        if ((d > 0) !== (acc > 0)) acc = 0;                           // direction changed
+        acc += d;
+        if (acc > 12) nav.classList.add('nav-min');
+        else if (acc < -36) nav.classList.remove('nav-min');           // needs a deliberate scroll up
       }
       window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
-      window.__navReset = () => { nav.classList.remove('nav-min'); last = window.scrollY || 0; };
+      window.__navReset = () => { nav.classList.remove('nav-min'); last = window.scrollY || 0; acc = 0; };
     })();
     decorateFooterName();
 
