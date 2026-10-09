@@ -155,6 +155,19 @@
     .nav-links { order: 3; flex: 0 0 100%; justify-content: center; flex-wrap: nowrap; gap: clamp(.25rem, 1.4vw, .5rem); }
     .nav-links a { font-size: clamp(.56rem, 2.3vw, .72rem); padding: .4rem clamp(.45rem, 2.4vw, 1.1rem); letter-spacing: .05em; white-space: nowrap; }
     html[lang="hi"] .nav-links a, html[lang="kn"] .nav-links a { font-size: clamp(.6rem, 2.5vw, .8rem); }
+
+    /* scroll behaviour: scrolling down leaves only the A & N logo + language pill; scrolling up brings the full ribbon back */
+    nav { transition: background .3s ease, box-shadow .3s ease, border-color .3s ease, backdrop-filter .3s ease; }
+    nav::after { transition: opacity .3s ease; }
+    .nav-logo, .lang-tabs-wrap { transition: background .3s ease, box-shadow .3s ease, border-color .3s ease; }
+    .nav-links { transition: opacity .28s ease, transform .3s ease, visibility .3s; }
+    nav.nav-min { background: transparent; border-bottom-color: transparent; box-shadow: none;
+      backdrop-filter: none; -webkit-backdrop-filter: none; pointer-events: none; }
+    nav.nav-min::after { opacity: 0; }
+    nav.nav-min .nav-logo, nav.nav-min .lang-tabs-wrap { pointer-events: auto; }
+    nav.nav-min .nav-logo { background: var(--nav-bg); border-radius: 30px; padding: .22rem .75rem; box-shadow: 0 3px 14px rgba(63,10,17,.14); border: 1px solid rgba(201,162,39,.35); }
+    nav.nav-min .lang-tabs-wrap { background: var(--nav-bg); box-shadow: 0 3px 14px rgba(63,10,17,.14); }
+    nav.nav-min .nav-links { opacity: 0; transform: translateY(-12px); visibility: hidden; pointer-events: none; }
     .lang-tabs-wrap {
       display: flex; gap: .2rem; padding: .22rem; border-radius: 30px;
       background: rgba(201,162,39,0.1); border: 1px solid rgba(201,162,39,0.35);
@@ -1360,6 +1373,19 @@
     if (window.ResizeObserver) { const _n = document.querySelector('nav'); if (_n) new ResizeObserver(syncNavHeight).observe(_n); }
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncNavHeight);
     syncNavHeight();
+
+    (function () {
+      const nav = document.querySelector('nav'); let last = window.scrollY || 0, tick = false;
+      function upd() {
+        tick = false; const y = Math.max(0, window.scrollY || 0), d = y - last;
+        if (y < 40) nav.classList.remove('nav-min');
+        else if (d > 6) nav.classList.add('nav-min');
+        else if (d < -6) nav.classList.remove('nav-min');
+        if (Math.abs(d) > 6 || y < 40) last = y;
+      }
+      window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
+      window.__navReset = () => { nav.classList.remove('nav-min'); last = window.scrollY || 0; };
+    })();
     decorateFooterName();
 
     function fitParentage() {
@@ -1422,6 +1448,7 @@
       if (pageId === 'memories' && SHOW_MEMORIES !== 1) return;
       if (pageId === 'wishes' && SHOW_WISHES !== 1) return;
 
+      if (window.__navReset) window.__navReset();
       document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-tab'));
 
