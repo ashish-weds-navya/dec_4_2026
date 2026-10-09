@@ -14,7 +14,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alex+Brush&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;600;700&family=Noto+Serif+Devanagari:wght@400;600;700;800&family=Noto+Serif+Kannada:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -96,10 +96,18 @@
     }
     @keyframes foil { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
 
+    /* Hindi / Kannada: serif Indic faces so they sit naturally beside Cinzel / Cormorant */
+    html[lang="hi"] { --font-royal: 'Cinzel', 'Noto Serif Devanagari', 'Noto Sans Devanagari', serif; --font-serif: 'Cormorant Garamond', 'Noto Serif Devanagari', 'Noto Sans Devanagari', serif; --font-sans: 'Montserrat', 'Noto Sans Devanagari', sans-serif; }
+    html[lang="kn"] { --font-royal: 'Cinzel', 'Noto Serif Kannada', 'Noto Sans Kannada', serif; --font-serif: 'Cormorant Garamond', 'Noto Serif Kannada', 'Noto Sans Kannada', serif; --font-sans: 'Montserrat', 'Noto Sans Kannada', sans-serif; }
+    html[lang="hi"] body, html[lang="kn"] body { line-height: 1.6; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body { font-variant-numeric: lining-nums; }
+    .parentage-subtitle .pl, .host-blessing-text { overflow-wrap: anywhere; }
+    html[lang="hi"] .footer-title, html[lang="kn"] .footer-title { font-family: var(--font-royal); font-weight: 700; line-height: 1.4; }
     /* Hindi / Kannada: no tracking (breaks conjuncts), no gradient-clip (clips matras) */
     html[lang="hi"] *, html[lang="kn"] * { letter-spacing: 0 !important; text-transform: none !important; }
     html[lang="hi"] .couple-name, html[lang="kn"] .couple-name {
-      background: none; -webkit-text-fill-color: var(--maroon); color: var(--maroon); filter: none; line-height: 1.3; padding: .06em .1em .14em;
+      background: none; -webkit-text-fill-color: var(--maroon); color: var(--maroon); filter: none; line-height: 1.25; padding: .06em .1em .06em;
     }
     html[lang="hi"] .weds-separator, html[lang="kn"] .weds-separator {
       font-family: var(--font-serif); font-weight: 700; background: none; animation: none; filter: none;
@@ -122,8 +130,8 @@
       background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: .7;
     }
     .nav-left { display: flex; align-items: center; gap: 1.4rem; }
-    .nav-logo {
-      font-family: var(--font-script); font-size: 2.1rem; line-height: 1; cursor: pointer;
+    .nav-logo { white-space: nowrap; flex-shrink: 0;
+      font-family: 'Alex Brush', var(--font-script); font-weight: 400; -webkit-text-stroke: .5px currentColor; letter-spacing: .02em; font-size: 2.2rem; line-height: 1; cursor: pointer;
       text-decoration: none; color: var(--maroon); padding: 0 .2rem; font-weight: 400;
     }
     .nav-links { display: flex; gap: 0.45rem; list-style: none; flex-wrap: wrap; align-items: center; }
@@ -152,7 +160,7 @@
     .lang-tab-btn.active-lang { background: var(--maroon); color: var(--gold-light); box-shadow: 0 3px 10px rgba(99,18,27,.3); }
 
     /* ---------- page views ---------- */
-    .page-view { --nav-h: 5.6rem; display: none; min-height: 100vh; padding-top: var(--nav-h); position: relative; z-index: 2; }
+    .page-view { --nav-h: 4.3rem; display: none; min-height: 100vh; padding-top: var(--nav-h); position: relative; z-index: 2; }
     .page-view.active-page { display: block; animation: pageIn .5s ease both; }
     @keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
@@ -172,7 +180,7 @@
     .hero {
       position: relative; min-height: auto;
       display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-      padding: clamp(.8rem, 2vw, 1.4rem) 1rem clamp(1.2rem, 3vw, 2rem); overflow: visible;
+      padding: clamp(.2rem, .8vw, .6rem) 1rem clamp(.6rem, 1.5vw, 1rem); overflow: visible;
     }
     /* twinkling gold sparkles around the jharokha */
     .sparkles { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: visible; }
@@ -185,7 +193,7 @@
     }
     .hero-content { position: relative; z-index: 2; width: 100%; max-width: 900px; margin: 0 auto; }
 
-    .divine-blessing { display: flex; align-items: center; justify-content: center; gap: clamp(.9rem, 3vw, 2rem); margin-bottom: .8rem; }
+    .divine-blessing { display: flex; align-items: center; justify-content: center; gap: clamp(.9rem, 3vw, 2rem); margin-bottom: .35rem; }
     .divine-blessing svg { width: clamp(46px, 6vw, 64px); height: clamp(46px, 6vw, 64px); flex-shrink: 0; filter: drop-shadow(0 4px 10px rgba(218,165,32,.6)); animation: glowPulse 4s ease-in-out infinite alternate; }
     @keyframes glowPulse { from { filter: drop-shadow(0 3px 6px rgba(218,165,32,.4)); } to { filter: drop-shadow(0 5px 16px rgba(218,165,32,.85)); } }
     .divine-blessing span {
@@ -225,8 +233,9 @@
     .couple-hero-container { display: flex; flex-direction: column; align-items: center; gap: 0; margin-bottom: .5rem; }
     .person-block { display: flex; flex-direction: column; align-items: center; width: 100%; }
     .parentage-subtitle .pl { display: block; width: max-content; margin: 0 auto; white-space: nowrap; }
+    .parentage-subtitle.wrapl .pl { width: auto; max-width: 100%; white-space: normal; text-wrap: balance; line-height: 1.4; }
     .person-block .couple-name {
-      font-family: var(--font-royal); font-weight: 800; letter-spacing: .01em; line-height: 1.25; padding: .05em .1em .12em;
+      font-family: var(--font-royal); font-weight: 800; letter-spacing: .01em; line-height: 1.12; padding: .03em .1em .04em;
       font-size: clamp(2.1rem, 6.4vw, 3.7rem);
       background: var(--maroon-foil); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 3px 10px rgba(99,18,27,.14));
@@ -234,23 +243,27 @@
     .person-block .parentage-subtitle {
       font-family: var(--font-serif); font-weight: 700; text-transform: none;
       font-size: 1rem; letter-spacing: .01em; line-height: 1.5;
-      color: var(--text-soft); margin-top: .45rem; width: 100%;
+      color: var(--text-soft); margin-top: .05rem; width: 100%;
     }
     .weds-separator {
-      margin: 0 0 -.05rem; font-family: var(--font-script); text-transform: none;
+      margin: .3rem 0 0; font-family: var(--font-script); text-transform: none;
       font-size: clamp(1.9rem, 4.6vw, 2.8rem); line-height: 1.1; letter-spacing: 0; padding: 0 .15em .06em;
-      background: var(--gold-foil); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-      animation: foil 7s ease-in-out infinite alternate;
-      filter: drop-shadow(0 2px 3px rgba(154,111,18,.3));
+      background: none; -webkit-text-fill-color: var(--gold-deep); color: var(--gold-deep); animation: none; filter: none; text-shadow: none;
     }
 
-    .hero-date {
-      font-family: var(--font-serif); font-weight: 700; font-size: clamp(1.1rem, 2.2vw, 1.55rem);
-      letter-spacing: .02em; color: var(--maroon); margin: .3rem 0 .7rem;
+    .hero-date { display: flex; flex-direction: column; align-items: center; gap: .1rem; margin: .45rem 0 0; }
+    .hero-date .hd-day, .hero-date .hd-venue { white-space: nowrap; }
+    .hero-date .hd-day {
+      font-family: var(--font-royal); font-weight: 800; font-size: clamp(1.25rem, 5.2vw, 1.9rem); line-height: 1.25;
+      color: var(--gold-deep); letter-spacing: .04em; padding: 0 .2em;
+      display: inline-flex; align-items: center; gap: .6em;
     }
+    .hero-date .hd-day::before, .hero-date .hd-day::after { content: ''; width: clamp(18px, 5vw, 38px); height: 1.5px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .hero-date .hd-day::after { background: linear-gradient(270deg, transparent, var(--gold)); }
+    .hero-date .hd-venue { font-family: var(--font-serif); font-weight: 700; font-size: clamp(1rem, 2.4vw, 1.3rem); color: var(--maroon); letter-spacing: .02em; }
 
     .timer-container { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(.5rem, 1.6vw, 1rem); }
-    .timer-box {
+    .timer-box { text-align: center;
       min-width: clamp(64px, 11vw, 88px); padding: clamp(.65rem, 1.5vw, 1rem) .4rem;
       border-radius: 14px; background: rgba(255,255,255,.9);
       border: 1px solid rgba(201,162,39,.4); box-shadow: 0 6px 18px rgba(63,10,17,.07);
@@ -290,6 +303,21 @@
     .modal-hero-icon svg { width: 34px; height: 34px; }
     .event-card h3 { font-family: var(--font-royal); font-size: clamp(1.05rem, 2.2vw, 1.5rem); color: var(--maroon); margin-bottom: .35rem; }
     .event-card p { font-family: var(--font-serif); font-weight: 700; font-size: clamp(.95rem, 1.5vw, 1.2rem); color: var(--text-soft); }
+    .event-card p.ev-day { white-space: nowrap; font-family: var(--font-royal); font-weight: 800; font-size: clamp(1.05rem, 2.3vw, 1.45rem); color: var(--gold-deep); line-height: 1.35; margin-bottom: .1rem; }
+    .event-card p.ev-time { font-size: clamp(1rem, 1.7vw, 1.3rem); color: var(--maroon); margin-bottom: .2rem; }
+    html[lang="hi"] .event-card p.ev-day, html[lang="kn"] .event-card p.ev-day { font-size: clamp(.78rem, 3.3vw, 1.25rem); }
+    .section-title.one-line { white-space: nowrap; font-size: clamp(1.4rem, 6.2vw, 2.6rem); }
+    #countdown-section .timer-box { min-width: clamp(70px, 13vw, 104px); padding: clamp(.8rem, 1.8vw, 1.2rem) .5rem; }
+    #countdown-section .timer-number { font-size: clamp(1.7rem, 4vw, 2.6rem); }
+    #countdown-section .timer-label { font-size: clamp(.55rem, .95vw, .7rem); }
+    /* Indic scripts read smaller at the same size: lift the small UI labels */
+    html[lang="hi"] #countdown-section .timer-label, html[lang="kn"] #countdown-section .timer-label { font-size: clamp(.7rem, 1.3vw, .85rem); }
+    html[lang="hi"] .card-btn, html[lang="kn"] .card-btn { font-size: clamp(.8rem, 1.2vw, .95rem); }
+    html[lang="hi"] .cal-btn, html[lang="kn"] .cal-btn, html[lang="hi"] .whatsapp-join-btn, html[lang="kn"] .whatsapp-join-btn { font-size: .95rem; }
+    html[lang="hi"] .nav-links a, html[lang="kn"] .nav-links a { font-size: .8rem; }
+    html[lang="hi"] .venue-scan, html[lang="kn"] .venue-scan { font-size: clamp(.82rem, 1.2vw, .95rem); }
+    html[lang="hi"] .contact-card h3, html[lang="kn"] .contact-card h3 { font-size: clamp(.95rem, 1.3vw, 1.05rem); }
+    html[lang="hi"] .lang-tab-btn, html[lang="kn"] .lang-tab-btn { font-size: .85rem; }
     .card-btn {
       display: inline-block; margin-top: .9rem; padding: .4rem 1.2rem; border-radius: 30px; pointer-events: none;
       border: 1px solid var(--gold); color: var(--gold-deep); font-weight: 700; font-size: clamp(.66rem, 1vw, .8rem); letter-spacing: .04em; text-transform: uppercase; transition: .3s;
@@ -453,7 +481,7 @@
       border-top: 1px solid rgba(201,162,39,.4);
     }
     .footer-orn { color: var(--gold-deep); font-size: 1.1rem; letter-spacing: .6em; margin-bottom: .5rem; }
-    .footer-title { font-family: var(--font-script); font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.1; color: var(--maroon); }
+    .footer-title { font-family: 'Alex Brush', var(--font-script); font-weight: 400; -webkit-text-stroke: .5px currentColor; letter-spacing: .01em; word-spacing: .12em; font-size: clamp(2.4rem, 5.4vw, 3.4rem); line-height: 1.15; color: var(--maroon); }
     .footer-sub-text { margin-top: .5rem; color: var(--text-soft); font-size: clamp(.78rem, 1.1vw, .92rem); line-height: 1.6; letter-spacing: .01em; }
 
     /* ---------- responsive ---------- */
@@ -466,7 +494,7 @@
       .nav-links a { font-size: .6rem; padding: .32rem .6rem; letter-spacing: .08em; }
       .lang-tabs-wrap { width: 100%; justify-content: center; }
       .lang-tab-btn { flex: 1; font-size: .68rem; padding: .28rem .4rem; }
-      .page-view { --nav-h: 7.6rem; }
+      .page-view { --nav-h: 6.2rem; }
       .events-grid { gap: .7rem; }
       .contacts-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: .65rem; }
       .contact-card { flex: none !important; min-width: 0 !important; padding: .85rem .4rem; }
@@ -641,14 +669,7 @@
             </div>
           </div>
 
-          <p class="hero-date" data-i18n="hero_date_venue">December 4, 2026 • Govind Bagh, Jodhpur</p>
-
-          <div class="timer-container" role="timer" aria-live="off">
-            <div class="timer-box"><div class="timer-number" id="days">00</div><div class="timer-label" data-i18n="timer_days">Days</div></div>
-            <div class="timer-box"><div class="timer-number" id="hours">00</div><div class="timer-label" data-i18n="timer_hours">Hours</div></div>
-            <div class="timer-box"><div class="timer-number" id="minutes">00</div><div class="timer-label" data-i18n="timer_mins">Mins</div></div>
-            <div class="timer-box"><div class="timer-number" id="seconds">00</div><div class="timer-label" data-i18n="timer_secs">Secs</div></div>
-          </div>
+          <div class="hero-date"><span class="hd-day" data-i18n="hero_date">December 4, 2026</span><span class="hd-venue" data-i18n="venue_name">Govind Bagh, Jodhpur</span></div>
         </div>
         </div><!-- /jh-wrap -->
 
@@ -662,15 +683,17 @@
       <div class="ornament-divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></div>
       <div class="events-grid">
         <div class="event-card" onclick="openModal('modal-haldi')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openModal('modal-haldi')">
-          <div class="event-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="30" rx="21" ry="6" fill="#f2b600"/><path d="M9 30 Q9 57 32 57 Q55 57 55 30 Q44 36 32 36 Q20 36 9 30Z" fill="#8a2a35"/><path d="M9 30 Q20 36 32 36 Q44 36 55 30" fill="none" stroke="#c9a227" stroke-width="2"/><g transform="translate(44 15)"><g fill="#f59e0b"><circle cx="0" cy="-7" r="5"/><circle cx="5" cy="-5" r="5"/><circle cx="7" cy="0" r="5"/><circle cx="5" cy="5" r="5"/><circle cx="0" cy="7" r="5"/><circle cx="-5" cy="5" r="5"/><circle cx="-7" cy="0" r="5"/><circle cx="-5" cy="-5" r="5"/></g><circle r="4" fill="#d97706"/></g><g transform="translate(18 16) scale(.7)"><g fill="#fbbf24"><circle cx="0" cy="-7" r="5"/><circle cx="5" cy="-5" r="5"/><circle cx="7" cy="0" r="5"/><circle cx="5" cy="5" r="5"/><circle cx="0" cy="7" r="5"/><circle cx="-5" cy="5" r="5"/><circle cx="-7" cy="0" r="5"/><circle cx="-5" cy="-5" r="5"/></g><circle r="4" fill="#d97706"/></g></svg></div>
+          <div class="event-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M10 52 C6 40 14 34 24 36 C26 46 20 52 10 52Z" fill="#4d7c3a"/><path d="M54 52 C58 40 50 34 40 36 C38 46 44 52 54 52Z" fill="#5b8f45"/><path d="M10 52 C16 46 20 42 24 36 M54 52 C48 46 44 42 40 36" stroke="#2f5a25" stroke-width="1" fill="none"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(0.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(30.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(60.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(90.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(120.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(150.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(180.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(210.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(240.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(270.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(300.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(330.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(18.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(54.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(90.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(126.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(162.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(198.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(234.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(270.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(306.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(342.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(9.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(54.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(99.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(144.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(189.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(234.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(279.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(324.0)"/><circle cx="32" cy="30" r="3.2" fill="#c2410c"/><circle cx="32" cy="30" r="1.4" fill="#fcd34d"/><g><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(0.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(30.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(60.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(90.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(120.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(150.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(180.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(210.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(240.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(270.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(300.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(330.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(18.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(54.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(90.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(126.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(162.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(198.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(234.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(270.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(306.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(342.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(9.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(54.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(99.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(144.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(189.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(234.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(279.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(324.0)"/><circle cx="14" cy="16" r="1.2" fill="#c2410c"/><circle cx="14" cy="16" r="0.5" fill="#fcd34d"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(0.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(30.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(60.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(90.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(120.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(150.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(180.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(210.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(240.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(270.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(300.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(330.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(18.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(54.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(90.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(126.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(162.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(198.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(234.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(270.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(306.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(342.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(9.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(54.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(99.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(144.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(189.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(234.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(279.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(324.0)"/><circle cx="51" cy="15" r="1.1" fill="#c2410c"/><circle cx="51" cy="15" r="0.5" fill="#fcd34d"/></g></svg></div>
           <h3 data-i18n="haldi_title">Haldi</h3>
-          <p data-i18n="haldi_time">Dec 4 • 11:00 AM</p>
+          <p class="ev-day" data-i18n="ev_day">Friday, Dec 4</p>
+          <p class="ev-time" data-i18n="haldi_time">11:00 AM</p>
           <div class="card-btn" data-i18n="btn_view_details">View Details</div>
         </div>
         <div class="event-card" onclick="openModal('modal-pheras')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openModal('modal-pheras')">
           <div class="event-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 6 C38 17 47 22 45 34 C44 42 38 47 32 47 C26 47 20 42 19 34 C18 25 26 21 28 13 C30 15 31 11 32 6Z" fill="#ef6c1a"/><path d="M32 21 C36 28 40 31 39 36 C38 41 35 43 32 43 C29 43 26 41 25 36 C25 31 29 28 32 21Z" fill="#fbbf24"/><path d="M12 47 H52 L47 58 H17 Z" fill="#8a2a35"/><path d="M12 47 H52" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="30" r="2.5" fill="#c9a227"/><circle cx="52" cy="30" r="2.5" fill="#c9a227"/><circle cx="8" cy="38" r="2" fill="#c9a227"/><circle cx="56" cy="38" r="2" fill="#c9a227"/></svg></div>
           <h3 data-i18n="pheras_title">Varmala &amp; Pheras</h3>
-          <p data-i18n="pheras_time">Dec 4 • 5:30 PM onwards</p>
+          <p class="ev-day" data-i18n="ev_day">Friday, Dec 4</p>
+          <p class="ev-time" data-i18n="pheras_time">5:30 PM onwards</p>
           <div class="card-btn" data-i18n="btn_view_details">View Details</div>
         </div>
       </div>
@@ -678,6 +701,19 @@
         <button type="button" class="cal-btn" onclick="downloadCalendar()"><span>📅</span><span data-i18n="btn_calendar">Add to Calendar</span></button>
 
       </div>
+    </section>
+
+
+    <!-- Countdown -->
+    <section id="countdown-section" class="reveal">
+      <h2 class="section-title one-line" data-i18n="sec_countdown">The Countdown Begins</h2>
+      <div class="ornament-divider"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></div>
+      <div class="timer-container" role="timer" aria-live="off">
+            <div class="timer-box"><div class="timer-number" id="days">00</div><div class="timer-label" data-i18n="timer_days">Days</div></div>
+            <div class="timer-box"><div class="timer-number" id="hours">00</div><div class="timer-label" data-i18n="timer_hours">Hours</div></div>
+            <div class="timer-box"><div class="timer-number" id="minutes">00</div><div class="timer-label" data-i18n="timer_mins">Mins</div></div>
+            <div class="timer-box"><div class="timer-number" id="seconds">00</div><div class="timer-label" data-i18n="timer_secs">Secs</div></div>
+          </div>
     </section>
 
     <!-- Contacts -->
@@ -868,7 +904,7 @@
     <div class="footer-orn" aria-hidden="true">✦ ✦ ✦</div>
     <div class="footer-title" id="footer-couple-name" data-i18n="footer_couple">Ashish &amp; Navya</div>
     <p class="footer-sub-text" id="footer-sub-note" data-i18n="footer_sub">#NavAshish • December 4, 2026 • Govind Bagh, Jodhpur</p>
-    <div class="footer-share"><button type="button" class="cal-btn" onclick="shareInvite()"><span>🔗</span><span data-i18n="share_btn">Share this invitation</span></button><button type="button" class="pdf-icon-btn" onclick="downloadInvitePDF()" data-i18n-aria="btn_pdf" aria-label="Download Invitation (PDF)" title="Download Invitation (PDF)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg></button></div>
+    <div class="footer-share"><button type="button" class="pdf-icon-btn" onclick="downloadInvitePDF()" data-i18n-aria="btn_pdf" aria-label="Download Invitation (PDF)" title="Download Invitation (PDF)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg></button></div>
   </footer>
 
   <!-- Modals -->
@@ -900,7 +936,7 @@
       <div class="modal-hero">
         <img class="modal-bg-img" src="https://drive.google.com/thumbnail?id=1A1Zd-M8ABnUfQe71uUwZleu5ksuxKZxM&sz=w1000" alt="Haldi Celebration Image">
         <div class="modal-hero-overlay"></div>
-        <div class="modal-hero-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="30" rx="21" ry="6" fill="#f2b600"/><path d="M9 30 Q9 57 32 57 Q55 57 55 30 Q44 36 32 36 Q20 36 9 30Z" fill="#8a2a35"/><path d="M9 30 Q20 36 32 36 Q44 36 55 30" fill="none" stroke="#c9a227" stroke-width="2"/><g transform="translate(44 15)"><g fill="#f59e0b"><circle cx="0" cy="-7" r="5"/><circle cx="5" cy="-5" r="5"/><circle cx="7" cy="0" r="5"/><circle cx="5" cy="5" r="5"/><circle cx="0" cy="7" r="5"/><circle cx="-5" cy="5" r="5"/><circle cx="-7" cy="0" r="5"/><circle cx="-5" cy="-5" r="5"/></g><circle r="4" fill="#d97706"/></g><g transform="translate(18 16) scale(.7)"><g fill="#fbbf24"><circle cx="0" cy="-7" r="5"/><circle cx="5" cy="-5" r="5"/><circle cx="7" cy="0" r="5"/><circle cx="5" cy="5" r="5"/><circle cx="0" cy="7" r="5"/><circle cx="-5" cy="5" r="5"/><circle cx="-7" cy="0" r="5"/><circle cx="-5" cy="-5" r="5"/></g><circle r="4" fill="#d97706"/></g></svg></div>
+        <div class="modal-hero-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M10 52 C6 40 14 34 24 36 C26 46 20 52 10 52Z" fill="#4d7c3a"/><path d="M54 52 C58 40 50 34 40 36 C38 46 44 52 54 52Z" fill="#5b8f45"/><path d="M10 52 C16 46 20 42 24 36 M54 52 C48 46 44 42 40 36" stroke="#2f5a25" stroke-width="1" fill="none"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(0.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(30.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(60.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(90.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(120.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(150.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(180.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(210.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(240.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(270.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(300.0)"/><ellipse cx="0" cy="-9.0" rx="5.2" ry="8.2" fill="#f08a00" transform="translate(32 30) rotate(330.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(18.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(54.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(90.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(126.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(162.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(198.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(234.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(270.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(306.0)"/><ellipse cx="0" cy="-6.4" rx="4.4" ry="6.6" fill="#f9a825" transform="translate(32 30) rotate(342.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(9.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(54.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(99.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(144.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(189.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(234.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(279.0)"/><ellipse cx="0" cy="-4.0" rx="3.6" ry="5.0" fill="#fbc02d" transform="translate(32 30) rotate(324.0)"/><circle cx="32" cy="30" r="3.2" fill="#c2410c"/><circle cx="32" cy="30" r="1.4" fill="#fcd34d"/><g><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(0.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(30.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(60.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(90.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(120.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(150.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(180.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(210.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(240.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(270.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(300.0)"/><ellipse cx="0" cy="-3.42" rx="1.9760000000000002" ry="3.1159999999999997" fill="#f08a00" transform="translate(14 16) rotate(330.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(18.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(54.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(90.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(126.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(162.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(198.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(234.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(270.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(306.0)"/><ellipse cx="0" cy="-2.4320000000000004" rx="1.6720000000000002" ry="2.508" fill="#f9a825" transform="translate(14 16) rotate(342.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(9.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(54.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(99.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(144.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(189.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(234.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(279.0)"/><ellipse cx="0" cy="-1.52" rx="1.368" ry="1.9" fill="#fbc02d" transform="translate(14 16) rotate(324.0)"/><circle cx="14" cy="16" r="1.2" fill="#c2410c"/><circle cx="14" cy="16" r="0.5" fill="#fcd34d"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(0.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(30.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(60.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(90.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(120.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(150.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(180.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(210.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(240.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(270.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(300.0)"/><ellipse cx="0" cy="-3.06" rx="1.7680000000000002" ry="2.788" fill="#f08a00" transform="translate(51 15) rotate(330.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(18.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(54.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(90.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(126.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(162.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(198.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(234.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(270.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(306.0)"/><ellipse cx="0" cy="-2.176" rx="1.4960000000000002" ry="2.244" fill="#f9a825" transform="translate(51 15) rotate(342.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(9.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(54.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(99.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(144.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(189.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(234.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(279.0)"/><ellipse cx="0" cy="-1.36" rx="1.2240000000000002" ry="1.7000000000000002" fill="#fbc02d" transform="translate(51 15) rotate(324.0)"/><circle cx="51" cy="15" r="1.1" fill="#c2410c"/><circle cx="51" cy="15" r="0.5" fill="#fcd34d"/></g></svg></div>
       </div>
       <div class="modal-body">
         <h2 data-i18n="modal_haldi_title">Haldi</h2>
@@ -958,11 +994,11 @@
         hero_first_name: "Ashish", hero_weds: "weds", hero_second_name: "Navya",
         parent_ashish: "Grandson of Smt. Sohini Devi &amp; Late Shri Nemichandji Lalwani (Siwana)<br>Son of Smt. Rajul &amp; Shri Lalit Lalwani",
         parent_navya: "Granddaughter of Late Smt. Radhabai &amp; Late Shri Raghu Pai (Kagal)<br>Daughter of Smt. Laxmi &amp; Shri Narayan Raghu Pai",
-        hero_date_venue: "December 4, 2026 • Govind Bagh, Jodhpur",
+        hero_date_venue: "December 4, 2026 • Govind Bagh, Jodhpur", hero_date: "December 4, 2026", ev_day: "Friday, Dec 4", sec_countdown: "The Countdown Begins",
         timer_days: "Days", timer_hours: "Hours", timer_mins: "Mins", timer_secs: "Secs",
         sec_celebrations: "Celebrations",
-        haldi_title: "Haldi", haldi_time: "Dec 4 • 11:00 AM", btn_view_details: "View Details",
-        pheras_title: "Varmala & Pheras", pheras_time: "Dec 4 • 5:30 PM onwards",
+        haldi_title: "Haldi", haldi_time: "11:00 AM", btn_view_details: "View Details",
+        pheras_title: "Varmala & Pheras", pheras_time: "5:30 PM onwards",
         btn_calendar: "Add to Calendar", btn_pdf: "Download Invitation (PDF)",
         sec_venue: "The Venue", venue_name: "Govind Bagh, Jodhpur",
         venue_desc: "Govind Bagh is an exquisite royal estate nestled in the historic blue city of Jodhpur, offering sprawling lush lawns, traditional Rajasthani architecture, and majestic sunset views.",
@@ -977,7 +1013,7 @@
         msg_upload_ok: "Thank you! Your photos were uploaded.", msg_upload_fail: "Upload failed. Please try again.", msg_pick_file: "Please select at least one photo first.",
         msg_file_type: "Only photos (JPG, PNG, WebP, HEIC) are accepted.", msg_file_big: "That photo is too large (max 15 MB).", msg_too_many: "Please select up to 5 photos at a time.",
         msg_uploading: "Uploading", msg_loading_mem: "Loading memories...", msg_no_mem: "No memories uploaded yet. Be the first!", msg_mem_wait: "Waiting for the first uploads...",
-        msg_no_wishes: "No wishes posted yet. Be the first — add yours in the RSVP form!", msg_wishes_fail: "Be the first to leave a wish using the RSVP form!",
+        msg_no_wishes: "No wishes yet. Be the first to add one!", msg_wishes_fail: "No wishes yet. Be the first to add one!",
         msg_rsvp_fail: "Could not send your RSVP. Please check your connection and try again.", msg_wait: "You have just responded. Please wait a few seconds before sending again.",
         msg_dates: "Departure must be after your arrival.", msg_phone: "Please enter a valid phone number.", msg_name: "Please enter your name.", msg_status: "Please choose your attending status.",
         wishes_cta: "Add a wish", wish_modal_title: "Add your wish", lbl_wish_name: "Your name (optional)", lbl_wish_msg: "Your wish or blessing", btn_send_wish: "Send wish", ph_wish_name: "e.g. The Sharma Family", ph_wish_msg: "Leave a sweet message for Ashish & Navya...", msg_wish_ok: "Thank you! Your wish has been added.", msg_wish_empty: "Please write your wish first.", msg_wish_fail: "Could not send your wish. Please try again.", btn_refresh: "Refresh", share_btn: "Share this invitation", msg_copied: "Invitation link copied!",
@@ -1014,15 +1050,15 @@
       hi: {
         nav_home: "होम", nav_memories: "यादें", nav_wishes: "शुभकामनाएं", nav_rsvp: "आरएसवीपी (RSVP)",
         hero_blessing: "श्री गणेशाय नमः",
-        host_blessing: "हम आपको सपरिवार विवाह समारोह में सप्रेम आमंत्रित करते हैं",
+        host_blessing: "हम आपको विवाह समारोह में सप्रेम आमंत्रित करते हैं",
         hero_first_name: "आशीष", hero_weds: "संग", hero_second_name: "नव्या",
         parent_ashish: "श्रीमती सोहिनी देवी एवं स्वर्गीय श्री नेमीचंद जी ललवानी (सिवाना) के पौत्र<br>श्रीमती राजुल एवं श्री ललित ललवानी के सुपुत्र",
         parent_navya: "स्वर्गीय श्रीमती राधाबाई एवं स्वर्गीय श्री रघु पाई (कागल) की पौत्री<br>श्रीमती लक्ष्मी एवं श्री नारायण रघु पाई की सुपुत्री",
-        hero_date_venue: "४ दिसंबर २०२६ • गोविंद बाग, जोधपुर",
+        hero_date_venue: "४ दिसंबर २०२६ • गोविंद बाग, जोधपुर", hero_date: "४ दिसंबर २०२६", ev_day: "शुक्रवार, ४ दिसंबर", sec_countdown: "शुभ दिन की उलटी गिनती",
         timer_days: "दिन", timer_hours: "घंटे", timer_mins: "मिनट", timer_secs: "सेकंड",
         sec_celebrations: "मांगलिक कार्यक्रम",
-        haldi_title: "हल्दी समारोह", haldi_time: "४ दिसंबर • प्रातः ११:०० बजे", btn_view_details: "विवरण देखें",
-        pheras_title: "वरमाला एवं फेरे", pheras_time: "४ दिसंबर • सायं ५:३० बजे से",
+        haldi_title: "हल्दी समारोह", haldi_time: "प्रातः ११:०० बजे", btn_view_details: "विवरण देखें",
+        pheras_title: "वरमाला एवं फेरे", pheras_time: "सायं ५:३० बजे से",
         btn_calendar: "कैलेंडर में जोड़ें", btn_pdf: "निमंत्रण डाउनलोड करें (PDF)",
         sec_venue: "विवाह स्थल", venue_name: "गोविंद बाग, जोधपुर",
         venue_desc: "गोविंद बाग जोधपुर की ऐतिहासिक पावन नगरी में स्थित एक भव्य एवं शाही स्थल है, जो अपने सुरम्य उपवन, पारंपरिक राजस्थानी स्थापत्य और मनोरम दृश्यों के लिए प्रसिद्ध है।",
@@ -1037,7 +1073,7 @@
         msg_upload_ok: "धन्यवाद! आपकी तस्वीरें अपलोड हो गईं।", msg_upload_fail: "अपलोड विफल रहा। कृपया पुनः प्रयास करें।", msg_pick_file: "कृपया पहले कम से कम एक तस्वीर चुनें।",
         msg_file_type: "केवल तस्वीरें (JPG, PNG, WebP, HEIC) स्वीकार की जाती हैं।", msg_file_big: "यह तस्वीर बहुत बड़ी है (अधिकतम 15 MB)।", msg_too_many: "कृपया एक बार में अधिकतम 5 तस्वीरें चुनें।",
         msg_uploading: "अपलोड हो रहा है", msg_loading_mem: "यादें लोड हो रही हैं...", msg_no_mem: "अभी तक कोई तस्वीर अपलोड नहीं हुई। पहले आप बनें!", msg_mem_wait: "पहली तस्वीरों की प्रतीक्षा है...",
-        msg_no_wishes: "अभी तक कोई शुभकामना नहीं आई। RSVP फ़ॉर्म में अपना संदेश लिखकर पहले बनें!", msg_wishes_fail: "RSVP फ़ॉर्म के माध्यम से सबसे पहले शुभकामना दें!",
+        msg_no_wishes: "अभी तक कोई शुभकामना नहीं आई। सबसे पहले अपनी शुभकामना लिखें!", msg_wishes_fail: "अभी तक कोई शुभकामना नहीं आई। सबसे पहले अपनी शुभकामना लिखें!",
         msg_rsvp_fail: "आपका RSVP नहीं भेजा जा सका। कृपया इंटरनेट जाँचकर पुनः प्रयास करें।", msg_wait: "आप अभी उत्तर दे चुके हैं। कृपया दोबारा भेजने से पहले कुछ सेकंड प्रतीक्षा करें।",
         msg_dates: "प्रस्थान का समय आगमन के बाद का होना चाहिए।", msg_phone: "कृपया सही फ़ोन नंबर दर्ज करें।", msg_name: "कृपया अपना नाम लिखें।", msg_status: "कृपया उपस्थिति की स्थिति चुनें।",
         wishes_cta: "शुभकामना लिखें", wish_modal_title: "अपनी शुभकामना लिखें", lbl_wish_name: "आपका नाम (वैकल्पिक)", lbl_wish_msg: "आपकी शुभकामना या आशीर्वाद", btn_send_wish: "शुभकामना भेजें", ph_wish_name: "उदा. शर्मा परिवार", ph_wish_msg: "आशीष और नव्या के लिए प्यार भरा संदेश...", msg_wish_ok: "धन्यवाद! आपकी शुभकामना जुड़ गई है।", msg_wish_empty: "कृपया पहले अपनी शुभकामना लिखें।", msg_wish_fail: "शुभकामना नहीं भेजी जा सकी। कृपया पुनः प्रयास करें।", btn_refresh: "ताज़ा करें", share_btn: "यह निमंत्रण साझा करें", msg_copied: "निमंत्रण का लिंक कॉपी हो गया!",
@@ -1064,25 +1100,25 @@
         msg_sending: "भेजा जा रहा है...", msg_rsvp_ok: "आरएसवीपी पुष्टि हो गई है! धन्यवाद।",
         footer_couple: "आशीष एवं नव्या",
         footer_sub: "#NavAshish • ४ दिसंबर २०२६ • गोविंद बाग, जोधपुर",
-        modal_haldi_title: "हल्दी समारोह", modal_haldi_time: "४ दिसंबर • प्रातः ११:०० बजे",
+        modal_haldi_title: "हल्दी समारोह", modal_haldi_time: "प्रातः ११:०० बजे",
         modal_haldi_desc: "आइए और इस सुनहरे सवेरे में आशीष और नव्या को हल्दी के पावन रंगों से आशीर्वाद देकर नए जीवन की मंगलकामना करें।",
         modal_haldi_loc: "गोविंद बाग गार्डन",
-        modal_pheras_title: "वरमाला एवं फेरे", modal_pheras_time: "४ दिसंबर • सायं ५:३० बजे से",
+        modal_pheras_title: "वरमाला एवं फेरे", modal_pheras_time: "सायं ५:३० बजे से",
         modal_pheras_desc: "ढलते सूरज की सुनहरी आभा और पवित्र अग्नि के साक्षी में आशीष और नव्या के सात फेरों और अटूट बंधन के साक्षी बनें।",
         modal_pheras_loc: "गोविंद बाग मंडप"
       },
       kn: {
-        nav_home: "ಮುಖಪುಟ", nav_memories: "ನೆನಪುಗಳು", nav_wishes: "ಶುಭಾಶಯಗಳು", nav_rsvp: "ಆರ್‌ಎಸ್‌ವಿಪಿ (RSVP)",
+        nav_home: "ಮುಖಪುಟ", nav_memories: "ನೆನಪುಗಳು", nav_wishes: "ಶುಭಾಶಯಗಳು", nav_rsvp: "RSVP",
         hero_blessing: "ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ",
         host_blessing: "ಮದುವೆ ಸಂಭ್ರಮದ ಶುಭ ಆರಂಭಕ್ಕೆ ಪ್ರೀತಿಯ ಆಮಂತ್ರಣ",
         hero_first_name: "ನವ್ಯಾ", hero_weds: "ಮತ್ತು", hero_second_name: "ಆಶೀಷ್",
         parent_ashish: "ಶ್ರೀಮತಿ ಸೋಹಿನಿ ದೇವಿ ಹಾಗೂ ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀ ನೇಮಿಚಂದ್ ಜಿ ಲಾಲ್ವಾನಿ (ಸಿವಾನಾ) ಅವರ ಮೊಮ್ಮಗ<br>ಶ್ರೀಮತಿ ರಾಜುಲ್ ಮತ್ತು ಶ್ರೀ ಲಲಿತ್ ಲಾಲ್ವಾನಿ ಅವರ ಸುಪುತ್ರ",
         parent_navya: "ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀಮತಿ ರಾಧಾಬಾಯಿ ಹಾಗೂ ಸ್ವರ್ಗಸ್ಥ ಶ್ರೀ ರಘು ಪೈ (ಕಾಗಲ್) ಅವರ ಮೊಮ್ಮಗಳು<br>ಶ್ರೀಮತಿ ಲಕ್ಷ್ಮೀ ಮತ್ತು ಶ್ರೀ ನಾರಾಯಣ ರಘು ಪೈ ಅವರ ಸುಪುತ್ರಿ",
-        hero_date_venue: "ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬ • ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
+        hero_date_venue: "ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬ • ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ", hero_date: "ಡಿಸೆಂಬರ್ ೪, ೨೦೨೬", ev_day: "ಶುಕ್ರವಾರ, ಡಿಸೆಂಬರ್ ೪", sec_countdown: "ಶುಭ ದಿನಕ್ಕೆ ಉಳಿದ ಸಮಯ",
         timer_days: "ದಿನಗಳು", timer_hours: "ಗಂಟೆಗಳು", timer_mins: "ನಿಮಿಷಗಳು", timer_secs: "ಸೆಕೆಂಡುಗಳು",
         sec_celebrations: "ವಿವಾಹ ಸಮಾರಂಭಗಳು",
-        haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)", haldi_time: "ಡಿ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦", btn_view_details: "ವಿವರ ನೋಡಿ",
-        pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)", pheras_time: "ಡಿ ೪ • ಸಂಜೆ ೫:೩೦ ರಿಂದ",
+        haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)", haldi_time: "ಬೆಳಿಗ್ಗೆ ೧೧:೦೦", btn_view_details: "ವಿವರ ನೋಡಿ",
+        pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)", pheras_time: "ಸಂಜೆ ೫:೩೦ ರಿಂದ",
         btn_calendar: "ಕ್ಯಾಲೆಂಡರ್‌ಗೆ ಸೇರಿಸಿ", btn_pdf: "ಆಮಂತ್ರಣ ಡೌನ್‌ಲೋಡ್ (PDF)",
         sec_venue: "ಕಲ್ಯಾಣ ಮಂಟಪ", venue_name: "ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
         venue_desc: "ಗೋವಿಂದ್ ಬಾಗ್ ಜೋಧಪುರದ ಪಾರಂಪರಿಕ ನೀಲಿ ನಗರಿಯ ಸುಂದರ ಹಾಗೂ ರಾಜಭವನದಂತಹ ಆವರಣವಾಗಿದ್ದು, ಹಸಿರಿನ ಉದ್ಯಾನವನ ಹಾಗೂ ರಾಜಸ್ಥಾನಿ ವಾಸ್ತುಶಿಲ್ಪಕ್ಕೆ ಹೆಸರುವಾಸಿಯಾಗಿದೆ.",
@@ -1092,12 +1128,12 @@
         sec_contacts: "ಸಂಪರ್ಕಗಳು",
         c_lalit: "ಲಲಿತ್ ಲಾಲ್ವಾನಿ", c_ramesh: "ರಮೇಶ್ ಲಾಲ್ವಾನಿ", c_praveen: "ಪ್ರವೀಣ್ ಲಾಲ್ವಾನಿ", c_shashank: "ಶಶಾಂಕ್ ಸಿ.", c_shravasth: "ಶ್ರವಸ್ತ್ ವೈ.ಎಸ್.",
         wa_title: "ಮದುವೆಯ ವಿವರಗಳಿಗೆ ನಮ್ಮ ವಾಟ್ಸಾಪ್ ಗ್ರೂಪ್ ಸೇರಿ",
-        wa_subtitle: "ವಿವಾಹದ ನೇರ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಪಡೆಯಲು ಕ್ಯೂಆರ್ ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ನಮ್ಮ ಗ್ರೂಪ್‌ಗೆ ಸೇರಿ!",
+        wa_subtitle: "ನಮ್ಮ ಅತಿಥಿಗಳ ಗ್ರೂಪ್ ಸೇರಲು ಕ್ಯೂಆರ್ ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅಥವಾ ಕೆಳಗಿನ ಲಿಂಕ್ ಒತ್ತಿ!",
         wa_btn_text: "ವಾಟ್ಸಾಪ್ ಗ್ರೂಪ್ ಸೇರಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ",
         msg_upload_ok: "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಫೋಟೋಗಳು ಅಪ್‌ಲೋಡ್ ಆಗಿವೆ.", msg_upload_fail: "ಅಪ್‌ಲೋಡ್ ವಿಫಲವಾಯಿತು. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", msg_pick_file: "ದಯವಿಟ್ಟು ಮೊದಲು ಕನಿಷ್ಠ ಒಂದು ಫೋಟೋ ಆಯ್ಕೆ ಮಾಡಿ.",
         msg_file_type: "ಫೋಟೋಗಳನ್ನು ಮಾತ್ರ (JPG, PNG, WebP, HEIC) ಸ್ವೀಕರಿಸಲಾಗುತ್ತದೆ.", msg_file_big: "ಈ ಫೋಟೋ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ (ಗರಿಷ್ಠ 15 MB).", msg_too_many: "ಒಂದು ಬಾರಿಗೆ ಗರಿಷ್ಠ 5 ಫೋಟೋಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.",
         msg_uploading: "ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ", msg_loading_mem: "ನೆನಪುಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...", msg_no_mem: "ಇನ್ನೂ ಯಾವುದೇ ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಆಗಿಲ್ಲ. ಮೊದಲಿಗರಾಗಿ!", msg_mem_wait: "ಮೊದಲ ಫೋಟೋಗಳಿಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...",
-        msg_no_wishes: "ಇನ್ನೂ ಯಾವುದೇ ಶುಭಾಶಯ ಬಂದಿಲ್ಲ. RSVP ಫಾರ್ಮ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸಂದೇಶ ಬರೆದು ಮೊದಲಿಗರಾಗಿ!", msg_wishes_fail: "RSVP ಫಾರ್ಮ್ ಮೂಲಕ ಮೊದಲ ಶುಭಾಶಯ ನೀಡಿ!",
+        msg_no_wishes: "ಇನ್ನೂ ಯಾವುದೇ ಶುಭಾಶಯ ಬಂದಿಲ್ಲ. ಮೊದಲಿಗರಾಗಿ ನಿಮ್ಮ ಶುಭಾಶಯ ಬರೆಯಿರಿ!", msg_wishes_fail: "ಇನ್ನೂ ಯಾವುದೇ ಶುಭಾಶಯ ಬಂದಿಲ್ಲ. ಮೊದಲಿಗರಾಗಿ ನಿಮ್ಮ ಶುಭಾಶಯ ಬರೆಯಿರಿ!",
         msg_rsvp_fail: "ನಿಮ್ಮ RSVP ಕಳುಹಿಸಲಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಇಂಟರ್ನೆಟ್ ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", msg_wait: "ನೀವು ಈಗಷ್ಟೇ ಉತ್ತರಿಸಿದ್ದೀರಿ. ಮತ್ತೆ ಕಳುಹಿಸುವ ಮೊದಲು ಕೆಲವು ಸೆಕೆಂಡುಗಳು ಕಾಯಿರಿ.",
         msg_dates: "ನಿರ್ಗಮನವು ಆಗಮನದ ನಂತರ ಇರಬೇಕು.", msg_phone: "ದಯವಿಟ್ಟು ಸರಿಯಾದ ದೂರವಾಣಿ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ.", msg_name: "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಹೆಸರು ಬರೆಯಿರಿ.", msg_status: "ದಯವಿಟ್ಟು ಆಗಮನದ ಸ್ಥಿತಿ ಆಯ್ಕೆ ಮಾಡಿ.",
         wishes_cta: "ಶುಭಾಶಯ ಬರೆಯಿರಿ", wish_modal_title: "ನಿಮ್ಮ ಶುಭಾಶಯ ಬರೆಯಿರಿ", lbl_wish_name: "ನಿಮ್ಮ ಹೆಸರು (ಐಚ್ಛಿಕ)", lbl_wish_msg: "ನಿಮ್ಮ ಶುಭಾಶಯ ಅಥವಾ ಆಶೀರ್ವಾದ", btn_send_wish: "ಶುಭಾಶಯ ಕಳುಹಿಸಿ", ph_wish_name: "ಉದಾ: ಶರ್ಮಾ ಕುಟುಂಬ", ph_wish_msg: "ಆಶೀಷ್ ಮತ್ತು ನವ್ಯಾ ಅವರಿಗೆ ಪ್ರೀತಿಯ ಸಂದೇಶ...", msg_wish_ok: "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಶುಭಾಶಯ ಸೇರಿಸಲಾಗಿದೆ.", msg_wish_empty: "ದಯವಿಟ್ಟು ಮೊದಲು ನಿಮ್ಮ ಶುಭಾಶಯ ಬರೆಯಿರಿ.", msg_wish_fail: "ಶುಭಾಶಯ ಕಳುಹಿಸಲಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", btn_refresh: "ರಿಫ್ರೆಶ್", share_btn: "ಈ ಆಮಂತ್ರಣ ಹಂಚಿಕೊಳ್ಳಿ", msg_copied: "ಆಮಂತ್ರಣದ ಲಿಂಕ್ ನಕಲಾಗಿದೆ!",
@@ -1189,13 +1225,13 @@
       const mob = w < 520;
       const b = mob ? 7 : 12, m = b + 3;                                        // border strip, inner margin
       const sideW = Math.round(Math.max(24, Math.min(60, w * .085)));           // flank width beside the opening
-      const t = mob ? 22 : 34;                                                  // band between the two arches (at apex)
-      const ah = Math.round(Math.min(120, Math.max(80, w * .17)));               // height of the opening's arch
+      const t = mob ? 18 : 28;                                                  // band between the two arches (at apex)
+      const ah = Math.round(Math.min(104, Math.max(70, w * .15)));               // height of the opening's arch
       const y1 = m + 8, y2 = y1 + t, ys = y2 + ah;                              // outer apex, inner apex, springing line
       const bz = b + (mob ? 14 : 20), yB = H - bz;                              // sill
       wrap.style.setProperty('--jh-p', (sideW + (mob ? 8 : 18)) + 'px');
-      wrap.style.setProperty('--jh-pt', Math.round(y2 + ah * .30 + 2) + 'px');
-      wrap.style.setProperty('--jh-pb', (bz + (mob ? 22 : 30)) + 'px');
+      wrap.style.setProperty('--jh-pt', Math.round(y2 + ah * .14 + 2) + 'px');
+      wrap.style.setProperty('--jh-pb', (bz + (mob ? 18 : 24)) + 'px');
       const G = '#b8860b';                                                     // same gold-brown as the rotating chakra
 
       // ogee arch: returns {start, cmds, segs}; mirrored about the centre line
@@ -1303,20 +1339,25 @@
 
     /* keep each parentage line (Grandson of... / S/O ...) on a single row by shrinking the font to fit */
     function fitParentage() {
-      document.querySelectorAll('.parentage-subtitle').forEach(el => {
+      const els = Array.from(document.querySelectorAll('.parentage-subtitle'));
+      els.forEach(el => {
         if (!el.querySelector('.pl')) {
           el.innerHTML = el.innerHTML.split(/<br\s*\/?>/i).map(t => '<span class="pl">' + t + '</span>').join('');
         }
-        const avail = el.clientWidth;
-        if (!avail) return;
-        let size = Math.min(17, Math.max(13, window.innerWidth * 0.018));
-        el.style.fontSize = size + 'px';
-        let widest = Math.max(...Array.from(el.querySelectorAll('.pl')).map(l => l.getBoundingClientRect().width));
-        if (widest > avail) {
-          size = Math.max(6.5, size * avail / widest * 0.99);
-          el.style.fontSize = size + 'px';
-        }
       });
+      const base = Math.min(17, Math.max(13, window.innerWidth * 0.018));
+      let fit = base, measured = false;
+      els.forEach(el => { el.classList.remove('wrapl'); el.style.fontSize = base + 'px'; });
+      els.forEach(el => {                                    // one common size so Ashish's and Navya's lines always match
+        const avail = el.clientWidth; if (!avail) return;
+        const widest = Math.max(...Array.from(el.querySelectorAll('.pl')).map(l => l.getBoundingClientRect().width));
+        measured = true;
+        if (widest > avail) fit = Math.min(fit, base * avail / widest * 0.99);
+      });
+      if (!measured) return;
+      const MIN = (currentLang === 'en') ? 13.5 : 11.5, wrap = fit < MIN;   // never unreadably small: wrap instead
+      if (wrap) fit = MIN;
+      els.forEach(el => { el.style.fontSize = fit + 'px'; el.classList.toggle('wrapl', wrap); });
     }
     window.addEventListener('resize', fitParentage);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitParentage);
@@ -1515,7 +1556,7 @@
       el.style.setProperty('--delay', (-rnd(0, 7)).toFixed(1) + 's'); el.style.setProperty('--rot', ((Math.random() * 2 - 1) * rot).toFixed(2) + 'deg');
     }
     function spinBtn(b) { b.classList.remove('spin'); void b.offsetWidth; b.classList.add('spin'); }
-    function placeholderMsg(container, text, wide) { container.innerHTML = '<p class="wall-msg" style="text-align:center; ' + (wide ? 'grid-column: 1 / -1; ' : 'column-span: all; ') + 'color: var(--gold-deep); font-family: var(--font-serif); font-size: 1.1rem;">' + esc(text) + '</p>'; }
+    function placeholderMsg(container, key, wide) { const text = T(key); container.innerHTML = '<p class="wall-msg" data-i18n="' + key + '" style="text-align:center; ' + (wide ? 'grid-column: 1 / -1; ' : 'column-span: all; ') + 'color: var(--gold-deep); font-family: var(--font-serif); font-size: 1.1rem;">' + esc(text) + '</p>'; }
     function syncWall(container, keys, build) {                 // add new items on top, drop removed ones, keep the rest untouched
       const have = new Map(Array.from(container.querySelectorAll('[data-key]')).map(n => [n.dataset.key, n]));
       container.querySelectorAll('.wall-msg').forEach(n => n.remove());
@@ -1528,12 +1569,12 @@
     function loadGallery(manual) {
       if (SHOW_MEMORIES !== 1 || !UPLOAD_SCRIPT_URL.includes('/exec')) return;
       const gallery = document.getElementById('memory-wall');
-      if (!gallery.children.length) placeholderMsg(gallery, T('msg_loading_mem'));
+      if (!gallery.children.length) placeholderMsg(gallery, 'msg_loading_mem');
       fetch(UPLOAD_SCRIPT_URL + '?v=' + Date.now())
         .then(r => r.json())
         .then(urls => {
           const list = Array.from(new Set((Array.isArray(urls) ? urls : []).map(safeImgUrl).filter(Boolean)));
-          if (!list.length) { placeholderMsg(gallery, T('msg_no_mem')); return; }
+          if (!list.length) { placeholderMsg(gallery, 'msg_no_mem'); return; }
           syncWall(gallery, list, url => {
             const div = document.createElement('div'); div.className = 'masonry-item'; div.dataset.key = url; floaty(div, 1.8);
             const img = document.createElement('img');
@@ -1546,7 +1587,7 @@
             div.appendChild(img); return div;
           });
         })
-        .catch(() => { if (!gallery.querySelector('img')) placeholderMsg(gallery, T('msg_mem_wait')); });
+        .catch(() => { if (!gallery.querySelector('img')) placeholderMsg(gallery, 'msg_mem_wait'); });
     }
 
     function makeWishCard(text, key) {
@@ -1560,11 +1601,11 @@
         .then(r => r.json())
         .then(data => {
           const msgs = (data && Array.isArray(data.wishes) ? data.wishes : []).map(i => i && i.message ? String(i.message).trim().slice(0, 500) : '').filter(Boolean).slice(0, 200);
-          if (!msgs.length) { if (!wc.querySelector('.wish-card')) placeholderMsg(wc, T('msg_no_wishes'), true); return; }
+          if (!msgs.length) { if (!wc.querySelector('.wish-card')) placeholderMsg(wc, 'msg_no_wishes', true); return; }
           const seen = {}, keys = msgs.map(m => { seen[m] = (seen[m] || 0) + 1; return seen[m] + '|' + m; });
           syncWall(wc, keys, k => makeWishCard(k.slice(k.indexOf('|') + 1), k));
         })
-        .catch(() => { if (!wc.querySelector('.wish-card')) placeholderMsg(wc, T('msg_wishes_fail'), true); });
+        .catch(() => { if (!wc.querySelector('.wish-card')) placeholderMsg(wc, 'msg_wishes_fail', true); });
     }
 
     function loadGalleryAndWishes() { applySectionVisibilityFlags(); loadGallery(); loadWishes(); }
@@ -1638,34 +1679,37 @@
       fr.setAttribute('aria-hidden', 'true');
       fr.style.cssText = 'position:fixed;left:-10000px;top:0;width:' + W + 'px;height:1200px;border:0;visibility:hidden';
       const done = () => { if (btn) btn.disabled = false; setTimeout(() => fr.remove(), 500); };
-      fr.onload = () => {
+      const wait = ms => new Promise(r => setTimeout(r, ms));
+      fr.onload = async () => {
         const w = fr.contentWindow, d = fr.contentDocument;
-        setTimeout(() => {
-          try {
-            try { w.setLanguage(currentLang); w.switchPage('home'); } catch (e) {}
-            const st = d.createElement('style');
-            st.textContent = `
-              html, body { background:#fbf7ef !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; overflow:visible !important; height:auto !important; }
-              nav, footer, .timer-container, .sparkles, .scroll-hint, .cal-row, .modal-overlay, #toast, .icon-btn,
-              #page-memories, #page-wishes, #page-rsvp, .card-btn, .whatsapp-join-btn { display:none !important; }
-              #page-home { display:block !important; opacity:1 !important; }
-              .reveal { opacity:1 !important; transform:none !important; }
-              *, *::before, *::after { animation:none !important; transition:none !important; }
-              .poster-bg { margin-top:0 !important; padding-top:1rem !important; }`;
-            d.head.appendChild(st);
-            d.title = 'Ashish-Navya-Wedding-Invitation';
-            setTimeout(() => {
-              const h = Math.ceil(Math.max(d.documentElement.scrollHeight, d.body.scrollHeight)) + 4;
-              const pg = d.createElement('style');
-              pg.textContent = '@page { size: ' + W + 'px ' + h + 'px; margin: 0; }';
-              d.head.appendChild(pg);
-              w.addEventListener('afterprint', done);
-              fr.style.visibility = 'visible'; fr.style.height = h + 'px';
-              w.focus(); w.print();
-              setTimeout(done, 60000);
-            }, 500);
-          } catch (e) { done(); }
-        }, 1000);
+        try {
+          await wait(900);
+          try { w.setLanguage(currentLang); w.switchPage('home'); } catch (e) {}
+          const st = d.createElement('style');
+          st.textContent = `
+            html, body { background:#fbf7ef !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; overflow:visible !important; height:auto !important; min-height:0 !important; margin:0 !important; }
+            nav, footer, #countdown-section, .timer-container, .sparkles, .scroll-hint, .cal-row, .modal-overlay, #toast, .icon-btn,
+            #page-memories, #page-wishes, #page-rsvp, .card-btn, .whatsapp-join-btn { display:none !important; }
+            #page-home { display:block !important; opacity:1 !important; padding-top:0 !important; min-height:0 !important; }
+            .reveal { opacity:1 !important; transform:none !important; }
+            *, *::before, *::after { animation:none !important; transition:none !important; }
+            .poster-bg { margin-top:0 !important; padding-top:.6rem !important; }`;
+          d.head.appendChild(st);
+          d.title = 'Ashish-Navya-Wedding-Invitation';
+          Array.from(d.images).forEach(i => { i.loading = 'eager'; });
+          await Promise.all(Array.from(d.images).map(i => i.complete ? null : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 4000); })));
+          if (d.fonts && d.fonts.ready) await d.fonts.ready;
+          try { w.fitParentage(); } catch (e) {}
+          await wait(600);
+          const h = Math.ceil(Math.max(d.documentElement.scrollHeight, d.body.scrollHeight)) + 48;   // slack so nothing spills to a 2nd page
+          const pg = d.createElement('style');
+          pg.textContent = '@page { size: ' + W + 'px ' + h + 'px; margin: 0; } html, body { height: ' + h + 'px !important; overflow: hidden !important; }';
+          d.head.appendChild(pg);
+          w.addEventListener('afterprint', done);
+          fr.style.visibility = 'visible'; fr.style.height = h + 'px';
+          w.focus(); w.print();
+          setTimeout(done, 60000);
+        } catch (e) { done(); }
       };
       fr.srcdoc = '<!doctype html>' + document.documentElement.outerHTML;
       document.body.appendChild(fr);
