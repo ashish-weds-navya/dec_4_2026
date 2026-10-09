@@ -530,13 +530,21 @@
     @keyframes spinOnce { to { transform: rotate(360deg); } }
     .btn[disabled] { opacity: .65; cursor: progress; transform: none; }
     .footer-share { margin-top: 1.2rem; }
+    .footer-share { display: flex; justify-content: center; align-items: center; gap: .6rem; flex-wrap: wrap; }
     .footer-share .cal-btn { border-color: var(--maroon); }
+    .pdf-icon-btn {
+      width: 44px; height: 44px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--maroon); background: transparent; color: var(--maroon); cursor: pointer; transition: all .3s ease;
+    }
+    .pdf-icon-btn:hover { background: var(--maroon); color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99,18,27,.25); }
+    .pdf-icon-btn:disabled { opacity: .5; cursor: wait; }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
       html { scroll-behavior: auto; }
     }
+
   </style>
 </head>
 <body>
@@ -668,6 +676,7 @@
       </div>
       <div class="cal-row">
         <button type="button" class="cal-btn" onclick="downloadCalendar()"><span>📅</span><span data-i18n="btn_calendar">Add to Calendar</span></button>
+
       </div>
     </section>
 
@@ -859,7 +868,7 @@
     <div class="footer-orn" aria-hidden="true">✦ ✦ ✦</div>
     <div class="footer-title" id="footer-couple-name" data-i18n="footer_couple">Ashish &amp; Navya</div>
     <p class="footer-sub-text" id="footer-sub-note" data-i18n="footer_sub">#NavAshish • December 4, 2026 • Govind Bagh, Jodhpur</p>
-    <div class="footer-share"><button type="button" class="cal-btn" onclick="shareInvite()"><span>🔗</span><span data-i18n="share_btn">Share this invitation</span></button></div>
+    <div class="footer-share"><button type="button" class="cal-btn" onclick="shareInvite()"><span>🔗</span><span data-i18n="share_btn">Share this invitation</span></button><button type="button" class="pdf-icon-btn" onclick="downloadInvitePDF()" data-i18n-aria="btn_pdf" aria-label="Download Invitation (PDF)" title="Download Invitation (PDF)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg></button></div>
   </footer>
 
   <!-- Modals -->
@@ -954,7 +963,7 @@
         sec_celebrations: "Celebrations",
         haldi_title: "Haldi", haldi_time: "Dec 4 • 11:00 AM", btn_view_details: "View Details",
         pheras_title: "Varmala & Pheras", pheras_time: "Dec 4 • 5:30 PM onwards",
-        btn_calendar: "Add to Calendar",
+        btn_calendar: "Add to Calendar", btn_pdf: "Download Invitation (PDF)",
         sec_venue: "The Venue", venue_name: "Govind Bagh, Jodhpur",
         venue_desc: "Govind Bagh is an exquisite royal estate nestled in the historic blue city of Jodhpur, offering sprawling lush lawns, traditional Rajasthani architecture, and majestic sunset views.",
         venue_scan_qr: "Scan to Open Location in Maps",
@@ -1014,7 +1023,7 @@
         sec_celebrations: "मांगलिक कार्यक्रम",
         haldi_title: "हल्दी समारोह", haldi_time: "४ दिसंबर • प्रातः ११:०० बजे", btn_view_details: "विवरण देखें",
         pheras_title: "वरमाला एवं फेरे", pheras_time: "४ दिसंबर • सायं ५:३० बजे से",
-        btn_calendar: "कैलेंडर में जोड़ें",
+        btn_calendar: "कैलेंडर में जोड़ें", btn_pdf: "निमंत्रण डाउनलोड करें (PDF)",
         sec_venue: "विवाह स्थल", venue_name: "गोविंद बाग, जोधपुर",
         venue_desc: "गोविंद बाग जोधपुर की ऐतिहासिक पावन नगरी में स्थित एक भव्य एवं शाही स्थल है, जो अपने सुरम्य उपवन, पारंपरिक राजस्थानी स्थापत्य और मनोरम दृश्यों के लिए प्रसिद्ध है।",
         venue_scan_qr: "मैप्स में लोकेशन खोलने के लिए स्कैन करें",
@@ -1074,14 +1083,14 @@
         sec_celebrations: "ವಿವಾಹ ಸಮಾರಂಭಗಳು",
         haldi_title: "ಅರಿಶಿನ ಶಾಸ್ತ್ರ (ಹಳದಿ)", haldi_time: "ಡಿ ೪ • ಬೆಳಿಗ್ಗೆ ೧೧:೦೦", btn_view_details: "ವಿವರ ನೋಡಿ",
         pheras_title: "ವರಮಾಲೆ ಮತ್ತು ಸಪ್ತಪದಿ (ಫೇರೆ)", pheras_time: "ಡಿ ೪ • ಸಂಜೆ ೫:೩೦ ರಿಂದ",
-        btn_calendar: "ಕ್ಯಾಲೆಂಡರ್‌ಗೆ ಸೇರಿಸಿ",
+        btn_calendar: "ಕ್ಯಾಲೆಂಡರ್‌ಗೆ ಸೇರಿಸಿ", btn_pdf: "ಆಮಂತ್ರಣ ಡೌನ್‌ಲೋಡ್ (PDF)",
         sec_venue: "ಕಲ್ಯಾಣ ಮಂಟಪ", venue_name: "ಗೋವಿಂದ್ ಬಾಗ್, ಜೋಧಪುರ",
         venue_desc: "ಗೋವಿಂದ್ ಬಾಗ್ ಜೋಧಪುರದ ಪಾರಂಪರಿಕ ನೀಲಿ ನಗರಿಯ ಸುಂದರ ಹಾಗೂ ರಾಜಭವನದಂತಹ ಆವರಣವಾಗಿದ್ದು, ಹಸಿರಿನ ಉದ್ಯಾನವನ ಹಾಗೂ ರಾಜಸ್ಥಾನಿ ವಾಸ್ತುಶಿಲ್ಪಕ್ಕೆ ಹೆಸರುವಾಸಿಯಾಗಿದೆ.",
         venue_scan_qr: "ಗೂಗಲ್ ಮ್ಯಾಪ್ಸ್‌ಗಾಗಿ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ",
         venue_map_btn: "📍 ಮದುವೆ ಮಂಟಪದ ವಿಳಾಸಕ್ಕೆ ಇಲ್ಲಿ ಒತ್ತಿ",
         venue_cab_notice: "<strong>🚗 ಗಮನಿಸಿ:</strong><br>ಕಲ್ಯಾಣ ಮಂಟಪಕ್ಕೆ ಆಗಮಿಸಲು ಎಲ್ಲ ಅತಿಥಿಗಳಿಗೆ ವಾಹನ (ಕ್ಯಾಬ್) ವ್ಯವಸ್ಥೆ ಮಾಡಲಾಗುತ್ತಿದೆ. <br>ನಿಮ್ಮ ಆತಿಥ್ಯದ ಸಿದ್ಧತೆಗಾಗಿ:<br>ಗೋವಿಂದ್ ಬಾಗ್‌ಗೆ ತಲುಪಲು ಸೂಕ್ತ ಸಿದ್ಧತೆ ಮಾಡಲು, ದಯವಿಟ್ಟು ನಿಮ್ಮ ಆಗಮನದ ವಿವರಗಳನ್ನು RSVP ಯಲ್ಲಿ ಭರ್ತಿ ಮಾಡಿ.",
         sec_contacts: "ಸಂಪರ್ಕಗಳು",
-        c_lalit: "ಲಲಿತ್ ಲಾಲ್ವಾನಿ", c_ramesh: "ರಮೇಶ್ ಲಾಲ್ವಾನಿ", c_praveen: "ಪ್ರವೀಣ್ ಲಾಲ್ವಾನಿ", c_shashank: "ಶಶಾಂಕ್ ಚೂಂತಾರ್", c_shravasth: "ಶ್ರವಸ್ತ್ ವೈ.ಎಸ್.",
+        c_lalit: "ಲಲಿತ್ ಲಾಲ್ವಾನಿ", c_ramesh: "ರಮೇಶ್ ಲಾಲ್ವಾನಿ", c_praveen: "ಪ್ರವೀಣ್ ಲಾಲ್ವಾನಿ", c_shashank: "ಶಶಾಂಕ್ ಸಿ.", c_shravasth: "ಶ್ರವಸ್ತ್ ವೈ.ಎಸ್.",
         wa_title: "ಮದುವೆಯ ವಿವರಗಳಿಗೆ ನಮ್ಮ ವಾಟ್ಸಾಪ್ ಗ್ರೂಪ್ ಸೇರಿ",
         wa_subtitle: "ವಿವಾಹದ ನೇರ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಪಡೆಯಲು ಕ್ಯೂಆರ್ ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ನಮ್ಮ ಗ್ರೂಪ್‌ಗೆ ಸೇರಿ!",
         wa_btn_text: "ವಾಟ್ಸಾಪ್ ಗ್ರೂಪ್ ಸೇರಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ",
@@ -1619,6 +1628,48 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
     /* ---------- share ---------- */
+
+    /* "Download Invitation (PDF)": renders the invitation (no countdown) in a hidden 820px-wide frame,
+       measures it and prints it as ONE continuous tall page, so the PDF is a single long sheet. */
+    function downloadInvitePDF() {
+      const W = 820, btn = document.querySelector('[onclick="downloadInvitePDF()"]');
+      if (btn) btn.disabled = true;
+      const fr = document.createElement('iframe');
+      fr.setAttribute('aria-hidden', 'true');
+      fr.style.cssText = 'position:fixed;left:-10000px;top:0;width:' + W + 'px;height:1200px;border:0;visibility:hidden';
+      const done = () => { if (btn) btn.disabled = false; setTimeout(() => fr.remove(), 500); };
+      fr.onload = () => {
+        const w = fr.contentWindow, d = fr.contentDocument;
+        setTimeout(() => {
+          try {
+            try { w.setLanguage(currentLang); w.switchPage('home'); } catch (e) {}
+            const st = d.createElement('style');
+            st.textContent = `
+              html, body { background:#fbf7ef !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; overflow:visible !important; height:auto !important; }
+              nav, footer, .timer-container, .sparkles, .scroll-hint, .cal-row, .modal-overlay, #toast, .icon-btn,
+              #page-memories, #page-wishes, #page-rsvp, .card-btn, .whatsapp-join-btn { display:none !important; }
+              #page-home { display:block !important; opacity:1 !important; }
+              .reveal { opacity:1 !important; transform:none !important; }
+              *, *::before, *::after { animation:none !important; transition:none !important; }
+              .poster-bg { margin-top:0 !important; padding-top:1rem !important; }`;
+            d.head.appendChild(st);
+            d.title = 'Ashish-Navya-Wedding-Invitation';
+            setTimeout(() => {
+              const h = Math.ceil(Math.max(d.documentElement.scrollHeight, d.body.scrollHeight)) + 4;
+              const pg = d.createElement('style');
+              pg.textContent = '@page { size: ' + W + 'px ' + h + 'px; margin: 0; }';
+              d.head.appendChild(pg);
+              w.addEventListener('afterprint', done);
+              fr.style.visibility = 'visible'; fr.style.height = h + 'px';
+              w.focus(); w.print();
+              setTimeout(done, 60000);
+            }, 500);
+          } catch (e) { done(); }
+        }, 1000);
+      };
+      fr.srcdoc = '<!doctype html>' + document.documentElement.outerHTML;
+      document.body.appendChild(fr);
+    }
     function shareInvite() {
       const url = location.href.split('#')[0], text = T('share_text');
       if (navigator.share) { navigator.share({ title: document.title, text, url }).catch(() => {}); return; }
